@@ -7,7 +7,7 @@ import React from 'react'
 
 // /posts/new
 
-function page()　{
+function page(){
   return (
     <div>NewPost</div>
   )

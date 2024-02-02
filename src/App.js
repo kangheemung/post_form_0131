@@ -1,7 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Post from './posts/Post' ;
+import Post from './posts/Post';
 import NewPost from './posts/NewPost';
+import Nav from './components/Nav';
 import Home from './Home';
 import About from './components/About';
 //jsmastery.pro/masterclass
@@ -11,15 +12,19 @@ import About from './components/About';
 // /posts/blog-post-3
 const App = () => {
   return (
+    <>
+
       <Router>
+      <Nav/>
         <Routes>
           <Route path= '/' element={<Home />}/>
-          <Route path= 'about' element={<About />}/>
-          <Route path= 'posts' element={<Post />}/>
-          <Route path= 'new' element={<NewPost />}/>
-          <Route path= ':postId' element={<Post />}/>
+          <Route path= 'api/v1/about' element={<About />}/>
+          <Route path= 'api/v1/posts' element={<Post />}/>
+          <Route path= 'api/v1/new' element={<NewPost />}/>
+          <Route path= 'api/v1/:postId' element={<Post />}/>
         </Routes>
       </Router>
+    </>
   );
 }
 
