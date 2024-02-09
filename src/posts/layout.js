@@ -11,9 +11,9 @@ export default function RootLayout({ children }) {
         <html>
             <Head>
                 {/* Example for including Inter font from Google Fonts */}
-                <link 
+                <link
                     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" 
-                    rel="stylesheet" 
+                    rel="stylesheet"
                 />
 
                 {/* Define metadata for SEO */}

@@ -5,7 +5,7 @@ const Nav = () => {
     // If setIsUserLoggedIn won't be used for now but may be used in the future,
     // you can ignore the eslint warning with the following line:
     // eslint-disable-next-line no-unused-vars
-    const [isUserLoggedIn] = useState(false);
+    const [ isUserLoggedIn ] = useState(false);
 
     return (
         <nav>
