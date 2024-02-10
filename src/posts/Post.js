@@ -1,22 +1,27 @@
+import React from 'react';
 import { useParams } from 'react-router-dom';
 
-export default function Post({ todos }) {
+export default function Post({ todos, completeTodo }) {
   let { postId } = useParams();
-  // Find the todo that matches the postId (assumes postId can be used to find todo)
   const todo = todos?.find(todo => `blog-post-${todo.id}` === postId);
 
   if (!todo) {
-    // Handle the case where the todo is not found
     return <div>Post not found</div>;
   }
 
-  // Render your post content using 'todo' object
   return (
-    <div>
-      {/* Example usage: */}
+    <div style={{ textDecoration: todo.isCompleted ? 'line-through' : '' }} className="todo">
       <h2>{todo.title}</h2>
       <p>{todo.content}</p>
-      {/* Add more post details as needed */}
+
+      {/* Form for creating a post */}
+      <form >
+        <input type="text" name="title" placeholder="Title" />
+        <textarea name="content" placeholder="Content"></textarea>
+        <button type="submit">Create Post</button>
+      </form>
+
+      <button onClick={() => completeTodo(todo.id)}>Complete</button>
     </div>
   );
 }

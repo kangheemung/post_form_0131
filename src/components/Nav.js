@@ -12,16 +12,16 @@ const Nav = () => {
             <Link to='/'>
               <p className="logo_text">Home</p>
             </Link>
-            <Link to='api/v1/about'>
+            <Link to='/about'>
               <p className="logo_text">About</p>
             </Link>
-            <Link to='api/v1/posts'>
+            <Link to='/posts/posts'>
               <p className="logo_text">Post</p>
             </Link>
-            <Link to='api/v1/new'>
+            <Link to='/posts/new'>
               <p className="logo_text">NewPost</p>
             </Link>
-            <Link to='api/v1/:postId'>
+            <Link to='/posts/:id'>
               <p className="logo_text">PostId</p>
             </Link>
 
