@@ -3,11 +3,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 function EditPostComponent() {
     let { id } = useParams();
-    const navigate = useNavigate(); // Add this line to use the navigate function
-    const [post, setPost] = useState(null);
+    const navigate = useNavigate();
+    const [post, setPost] = useState({ title: '', content: '' }); // Initialize with empty strings
 
     useEffect(() => {
-        fetch(`http://54.168.23.57:8080/posts/${id}/edit`)
+        fetch(`http://54.168.23.57:8080/posts/${id}`)
           .then(response => response.json())
           .then(data => {
             setPost(data); // Assuming your API returns the post data directly
@@ -16,16 +16,30 @@ function EditPostComponent() {
             console.error('Error fetching post:', error);
           });
       }, [id]);
- // Function to handle the edit button click
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Here you would send a POST or PUT request to your API endpoint to update the post.
-        // For this example, I'll just log to the console
-        console.log(post);
 
-        // After updating, navigate back to the post page
-        navigate(`/posts/${id}`);
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        
+        try {
+            const response = await fetch(`http://54.168.23.57:8080/posts/${id}/edit`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(post),
+            });
+
+            if (response.ok) {
+                navigate(`/posts/${id}`);
+            } else {
+                const errorData = await response.json();
+                console.error('Failed to update post:', errorData);
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
     };
+
     const handleChange = (event) => {
         const { name, value } = event.target;
         setPost(prevPost => ({
@@ -33,6 +47,11 @@ function EditPostComponent() {
             [name]: value
         }));
     };
+
+    if (!post) {
+        return <p>Loading...</p>; // Render a loading state or similar message
+    }
+
     return (
         <div>
             {/* Display the edit form with current post data */}
