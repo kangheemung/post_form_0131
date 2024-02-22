@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PostsList from './posts/PostsList';
 import Page from './posts/Page';
-import EditPostComponent from './posts/EditPostComponent'
+import EditPostComponent from './posts/EditPostComponent';
+import Todo from './posts/Todo';
 // Removed the unused Post import
-import NewPost from './posts/NewPost';
+import NewPost from './posts/Newpost';
 import Nav from './components/Nav';
 import Home from './Home';
 import About from './components/About';
+import './App.css';
 // Import ShowPostComponent if it exists
 // import ShowPostComponent from 'path-to-ShowPostComponent';
 

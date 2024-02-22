@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
-function NewPost() {
+function Newpost() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const navigate = useNavigate();
+  let { id } = useParams();
+//testのため仮のトークンを入れます。本来ならいらないです。
+  const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg2NzQ3ODl9.VdimUcIca5_wIwZ3bfdFoXfibFfl812XBEvIfI86dbk"
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,12 +19,13 @@ function NewPost() {
     };
 
 
-
     // Perform the POST request to the server
-    fetch('http://54.168.23.57:8080/posts/create', {
+    fetch(`http:///35.72.5.194:3000/api/v1/users/${id}/microposts`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        //jwt認証方法のため追加致しました。
+        'Authorization': `Bearer ${jwtToken}`
       },
       body: JSON.stringify(postData),
     })
@@ -33,10 +37,11 @@ function NewPost() {
       setContent(''); // Reset content state
       if (data.id) {
         // Navigate to new URL using react-router-dom v6 syntax
-        navigate(`/posts/${data.id}`);
+        navigate(`/micropots/${data.data.id}`);
       }
     })
-    .catch((error) => console.error('Error:', error));
+    .catch((error) => {console.error('Error:', error)
+  });
   };
 
   return (
@@ -66,4 +71,4 @@ function NewPost() {
   );
 }
 
-export default NewPost;
+export default Newpost;

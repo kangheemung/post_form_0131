@@ -3,11 +3,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 function EditPostComponent() {
     let { id } = useParams();
+    let { user_id } = useParams();
     const navigate = useNavigate();
-    const [post, setPost] = useState({ title: '', content: '' }); // Initialize with empty strings
+    const [post, setPost] = useState({ title: '', body: '' }); // Initialize with empty strings
+    //testのため仮のトークンを入れます。本来ならいらないです。
+    const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg2NzQ3ODl9.VdimUcIca5_wIwZ3bfdFoXfibFfl812XBEvIfI86dbk"
 
     useEffect(() => {
-        fetch(`http://54.168.23.57:8080/posts/${id}`)
+        fetch(`http:///35.72.5.194:3000/api/v1/users/${user_id}/microposts/${id}`)
           .then(response => response.json())
           .then(data => {
             setPost(data); // Assuming your API returns the post data directly
@@ -19,12 +22,14 @@ function EditPostComponent() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        
+
         try {
-            const response = await fetch(`http://54.168.23.57:8080/posts/${id}/edit`, {
+            const response = await fetch(`http:///35.72.5.194:3000/api/v1/users/${user_id}/microposts/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
+                    //jwt認証方法のため追加致しました。
+                    'Authorization': `Bearer ${jwtToken}`
                 },
                 body: JSON.stringify(post),
             });
@@ -64,7 +69,7 @@ function EditPostComponent() {
                 <br />
                 <label>
                     Content:
-                    <textarea name="content" value={post.content} onChange={handleChange} />
+                    <textarea name="content" value={post.body} onChange={handleChange} />
                 </label>
                 <br />
                 <button type="submit">更新</button>

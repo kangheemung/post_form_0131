@@ -1,0 +1,30 @@
+.nav_link{
+    list-style: none; /* リストのデフォルトスタイルを無効化 */
+    padding: 0;       /* デフォルトのパディングを削除 */
+    margin: 0;        /* デフォルトのマージンを削除 */
+    display: flex;    /* Flexboxレイアウトを有効化 */
+    align-items: center; /* 要素を中央揃え */
+
+  }
+  .nav_link a, .nav_link a:visited, .nav_link a:hover, .nav_link a:active {
+    text-decoration: none; /* 下線を削除 */
+    color: black; /* 色を黒（または任意の色）に設定 */
+  }
+
+  /* リンクの間隔を調整（お好みで） */
+  .nav_link li {
+    margin-right: 10px;
+    list-style-type: none; /* 必要に応じてリストの箇条書きマークを非表示に */
+  }
+
+  /* 最後の要素の余白を取り除く */
+  .nav_link li:last-child {
+    margin-right: 0;
+  }
+
+  /* ロゴテキストのスタイル */
+  .logo_text p{
+    text-decoration: none; /* テキストの下線を削除 */
+    color: inherit; /* 親要素の色を継承 */
+    /* 必要に応じてその他のスタイルを追加 */
+  }

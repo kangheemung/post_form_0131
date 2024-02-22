@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Nav.css';
 import { Link } from 'react-router-dom';
 
 const Nav = () => {
@@ -9,21 +10,13 @@ const Nav = () => {
 
     return (
         <nav>
-            <Link to='/'>
-              <p className="logo_text">Home</p>
-            </Link>
-            <Link to='/about'>
-              <p className="logo_text">About</p>
-            </Link>
-            <Link to='/posts/posts'>
-              <p className="logo_text">Post</p>
-            </Link>
-            <Link to='/posts/new'>
-              <p className="logo_text">NewPost</p>
-            </Link>
-            <Link to='/posts/:id'>
-              <p className="logo_text">PostId</p>
-            </Link>
+          <ul className="nav_link">
+            <li><Link to='/'><p className="logo_text">Home</p></Link></li>
+            <li><Link to='/about'><p className="logo_text">About</p></Link></li>
+            <li><Link to='/posts/posts'><p className="logo_text">Post</p></Link></li>
+            <li><Link to='/posts/new'><p className="logo_text">NewPost</p></Link></li>
+            <li><Link to='/posts/:id'><p className="logo_text">PostId</p></Link></li>
+          </ul>
 
             {/* Mobile Navigation */}
             {isUserLoggedIn ? (

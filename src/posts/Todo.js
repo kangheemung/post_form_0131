@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-export default function Post({ todos, completeTodo }) {
+export default function Todo({ todos,index, completeTodo }) {
   let { postId } = useParams();
   const todo = todos?.find(todo => `blog-post-${todo.id}` === postId);
 
