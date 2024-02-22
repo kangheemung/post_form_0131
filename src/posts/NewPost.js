@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, {  useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Newpost() {
   const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [body, setBody] = useState('');
   const navigate = useNavigate();
-  let { id } = useParams();
+  //let { user_id } = useParams();
 //testのため仮のトークンを入れます。本来ならいらないです。
-  const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg2NzQ3ODl9.VdimUcIca5_wIwZ3bfdFoXfibFfl812XBEvIfI86dbk"
-
+  const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg2OTg2MzB9.GDkGHpRF0im2I0y2jll2RUki4VPsQivvAC-OF8Nvh1o"
+  const user_id = 1;
   const handleSubmit = (event) => {
     event.preventDefault();
 
     // Create the postData object using state variables
     const postData = {
       title: title,
-      content: content,
+      body: body,
     };
 
 
     // Perform the POST request to the server
-    fetch(`http:///35.72.5.194:3000/api/v1/users/${id}/microposts`, {
+    fetch(`http://43.206.238.35:3000/api/v1/users/${user_id}/microposts`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,17 +31,15 @@ function Newpost() {
     })
     .then(response => response.json())
     .then(data => {
-      console.log('Success:', data);
-      // Additional code to handle success, such as resetting form or redirecting
-      setTitle(''); // Reset title state
-      setContent(''); // Reset content state
-      if (data.id) {
-        // Navigate to new URL using react-router-dom v6 syntax
-        navigate(`/micropots/${data.data.id}`);
+      if (data.status === 201 && data.data?.id) {
+        navigate(`/api/v1/users/${user_id}/microposts/${data.data.id}`);
+      } else {
+        throw new Error('Error in creating post');
       }
     })
-    .catch((error) => {console.error('Error:', error)
-  });
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   };
 
   return (
@@ -61,8 +59,8 @@ function Newpost() {
           <label htmlFor="post-content">Content:</label><br/>
           <textarea
             id="post-content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
           />
         </div>
         <button type="submit">Submit Post</button>

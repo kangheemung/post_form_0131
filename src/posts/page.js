@@ -1,47 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-//Data fetching
+function Page() {
+  let { id, user_id } = useParams();
+  const navigate = useNavigate();
+  const [post, setPost] = useState(null);
+  const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg2OTg2MzB9.GDkGHpRF0im2I0y2jll2RUki4VPsQivvAC-OF8Nvh1o"; // Your JWT token
 
-//1. server Side Renderinf(SSR)
-//2/ static Site Generation(SSG)
-//3. Incremental Static Generation (ISR)
+  useEffect(() => {
+    const url = `http://43.206.238.35:3000/api/v1/users/${user_id}/microposts/${id}`;
 
-// /posts/new
+    fetch(url, {
+      headers: {
+        'Authorization': `Bearer ${jwtToken}`
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 200) {
+        setPost(data.data);
+      } else if (data.status === 404) {
+        console.error('Micropost not found');
+        // Handle micropost not found, e.g., show a message to the user
+      } else if (data.status === 401) {
+        console.error('Unauthorized');
+        // Handle unauthorized status, e.g., navigate to a login page
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching post:', error);
+    });
+  }, [id, user_id]);
 
-function Page(){
-    let { id } = useParams();
-    const navigate = useNavigate(); // Add this line to use the navigate function
-    const [post, setPost] = useState(null);
-  
-    useEffect(() => {
-        fetch(`http://54.168.23.57:8080/posts/${id}`)
-          .then(response => response.json())
-          .then(data => {
-            setPost(data); // Assuming your API returns the post data directly
-          })
-          .catch(error => {
-            console.error('Error fetching post:', error);
-          });
-      }, [id]);
- // Function to handle the edit button click
-    const handleEdit = () => {
-        // Navigate to the edit page for the post
-        navigate(`/posts/${id}/edit`);
-    };
-    return (
-       <div>
+  const handleEdit = () => {
+    // Navigate to the edit page for the post
+    navigate(`/api/v1/users/${user_id}/micropost/${id}`);
+  };
+
+  return (
+    <div>
       {/* Display the post based on the fetched data */}
-      {post && (
+      {post ? (
         <article>
-            <p>投稿した内容</p>
+          <p>投稿した内容</p>
           <h1>{post.title}</h1>
-          <p>{post.content}</p>
+          <p>{post.body}</p>
           <button onClick={handleEdit}>編集</button> {/* Add the edit button */}
         </article>
+      ) : (
+        <p>Loading...</p> // Provide feedback while loading or if no post is available
       )}
     </div>
-  )
+  );
 }
 
 export default Page;

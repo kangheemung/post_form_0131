@@ -13,9 +13,9 @@ const Nav = () => {
           <ul className="nav_link">
             <li><Link to='/'><p className="logo_text">Home</p></Link></li>
             <li><Link to='/about'><p className="logo_text">About</p></Link></li>
-            <li><Link to='/posts/posts'><p className="logo_text">Post</p></Link></li>
-            <li><Link to='/posts/new'><p className="logo_text">NewPost</p></Link></li>
-            <li><Link to='/posts/:id'><p className="logo_text">PostId</p></Link></li>
+            <li><Link to='/api/v1/users/microposts'><p className="logo_text">Post</p></Link></li>
+            <li><Link to='/api/v1/users/:user_id/micropost'><p className="logo_text">NewPost</p></Link></li>
+            <li><Link to='/api/v1/users/micropost/:id'><p className="logo_text">PostId</p></Link></li>
           </ul>
 
             {/* Mobile Navigation */}

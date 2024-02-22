@@ -3,14 +3,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 function EditPostComponent() {
     let { id } = useParams();
-    let { user_id } = useParams();
+    //let { user_id } = useParams();
     const navigate = useNavigate();
     const [post, setPost] = useState({ title: '', body: '' }); // Initialize with empty strings
     //testのため仮のトークンを入れます。本来ならいらないです。
-    const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg2NzQ3ODl9.VdimUcIca5_wIwZ3bfdFoXfibFfl812XBEvIfI86dbk"
-
+    const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg2OTg2MzB9.GDkGHpRF0im2I0y2jll2RUki4VPsQivvAC-OF8Nvh1o"
+    const user_id = 1;
     useEffect(() => {
-        fetch(`http:///35.72.5.194:3000/api/v1/users/${user_id}/microposts/${id}`)
+        fetch(`http://43.206.238.35:3000/api/v1/users/${user_id}/microposts/${id}`)
           .then(response => response.json())
           .then(data => {
             setPost(data); // Assuming your API returns the post data directly
@@ -24,7 +24,7 @@ function EditPostComponent() {
         event.preventDefault();
 
         try {
-            const response = await fetch(`http:///35.72.5.194:3000/api/v1/users/${user_id}/microposts/${id}`, {
+            const response = await fetch(`http://43.206.238.35:3000/api/v1/users/${user_id}/microposts/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ function EditPostComponent() {
             });
 
             if (response.ok) {
-                navigate(`/posts/${id}`);
+                navigate(`/api/v1/users/micropost/${id}`);
             } else {
                 const errorData = await response.json();
                 console.error('Failed to update post:', errorData);
