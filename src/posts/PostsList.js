@@ -41,13 +41,17 @@ function PostsList() {
 
   return (
     <div>
-      <h2>{username}様のPosts</h2>
+      <h2>{username}様の投稿したPosts</h2>
       <ul>
       {microposts.map((post) => (
         <li key={post.id}>
           {/* Make sure to use the correct property name as defined in the serializer */}
-          <span>{`${post.name}: ${post.title}`}</span>
+          <p>==================</p>
+          <p>title内容</p>
+          <span>{post.title}</span>
+          <p>body内容</p>
           <p>{post.body}</p>
+          <p>==================</p>
         </li>
       ))}
 

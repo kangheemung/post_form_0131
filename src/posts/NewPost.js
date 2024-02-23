@@ -1,14 +1,16 @@
 import React, {  useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../components/AuthContext';
 
 function Newpost() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const navigate = useNavigate();
+  const { jwtToken, user_id } = useAuth();
   //let { user_id } = useParams();
 //testのため仮のトークンを入れます。本来ならいらないです。
-  const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"
-  const user_id = 1;
+  //const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"
+  //const user_id = 1;
   const handleSubmit = (event) => {
     event.preventDefault();
 

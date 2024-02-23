@@ -11,11 +11,13 @@ const Nav = () => {
     return (
         <nav>
           <ul className="nav_link">
-            <li><Link to='/'><p className="logo_text">Home</p></Link></li>
-            <li><Link to='/about'><p className="logo_text">About</p></Link></li>
-            <li><Link to='/api/v1/users/:user_id/microposts'><p className="logo_text">Post</p></Link></li>
-            <li><Link to='/api/v1/users/:user_id/micropost'><p className="logo_text">NewPost</p></Link></li>
-            <li><Link to='/api/v1/users/:user_id/micropost/:id'><p className="logo_text">PostId</p></Link></li>
+            <li><Link to='/'className = 'header_a'><p>Home</p></Link></li>
+            <li><Link to='/about'className = 'header_a'><p>About</p></Link></li>
+            <li><Link to='/api/v1/auth'className = 'header_a'><p>Login</p></Link></li>
+            <li><Link to='/api/v1/users'className = 'header_a'><p>Sign up</p></Link></li>
+            <li><Link to='/api/v1/users/:user_id/microposts'className = 'header_a'><p>Post</p></Link></li>
+            <li><Link to='/api/v1/users/:user_id/micropost'className = 'header_a'><p>NewPost</p></Link></li>
+             {/*<li><Link to='/api/v1/users/:user_id/micropost/:id'><p>PostId</p></Link></li>*/}
           </ul>
 
             {/* Mobile Navigation */}

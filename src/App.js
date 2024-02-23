@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { createContext,useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PostsList from './posts/PostsList';
 import Page from './posts/Page';
@@ -10,20 +10,35 @@ import Nav from './components/Nav';
 import Home from './Home';
 import About from './components/About';
 import './App.css';
+import Login from './users/Login';
+import Form from './users/Form';
+import { AuthProvider } from './components/AuthContext';
+import ThemeSwitch from './components/ThemeSwitch';
 // Import ShowPostComponent if it exists
 // import ShowPostComponent from 'path-to-ShowPostComponent';
+export const ThemeContext = createContext(null);
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [theme, setTheme] = useState("light");
+  const toggleTheme = () => {
+    setTheme((current) => current === "light" ? "dark" : "light");
+  };
 
   return (
-    <div className="app">
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <AuthProvider>
       <Router>
-        <Nav />
-        <div className="todo-list">
-          <Routes>
+      <div className="app"id={theme}>
+        <Nav className="header"/>
+        <div className="flex-container">
+        <div className='contain'>
+        <ThemeSwitch  className="switch" />
+          <Routes className="contain_main">
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
+            <Route path="/api/v1/auth" element={<Login />} />
+            <Route path="/api/v1/users" element={<Form />} />
             <Route
                path="/api/v1/users/:user_id/microposts"
                element={<PostsList todos={todos} setTodos={setTodos}/>}
@@ -34,8 +49,11 @@ function App() {
             <Route path="/api/v1/users/:user_id/micropost/:id" element={<EditPostComponent />} />
           </Routes>
         </div>
+        </div>
+      </div>
       </Router>
-    </div>
+      </AuthProvider> 
+    </ThemeContext.Provider>
   );
 }
 
