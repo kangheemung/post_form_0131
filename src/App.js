@@ -24,7 +24,10 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
-            <Route path='/api/v1/users/microposts' element={<PostsList todos={todos} setTodos={setTodos} />} />
+            <Route
+               path="/api/v1/users/:user_id/microposts"
+               element={<PostsList todos={todos} setTodos={setTodos}/>}
+            />
             <Route path='/api/v1/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />
             {/* Make sure to define ShowPostComponent or remove this line if it's not needed */}
             <Route path="/api/v1/users/:user_id/microposts/:id" element={<Page />} />

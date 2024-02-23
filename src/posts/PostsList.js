@@ -1,42 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function PostsList({ todos, setTodos, addTodo }) {
-  const [value, setValue] = useState('');
+function PostsList() {
+  const [microposts, setMicroposts] = useState([]);
+  const [username, setUsername] = useState('');
+  const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"; // Replace with actual JWT token
+  const user_id = 1; // Replace with actual user ID
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!value) return;
-    addTodo({
-      id: Date.now(), // Or another unique ID generator
-      title: value,
-      content: '' // If content is needed, consider adding another state and input field
-    });
-    setValue('');
-  };
+  // Fetch the user's microposts
+  useEffect(() => {
+    const fetchMicroposts = async () => {
+      const url = `http://3.112.191.54:3000/api/v1/users/${user_id}/microposts`;
 
-  const handleDelete = (postId) => {
-    setTodos(todos.filter(post => post.id !== postId));
-  };
+      try {
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${jwtToken}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(data);
+        if (data.length > 0) {
+          // Assuming all posts belong to the same user, set the username from the first post
+          setUsername(data[0].name);
+        }
+        setMicroposts(data); // Assuming the response gives a list of microposts
+      } catch (error) {
+        console.error("Fetching microposts error:", error);
+      }
+    };
+
+    fetchMicroposts();
+  }, [user_id, jwtToken]);
 
   return (
     <div>
-      <h2>Posts</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          placeholder="Add new todo"
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <h2>{username}様のPosts</h2>
       <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            <span>{todo.title}: {todo.content}</span>
-            <button onClick={() => handleDelete(todo.id)}>Delete</button>
-          </li>
-        ))}
+      {microposts.map((post) => (
+        <li key={post.id}>
+          {/* Make sure to use the correct property name as defined in the serializer */}
+          <span>{`${post.name}: ${post.title}`}</span>
+          <p>{post.body}</p>
+        </li>
+      ))}
+
       </ul>
     </div>
   );
