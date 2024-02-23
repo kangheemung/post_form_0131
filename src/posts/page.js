@@ -5,10 +5,10 @@ function Page() {
   let { id, user_id } = useParams();
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
-  const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg2OTg2MzB9.GDkGHpRF0im2I0y2jll2RUki4VPsQivvAC-OF8Nvh1o"; // Your JWT token
+  const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"; // Your JWT token
 
   useEffect(() => {
-    const url = `http://43.206.238.35:3000/api/v1/users/${user_id}/microposts/${id}`;
+    const url = `http://3.112.191.54:3000/api/v1/users/${user_id}/microposts/${id}`;
 
     fetch(url, {
       headers: {

@@ -7,7 +7,7 @@ function Newpost() {
   const navigate = useNavigate();
   //let { user_id } = useParams();
 //testのため仮のトークンを入れます。本来ならいらないです。
-  const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg2OTg2MzB9.GDkGHpRF0im2I0y2jll2RUki4VPsQivvAC-OF8Nvh1o"
+  const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"
   const user_id = 1;
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,9 +18,9 @@ function Newpost() {
       body: body,
     };
 
-
+    console.log('Sending postData:', postData); // Log the postData
     // Perform the POST request to the server
-    fetch(`http://43.206.238.35:3000/api/v1/users/${user_id}/microposts`, {
+    fetch(`http://3.112.191.54:3000/api/v1/users/${user_id}/microposts`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,8 +29,15 @@ function Newpost() {
       },
       body: JSON.stringify(postData),
     })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(data => {
+      console.log('Response data:', data); // Log the response data
+
       if (data.status === 201 && data.data?.id) {
         navigate(`/api/v1/users/${user_id}/microposts/${data.data.id}`);
       } else {

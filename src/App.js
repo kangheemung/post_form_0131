@@ -28,7 +28,7 @@ function App() {
             <Route path='/api/v1/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />
             {/* Make sure to define ShowPostComponent or remove this line if it's not needed */}
             <Route path="/api/v1/users/:user_id/microposts/:id" element={<Page />} />
-            <Route path="/api/v1/users/:user_id/micropost/:id/edit" element={<EditPostComponent />} />
+            <Route path="/api/v1/users/:user_id/micropost/:id" element={<EditPostComponent />} />
           </Routes>
         </div>
       </Router>
