@@ -19,7 +19,7 @@ function EditPostComponent() {
     headers.append('Authorization', `Bearer ${jwtToken}`);
 
     // fetchメソッドの第二引数にheadersオブジェクトを追加します。
-    fetch(`http://3.112.191.54:3000/api/v1/users/${user_id}/microposts/${id}`, { method: 'GET', headers: headers })
+    fetch(`http://54.238.178.130:3000/api/v1/users/${user_id}/microposts/${id}`, { method: 'GET', headers: headers })
 
       .then(response => {
         if (response.ok) {
