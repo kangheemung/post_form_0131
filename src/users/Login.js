@@ -10,44 +10,44 @@ function Login() {
   async function handleSubmit(event) {
     event.preventDefault(); // Prevents the default form submission
 
+    const payload = {
+      email: email,
+      password: password
+    };
+
     try {
       const response = await fetch('http://54.238.178.130:3000/api/v1/auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          user: {
-            email,
-            password
-          }
-        })
+        body: JSON.stringify(payload)
       });
+
+      const data = await response.json();
+
       if (response.ok) {
-        const data = await response.json();
-        console.log('Response data:', data); 
-        localStorage.setItem('token', data.data.token);
+        localStorage.setItem('token', data.data.token); // Adjusted for nested data structure
         alert('Login successful!');
 
-        const decodedToken = jwtDecode(data.data.token);
+        const decodedToken = jwtDecode(data.data.token); // Use the token from data.data
         const userId = decodedToken.user_id;
-        if (userId) {
-            navigate(`/api/v1/users/${userId}/micropost`); // Navigate to user's microposts or another appropriate route after login
-        } else {
-            console.error('User ID is undefined.');
-            alert('Failed to retrieve user ID.');
-        }
-    } else {
-        const errorData = await response.json();
-        console.error('Failed to login:', errorData);
-        alert(`Error: ${errorData.error}`);
-    }
-} catch (error) {
-    console.error('There was an error!', error);
-    alert(error.message);
-}
-}
 
+        if (userId) {
+          navigate(`/api/v1/users/${userId}/micropost`); // Navigate to user's microposts
+        } else {
+          console.error('User ID is undefined.');
+          alert('Failed to retrieve user ID.');
+        }
+      } else {
+        console.error('Failed to login:', data);
+        alert(`Error: ${data.error}`);
+      }
+    } catch (error) {
+      console.error('There was an error!', error);
+      alert(error.message);
+    }
+}
   return (
     <div className="main">
       <p className="sign" align="center">
