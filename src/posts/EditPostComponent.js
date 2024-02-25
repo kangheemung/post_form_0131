@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
+
 import { useParams, useNavigate } from 'react-router-dom';
 
 function EditPostComponent() {
-
-    let { id } = useParams();
+    const { user_id, id } = useParams(); // Destructure user_id and id from the URL parameters
     //let { user_id } = useParams();
     const navigate = useNavigate();
     const [post, setPost] = useState({ title: '', body: '' }); // Initialize with empty strings
     //testのため仮のトークンを入れます。本来ならいらないです。
-    const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"; // Your JWT token
-    const user_id = 1;
-
+    //const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"; // Your JWT token
+    //const user_id = 1;
+    const jwtToken = localStorage.getItem('token'); // Assumed jwtToken retrieval
 
 
     useEffect(() => {
@@ -19,7 +19,7 @@ function EditPostComponent() {
     headers.append('Authorization', `Bearer ${jwtToken}`);
 
     // fetchメソッドの第二引数にheadersオブジェクトを追加します。
-    fetch(`http://54.238.178.130:3000/api/v1/users/${user_id}/microposts/${id}`, { method: 'GET', headers: headers })
+    fetch(`http://43.207.204.18:3000/api/v1/users/${user_id}/microposts/${id}`, { method: 'GET', headers: headers })
 
       .then(response => {
         if (response.ok) {
@@ -33,23 +33,23 @@ function EditPostComponent() {
         //フェッチされたデータからトークンを取り除くには、次のようにコードを変更します
         // Create a copy of the fetched post without the token property for logging
         //この変更により、token プロパティはログ出力から除外されますが、残りの投稿データはそのまま利用できます。上記のコードスニペットは、既存の useEffect コールバック内に適用すべきです。
-        const { token, ...postData } = data;
-        console.log('Fetched post:', postData); // この行でデバッグ情報をコンソールに出力
+        const { data: postData } = data;
+        console.log('Fetched post:', postData);
         setPost({
-            title: data.data.title || '',
-            body: data.data.body || ''
+            title: postData.title || '',
+            body: postData.body || ''
         });
-      })
-      .catch(error => {
+    })
+    .catch(error => {
         console.error('Error fetching post:', error);
-      });
-  }, [user_id, id]); // useEffectの依存配列にuser_idを追加
+    });
+  }, [user_id, id, jwtToken]); // useEffectの依存配列にuser_idを追加
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const response = await fetch(`http://3.112.191.54:3000/api/v1/users/${user_id}/microposts/${id}`, {
+            const response = await fetch(`http://43.207.204.18:3000/api/v1/users/${user_id}/microposts/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ function EditPostComponent() {
     };
     //戻るボタンを押すとポストリストに戻ります。
     const handleBackClick = () => {
-        navigate('/api/v1/users/microposts');
+        navigate('/api/v1/users/${user_id}/microposts');
     };
 
     if (!post) {
@@ -101,10 +101,9 @@ function EditPostComponent() {
                     <textarea name="body" value={post.body} onChange={handleChange} />
                 </label>
                 <br />
-           
                 <button type="submit">更新</button>
             </form>
-  
+
             <button type="button" onClick={handleBackClick}>postリストを見る</button>
         </div>
   );

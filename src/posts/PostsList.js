@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-
+import { useParams, useNavigate } from 'react-router-dom';
 function PostsList() {
   const [microposts, setMicroposts] = useState([]);
   const [username, setUsername] = useState('');
-  const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"; // Replace with actual JWT token
-  const user_id = 1; // Replace with actual user ID
-
+  //const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"; // Replace with actual JWT token
+  //const user_id = 1; // Replace with actual user ID
+  const jwtToken = localStorage.getItem('token')
+  let { user_id } = useParams();
+  const navigate = useNavigate();
   // Fetch the user's microposts
   useEffect(() => {
     const fetchMicroposts = async () => {
-      const url = `http://3.112.191.54:3000/api/v1/users/${user_id}/microposts`;
+      const url = `http://43.207.204.18:3000/api/v1/users/${user_id}/microposts`;
 
       try {
         const response = await fetch(url, {
@@ -26,24 +28,31 @@ function PostsList() {
 
         const data = await response.json();
         console.log(data);
-        if (data.length > 0) {
-          // Assuming all posts belong to the same user, set the username from the first post
-          setUsername(data[0].name);
+        if (data && data.microposts) {
+          setUsername(data.microposts[0].user.name); // Adjust if necessary to match your data structure
+          setMicroposts(data.microposts);
+        } else {
+          // Handle case where 'microposts' is not present or not an array
+          console.error('Unexpected response format:', data);
         }
-        setMicroposts(data); // Assuming the response gives a list of microposts
       } catch (error) {
         console.error("Fetching microposts error:", error);
+        // Optionally add error handling logic here, e.g., show an error message to the user
       }
     };
 
     fetchMicroposts();
   }, [user_id, jwtToken]);
 
+  const handlehome = () => {
+    // Navigate to the edit page for the post
+    navigate(`/`);
+  };
   return (
     <div>
       <h2>{username}様の投稿したPosts</h2>
       <ul>
-      {microposts.map((post) => (
+      {Array.isArray(microposts) && microposts.map((post) => (
         <li key={post.id}>
           {/* Make sure to use the correct property name as defined in the serializer */}
           <p>==================</p>
@@ -56,6 +65,7 @@ function PostsList() {
       ))}
 
       </ul>
+      <button onClick={handlehome}>homeに戻る</button> 
     </div>
   );
 }

@@ -16,7 +16,7 @@ function Login() {
     };
 
     try {
-      const response = await fetch('http://54.238.178.130:3000/api/v1/auth', {
+      const response = await fetch('http://43.207.204.18:3000/api/v1/auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

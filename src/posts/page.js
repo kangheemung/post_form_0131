@@ -5,37 +5,42 @@ function Page() {
   let { id, user_id } = useParams();
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
-  const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg2OTg2MzB9.GDkGHpRF0im2I0y2jll2RUki4VPsQivvAC-OF8Nvh1o"; // Your JWT token
+  const jwtToken = localStorage.getItem('token'); // Assumed jwtToken retrieval
+  //const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg2OTg2MzB9.GDkGHpRF0im2I0y2jll2RUki4VPsQivvAC-OF8Nvh1o"; // Your JWT token
 
   useEffect(() => {
-    const url = `http://3.112.191.54:3000/api/v1/users/${user_id}/microposts/${id}`;
-
+    const url = `http://43.207.204.18:3000/api/v1/users/${user_id}/microposts/${id}`;
     fetch(url, {
       headers: {
         'Authorization': `Bearer ${jwtToken}`
       }
     })
-    .then(response => response.json())
-    .then(data => {
-      if (data.status === 200) {
-        setPost(data.data);
-      } else if (data.status === 404) {
-        console.error('Micropost not found');
-        // Handle micropost not found, e.g., show a message to the user
-      } else if (data.status === 401) {
-        console.error('Unauthorized');
-        // Handle unauthorized status, e.g., navigate to a login page
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+    })
+    .then(data => {
+      setPost(data.data); // Handle the case where data comes in without any problem.
     })
     .catch(error => {
       console.error('Error fetching post:', error);
+      // Here you could set up state to display the error in your component,
+      // like setting an error message in state and displaying it somewhere in your render.
     });
-  }, [id, user_id]);
-
+  }, [id, user_id,navigate]);
+  
   const handleEdit = () => {
     // Navigate to the edit page for the post
     navigate(`/api/v1/users/${user_id}/micropost/${id}`);
   };
+   //戻るボタンを押すとポストリストに戻ります。
+   const handleBackClick = () => {
+    navigate('/api/v1/users/${user_id}/microposts');
+};
+
 
   return (
     <div>
@@ -50,6 +55,7 @@ function Page() {
       ) : (
         <p>Loading...</p> // Provide feedback while loading or if no post is available
       )}
+      <button type="button" onClick={handleBackClick}>postリストを見る</button>
     </div>
   );
 }
