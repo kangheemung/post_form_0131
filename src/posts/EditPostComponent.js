@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 function EditPostComponent() {
     const { id, user_id } = useParams(); // Destructure user_id and id from the URL parameters
-    //let { user_id } = useParams();
     const navigate = useNavigate();
     const [post, setPost] = useState({ title: '', body: '' }); // Initialize with empty strings
     //testのため仮のトークンを入れます。本来ならいらないです。

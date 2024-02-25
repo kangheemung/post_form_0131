@@ -30,7 +30,7 @@ function Page() {
       // Here you could set up state to display the error in your component,
       // like setting an error message in state and displaying it somewhere in your render.
     });
-  }, [id, user_id,navigate]);
+  }, [id, user_id,jwtToken]);
   
   const handleEdit = () => {
     // Navigate to the edit page for the post
