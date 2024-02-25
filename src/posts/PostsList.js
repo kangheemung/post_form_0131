@@ -26,33 +26,37 @@ function PostsList() {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json();
-        console.log(data);
-        if (data && data.microposts) {
-          setUsername(data.microposts[0].user.name); // Adjust if necessary to match your data structure
-          setMicroposts(data.microposts);
-        } else {
-          // Handle case where 'microposts' is not present or not an array
-          console.error('Unexpected response format:', data);
-        }
+        const result = await response.json();
+        console.log(result);
+        // The data is directly under 'data' key, so update the state accordingly
+        setMicroposts(result.data);
+        // The username is under 'user.name'
+        setUsername(result.user.name);
+
       } catch (error) {
         console.error("Fetching microposts error:", error);
-        // Optionally add error handling logic here, e.g., show an error message to the user
+        // Reset the states if there's an error
+        setUsername('');
+        setMicroposts([]);
       }
     };
 
     fetchMicroposts();
   }, [user_id, jwtToken]);
 
-  const handlehome = () => {
-    // Navigate to the edit page for the post
-    navigate(`/`);
+
+  const handleHome = () => {
+    navigate('/'); // Navigate back to home
   };
+
+
+
+
   return (
     <div>
       <h2>{username}様の投稿したPosts</h2>
       <ul>
-      {Array.isArray(microposts) && microposts.map((post) => (
+      {microposts.map((post) => (
         <li key={post.id}>
           {/* Make sure to use the correct property name as defined in the serializer */}
           <p>==================</p>
@@ -65,7 +69,7 @@ function PostsList() {
       ))}
 
       </ul>
-      <button onClick={handlehome}>homeに戻る</button> 
+      <button onClick={handleHome}>homeに戻る</button> 
     </div>
   );
 }

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-
 import { useParams, useNavigate } from 'react-router-dom';
 
 function EditPostComponent() {
-    const { user_id, id } = useParams(); // Destructure user_id and id from the URL parameters
+    const { id, user_id } = useParams(); // Destructure user_id and id from the URL parameters
     //let { user_id } = useParams();
     const navigate = useNavigate();
     const [post, setPost] = useState({ title: '', body: '' }); // Initialize with empty strings
@@ -12,38 +11,35 @@ function EditPostComponent() {
     //const user_id = 1;
     const jwtToken = localStorage.getItem('token'); // Assumed jwtToken retrieval
 
-
     useEffect(() => {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', `Bearer ${jwtToken}`);
-
-    // fetchメソッドの第二引数にheadersオブジェクトを追加します。
-    fetch(`http://43.207.204.18:3000/api/v1/users/${user_id}/microposts/${id}`, { method: 'GET', headers: headers })
-
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-            return Promise.reject(`Error! status: ${response.status}`);
-        }
+        fetch(`http://43.207.204.18:3000/api/v1/users/${user_id}/microposts/${id}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${jwtToken}`
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+              throw new Error(`HTTP error! status: ${response.status}`);
+          }
+        })
+        .then(data => {
+          // Log the fetched post data
+          const { data: postData } = data;
+          console.log('Fetched post:', postData);
+          setPost({
+              title: postData.title || '',
+              body: postData.body || ''
+          });
       })
-      .then(data => {
-        // confirm that data includes the fields 'title' and 'body'
-        //フェッチされたデータからトークンを取り除くには、次のようにコードを変更します
-        // Create a copy of the fetched post without the token property for logging
-        //この変更により、token プロパティはログ出力から除外されますが、残りの投稿データはそのまま利用できます。上記のコードスニペットは、既存の useEffect コールバック内に適用すべきです。
-        const { data: postData } = data;
-        console.log('Fetched post:', postData);
-        setPost({
-            title: postData.title || '',
-            body: postData.body || ''
-        });
-    })
-    .catch(error => {
-        console.error('Error fetching post:', error);
-    });
-  }, [user_id, id, jwtToken]); // useEffectの依存配列にuser_idを追加
+      .catch(error => {
+          console.error('Error fetching post:', error);
+      });
+    }, [user_id, id, jwtToken]); // useEffectの依存配列にuser_idを追加
+  // useEffectの依存配列にuser_idを追加
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -60,7 +56,7 @@ function EditPostComponent() {
             });
 
             if (response.ok) {
-                navigate(`/api/v1/users/${user_id}/microposts/${id}`);
+                navigate(`/api/v1/users/${user_id}/microposts`);
             } else {
                 const errorData = await response.json();
                 console.error('Failed to update post:', errorData);
@@ -69,18 +65,19 @@ function EditPostComponent() {
             console.error('Error submitting form:', error);
         }
     };
+        // Function to handle the back button click
+        const handleBackClick = () => {
+            navigate(`/api/v1/users/${user_id}/microposts`);
+        };
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setPost(prevPost => ({
-            ...prevPost,
-            [name]: value
-        }));
-    };
-    //戻るボタンを押すとポストリストに戻ります。
-    const handleBackClick = () => {
-        navigate('/api/v1/users/${user_id}/microposts');
-    };
+        const handleChange = (event) => {
+            const { name, value } = event.target;
+            setPost(prevPost => ({
+                ...prevPost,
+                [name]: value
+            }));
+        };
+
 
     if (!post) {
         return <p>Loading...</p>;

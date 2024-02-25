@@ -20,39 +20,39 @@ export const ThemeContext = createContext(null);
 
 function App() {
   const [todos, setTodos] = useState([]);
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState('light');
   const toggleTheme = () => {
-    setTheme((current) => current === "light" ? "dark" : "light");
+    setTheme((current) => current === 'light' ? 'dark' : 'light');
   };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <AuthProvider>
       <Router>
-      <div className="app"id={theme}>
-        <Nav className="header"/>
-        <div className="flex-container">
+      <div className='app'id={theme}>
+        <Nav className='header'/>
+        <div className='flex-container'>
         <div className='contain'>
-        <ThemeSwitch  className="switch" />
-          <Routes className="contain_main">
+        <ThemeSwitch  className='switch' />
+          <Routes className='contain_main'>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
-            <Route path="/api/v1/auth" element={<Login />} />
-            <Route path="/api/v1/users" element={<Form />} />
+            <Route path='/api/v1/auth' element={<Login />} />
+            <Route path='/api/v1/users' element={<Form />} />
             <Route
-               path="/api/v1/users/:user_id/microposts"
+               path='/api/v1/users/:user_id/microposts'
                element={<PostsList todos={todos} setTodos={setTodos}/>}
             />
             <Route path='/api/v1/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />
             {/* Make sure to define ShowPostComponent or remove this line if it's not needed */}
-            <Route path="/api/v1/users/:user_id/microposts/:id" element={<Page />} />
-            <Route path="/api/v1/users/:user_id/micropost/:id" element={<EditPostComponent />} />
+            <Route path='/api/v1/users/:user_id/microposts/:id' element={<Page />} />
+            <Route path='/api/v1/users/:user_id/micropost/:id' element={<EditPostComponent />} />
           </Routes>
         </div>
         </div>
       </div>
       </Router>
-      </AuthProvider> 
+      </AuthProvider>
     </ThemeContext.Provider>
   );
 }

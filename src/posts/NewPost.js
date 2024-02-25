@@ -44,7 +44,7 @@ function Newpost({ todos, setTodos}) {
       }
 
       const data = await response.json();
-      console.log('Response data:', data);
+      //console.log('Response data:', data);
 
       if (data.status === 201 && data.data?.id) {
         navigate(`/api/v1/users/${user_id}/microposts/${data.data.id}`);
