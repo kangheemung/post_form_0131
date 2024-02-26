@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
-
+import { useAuth } from '../components/AuthContext';
 function Form() {
     // ユーザー名とパスワードの状態を定義
     const [name, setName] = useState('');
@@ -9,12 +9,13 @@ function Form() {
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const navigate = useNavigate();
+    const { login } = useAuth();
       // フォームの送信処理
   async function handleSubmit(event) {
     event.preventDefault(); // デフォルトのフォーム送信を阻止
 
     try {
-      const response = await fetch('http://43.207.204.18:3000/api/v1/users', {
+      const response = await fetch('http://3.113.14.254:3000/api/v1/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -40,6 +41,8 @@ function Form() {
         const decodedToken = jwtDecode(data.data.token);
         const userId = decodedToken.user_id;
         if (userId) {
+          login(data.data.token, userId);
+          alert('signup successful!');
             navigate(`/api/v1/users/${userId}/micropost`); // Navigate to user's microposts
         } else {
             console.error('User ID is undefined.');

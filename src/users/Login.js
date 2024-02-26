@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import {jwtDecode} from 'jwt-decode'; // Corrected import statement
 import { useNavigate } from 'react-router-dom';
-
+import { useAuth } from '../components/AuthContext';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   async function handleSubmit(event) {
     event.preventDefault(); // Prevents the default form submission
@@ -16,7 +17,7 @@ function Login() {
     };
 
     try {
-      const response = await fetch('http://43.207.204.18:3000/api/v1/auth', {
+      const response = await fetch('http://3.113.14.254:3000/api/v1/auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -27,13 +28,15 @@ function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('token', data.data.token); // Adjusted for nested data structure
-        alert('Login successful!');
 
         const decodedToken = jwtDecode(data.data.token); // Use the token from data.data
         const userId = decodedToken.user_id;
+        localStorage.setItem('token', data.data.token); // Adjusted for nested data structure
+        alert('Login successful!');
 
         if (userId) {
+          login(data.data.token, userId);
+          alert('Login successful!');
           navigate(`/api/v1/users/${userId}/micropost`); // Navigate to user's microposts
         } else {
           console.error('User ID is undefined.');

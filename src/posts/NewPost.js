@@ -30,7 +30,7 @@ function Newpost({ todos, setTodos}) {
       };
 
       console.log('Sending postData:', postData);
-      const response = await fetch(`http://43.207.204.18:3000/api/v1/users/${user_id}/microposts`, {
+      const response = await fetch(`http://3.113.14.254:3000/api/v1/users/${user_id}/microposts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

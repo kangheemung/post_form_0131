@@ -1,37 +1,44 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Nav.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
 const Nav = () => {
-    // If setIsUserLoggedIn won't be used for now but may be used in the future,
-    // you can ignore the eslint warning with the following line:
-    // eslint-disable-next-line no-unused-vars
-    const [ isUserLoggedIn ] = useState(false);
+    const navigate = useNavigate();
+    const { logout, currentUser } = useAuth();
+    const isUserLoggedIn = Boolean(currentUser && currentUser.jwtToken);
+    const userId = currentUser ? currentUser.id : null; // Assuming 'id' exists on currentUser
+
+    const handleLogoutClick = async () => {
+        await logout(); // Wait for the logout process to finish
+        navigate('/'); // Redirect to the home page after logging out
+    };
+    console.log(currentUser);       // Debug current user state
+    console.log(isUserLoggedIn);    // Debug login flag state
 
     return (
         <nav>
           <ul className="nav_link">
-            <li><Link to='/'className = 'header_a'><p>Home</p></Link></li>
-            <li><Link to='/about'className = 'header_a'><p>About</p></Link></li>
-            <li><Link to='/api/v1/auth'className = 'header_a'><p>Login</p></Link></li>
-            <li><Link to='/api/v1/users'className = 'header_a'><p>Sign up</p></Link></li>
-            <li><Link to='/api/v1/users/:user_id/microposts'className = 'header_a'><p>Post</p></Link></li>
-            <li><Link to='/api/v1/users/:user_id/micropost'className = 'header_a'><p>NewPost</p></Link></li>
-             {/*<li><Link to='/api/v1/users/:user_id/micropost/:id'><p>PostId</p></Link></li>*/}
-          </ul>
+            {/* Always visible links */}
+            <li><Link to='/' className='header_a'><p>Home</p></Link></li>
+            <li><Link to='/about' className='header_a'><p>About</p></Link></li>
 
-            {/* Mobile Navigation */}
             {isUserLoggedIn ? (
-                <div>
-                    <Link to="/create-prompt" className="black_btn">
-                        Create Post
-                    </Link>
-                </div>
+              // Render these links only when the user is logged in
+              <>
+                <li><Link to="/api/v1/microposts" className='header_a'><p>FullPost</p></Link></li>
+                <li><Link to={`/api/v1/users/${userId}`} className='header_a'><p>mypage</p></Link></li>
+                <li><Link to={`/api/v1/users/${userId}/micropost`} className='header_a'><p>NewPost</p></Link></li>
+                <li><Link  onClick={handleLogoutClick} className='header_a'><p>Logout</p></Link></li>
+              </>
             ) : (
-                <>
-                    {/* Insert Login/Sign up Links here */}
-                </>
+              // Render these links only when the user is not logged in
+              <>
+                <li><Link to='/api/v1/auth' className='header_a'><p>Login</p></Link></li>
+                <li><Link to='/api/v1/users' className='header_a'><p>Sign up</p></Link></li>
+              </>
             )}
+          </ul>
         </nav>
     );
 };

@@ -3,15 +3,16 @@ import { useParams, useNavigate } from 'react-router-dom';
 function PostsList() {
   const [microposts, setMicroposts] = useState([]);
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   //const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"; // Replace with actual JWT token
   //const user_id = 1; // Replace with actual user ID
   const jwtToken = localStorage.getItem('token')
-  let { user_id } = useParams();
+  let { id } = useParams();
   const navigate = useNavigate();
   // Fetch the user's microposts
   useEffect(() => {
     const fetchMicroposts = async () => {
-      const url = `http://43.207.204.18:3000/api/v1/users/${user_id}/microposts`;
+      const url = `http://3.113.14.254:3000/api/v1/users/${id}`;
 
       try {
         const response = await fetch(url, {
@@ -32,17 +33,19 @@ function PostsList() {
         setMicroposts(result.data);
         // The username is under 'user.name'
         setUsername(result.user.name);
+        setEmail(result.user.email);
 
       } catch (error) {
         console.error("Fetching microposts error:", error);
         // Reset the states if there's an error
+        setEmail('');
         setUsername('');
         setMicroposts([]);
       }
     };
 
     fetchMicroposts();
-  }, [user_id, jwtToken]);
+  }, [id, jwtToken]);
 
 
   const handleHome = () => {
@@ -55,7 +58,8 @@ function PostsList() {
   return (
     <div>
       <h2>{username}様の投稿したPosts</h2>
-      <ul>
+      <p>email:{email}</p>
+      <ul className= "ul">
       {microposts.map((post) => (
         <li key={post.id}>
           {/* Make sure to use the correct property name as defined in the serializer */}

@@ -1,6 +1,6 @@
 import React, { createContext,useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import PostsList from './posts/PostsList';
+import PostsList from './users/PostsList';
 import Page from './posts/Page';
 import EditPostComponent from './posts/EditPostComponent';
 import Todo from './posts/Todo';
@@ -14,6 +14,7 @@ import Login from './users/Login';
 import Form from './users/Form';
 import { AuthProvider } from './components/AuthContext';
 import ThemeSwitch from './components/ThemeSwitch';
+import Fullposts from './posts/Fullposts';
 // Import ShowPostComponent if it exists
 // import ShowPostComponent from 'path-to-ShowPostComponent';
 export const ThemeContext = createContext(null);
@@ -40,9 +41,10 @@ function App() {
             <Route path='/api/v1/auth' element={<Login />} />
             <Route path='/api/v1/users' element={<Form />} />
             <Route
-               path='/api/v1/users/:user_id/microposts'
+               path='/api/v1/users/:id'
                element={<PostsList todos={todos} setTodos={setTodos}/>}
             />
+            <Route path='/api/v1/microposts' element={<Fullposts/>}/>
             <Route path='/api/v1/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />
             {/* Make sure to define ShowPostComponent or remove this line if it's not needed */}
             <Route path='/api/v1/users/:user_id/microposts/:id' element={<Page />} />
