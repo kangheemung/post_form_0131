@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './PostsList.css';
 function PostsList() {
   const [microposts, setMicroposts] = useState([]);
   const [username, setUsername] = useState('');
@@ -59,8 +60,10 @@ function PostsList() {
     <div>
       <h2>{username}様の投稿したPosts</h2>
       <p>email:{email}</p>
-      <ul className= "ul">
+
+      <ul>
       {microposts.map((post) => (
+        <div className= "Posts_List_ul">
         <li key={post.id}>
           {/* Make sure to use the correct property name as defined in the serializer */}
           <p>==================</p>
@@ -70,10 +73,13 @@ function PostsList() {
           <p>{post.body}</p>
           <p>==================</p>
         </li>
+        </div>
       ))}
 
       </ul>
-      <button onClick={handleHome}>homeに戻る</button> 
+      <div className='bottom'>
+      <button onClick={handleHome} className="button">homeに戻る</button> 
+      </div>
     </div>
   );
 }

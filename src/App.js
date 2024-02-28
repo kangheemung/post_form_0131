@@ -30,7 +30,7 @@ function App() {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <AuthProvider>
       <Router>
-      <div className='app'id={theme}>
+      <div className={`app ${theme === 'dark' ? 'dark-mode' : ''}`} id={theme}>
         <Nav className='header'/>
         <div className='flex-container'>
         <div className='contain'>

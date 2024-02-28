@@ -43,7 +43,7 @@ function Page() {
 
 
   return (
-    <div>
+    <div >
       {/* Display the post based on the fetched data */}
       {post ? (
         <article>
@@ -55,7 +55,7 @@ function Page() {
       ) : (
         <p>Loading...</p> // Provide feedback while loading or if no post is available
       )}
-      <button type="button" onClick={handleBackClick}>postリストを見る</button>
+      <button className='button' type="button" onClick={handleBackClick}>postリストを見る</button>
     </div>
   );
 }

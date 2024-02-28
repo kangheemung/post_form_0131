@@ -51,11 +51,12 @@
 }
 #light {
   background-color: #f3ebf6;
-
+  color: #000000;
 }
 
 #dark {
   background-color: #46045e;
+  color: #ffffff;
 }
 
 
@@ -70,8 +71,12 @@ body .main {
 #light .main {
   background-color: #fff;
 }
+#light .sign {
+  color: #8c55aa;
+}
 
 #dark .main {
+  color: whitesmoke;
   background-color: #38004c;
 }
 
