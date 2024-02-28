@@ -4,7 +4,7 @@ import './Fullposts.css';  // Ensure this path correctly points to your CSS file
 import { useAuth } from '../components/AuthContext'; // Make sure this path is correct
 
 function Fullposts() {
-    let { id, user_id } = useParams();
+    let { id } = useParams();
     const navigate = useNavigate();
     const [followedUserIds, setFollowedUserIds] = useState(new Set());
     const [microposts, setMicroposts] = useState([]);
@@ -45,10 +45,9 @@ function Fullposts() {
 
     const handleFollow = (userIdToFollow) => {
         if (!userIdToFollow) {
-            console.error('User ID to follow is undefined');
+            console.error('User ID to follow is undefined or invalid');
             return;
         }
-    
         fetch(`http://13.115.91.176:3000/api/v1/users/${userIdToFollow}/follow`, {
             method: 'POST',
             headers: {
@@ -94,7 +93,9 @@ function Fullposts() {
         })
         .then(data => {
             // アンフォロー後の状態更新や通知
-            console.log(data.message);
+            const updatedFollowedUserIds = new Set([...followedUserIds]);
+            updatedFollowedUserIds.delete(userIdToUnfollow);
+            setFollowedUserIds(updatedFollowedUserIds);
         })
         .catch(error => {
             console.error('Error unfollowing user:', error);
@@ -108,29 +109,39 @@ function Fullposts() {
         <div>
           <div>
             <ul>
-                {microposts.map((post) => (
-
+            {microposts.map((post) => {
+                    const authorId = post.authorId; // Update the variable to match the actual field name
+                    const shouldRenderFollowButton = currentUser && currentUser.id !== authorId && authorId;
+                    console.log('Post ID:', post.id, 'Author ID:', authorId);
+                    console.log('Rendering Follow Button:', shouldRenderFollowButton);
+                return (
                     <li key={post.id.toString()}>
-                       <div className="Posts_List">
-                        <p>==================</p>
-                        <p>Title:</p>
-                        <span>{post.title}</span>
-                        <p>Body:</p>
-                        <p>{post.body}</p>
-                        <p>Author: {post.name}</p>
-                        <p>==================</p>
-                        {currentUser && currentUser.id !== post.authorId && (
-                          followedUserIds.has(post.authorId) ?
-                        <button disabled>フォロワーしました</button> :
-                        // Ensure you are using post.authorId if that's the correct property
-                        <button onClick={() => handleFollow(post.authorId)}>
-                            フォロー
-                        </button>
-                        )}
+                        <div className="Posts_List">
+                            <p>==================</p>
+                            <p>Title:</p>
+                            <span>{post.title}</span>
+                            <p>Body:</p>
+                            <p>{post.body}</p>
+                            <p>Author: {post.name}</p>
+                            <p>==================</p>
+
+                            {shouldRenderFollowButton ? (
+                                followedUserIds.has(authorId) ? (
+                                    <button disabled>フォロワーしました</button>
+                                ) : (
+                                    <button onClick={() => handleFollow(authorId)}>
+                                        フォロー
+                                    </button>
+                                )
+                            ) : null}
 
                         </div>
                     </li>
-                ))}
+                );
+            })}
+
+
+
             </ul>
             <div className='bottom'>
               <button className='button'onClick={handleHome}>Homeに戻る</button>
