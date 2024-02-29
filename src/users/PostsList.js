@@ -29,7 +29,7 @@ function PostsList() {
         }
 
         const result = await response.json();
-        console.log(result);
+        //console.log(result);
         // The data is directly under 'data' key, so update the state accordingly
         setMicroposts(result.data);
         // The username is under 'user.name'
@@ -66,12 +66,12 @@ function PostsList() {
         <div className= "Posts_List_ul">
         <li key={post.id}>
           {/* Make sure to use the correct property name as defined in the serializer */}
-          <p>==================</p>
-          <p>title内容</p>
-          <span>{post.title}</span>
-          <p>body内容</p>
+          <p></p>
+          <p>title <span>{post.title}</span></p>
+
+          <p>post内容</p>
           <p>{post.body}</p>
-          <p>==================</p>
+          <p></p>
         </li>
         </div>
       ))}
