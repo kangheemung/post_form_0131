@@ -9,6 +9,7 @@ function Fullposts() {
     const [followedUserIds, setFollowedUserIds] = useState(new Set());
     const [microposts, setMicroposts] = useState([]);
     const { currentUser } = useAuth();  // Use useAuth here instead of useContext
+    const [notification, setNotification] = useState('');
 
     useEffect(() => {
         // Ensure there's a current user and a JWT token, if not redirect to login.
@@ -17,7 +18,7 @@ function Fullposts() {
             return;
         }
 
-        fetch('http://13.115.91.176:3000/api/v1/microposts', {
+        fetch('http://54.250.241.126:3000/api/v1/microposts', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,12 +49,16 @@ function Fullposts() {
             console.error('User ID to follow is undefined or invalid');
             return;
         }
-        fetch(`http://13.115.91.176:3000/api/v1/users/${userIdToFollow}/follow`, {
+        fetch(`http://54.250.241.126:3000/api/v1/users/${userIdToFollow}/follow`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${currentUser.jwtToken}`
-            }
+            },
+            // Include the body with the relationship object containing followed_id
+            body: JSON.stringify({
+                relationship: { followed_id: userIdToFollow } 
+            })
         })
         .then(response => {
             if (!response.ok) {
@@ -66,9 +71,22 @@ function Fullposts() {
         .then(data => {
             console.log('Followed successfully:', data);
             setFollowedUserIds(new Set([...followedUserIds, userIdToFollow]));
+
+            // Optionally, set a notification message for the user interface
+            setNotification('Followed successfully');
+
+            // Trigger any necessary re-render or state updates to reflect the change
+            setTimeout(() => {
+                setNotification('');
+            }, 3000); // Clear notification after 3 seconds
         })
         .catch(error => {
             console.error('Error following user:', error);
+            setNotification(error.message || 'Failed to follow user.');
+            // Also clear this notification after some time
+            setTimeout(() => {
+                setNotification('');
+            }, 3000);
         });
     };
 
@@ -78,7 +96,7 @@ function Fullposts() {
             console.error('User ID to unfollow is undefined');
             return;
         }
-        fetch(`http://13.115.91.176:3000/api/v1/users/${id}/unfollow`, {
+        fetch(`http://54.250.241.126:3000/api/v1/users/${userIdToUnfollow}/unfollow`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -87,18 +105,23 @@ function Fullposts() {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Failed to unfollow user.');
+                return response.json().then(data => {
+                    console.error('Server responded with an error:', data);
+                    throw new Error(data.message || 'Failed to follow user.');
+                });
             }
             return response.json();
         })
         .then(data => {
-            // アンフォロー後の状態更新や通知
-            const updatedFollowedUserIds = new Set([...followedUserIds]);
-            updatedFollowedUserIds.delete(userIdToUnfollow);
-            setFollowedUserIds(updatedFollowedUserIds);
+            console.log('Unfollowed successfully:', data);
+            setFollowedUserIds(prevFollowedUserIds => {
+                const updatedFollowedUserIds = new Set(prevFollowedUserIds);
+                updatedFollowedUserIds.delete(userIdToUnfollow);
+                return updatedFollowedUserIds;
+            });
         })
         .catch(error => {
-            console.error('Error unfollowing user:', error);
+            console.error('Error following/unfollowing user:', error.message);
         });
     };
     const handleHome = () => {
@@ -110,10 +133,12 @@ function Fullposts() {
           <div>
             <ul>
             {microposts.map((post) => {
-                    const authorId = post.authorId; // Update the variable to match the actual field name
-                    const shouldRenderFollowButton = currentUser && currentUser.id !== authorId && authorId;
+                    const authorId = post.user_id; // Update the variable to match the actual field name
+                    const shouldRenderFollowButton = currentUser && currentUser.id !== authorId;
+                    const hasBeenFollowed = followedUserIds.has(authorId);
+                    const isAuthorCurrentUser = currentUser && String(currentUser.id) === String(authorId);
                     console.log('Post ID:', post.id, 'Author ID:', authorId);
-                    console.log('Rendering Follow Button:', shouldRenderFollowButton);
+                    console.log('Rendering Follow Button:', shouldRenderFollowButton && !hasBeenFollowed);
                 return (
                     <li key={post.id.toString()}>
                         <div className="Posts_List">
@@ -125,23 +150,19 @@ function Fullposts() {
                             <p>Author: {post.name}</p>
                             <p>==================</p>
 
-                            {shouldRenderFollowButton ? (
-                                followedUserIds.has(authorId) ? (
-                                    <button disabled>フォロワーしました</button>
+                            {!isAuthorCurrentUser && (
+                                hasBeenFollowed ? (
+                                    <button disabled>フォロワーしました</button> // Button shows followed status
                                 ) : (
                                     <button onClick={() => handleFollow(authorId)}>
                                         フォロー
                                     </button>
                                 )
-                            ) : null}
-
+                            )}
                         </div>
                     </li>
                 );
             })}
-
-
-
             </ul>
             <div className='bottom'>
               <button className='button'onClick={handleHome}>Homeに戻る</button>

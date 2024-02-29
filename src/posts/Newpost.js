@@ -1,4 +1,4 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 import {jwtDecode} from 'jwt-decode'; // Corrected import statement
 import { useNavigate } from 'react-router-dom';
 
@@ -30,7 +30,7 @@ function Newpost({ todos, setTodos}) {
       };
 
       console.log('Sending postData:', postData);
-      const response = await fetch(`http://13.115.91.176:3000/api/v1/users/${user_id}/microposts`, {
+      const response = await fetch(`http://54.250.241.126:3000/api/v1/users/${user_id}/microposts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

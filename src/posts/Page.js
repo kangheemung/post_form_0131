@@ -9,7 +9,7 @@ function Page() {
   //const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg2OTg2MzB9.GDkGHpRF0im2I0y2jll2RUki4VPsQivvAC-OF8Nvh1o"; // Your JWT token
 
   useEffect(() => {
-    const url = `http://13.115.91.176:3000/api/v1/users/${user_id}/microposts/${id}`;
+    const url = `http://54.250.241.126:3000/api/v1/users/${user_id}/microposts/${id}`;
     fetch(url, {
       headers: {
         'Authorization': `Bearer ${jwtToken}`

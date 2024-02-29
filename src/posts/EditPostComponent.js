@@ -11,7 +11,7 @@ function EditPostComponent() {
     const jwtToken = localStorage.getItem('token'); // Assumed jwtToken retrieval
 
     useEffect(() => {
-        fetch(`http://13.115.91.176:3000/api/v1/users/${user_id}/microposts/${id}`, {
+        fetch(`http://54.250.241.126:3000/api/v1/users/${user_id}/microposts/${id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ function EditPostComponent() {
         event.preventDefault();
 
         try {
-            const response = await fetch(`http://13.115.91.176:3000/api/v1/users/${user_id}/microposts/${id}`, {
+            const response = await fetch(`http://54.250.241.126:3000/api/v1/users/${user_id}/microposts/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
