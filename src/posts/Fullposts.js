@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import {useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Fullposts.css';  // Ensure this path correctly points to your CSS file
 import { useAuth } from '../components/AuthContext'; // Make sure this path is correct
 
 function Fullposts() {
-    let { id } = useParams();
     const navigate = useNavigate();
     const [followedUserIds, setFollowedUserIds] = useState(new Set());
     const [microposts, setMicroposts] = useState([]);
@@ -13,6 +12,11 @@ function Fullposts() {
 
     useEffect(() => {
         // Ensure there's a current user and a JWT token, if not redirect to login.
+        const storedFollowedUserIds = localStorage.getItem('followedUserIds');
+        if (storedFollowedUserIds) {
+            setFollowedUserIds(new Set(JSON.parse(storedFollowedUserIds)));
+        }
+
         if (!currentUser || !currentUser.jwtToken) {
             navigate('/api/v1/auth');
             return;
@@ -69,6 +73,7 @@ function Fullposts() {
             return response.json();
         })
         .then(data => {
+            localStorage.setItem('followedUserIds', JSON.stringify([...new Set([...followedUserIds, userIdToFollow])]));
             console.log('Followed successfully:', data);
             setFollowedUserIds(new Set([...followedUserIds, userIdToFollow]));
 
@@ -94,8 +99,13 @@ function Fullposts() {
     const handleUnfollow = (userIdToUnfollow) => {
         if (typeof userIdToUnfollow === 'undefined') {
             console.error('User ID to unfollow is undefined');
+            setNotification('Invalid user ID.');
+            setTimeout(() => {
+                setNotification('');
+            }, 3000);
             return;
         }
+
         fetch(`http://54.250.241.126:3000/api/v1/users/${userIdToUnfollow}/unfollow`, {
             method: 'DELETE',
             headers: {
@@ -104,25 +114,43 @@ function Fullposts() {
             }
         })
         .then(response => {
-            if (!response.ok) {
+            if (response.status === 204 || response.ok) {
+                console.log('Unfollowed successfully');
+                setFollowedUserIds(prevFollowedUserIds => {
+                    const updatedFollowedUserIds = new Set(prevFollowedUserIds);
+                    updatedFollowedUserIds.delete(userIdToUnfollow);
+                    localStorage.setItem('followedUserIds', JSON.stringify([...updatedFollowedUserIds]));
+                    return updatedFollowedUserIds;
+                });
+                setNotification('Unfollowed successfully');
+                setTimeout(() => {
+                    setNotification('');
+                }, 3000);
+            } else {
                 return response.json().then(data => {
-                    console.error('Server responded with an error:', data);
-                    throw new Error(data.message || 'Failed to follow user.');
+                    let errorMessage = data.message || 'Failed to unfollow user.';
+                    if (response.status === 404) {
+                        errorMessage = 'Relationship not found. User may have been already unfollowed or never followed.';
+                    }
+                    throw new Error(errorMessage);
                 });
             }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Unfollowed successfully:', data);
-            setFollowedUserIds(prevFollowedUserIds => {
-                const updatedFollowedUserIds = new Set(prevFollowedUserIds);
-                updatedFollowedUserIds.delete(userIdToUnfollow);
-                return updatedFollowedUserIds;
-            });
         })
         .catch(error => {
-            console.error('Error following/unfollowing user:', error.message);
+            console.error('Error unfollowing user:', error);
+            if (error.message.includes('Relationship not found')) {
+                setNotification('Cannot unfollow because the user was not followed.');
+            } else {
+                setNotification(error.message || 'Failed to unfollow user.');
+            }
         });
+    };
+    const handleToggleFollow = (userId) => {
+        if (followedUserIds.has(userId)) {
+            handleUnfollow(userId);
+        } else {
+            handleFollow(userId);
+        }
     };
     const handleHome = () => {
         navigate('/');
@@ -130,44 +158,38 @@ function Fullposts() {
 
     return (
         <div>
-          <div>
+            {notification && <div className="notification">{notification}</div>}
             <ul>
-            {microposts.map((post) => {
-                    const authorId = post.user_id; // Update the variable to match the actual field name
-                    const shouldRenderFollowButton = currentUser && currentUser.id !== authorId;
-                    const hasBeenFollowed = followedUserIds.has(authorId);
-                    const isAuthorCurrentUser = currentUser && String(currentUser.id) === String(authorId);
-                    console.log('Post ID:', post.id, 'Author ID:', authorId);
-                    console.log('Rendering Follow Button:', shouldRenderFollowButton && !hasBeenFollowed);
-                return (
-                    <li key={post.id.toString()}>
-                        <div className="Posts_List">
-                            <p>==================</p>
-                            <p>Title:</p>
-                            <span>{post.title}</span>
-                            <p>Body:</p>
-                            <p>{post.body}</p>
-                            <p>Author: {post.name}</p>
-                            <p>==================</p>
+                {microposts.map((post) => {
+                    const authorId = post.user_id.toString();
+                    const isAuthorCurrentUser = currentUser && String(currentUser.id) === authorId;
 
-                            {!isAuthorCurrentUser && (
-                                hasBeenFollowed ? (
-                                    <button disabled>フォロワーしました</button> // Button shows followed status
-                                ) : (
-                                    <button onClick={() => handleFollow(authorId)}>
-                                        フォロー
-                                    </button>
-                                )
-                            )}
-                        </div>
-                    </li>
-                );
-            })}
+                    return (
+                        <li key={post.id.toString()}>
+                            <div className="Posts_List">
+                                <div className='follow'>
+                                    <p>投稿者: {post.name}</p>
+                                    <p>
+                                        {!isAuthorCurrentUser && (
+                                            <button onClick={() => handleToggleFollow(authorId)}>
+                                                {followedUserIds.has(authorId) ? 'フォローしました' : 'フォロー'}
+                                            </button>
+                                        )}
+                                    </p>
+                                </div>
+                                <p>==================</p>
+                                <p>Title:</p>
+                                <span>{post.title}</span>
+                                <p>Body:</p>
+                                <p>{post.body}</p>
+                            </div>
+                        </li>
+                    );
+                })}
             </ul>
             <div className='bottom'>
-              <button className='button'onClick={handleHome}>Homeに戻る</button>
+                <button className='button' onClick={handleHome}>Homeに戻る</button>
             </div>
-          </div>
         </div>
     );
 }

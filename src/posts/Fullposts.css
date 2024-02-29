@@ -5,7 +5,9 @@
     padding: 20% 20%; /* Inner padding */
     width: 150%;
 }
-
+.follow{display:flex;
+    justify-content: space-between;
+}
 
 .Posts_List ul {
     list-style-type: none; /* Remove default list styling */
