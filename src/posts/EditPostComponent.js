@@ -11,7 +11,7 @@ function EditPostComponent() {
     const jwtToken = localStorage.getItem('token'); // Assumed jwtToken retrieval
 
     useEffect(() => {
-        fetch(`http://54.250.241.126:3000/api/v1/users/${user_id}/microposts/${id}`, {
+        fetch(`http://57.180.47.214:3000/api/v1/users/${user_id}/microposts/${id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ function EditPostComponent() {
         event.preventDefault();
 
         try {
-            const response = await fetch(`http://54.250.241.126:3000/api/v1/users/${user_id}/microposts/${id}`, {
+            const response = await fetch(`http://57.180.47.214:3000/api/v1/users/${user_id}/microposts/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ function EditPostComponent() {
             });
 
             if (response.ok) {
-                navigate(`/api/v1/users/${user_id}/microposts`);
+                navigate(`/api/v1/users/${user_id}`);
             } else {
                 const errorData = await response.json();
                 console.error('Failed to update post:', errorData);

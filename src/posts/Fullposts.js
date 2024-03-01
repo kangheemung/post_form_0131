@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import './Fullposts.css';  // Ensure this path correctly points to your CSS file
 import { useAuth } from '../components/AuthContext'; // Make sure this path is correct
 
@@ -9,7 +9,7 @@ function Fullposts() {
     const [microposts, setMicroposts] = useState([]);
     const { currentUser } = useAuth();  // Use useAuth here instead of useContext
     const [notification, setNotification] = useState('');
-
+    const [likedPosts, setLikedPosts] = useState(new Set());
     useEffect(() => {
         // Ensure there's a current user and a JWT token, if not redirect to login.
         const storedFollowedUserIds = localStorage.getItem('followedUserIds');
@@ -22,7 +22,7 @@ function Fullposts() {
             return;
         }
 
-        fetch('http://54.250.241.126:3000/api/v1/microposts', {
+        fetch('http://57.180.47.214:3000/api/v1/microposts', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,12 +48,57 @@ function Fullposts() {
         });
     }, [currentUser, navigate]); // Depend on currentUser now
 
+    useEffect(() => {
+        const storedLikedPosts = localStorage.getItem('likedPosts');
+        if (storedLikedPosts) {
+            setLikedPosts(new Set(JSON.parse(storedLikedPosts)));
+        }
+    }, []);
+
+    // Event handler for liking a post
+    const handleLike = (postId) => {;
+        console.log('Attempting to like post with ID:', postId); // Check if postId is correct
+        console.log('Current User:', currentUser);
+        // Call your API endpoint to like a post
+        fetch(`http://57.180.47.214:3000/api/v1/users/${currentUser.id}/microposts/${postId}/likes`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${currentUser.jwtToken}`
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(data.message || 'Failed to like post.');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Liked successfully:', data);
+            setLikedPosts((prevLikedPosts) => {
+                const updatedLikedPosts = new Set(prevLikedPosts);
+                updatedLikedPosts.add(postId);
+                localStorage.setItem('likedPosts', JSON.stringify([...updatedLikedPosts]));
+                return updatedLikedPosts;
+              });
+          })
+        .catch(error => {
+            console.error('Error liking post:', error);
+            setNotification(error.message || 'Failed to like post.');
+            setTimeout(() => {
+                setNotification('');
+            }, 3000);
+        });
+    };
+
     const handleFollow = (userIdToFollow) => {
         if (!userIdToFollow) {
             console.error('User ID to follow is undefined or invalid');
             return;
         }
-        fetch(`http://54.250.241.126:3000/api/v1/users/${userIdToFollow}/follow`, {
+        fetch(`http://57.180.47.214:3000/api/v1/users/${userIdToFollow}/follow`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -106,7 +151,7 @@ function Fullposts() {
             return;
         }
 
-        fetch(`http://54.250.241.126:3000/api/v1/users/${userIdToUnfollow}/unfollow`, {
+        fetch(`http://57.180.47.214:3000/api/v1/users/${userIdToUnfollow}/unfollow`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -182,6 +227,12 @@ function Fullposts() {
                                 <span>{post.title}</span>
                                 <p>Body:</p>
                                 <p>{post.body}</p>
+                                {!isAuthorCurrentUser && (
+                                  <button onClick={() => handleLike(post.id)}>
+                                    {likedPosts.has(post.id) ? 'Likeしました' : 'Likeする'}
+                                  </button>
+
+                                )}
                             </div>
                         </li>
                     );
