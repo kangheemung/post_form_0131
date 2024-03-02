@@ -1,0 +1,29 @@
+/* Root variables for light mode */
+:root {
+  --background-color: #f6f6f6;
+  --foreground-color: #003cff;
+  --primary-text-color: #0a0a0a;
+  --secondary-text-color: #ffffff;
+  --main-bg-color: #fff;
+  /* Add any other variables you need */
+}
+
+/* Dark mode overrides */
+:root.dark-mode {
+  --background-color: #121212;
+  --foreground-color: #1e88e5;
+  --primary-text-color: #e0e0e0;
+  --secondary-text-color: #121212;
+  --main-bg-color: #242424;
+  /* Add any other overrides for dark mode */
+}
+
+body {
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  margin: 0;
+  height: 100%;
+  min-height: 100vh;
+}
+

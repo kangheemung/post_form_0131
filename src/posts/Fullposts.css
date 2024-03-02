@@ -1,0 +1,56 @@
+.Posts_List {
+    border: 5px solid hsl(0, 0%, 100%); /* Background color */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    margin:3% 3%; /* Outer margin */
+    padding: 20% 20%; /* Inner padding */
+    width: 150%;
+}
+.follow{display:flex;
+    justify-content: space-between;
+}
+
+.Posts_List ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 5% 5%; /* Reset default padding */
+    margin:  5% 5%;;
+}
+.follow_btn{
+    background-color: #ffc3b7;
+    border: 5px solid #ffbdbd;
+    border-radius: 5%;
+    text-align: center;
+}
+.Posts_List li {
+    background-color: #3c3c3c; /* Set background for individual posts */
+    border: 5px solid #ffbdbd;
+    border-radius: 5%;
+    margin: 10% 10%; /* Outer margin */
+    padding: 20% 20%; /* Border around each post */
+    text-align: center;
+}
+.bottom{
+    text-align: center;
+}
+.like_btn{
+    background-color: #ffbdbd; /* Set background for individual posts */
+    border: 5px solid #ffbdbd;
+    border-radius: 5%;
+    margin: 5% 5%; /* Outer margin */
+    padding: 5% 5%; 
+    text-align: center;
+}
+.button {
+    background-color: #33003c;
+    width: 50%;
+    height: 40%;
+    font-weight: bolder;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    border: solid 1px;
+    font-size: large;
+    border-radius: 5%;
+    text-align: center;
+    color: whitesmoke;
+}
