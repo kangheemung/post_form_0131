@@ -1,28 +1,44 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { jwtDecode } from 'jwt-decode'; // Corrected named import
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState({
-    jwtToken: localStorage.getItem('jwtToken'),
-    id: localStorage.getItem('user_id'),
-  });
-  
+  const [currentUser, setCurrentUser] = useState(null);
+
   useEffect(() => {
     // Auth state initialization effect
     const jwtToken = localStorage.getItem('jwtToken');
-    const user_id = localStorage.getItem('user_id');
-    if (jwtToken && user_id) {
-      setCurrentUser({ jwtToken, id: user_id });
+    if (jwtToken) {
+      try {
+        const decodedToken = jwtDecode(jwtToken);
+        setCurrentUser({
+          jwtToken,
+          id: decodedToken.user_id,
+          name: decodedToken.name || 'Guest'
+        });
+      } catch (error) {
+        console.error('Error decoding JWT token:', error);
+        localStorage.removeItem('jwtToken'); // Clear the invalid token
+      }
     }
-  }, []);
+  }, [setCurrentUser]);
 
-  const login = (jwtToken, user_id) => {
+  const login = (jwtToken) => {
     localStorage.setItem('jwtToken', jwtToken);
-    localStorage.setItem('user_id', user_id);
-    setCurrentUser({ jwtToken, id: user_id });
+    try {
+      const decodedToken = jwtDecode(jwtToken); // Decode the token
+      localStorage.setItem('user_id', decodedToken.user_id);
+      setCurrentUser({
+        jwtToken,
+        id: decodedToken.user_id,
+        name: decodedToken.name
+      });
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
   };
-  
+
   const logout = () => {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('user_id');
@@ -30,7 +46,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ currentUser, login, logout }}>
+    <AuthContext.Provider value={{ currentUser, setCurrentUser, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

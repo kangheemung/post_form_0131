@@ -22,7 +22,7 @@ function Fullposts() {
             return;
         }
 
-        fetch('http://52.196.111.244:3000/api/v1/microposts', {
+        fetch('http://57.181.27.121:3000/api/v1/microposts', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ function Fullposts() {
         console.log('Attempting to like post with ID:', postId); // Check if postId is correct
         console.log('Current User:', currentUser);
         // Call your API endpoint to like a post
-        fetch(`http://52.196.111.244:3000/api/v1/users/${currentUser.id}/microposts/${postId}/likes`, {
+        fetch(`http://57.181.27.121:3000/api/v1/users/${currentUser.id}/microposts/${postId}/likes`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ function Fullposts() {
             console.error('User ID to follow is undefined or invalid');
             return;
         }
-        fetch(`http://52.196.111.244:3000/api/v1/users/${userIdToFollow}/follow`, {
+        fetch(`http://57.181.27.121:3000/api/v1/users/${userIdToFollow}/follow`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -151,7 +151,7 @@ function Fullposts() {
             return;
         }
 
-        fetch(`http://52.196.111.244:3000/api/v1/users/${userIdToUnfollow}/unfollow`, {
+        fetch(`http://57.181.27.121:3000/api/v1/users/${userIdToUnfollow}/unfollow`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

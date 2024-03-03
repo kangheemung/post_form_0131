@@ -24,8 +24,22 @@
 #dark .nav_link a:visited {
   color: whitesmoke;
 }
+#light .greeting p {
 
+  color: #000000; /* Example: Changing the text color to green */
+  font-weight: bold; /* Example: Making the text bold */
 
+}
+.greeting_box{
+  margin-left: 15%;
+
+  margin-top: 2%;
+}
+#dark greeting p{
+  color: whitesmoke;
+  font-weight: bold;
+
+}
 /* Dark mode link styles */
 .dark-mode .nav_link a,
 .nav_link a:visited,

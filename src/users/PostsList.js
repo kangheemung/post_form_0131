@@ -13,7 +13,7 @@ function PostsList() {
   // Fetch the user's microposts
   useEffect(() => {
     const fetchMicroposts = async () => {
-      const url = `http://52.196.111.244:3000/api/v1/users/${id}`;
+      const url = `http://57.181.27.121:3000/api/v1/users/${id}`;
 
       try {
         const response = await fetch(url, {
@@ -39,9 +39,9 @@ function PostsList() {
       } catch (error) {
         console.error("Fetching microposts error:", error);
         // Reset the states if there's an error
-        setEmail('');
-        setUsername('');
-        setMicroposts([]);
+        //setEmail('');
+        //setUsername('');
+        //setMicroposts([]);
       }
     };
 
