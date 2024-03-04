@@ -17,7 +17,7 @@ function Login() {
     };
 
     try {
-      const response = await fetch('http://57.181.27.121:3000/api/v1/auth', {
+      const response = await fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/auth`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

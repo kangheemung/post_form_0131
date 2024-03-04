@@ -13,7 +13,7 @@ function PostsList() {
   // Fetch the user's microposts
   useEffect(() => {
     const fetchMicroposts = async () => {
-      const url = `http://57.181.27.121:3000/api/v1/users/${id}`;
+      const url = `http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${id}`;
 
       try {
         const response = await fetch(url, {

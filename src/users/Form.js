@@ -15,7 +15,7 @@ function Form() {
     event.preventDefault(); // デフォルトのフォーム送信を阻止
 
     try {
-      const response = await fetch('http://57.181.27.121:3000/api/v1/users', {
+      const response = await fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
