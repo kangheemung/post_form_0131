@@ -53,7 +53,27 @@ function PostsList() {
     navigate('/'); // Navigate back to home
   };
 
+  const handleDelete = async (postId) => {
+    try {
+      const response = await fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/microposts/${postId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${jwtToken}`,
+        },
+      });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      console.log('Post deleted successfully');
+      // Remove the deleted post from the state to update the UI
+      setMicroposts(microposts.filter(post => post.id !== postId));
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
+  };
 
 
   return (
@@ -71,7 +91,9 @@ function PostsList() {
 
           <p>post内容</p>
           <p>{post.body}</p>
-          <p></p>
+          <button onClick={() => handleDelete(post.id)} className="button">
+                削除する
+          </button>
         </li>
         </div>
       ))}

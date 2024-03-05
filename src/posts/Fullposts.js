@@ -7,21 +7,27 @@ function Fullposts() {
     const navigate = useNavigate();
     const [followedUserIds, setFollowedUserIds] = useState(new Set());
     const [microposts, setMicroposts] = useState([]);
-    const { currentUser } = useAuth();  // Use useAuth here instead of useContext
+    const { currentUser ,setCurrentUser} = useAuth();  // Use useAuth here instead of useContext
     const [notification, setNotification] = useState('');
     const [likedPosts, setLikedPosts] = useState(new Set());
+
     useEffect(() => {
-        // Ensure there's a current user and a JWT token, if not redirect to login.
-        const storedFollowedUserIds = localStorage.getItem('followedUserIds');
-        if (storedFollowedUserIds) {
-            setFollowedUserIds(new Set(JSON.parse(storedFollowedUserIds)));
-        }
-
-        if (!currentUser || !currentUser.jwtToken) {
-            navigate('/api/v1/auth');
-            return;
-        }
-
+        const jwtToken = localStorage.getItem('jwtToken');
+            // currentUserを復元するための処理を追加
+            if (!currentUser && jwtToken) {
+                // JWTトークンからユーザー情報を取得するためのAPIコールか、
+                // またはローカルストレージから直接ユーザー情報を取得します。
+                const storedUser = localStorage.getItem('currentUser');
+                if (storedUser) {
+                    const userData = JSON.parse(storedUser);
+                    // この部分で、userDataの内容を確認し、currentUserにセットするロジックを入れます。
+                    setCurrentUser(userData); // useAuthフックで提供される関数を使ってcurrentUserを更新
+                }
+            } else if (!jwtToken) {
+                navigate('/api/v1/auth'); // Make sure this path leads to your login page
+                return;
+            }
+    if (currentUser && currentUser.jwtToken) {
         fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/microposts`, {
             method: 'GET',
             headers: {
@@ -46,6 +52,8 @@ function Fullposts() {
             console.error('Error fetching microposts:', error);
             navigate('/');
         });
+
+      }
     }, [currentUser, navigate]); // Depend on currentUser now
 
     useEffect(() => {
@@ -267,19 +275,21 @@ function Fullposts() {
                         <li key={post.id.toString()}>
                             <div className="Posts_List">
                                 <div className='follow'>
-                                    <p>投稿者: {post.name}</p>
+                                    <p>投稿者: {post.user.name}</p>
                                     <p>
                                         {!isAuthorCurrentUser && (
-                                            <button className="follow_btn"onClick={() => handleToggleFollow(authorId)}>
+                                            <button className="follow_btn"
+                                            onClick={() => handleToggleFollow(authorId)}>
                                                 {followedUserIds.has(authorId) ? 'フォローしました' : 'フォロー'}
                                             </button>
                                         )}
                                     </p>
                                 </div>
                                 <p>==================</p>
-                                <p>Title:</p>
+                                <div></div>
+                                <p className = "top">タイトル</p>
                                 <span>{post.title}</span>
-                                <p>Body:</p>
+                                <p className = "top">内容</p>
                                 <p>{post.body}</p>
                                 {!isAuthorCurrentUser && (
                                   <button className = "like_btn" onClick={() => handleToggleLike(post.id)}>

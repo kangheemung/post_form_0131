@@ -26,7 +26,6 @@ const Nav = () => {
             {isUserLoggedIn ? (
               // Render these links only when the user is logged in
               <>
-
                 <li><Link to="/api/v1/microposts" className='header_a'><p>FullPost</p></Link></li>
                 <li><Link to={`/api/v1/users/${userId}`} className='header_a'><p>mypage</p></Link></li>
                 <li><Link to={`/api/v1/users/${userId}/micropost`} className='header_a'><p>NewPost</p></Link></li>

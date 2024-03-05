@@ -1,47 +1,78 @@
 .Posts_List {
     border: 5px solid hsl(0, 0%, 100%); /* Background color */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
-    margin:3% 3%; /* Outer margin */
-    padding: 20% 20%; /* Inner padding */
-    width: 150%;
+    margin: 20px; /* Outer margin */
+    padding: 20%; /* Inner padding */
+    width: auto;
+    text-align: center;
 }
-.follow{display:flex;
+.follow{
+    display:flex;
     justify-content: space-between;
+}
+.post_body {
+    margin-top: 10%;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Take up full viewport height */
+    text-align: center;
+}
+
+.form-container {
+    width: 100%; /* Full width of its parent */
+    max-width: 600px; /* Maximum width of the form */
+    margin: auto; /* Auto margins for horizontal centering */
+    padding: 20px; /* Padding inside the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+}
+
+/* Continue with the rest of your CSS... */
+
+/* Make sure that only relevant elements inherit the text-align property */
+label, h2, button {
+    text-align: center;
 }
 
 .Posts_List ul {
     list-style-type: none; /* Remove default list styling */
-    padding: 5% 5%; /* Reset default padding */
-    margin:  5% 5%;;
+    padding: 0; /* Reset default padding */
+    margin:  0;;
 }
-.follow_btn{
+.top{
+    font-weight: bold;
+}
+.follow_btn, .like_btn {
     background-color: #ffc3b7;
-    border: 5px solid #ffbdbd;
-    border-radius: 5%;
+    border: none;
+    border-radius: 10px;
+    margin: 10px; /* Outer margin, reduced from % to fixed px */
+    padding: 10px; /* Inner padding, reduced from % to fixed px */
+    cursor: pointer;
     text-align: center;
+}
+.like_btn {
+    background-color: #ffbdbd; /* Set different background for Like button */
 }
 .Posts_List li {
     background-color: #3c3c3c; /* Set background for individual posts */
+    margin: 20px 0; /* Vertical margin with zero horizontal margin */
+    padding: 20px; /* Inner padding reduced from % to fixed px */
     border: 5px solid #ffbdbd;
-    border-radius: 5%;
-    margin: 10% 10%; /* Outer margin */
-    padding: 20% 20%; /* Border around each post */
+    border-radius: 10px; /* Consistent border-radius */
     text-align: center;
 }
 .bottom{
     text-align: center;
 }
-.like_btn{
-    background-color: #ffbdbd; /* Set background for individual posts */
-    border: 5px solid #ffbdbd;
-    border-radius: 5%;
-    margin: 5% 5%; /* Outer margin */
-    padding: 5% 5%; 
-    text-align: center;
+.darkmode_box{
+    margin-bottom: 3%;
+    margin-left: auto; /* Push the box to the right edge of its container */
+    width: fit-content; /* Set the width to fit its content if not already defined */
 }
+
 .button {
     background-color: #33003c;
-    width: 50%;
+    width: auto;
     height: 40%;
     font-weight: bolder;
     margin-top: 10%;
@@ -53,4 +84,27 @@
     border-radius: 5%;
     text-align: center;
     color: whitesmoke;
+    cursor: pointer;
+}
+
+
+/* Example Media Query for screens smaller than 600px wide */
+@media (max-width: 600px) {
+    .Posts_List, .Posts_List li, .button {
+        padding: 10px; /* Less padding for smaller screens */
+        margin: 10px 0; /* Reduced margin for smaller screens */
+    }
+    .form-container {
+        padding: 10px; /* Reduced padding for smaller screens */
+        margin: 10px; /* Ensure consistent margins */
+    }
+
+    .button {
+        font-size: medium; /* Smaller font size for smaller screens */
+    }
+
+    .follow_btn, .like_btn {
+        padding: 5px; /* Reduced padding for smaller screens */
+        margin: 5px; /* Reduced margin for smaller screens */
+    }
 }

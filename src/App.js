@@ -10,10 +10,12 @@ import Nav from './components/Nav';
 import Home from './Home';
 import About from './components/About';
 import './App.css';
+import jwtDecode from 'jwt-decode';
 import Login from './users/Login';
 import Form from './users/Form';
 import { AuthProvider } from './components/AuthContext';
 import ThemeSwitch from './components/ThemeSwitch';
+
 import Fullposts from './posts/Fullposts';
 // Import ShowPostComponent if it exists
 // import ShowPostComponent from 'path-to-ShowPostComponent';
@@ -36,7 +38,7 @@ function App() {
         <div className='contain'>
         <ThemeSwitch  className='switch' />
           <Routes className='contain_main'>
-            <Route path='/' element={<Home />} />
+            {/*<Route path='/' element={<Home />} />*/}
             <Route path='/about' element={<About />} />
             <Route path='/api/v1/auth' element={<Login />} />
             <Route path='/api/v1/users' element={<Form />} />

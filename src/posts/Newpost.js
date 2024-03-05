@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function Newpost({ todos, setTodos}) {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
-  const [userName, setUserName] = useState(''); 
+  const [userName, setUserName] = useState('');
   const navigate = useNavigate();
   //let { user_id } = useParams();
 //testのため仮のトークンを入れます。本来ならいらないです。
@@ -67,28 +67,30 @@ function Newpost({ todos, setTodos}) {
     }
   }, []);
     return (
-      <div>
+      <div className ="post_body">
+        <div className="form-container">
          <h2>{userName ? ` ${userName}` : ''}様の投稿ページ</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="post-title">タイトル</label><br/>
-            <input
-              type="text"
-              id="post-title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="post-content">内容</label><br/>
-            <textarea
-              id="post-content"
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-            />
-          </div>
-          <button type="submit">投稿する！</button>
-        </form>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label className ="post-title">タイトル</label><br/>
+              <input
+                type="text"
+                id="post-title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="post-content">内容</label><br/>
+              <textarea
+                id="post-content"
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
+              />
+            </div>
+            <button className="button" type="submit">投稿する！</button>
+          </form>
+        </div>
       </div>
     );
   }

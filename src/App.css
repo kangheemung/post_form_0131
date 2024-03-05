@@ -1,3 +1,8 @@
+
+:root {
+  --background-default: #f3ebf6; /* Default background color */
+  --text-default: #000000; /* Default text color */
+}
 .App {
   font-family: "Ubuntu", sans-serif;
   padding-bottom: 0;
@@ -9,6 +14,7 @@
   overflow: hidden;
 
 }
+
 *{
   margin: 0;
   padding: 0%;
@@ -26,7 +32,13 @@
   margin-left: 10%; 
 ;
 }
-
+.Home {
+  align-items: center;
+  height: 100vh;
+}
+.Home_body{
+margin-left: 30%;
+}
 
 .SidebarList .row {
   width :100%;
@@ -40,7 +52,10 @@
   padding: 0%;
   display: flex;
   justify-content: space-between; /* Space out the child elements */
- /* Add space between direct children */
+ /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh;
+  /* Add space between direct children */
   /* Add more styling as needed */
 }
 .header{
@@ -62,12 +77,21 @@
 
 
 body .main {
+  font-family: "Ubuntu", sans-serif;
+  background-color: var(--background-default);
+  color: var(--text-default);
   width: 400px;
   height: 500px;
   border-radius: 1.5em;
   box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
 }
-
+body.dark-mode {
+  --background-default: #46045e; /* Dark mode background */
+  --text-default: #ffffff; /* Dark mode text */
+  background-color: var(--background-default); /* Apply dark mode background color */
+  color: var(--text-default); /* Apply dark mode text color */
+  min-height: 100vh; /* Ensure at least full viewport height */
+}
 #light .main {
   background-color: #fff;
 }
@@ -169,10 +193,17 @@ form.form1 {
   padding-right: 40px;
   padding-bottom: 10px;
   padding-top: 10px;
+  margin-bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block; 
+  text-align: center;
   font-family: "Ubuntu", sans-serif;
-  margin-left: 35%;
   font-size: 13px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+.submit_body .p{
+  text-align: center;
 }
 
 .forgot {
@@ -188,6 +219,7 @@ a {
   color: #e1bee7;
   text-decoration: none;
 }
+
 
 @media (max-width: 600px) {
   .main {
