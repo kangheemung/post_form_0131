@@ -54,7 +54,7 @@ function Fullposts() {
         });
 
       }
-    }, [currentUser, navigate]); // Depend on currentUser now
+    }, [currentUser, navigate,setCurrentUser]); // Depend on currentUser now
 
     useEffect(() => {
         const storedLikedPosts = localStorage.getItem('likedPosts');
