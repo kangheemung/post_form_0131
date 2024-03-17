@@ -111,7 +111,8 @@ body.dark-mode {
   font-size: 23px;
 }
 .contain{
-  margin-left: 20%;
+  margin: auto;
+  max-width: 800px; 
   justify-content: center; /* Align horizontal */
   align-items: center; /* Align vertical */
   height: 100vh;
