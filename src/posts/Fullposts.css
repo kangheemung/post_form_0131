@@ -1,7 +1,7 @@
 .Posts_List {
     border: 5px solid hsl(0, 0%, 100%); /* Background color */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
-    margin: 20px; /* Outer margin */
+    margin: 20px auto; /* Outer margin */
     padding: 20%; /* Inner padding */
     width: auto;
     text-align: center;
@@ -11,7 +11,7 @@
     justify-content: space-between;
 }
 .post_body {
-    margin-top: 10%;
+    display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     height: 100vh; /* Take up full viewport height */
@@ -19,11 +19,9 @@
 }
 
 .form-container {
-    width: 100%; /* Full width of its parent */
-    max-width: 600px; /* Maximum width of the form */
-    margin: auto; /* Auto margins for horizontal centering */
-    padding: 20px; /* Padding inside the container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Optional shadow for better visibility */
 }
 
 /* Continue with the rest of your CSS... */

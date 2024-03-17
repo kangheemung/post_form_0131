@@ -33,24 +33,25 @@ function App() {
       <AuthProvider>
       <Router>
       <div className={`app ${theme === 'dark' ? 'dark-mode' : ''}`} id={theme}>
-        <Nav className='header'/>
+
+        <Nav className='header' themeSwitch={<ThemeSwitch className='switch'/>} />
+
         <div className='flex-container'>
         <div className='contain'>
-        <ThemeSwitch  className='switch' />
           <Routes className='contain_main'>
             {/*<Route path='/' element={<Home />} />*/}
             <Route path='/about' element={<About />} />
-            <Route path='/api/v1/auth' element={<Login />} />
-            <Route path='/api/v1/users' element={<Form />} />
+            <Route path='/auth' element={<Login />} />
+            <Route path='/users' element={<Form />} />
             <Route
-               path='/api/v1/users/:id'
+               path='/users/:id'
                element={<PostsList todos={todos} setTodos={setTodos}/>}
             />
-            <Route path='/api/v1/microposts' element={<Fullposts/>}/>
-            <Route path='/api/v1/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />
+            <Route path='/microposts' element={<Fullposts/>}/>
+            <Route path='/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />
             {/* Make sure to define ShowPostComponent or remove this line if it's not needed */}
-            <Route path='/api/v1/users/:user_id/microposts/:id' element={<Page />} />
-            <Route path='/api/v1/users/:user_id/micropost/:id' element={<EditPostComponent />} />
+            <Route path='/users/:user_id/microposts/:id' element={<Page />} />
+            <Route path='/users/:user_id/micropost/:id' element={<EditPostComponent />} />
           </Routes>
         </div>
         </div>
