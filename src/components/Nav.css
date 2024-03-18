@@ -2,7 +2,8 @@
 nav {
   position: fixed; /* Fix position to the viewport */
   top: 0; /* Align the nav to the top */
-  left: 0; /* Align the nav to the left */
+  left: 0;
+   /* Align the nav to the left */
   width: 100%; /* Make the nav extend full width across the screen */
   z-index: 1000; /* Ensures the nav is above other content */
   /* Other styles you may want to include for your fixed navbar */

@@ -21,7 +21,7 @@ const Nav = ({ themeSwitch }) => {
           <ul className="nav_link">
             {/* Always visible links */}
             <li><Link to='/' className='header_a'><p>Home</p></Link></li>
-            <li><Link to='/about' className='header_a'><p>About</p></Link></li>
+            <li> <Link to='/about' className='header_a'><p>About</p></Link></li>
 
             {isUserLoggedIn ? (
               // Render these links only when the user is logged in

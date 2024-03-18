@@ -33,11 +33,11 @@ function App() {
       <AuthProvider>
       <Router>
       <div className={`app ${theme === 'dark' ? 'dark-mode' : ''}`} id={theme}>
-
-        <Nav className='header' themeSwitch={<ThemeSwitch className='switch'/>} />
         <div className='content-below-header'>
-        <div className='flex-container'>
-        <div className='contain'>
+        <Nav className='header' themeSwitch={<ThemeSwitch className='switch'/>} />
+        </div>
+  
+       
           <Routes className='contain_main'>
             {/*<Route path='/' element={<Home />} />*/}
             <Route path='/about' element={<About />} />
@@ -54,9 +54,7 @@ function App() {
             <Route path='/users/:user_id/micropost/:id' element={<EditPostComponent />} />
           </Routes>
         </div>
-        </div>
-        </div>
-      </div>
+
       </Router>
       </AuthProvider>
     </ThemeContext.Provider>
