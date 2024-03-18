@@ -264,7 +264,7 @@ function Fullposts() {
     };
 
     return (
-        <div>
+        <div className="fullposts">
             {notification && <div className="notification">{notification}</div>}
             <ul>
                 {microposts.map((post) => {

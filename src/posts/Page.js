@@ -43,7 +43,7 @@ function Page() {
 
 
   return (
-    <div >
+    <div className="post-container">
       {/* Display the post based on the fetched data */}
       {post ? (
         <article>

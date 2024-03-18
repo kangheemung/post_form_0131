@@ -32,11 +32,11 @@ function Login() {
         const decodedToken = jwtDecode(data.data.token); // Use the token from data.data
         const userId = decodedToken.user_id;
         localStorage.setItem('token', data.data.token); // Adjusted for nested data structure
-        alert('Login successful!');
+        //alert('Login successful!');
 
         if (userId) {
           login(data.data.token, userId);
-          alert('Login successful!');
+          alert('Login出来ました!');
           navigate(`/api/v1/users/${userId}/micropost`); // Navigate to user's microposts
         } else {
           console.error('User ID is undefined.');

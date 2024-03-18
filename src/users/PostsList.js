@@ -77,7 +77,7 @@ function PostsList() {
 
 
   return (
-    <div>
+    <div className='post-container'>
       <h2>{username}様の投稿したPosts</h2>
       <p>email:{email}</p>
 

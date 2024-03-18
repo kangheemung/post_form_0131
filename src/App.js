@@ -53,8 +53,7 @@ function App() {
             <Route path='/users/:user_id/microposts/:id' element={<Page />} />
             <Route path='/users/:user_id/micropost/:id' element={<EditPostComponent />} />
           </Routes>
-        </div>
-
+      </div>
       </Router>
       </AuthProvider>
     </ThemeContext.Provider>
