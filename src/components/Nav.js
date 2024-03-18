@@ -38,7 +38,7 @@ const Nav = ({ themeSwitch }) => {
                 <li><Link to='/users' className='header_a'><p>Sign in</p></Link></li>
               </>
             )}
-            {themeSwitch}
+            <li>{themeSwitch}</li>
           </ul>
           <div className="greeting_box">
            <p className="greeting">{userName}様こんにちは</p>

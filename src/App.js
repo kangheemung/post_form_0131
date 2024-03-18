@@ -35,7 +35,7 @@ function App() {
       <div className={`app ${theme === 'dark' ? 'dark-mode' : ''}`} id={theme}>
 
         <Nav className='header' themeSwitch={<ThemeSwitch className='switch'/>} />
-
+        <div className='content-below-header'>
         <div className='flex-container'>
         <div className='contain'>
           <Routes className='contain_main'>
@@ -53,6 +53,7 @@ function App() {
             <Route path='/users/:user_id/microposts/:id' element={<Page />} />
             <Route path='/users/:user_id/micropost/:id' element={<EditPostComponent />} />
           </Routes>
+        </div>
         </div>
         </div>
       </div>

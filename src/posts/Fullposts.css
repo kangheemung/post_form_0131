@@ -19,6 +19,7 @@
 }
 
 .form-container {
+  position: relative; 
   display: flex;
   flex-direction: column; /* Stack children vertically */
   align-items: center; /* Optional shadow for better visibility */
@@ -93,6 +94,7 @@ label, h2, button {
         margin: 10px 0; /* Reduced margin for smaller screens */
     }
     .form-container {
+        position: relative;
         padding: 10px; /* Reduced padding for smaller screens */
         margin: 10px; /* Ensure consistent margins */
     }

@@ -2,11 +2,13 @@
 :root {
   --background-default: #f3ebf6; /* Default background color */
   --text-default: #000000; /* Default text color */
+  --header-height: 60px; 
 }
 .App {
   font-family: "Ubuntu", sans-serif;
   padding-bottom: 0;
   display: flex;
+  min-height: 80vh;
   width: 100%;
   justify-content: space-between;
   align-items: center;
@@ -14,12 +16,37 @@
   overflow: hidden;
 
 }
-
+.container {
+  overflow: auto; /* コンテナ内のオーバーフロー時にスクロールバーが表示されます */
+  height: 100%;   /* 必要に応じて高さを指定してください */
+  /* 他のスタイル */
+}
+.content {
+  position: absolute;       /* 絶対位置指定 */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 正確な中央に配置 */
+}
+body {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--background-default);
+  color: var(--text-default);
+  padding-top: [height of the navbar]; 
+}
 *{
   margin: 0;
   padding: 0%;
   box-sizing: border-box;
 }
+.main-content {
+  min-height: 100vh; /* ビューポートの高さと同じ最小の高さを設定 */
+
+  overflow: auto; /* スクロールバーが必要な場合のみ表示されます */
+}
+
 .Sidebar{
   height: 100%;
   width: 250px;
@@ -29,12 +56,11 @@
   height: auto;
   padding: 0;
   width: 100%;
-  margin-left: 10%; 
+  margin-left: 10%;
 ;
 }
 .Home {
   align-items: center;
-  height: 100vh;
 }
 .Home_body{
 margin-left: 30%;
@@ -48,21 +74,42 @@ margin-left: 30%;
   display: flex;
 }
 .flex-container {
+  padding-top: [HeaderHeight]px;
   margin-top: 5%;
   padding: 0%;
   display: flex;
-  justify-content: space-between; /* Space out the child elements */
+  justify-content: center; /* Space out the child elements */
  /* Center horizontally */
+  padding-top: 60px;
+  overflow: hidden; 
   align-items: center; /* Center vertically */
   height: 100vh;
-  /* Add space between direct children */
-  /* Add more styling as needed */
 }
+.content-below-header {
+  /* This div should not define height as 100vh since it is below the header */
+  padding-top: 60px; /* Space for the header */
+  overflow: hidden; /* Hide the scrollbar for content below header */
+}
+
 .header{
-  margin-top:5% ;
+  align-items: center;
+  position: fixed; /* Fixed position */
+  top: 0; /* Align to the top of the viewport */
+  width: 100%; /* Make the header full-width */
+  z-index: 10;  /* Ensures the header is above other content */
+  background-color: #fff; /* Optional: Change to match your design */
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2); /* Optional: Adds shadow for depth */
+  /* Rest of your styles... */
+}
+
+
+.content-below-header {
+    margin-top: 60px; /* Adjust the value according to your header's height */
+  overflow: auto;
+ /* Adjust the value according to your header's height */
 }
 .header_a{
-  margin-left:3% ;
+
 }
 #light {
   background-color: #f3ebf6;
@@ -74,16 +121,23 @@ margin-left: 30%;
   color: #ffffff;
 }
 
-
-
 body .main {
   font-family: "Ubuntu", sans-serif;
   background-color: var(--background-default);
   color: var(--text-default);
+  max-width: 90%;
+  margin: auto;
   width: 400px;
-  height: 500px;
+  overflow: auto;
+  height: auto;
   border-radius: 1.5em;
   box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+
 }
 body.dark-mode {
   --background-default: #46045e; /* Dark mode background */
@@ -105,14 +159,14 @@ body.dark-mode {
 }
 
 .sign {
-  padding-top: 10px;
+  padding: 5%;
   font-family: "Ubuntu", sans-serif;
   font-weight: bold;
   font-size: 23px;
 }
 .contain{
   margin: auto;
-  max-width: 800px; 
+  max-width: 800px;
   justify-content: center; /* Align horizontal */
   align-items: center; /* Align vertical */
   height: 100vh;
@@ -197,7 +251,7 @@ form.form1 {
   margin-bottom: 5%;
   margin-left: auto;
   margin-right: auto;
-  display: block; 
+  display: block;
   text-align: center;
   font-family: "Ubuntu", sans-serif;
   font-size: 13px;
@@ -221,12 +275,14 @@ a {
   text-decoration: none;
 }
 
-
-@media (max-width: 600px) {
-  .main {
-    border-radius: 0px;
-    height: auto; /* Adjust height to be auto so it doesn't cause overflow */
-    margin-bottom: 30%;
+@media (max-width: 767px) {
+  body .main {
+    width: 90%; /* Allow full width for small devices */
+    top: calc(50% - var(--header-height) / 2); /* Centering taking into account the header */
+    margin-top: calc(var(--header-height) / 2 * -1); /* Adjusting based on header height */
+  }
+  .main-content {
+    min-height: 50vh; /* 小さい画面では最小の高さを半分に */
   }
 }
 
@@ -242,7 +298,8 @@ a {
 .contain_main {
  text-align: center;
 }
-.login-link{
+.login-link, .forgot {
+  text-align: center;
   margin-bottom: 10%;
 }
 #light .switch label {

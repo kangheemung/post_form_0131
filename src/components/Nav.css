@@ -1,11 +1,20 @@
 /* Reset list style, padding, and margin for navigation links */
+nav {
+  position: fixed; /* Fix position to the viewport */
+  top: 0; /* Align the nav to the top */
+  left: 0; /* Align the nav to the left */
+  width: 100%; /* Make the nav extend full width across the screen */
+  z-index: 1000; /* Ensures the nav is above other content */
+  /* Other styles you may want to include for your fixed navbar */
+/* Set a background color so text doesn't clash with the content underneath */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds some shadow for visual separation */
+}
 .nav_link {
   list-style: none;
-  padding: 0;
-  margin: 0;
-  margin-left: 10%;
   display: flex;
   align-items: center;
+  justify-content: center;
+
 }
 /* Default link styles */
 .nav_link a,
@@ -31,11 +40,14 @@
 
 }
 .greeting_box{
-margin-left: 14%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 #dark greeting p{
   color: whitesmoke;
   font-weight: bold;
+  align-items: center;
 
 }
 /* Dark mode link styles */
@@ -49,7 +61,6 @@ margin-left: 14%;
 /* Adjust spacing between links */
 .nav_link li {
   margin-left: 5%;
-  
 }
 
 /* Remove the right margin from the last item in the list */
