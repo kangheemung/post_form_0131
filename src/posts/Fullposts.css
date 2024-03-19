@@ -203,6 +203,10 @@ label, h2, button {
     .post-container {
       margin-top: 5%; /* Adjust margin-top to avoid overlapping with the header */
     }
+    .fullposts{
+     /* Set a maximum width */
+           margin-top :20%;}
+
 
     .Posts_List li {
       margin-top: 60px; /* Provide enough space to clear the fixed header */
@@ -212,13 +216,15 @@ label, h2, button {
     }
   }
 
-@media (max-width: 500px) {
+@media (max-width: 767px) {
     .post-container {
       /* 3列から1列に変更 */
       grid-template-columns: 1fr;
       margin-top: 30%;
     }
-   
+    .fullposts{
+        /* Set a maximum width */
+           margin-top :30%;}
   
     .post-container ul {
         grid-template-columns: 1fr !important; /* !importantで優先度を上げる */
@@ -255,3 +261,10 @@ label, h2, button {
   }
 
 
+  @media (max-width: 450px) {
+    .fullposts{
+        /* Set a maximum width */
+         margin-top :50%;}
+     .myPosts_List_top{
+            margin-top :60%;}
+  }

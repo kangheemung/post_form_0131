@@ -1,17 +1,17 @@
-.nav {
-  /* Fixed position styles */
+.navbar_container {
   position: fixed;
   top: 0;
   left: 0;
+  flex-direction: column;
   width: 100%;
-  z-index: 1000;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #FFF;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 0 1rem;
-  background-color: #FFF; /* Assuming a light background for the navbar */
-  }
+  align-items: center;
+  z-index: 1000;
+}
+
 
 .logo_container {
   display: flex;
@@ -53,14 +53,6 @@
   font-weight: bold; /* Example: Making the text bold */
 
 }
-.greeting_box{
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  margin-left: auto;
-  margin-top: 10px; /* 上部ナビゲーションリンクからの空間を作成 */
-  align-self: stretch;
-}
 #dark greeting p{
   color: whitesmoke;
   font-weight: bold;
@@ -73,6 +65,28 @@
 .nav_link a:hover,
 .nav_link a:active {
   color: whitesmoke;
+}
+.nav_links_container {
+  flex-grow: 1; /* 利用可能な追加のスペースを伸ばす */
+  flex-direction: column;/* ナビゲーションリンクを左から始める */
+}
+
+.nav_and_greeting_container {
+  width: 100%; /* Ensure it takes full width */
+  display: flex;
+  flex-direction: row; /* Keep nav links horizontal */
+/* Space out nav links and theme switch */
+  align-items: center;
+}
+
+.greeting_box {
+/* アイテムを縦に並べる */
+  align-items: center; /* 水平方向の中央揃え */
+  justify-content: center; /* 垂直方向の中央揃え */
+  margin-left: auto; /* 右寄せにする */
+  margin-right: auto; /* 左寄せにする */
+  padding-top: 1rem; /* 上余白（必要に応じて調整） */
+  padding-bottom: 1rem; /* 下余白（必要に応じて調整） */
 }
 
 
@@ -105,87 +119,30 @@
 }
 /* 他のスタイル */
 
-/* 大きな画面用のスタイル */
-@media (min-width: 2000px) {
-  .header {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    /* Other styling as needed */
-  }
+/* 小さな画面用のスタイル（例：携帯電話） */
+@media (max-width: 767px) {
   .navbar_container {
-    flex-direction: column;/* 水平方向にアイテムを並べる */
-    align-items: center;
-    display: flex;
-    width: 100%;
-    justify-content: center; /* アイテムを均等に分散 */
-    padding: 0.5rem; /* 必要に応じて調整 */
-    background-color: #FFF; 
-  }
-  .navbar_container_1,
-  .greeting_box {
-    display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    flex: 1; /* Each container takes up an equal amount of space */
+    padding: 0.5rem; /* Adjust as needed */
   }
 
-  .nav_link li,
-  .greeting_box {
-    margin-right: 10px;
-    order: 2;
-    width: auto; /* コンテンツに基づいて幅を自動調整 */
-    margin-top: 0;
-    margin-bottom: 0;
+  .nav_link {
+    gap: 10px; /* nav items間の余白 */
+    flex-direction: row; /* 横並びに表示されるように設定 */
+    justify-content: center; /* 横方向中央寄せ */
+    align-items: center;
+    flex-wrap: wrap; /* アイテムが収まりきらない場合は折り返す */
   }
+
+}
+
+/* 大きな画面用のスタイル */
+@media (min-width: 768px) {
+  .navbar_container {
+    /* 必要に応じたスタイル */
+  }
+
+  /* リスト要素のマージン調整など */
   .nav_link li:last-child {
     margin-right: 0;
   }
-  .nav_link {
-    flex-wrap: nowrap; /* アイテムを折り返さない */
-  }
-
-  /* ナビゲーションリストアイテム間の余白を削除 */
-  .nav_link li + li {
-    margin-left: 0;
-  }
-  .greeting_box {
-    order: 2; /* Ensure the greeting box comes after nav links */
-    margin-top: 0.5rem; /* Add some space between nav links and greeting box */
-  }
-  }
-/* 小さな画面用のスタイル（例：携帯電話） */
-@media (mix-width: 768px) {
-
-  .navbar_container {
-    display: flex;
-    justify-content: space-between; /* This spreads .nav_link and .greeting_box across the navbar */
-    align-items: center;
-    width: 100%;
-    padding: 0.5rem; /* Adjust as needed */
-    background-color: #FFF;
-  }
-  .nav_link {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-    flex-wrap: wrap;
-    gap: 20px; /* Creates a gap between nav items */
-  }
-
-  .greeting_box {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-grow: 0; /* Do not allow it to grow; it should only take up as much space as needed */
-    margin-left: auto; /* Pushes the greeting box to the right */
-    margin-top: 10px;
-    align-self: stretch;
-  }
-
-  .nav_link {
-    flex-wrap: nowrap; /* アイテムを折り返さない */
-  }
-
 }

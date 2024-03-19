@@ -18,7 +18,8 @@ const Nav = ({ themeSwitch }) => {
 
     return (
         <nav className="navbar_container">
-          <div className="navbar_container_1">
+          <div className="nav_and_greeting_container">
+          <div className="nav_links_container">
             <ul className="nav_link">
               {/* Always visible links */}
               <li><Link to='/' className='header_a'><p>Home</p></Link></li>
@@ -41,6 +42,7 @@ const Nav = ({ themeSwitch }) => {
               )}
               <li>{themeSwitch}</li>
             </ul>
+          </div>
           </div>
           <div className="greeting_box">
            <p className="greeting">{userName}様こんにちは</p>

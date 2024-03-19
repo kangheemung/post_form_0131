@@ -18,9 +18,15 @@
 
 
 }
-.About{
-  margin-top: 20%;
+.About {
+  display: flex;
+  flex-direction: column; /* Stack paragraphs vertically */
+  align-items: center; /* Center-align items horizontally */
+  padding: 20px; /* Add some padding for spacing */
+  margin: auto; /* Center the div in the container if needed */
+  max-width: 800px; /* Maximum width of the About section */
 }
+
 
 
 .content {
@@ -303,26 +309,46 @@ a {
 #dark .switch label {
   color: white;
 }
-
+@media (max-width:2000px) {
+  .About {
+    /* Adjust styles for medium-sized devices */
+    margin-top: 20%;
+    padding: 15px;
+  }
+  .main_body{margin-top: 30%;}
+  .main {
+  
+    width: 95%; /* 小さいデバイスではより余白を減らす */
+  }
+}
 
 @media (max-width: 767px) {
   body, .main-content, .flex-container, .content-below-header {
     padding-top: calc(var(--header-height) / 2); /* モバイルデバイスでのヘッダーの高さを調整 */
   }
+  .main_body{margin-top: 40%;}
   .main {
     width: 95%; /* 小さいデバイスではより余白を減らす */
+  }
+  .About {
+    margin-top: 20%;
+    padding: 10px;
   }
   .main-content,
   .flex-container,
   .content-below-header  {
-    
+
     padding-top: var(--header-height);/* 小さい画面では最小の高さを半分に */
   }
 }
 
-@media (max-width: 400px) {
-
-
+@media (max-width: 450px) {
+ 
+  .About {
+    margin-top: 40%;
+    padding: 10px;
+  }
+.main_body{margin-top: 60%;}
   .header {
     /* Further reduced padding, font-sizes etc. for header elements */
   }
