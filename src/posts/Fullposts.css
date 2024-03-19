@@ -208,7 +208,7 @@ label, h2, button {
       margin-top: 60px; /* Provide enough space to clear the fixed header */
     }
     .myPosts_List_top{
-      margin-top: 30%; /* This may need to be adjusted based on the exact layout */
+      margin-top: 10%; /* This may need to be adjusted based on the exact layout */
     }
   }
 
@@ -235,7 +235,7 @@ label, h2, button {
       padding: 20px; /* オリジナルのpaddingを維持 */
     }
     .myPosts_List_top{
-        margin-top: 45%; /* This may need to be adjusted based on the exact layout */
+        margin-top: 25%; /* This may need to be adjusted based on the exact layout */
       }
     .posts-grid-container,
     .fullposts ul {

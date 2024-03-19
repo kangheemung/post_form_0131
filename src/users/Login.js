@@ -52,6 +52,7 @@ function Login() {
     }
 }
   return (
+    <div className='main_body'>
     <div className="main">
       <p className="sign" align="center">
         Login
@@ -75,6 +76,7 @@ function Login() {
         <button className="submit" align="center" type="submit">Login</button>
       </form>
     </div>
+  </div>
   );
 }
 

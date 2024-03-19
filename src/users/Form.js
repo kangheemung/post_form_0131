@@ -59,6 +59,7 @@ function Form() {
 }
 }
   return (
+    <div className='main_body'>
     <div className= "main">
       <p className= "sign" align="center">
         Sign in
@@ -70,6 +71,7 @@ function Form() {
         <input className= "password" type = "password" placeholder= "password_confirmation" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}/>
         <button type="submit" className="submit">Submit</button>
       </form>
+    </div>
     </div>
   )
 }

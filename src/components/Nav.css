@@ -18,17 +18,15 @@
   align-items: center;
   /* additional styling */
 }
-.navbar_container{
-  margin-top: 2%;
-  text-align: center;
-  /* Ensure there is space below the navbar */
-}
+
 
 .nav_link {
-  list-style: none;
-  display: flex;
-  padding: 0;
-  margin: 0;
+  list-style: none; /* リストのスタイルをなくす */
+  display: flex; /* Flexboxによる横並び表示 */
+  margin: 0; /* 外側余白をなくす */
+  padding: 0; /* 内側余白をなくす */
+  justify-content: center; /* 子要素を中央揃えにする */
+  width: 100%;
   flex-wrap: wrap;
 }
 
@@ -76,13 +74,7 @@
 .nav_link a:active {
   color: whitesmoke;
 }
-.navbar_container,
-.greeting_box,
-.nav_link {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
+
 
 .header {
   position: fixed; /* Keep the header at the top */
