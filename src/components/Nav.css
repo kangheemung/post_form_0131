@@ -7,9 +7,12 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   background-color: #FFF;
   display: flex;
-  padding: 0 1rem;
+  padding: 5% 5%;
   align-items: center;
   z-index: 1000;
+
+  position: relative;
+
 }
 
 
@@ -29,12 +32,11 @@
   width: 100%;
   flex-wrap: wrap;
 }
-
-/* Default link styles */
-.nav_link a,
-.nav_link a:visited {
-  color: #000; /* Or any other color you want for light mode */
+.nav_link li{
+  color: #000;
 }
+/* Default link styles */
+
 
 /* Light mode link styles */
 #light .nav_link a,
@@ -44,28 +46,16 @@
 
 /* Dark mode link styles */
 #dark .nav_link a,
-#dark .nav_link a:visited {
-  color: whitesmoke;
+#dark .nav_link a:visited
+#dark .nav_link a:hover,
+#dark .nav_link a:active {
+  color: #000000;
 }
-#light .greeting p {
 
-  color: #000000; /* Example: Changing the text color to green */
-  font-weight: bold; /* Example: Making the text bold */
+#dark .theme-switch {
+  color: #000; /* ダークモードでのテーマ切り替えスイッチの文字色も黒に (class name is an example) */
+}
 
-}
-#dark greeting p{
-  color: whitesmoke;
-  font-weight: bold;
-  align-items: center;
-
-}
-/* Dark mode link styles */
-.dark-mode .nav_link a,
-.nav_link a:visited,
-.nav_link a:hover,
-.nav_link a:active {
-  color: whitesmoke;
-}
 .nav_links_container {
   flex-grow: 1; /* 利用可能な追加のスペースを伸ばす */
   flex-direction: column;/* ナビゲーションリンクを左から始める */
@@ -80,6 +70,7 @@
 }
 
 .greeting_box {
+  color: #000;
 /* アイテムを縦に並べる */
   align-items: center; /* 水平方向の中央揃え */
   justify-content: center; /* 垂直方向の中央揃え */
@@ -117,7 +108,8 @@
   text-decoration: none;
   color: inherit; /* Will take the color from its parent element */
 }
-/* 他のスタイル */
+
+
 
 /* 小さな画面用のスタイル（例：携帯電話） */
 @media (max-width: 767px) {
@@ -137,9 +129,7 @@
 
 /* 大きな画面用のスタイル */
 @media (min-width: 768px) {
-  .navbar_container {
-    /* 必要に応じたスタイル */
-  }
+
 
   /* リスト要素のマージン調整など */
   .nav_link li:last-child {

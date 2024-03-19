@@ -13,6 +13,10 @@
     text-align: center;
     overflow: auto;
 }
+.myPosts_top {
+    text-align: center;
+    font-weight: bold;
+  }
 .follow{
     display:flex;
     justify-content: space-between;
@@ -20,11 +24,13 @@
 .post_body {
     display: flex;
     justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Take up full viewport height */
+    align-items: center;
+    margin-top: 20%; /* Center vertically */
+ /* Take up full viewport height */
     text-align: center;
 }
 .post-container {
+    margin-top: 10%;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* This will create three equal columns */
     gap: 20px; /* Adjust the space between columns as needed */
@@ -79,13 +85,14 @@ label, h2, button {
 }
 .post-container {
     display: flex;
-  flex-direction: column;
-  align-items: center; /* Adjust according to your header's height */
+    flex-direction: column;
+    align-items: center; /* Adjust according to your header's height */
   }
   .post-list-item {
     width: 80%; /* Or any other suitable width */
     flex: 0 1 calc(33% - 20px); /* Each item takes up roughly a third minus margin/padding */
     margin-bottom: 20px;
+    text-align: center;
      /* Card styling */
     background-color: #ffffff; /* Change as needed for your design */
     border: 1px solid #dddddd; /* Light grey border */
@@ -102,10 +109,7 @@ label, h2, button {
     list-style: none; /* Remove default list styling */
   }
  .myPosts_List_top{
-
-    margin-bottom: 5%;
-
-
+    margin-top:10%;
     text-align: center;
  }
   .post-container p,
@@ -115,6 +119,7 @@ label, h2, button {
 
   .post-container ul {
     display: grid;
+    text-align: center;
 
     grid-template-columns: repeat(3, 1fr); /* Creates 3 columns of equal width */
     gap: 20px; /* Adds space between grid items */
@@ -192,79 +197,117 @@ label, h2, button {
    /* Adjust spacing as needed */
 }
 
+#dark .Posts_List p {
+    color: #000; /* Sets the text color to black */
+}
+#dark .post-list-item p{
+    color: #000;
+}
 
-/* 既存のスタイル... */
-@media (max-width: 2000px) {
-    .header + .content-container { /* Adjust the class to match your content container */
-      /* This value should be at least the height of your header */
-      padding-top: 60px; /* Change this value based on your header's actual height */
-    }
-    /* Make sure the post-container does not overlap with the header */
-    .post-container {
-      margin-top: 5%; /* Adjust margin-top to avoid overlapping with the header */
-    }
-    .fullposts{
-     /* Set a maximum width */
-           margin-top :20%;}
+#dark .post-list-item span {
+    color: #000; /* Sets the text color to black */
+}
+
+/* Add other selectors for any additional text elements you want to target, for example: */
+#dark .author-and-follow,
+#dark .content-and-like {
+    color: #000; /* Set text color to black */
+}
 
 
-    .Posts_List li {
-      margin-top: 60px; /* Provide enough space to clear the fixed header */
+@media (max-width: 900px) {
+    .post-container,
+    .fullposts ul,
+    .posts-grid-container {
+        grid-template-columns: 1fr; /* Changes the layout to a single column */
     }
     .myPosts_List_top{
-      margin-top: 10%; /* This may need to be adjusted based on the exact layout */
-    }
-  }
-
-@media (max-width: 767px) {
-    .post-container {
-      /* 3列から1列に変更 */
-      grid-template-columns: 1fr;
-      margin-top: 30%;
-    }
-    .fullposts{
-        /* Set a maximum width */
-           margin-top :30%;}
-  
-    .post-container ul {
-        grid-template-columns: 1fr !important; /* !importantで優先度を上げる */
+        margin-top: 10%;
+     }
+     .myPosts_top {
+        margin-top: 30%; /* Less margin for slightly larger screens */
       }
-    .post-list-item {
-    max-width: 100%;
-    margin: 5% auto; /* 水平方向の中央揃え（必要な場合） */
-    padding: 20px; /* オリジナルのpadding維持 */
-    }
+
+    .Posts_List,
+    .post-list-item,
     .Posts_List li {
-      /* 全幅を利用するように修正し、余白を調整 */
-      max-width: 100%;
-      margin: 5% auto; /* 水平方向の中央揃えに変更 */
-      padding: 20px; /* オリジナルのpaddingを維持 */
+        /* Adjusts the width and margins for narrow screens */
+        width: auto; /* Allows the element to expand naturally */
+        max-width: none; /* Removes any previous max-width settings */
+        margin: 10px; /* Adds some margin around elements */
+    }
+
+    .follow,
+    .author-and-follow,
+    .content-and-like {
+        flex-direction: column; /* Stacks the elements vertically */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .follow_btn, .like_btn {
+        margin: 10px auto; /* Centres buttons with margin */
+    }
+
+    .post_body,
+    .form-container,
+    .navbar_container,
+    .darkmode_box,
+    .post-container p,
+    .post-container button,
+    .bottom {
+        /* Stack content vertically, reduce sizes, etc., as appropriate */
+        flex-direction: column;
+        align-items: stretch; /* Full-width elements */
+        text-align: center;
+    }
+
+    .button {
+        width: 80%; /* Make button wider on small screens */
+    }
+}
+@media (max-width: 640px) {
+    .post-list {
+      grid-template-columns: 1fr; /* Single column view */
     }
     .myPosts_List_top{
-        margin-top: 25%; /* This may need to be adjusted based on the exact layout */
+        margin-top:15%;
+     }
+     .myPosts_top {
+        margin-top: 20%; /* Increased margin-top for mobile devices */
       }
-    .posts-grid-container,
-    .fullposts ul {
-      /* grid-template-columnsプロパティを1列に設定 */
-      margin-top: 5%;
-      grid-template-columns: 1fr;
-    }
+    
+
+      .post-container {
+        margin-top: 0; /* Reset margin-top to remove excess space */
+      }
+    
 
     .post-list-item {
-      /* リストアイテムの最大幅を100%に変更し、flexプロパティを簡略化 */
-      width: 100%;
-      flex: none; /* Flex項目としての挙動を無効化 */
-      margin-bottom: 20px; /* 下余白を維持 */
+      margin-bottom: 10px;
+    }
+  }
+
+@media (max-width: 400px) {
+    body {
+        font-size: 14px; /* Reduce font size for very small devices */
+    }
+    .post-list {
+        grid-template-columns: 1fr; /* Single column view */
+      }
+
+      .post-list-item {
+        margin-bottom: 10px;
+      }
+      post-container{
+      margin-bottom: 10px;
+    }
+      .myPosts_List_top{
+        margin-top:15%;
+     }
+    .myPosts_top {
+        margin-top: 15%; /* Adjust margin-top as needed */
     }
 
-    /* 必要に応じて他のレイアウト調整をここに追加 */
-  }
-
-
-  @media (max-width: 450px) {
-    .fullposts{
-        /* Set a maximum width */
-         margin-top :50%;}
-     .myPosts_List_top{
-            margin-top :60%;}
-  }
+    /* Further fine-tune your layout and typography here */
+}

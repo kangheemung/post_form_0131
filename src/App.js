@@ -45,7 +45,7 @@ function App() {
             <Route path='/users' element={<Form />} />
             <Route
                path='/users/:id'
-               element={<PostsList todos={todos} setTodos={setTodos}/>}
+               element={<PostsList />}
             />
             <Route path='/microposts' element={<Fullposts/>}/>
             <Route path='/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />

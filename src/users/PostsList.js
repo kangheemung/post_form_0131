@@ -13,8 +13,7 @@ function PostsList() {
   // Fetch the user's microposts
   useEffect(() => {
     const fetchMicroposts = async () => {
-      const url = `http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${id}`;
-
+      const url = `http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${id}/`;
       try {
         const response = await fetch(url, {
           method: 'GET',
@@ -23,30 +22,22 @@ function PostsList() {
             'Authorization': `Bearer ${jwtToken}`,
           },
         });
-
-        if (!response.ok) {
+        const result = await response.json();
+        console.log(result); // Logs the API response for debugging
+        if (response.ok) {
+          setUsername(result.user.name);
+          setEmail(result.user.email);
+          setMicroposts(result.data);
+        } else {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-
-        const result = await response.json();
-        //console.log(result);
-        // The data is directly under 'data' key, so update the state accordingly
-        setMicroposts(result.data);
-        // The username is under 'user.name'
-        setUsername(result.user.name);
-        setEmail(result.user.email);
-
       } catch (error) {
-        console.error("Fetching microposts error:", error);
-        // Reset the states if there's an error
-        //setEmail('');
-        //setUsername('');
-        //setMicroposts([]);
+        console.error("Fetching user data error:", error);
       }
     };
-
     fetchMicroposts();
   }, [id, jwtToken]);
+
 
 
   const handleHome = () => {
@@ -78,14 +69,14 @@ function PostsList() {
 
   return (
     <>
-    <div className="myPosts_List_top">
+    <div className="myPosts_top">
       <h2>{username}様の投稿したPosts</h2>
       <p>email:{email}</p>
     </div>
     <div className='post-container'>
       {/* The <ul> tag should start here and not inside the map function */}
-      <ul>
-        {microposts.map((post) => (
+      <ul className='post-list'>
+        {microposts && microposts.map((post) => (
           // The key should be on the <li> element, not on a div wrapper.
           <li key={post.id} className="post-list-item">
             {/* Title and content */}
@@ -93,7 +84,7 @@ function PostsList() {
             <p>post内容: {post.body}</p>
 
             {/* Delete button */}
-            <button className='button' onClick={() => handleDelete(post.id)} className="button">
+            <button className='button' onClick={() => handleDelete(post.id)} >
               削除
             </button>
           </li>

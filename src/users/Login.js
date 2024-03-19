@@ -5,12 +5,17 @@ import { useAuth } from '../components/AuthContext';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
   const { login } = useAuth();
 
   async function handleSubmit(event) {
     event.preventDefault(); // Prevents the default form submission
-
+    setError('');
+    if (!email || !password) {
+      setError('Email and password cannot be empty.');
+      return;
+    }
     const payload = {
       email: email,
       password: password
@@ -37,7 +42,7 @@ function Login() {
         if (userId) {
           login(data.data.token, userId);
           alert('Login出来ました!');
-          navigate(`/api/v1/users/${userId}/micropost`); // Navigate to user's microposts
+          navigate(`/users/${userId}`);
         } else {
           console.error('User ID is undefined.');
           alert('Failed to retrieve user ID.');
@@ -57,6 +62,7 @@ function Login() {
       <p className="sign" align="center">
         Login
       </p>
+      {error && <div className="flash-error">{error}</div>}
       <form className="form1" onSubmit={handleSubmit}>
         <input
           className="username"
@@ -72,7 +78,7 @@ function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <p className="login-link" align="center">Forgot Password?</p>
+        {/*<p className="login-link" align="center">Forgot Password?</p>*/}
         <button className="submit" align="center" type="submit">Login</button>
       </form>
     </div>

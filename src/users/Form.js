@@ -36,14 +36,13 @@ function Form() {
         console.log(data);
         localStorage.setItem('token', data.data.token);
          // セキュリティ上の観点から、本番環境では localStorage へのトークン保存には注意が必要です
-        alert('Registration successful!');
 
         const decodedToken = jwtDecode(data.data.token);
         const userId = decodedToken.user_id;
         if (userId) {
           login(data.data.token, userId);
           alert('signup successful!');
-            navigate(`/api/v1/users/${userId}/micropost`); // Navigate to user's microposts
+            navigate(`/users/${userId}`);
         } else {
             console.error('User ID is undefined.');
             alert('Failed to retrieve user ID.');

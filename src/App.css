@@ -168,7 +168,19 @@ body.dark-mode {
   color: whitesmoke;
   background-color: #38004c;
 }
-
+/* 他のスタイル */
+/* Dark mode link styles */
+#dark  .nav_link a,
+#dark  .nav_link a:visited,
+#dark  .nav_link a:hover,
+#dark .nav_link a:active {
+  color: #000; /* Change to black or another darker color */
+}
+#dark .greeting p {
+  color: #000; /* Example: Changing the text color to black */
+  font-weight: bold;
+  align-items: center;
+}
 .sign {
   padding: 5%;
   font-family: "Ubuntu", sans-serif;
@@ -309,6 +321,15 @@ a {
 #dark .switch label {
   color: white;
 }
+.flash-error {
+  background-color: #f8d7da; /* Red */
+  color: #721c24;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  text-align: center;
+}
 @media (max-width:2000px) {
   .About {
     /* Adjust styles for medium-sized devices */
@@ -317,7 +338,6 @@ a {
   }
   .main_body{margin-top: 30%;}
   .main {
-  
     width: 95%; /* 小さいデバイスではより余白を減らす */
   }
 }
