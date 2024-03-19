@@ -67,8 +67,6 @@ label, h2, button {
     background-color: #ffbdbd; /* Set different background for Like button */
 }
 .fullposts{ 
-
-  margin-top: 10%;
   max-width: 1200px; /* Set a maximum width */
   margin-left: auto;
   margin-right: auto;}
@@ -80,7 +78,6 @@ label, h2, button {
     max-width: 1200px; /* Optional - sets a max-width for the grid */
 }
 .post-container {
-    padding-top: 15%;
     display: flex;
   flex-direction: column;
   align-items: center; /* Adjust according to your header's height */
@@ -97,6 +94,7 @@ label, h2, button {
     border-radius: 10px; /* Rounded corners */
   }
   .posts-grid-container {
+    margin-bottom: 10%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between; /* This ensures that the spacing between items is even */
@@ -104,8 +102,10 @@ label, h2, button {
     list-style: none; /* Remove default list styling */
   }
  .myPosts_List_top{
-    margin-top: 8%;
-    margin-bottom: 8%;
+
+    margin-bottom: 5%;
+
+
     text-align: center;
  }
   .post-container p,
@@ -138,7 +138,12 @@ label, h2, button {
     display: flex;
     justify-content: center;
 }
+.navbar_container{
+    margin-top: 2%;
+    display: center;
+}
 .darkmode_box{
+    margin-left: 10%;
     margin-bottom: 3%;
     margin-left: auto; /* Push the box to the right edge of its container */
     width: fit-content; /* Set the width to fit its content if not already defined */
@@ -188,70 +193,65 @@ label, h2, button {
 }
 
 
-/* Example Media Query for screens smaller than 600px wide */
-@media (max-width: 900px) {
-    .fullposts ul {
-        grid-template-columns: repeat(2, 1fr); /* Switches to 2 columns */
+/* 既存のスタイル... */
+@media (max-width: 2000px) {
+    .header + .content-container { /* Adjust the class to match your content container */
+      /* This value should be at least the height of your header */
+      padding-top: 60px; /* Change this value based on your header's actual height */
     }
-}
-@media (max-width: 768px) {
-    .post-list-item {
-      width: 95%; /* Full width on smaller screens */
+    /* Make sure the post-container does not overlap with the header */
+    .post-container {
+      margin-top: 5%; /* Adjust margin-top to avoid overlapping with the header */
+    }
+
+    .Posts_List li {
+      margin-top: 60px; /* Provide enough space to clear the fixed header */
+    }
+    .myPosts_List_top{
+      margin-top: 30%; /* This may need to be adjusted based on the exact layout */
     }
   }
-@media (max-width: 600px) {
+
+@media (max-width: 500px) {
+    .post-container {
+      /* 3列から1列に変更 */
+      grid-template-columns: 1fr;
+      margin-top: 30%;
+    }
+   
+  
+    .post-container ul {
+        grid-template-columns: 1fr !important; /* !importantで優先度を上げる */
+      }
+    .post-list-item {
+    max-width: 100%;
+    margin: 5% auto; /* 水平方向の中央揃え（必要な場合） */
+    padding: 20px; /* オリジナルのpadding維持 */
+    }
+    .Posts_List li {
+      /* 全幅を利用するように修正し、余白を調整 */
+      max-width: 100%;
+      margin: 5% auto; /* 水平方向の中央揃えに変更 */
+      padding: 20px; /* オリジナルのpaddingを維持 */
+    }
+    .myPosts_List_top{
+        margin-top: 45%; /* This may need to be adjusted based on the exact layout */
+      }
+    .posts-grid-container,
     .fullposts ul {
-        grid-template-columns: 1fr; /* Stacks items into a single column */
-    }
-    .Posts_List {
-        grid-template-columns: 1fr;
-      }
-      .follow_btn:hover,
-      .like_btn:hover {
-        background-color: #0056b3;
-      }
-      
-      .top {
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-    .fullposts li, .Posts_List, .button  {
-        padding: 10px; /* Less padding for smaller screens */
-        margin: 10px 0; /* Reduced margin for smaller screens */
-        grid-template-columns: 1fr;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        list-style: none;
-        margin: 20px auto;
-        padding: 0;
-        margin-top: 10%;
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .form-container {
-        padding: 10px;
-        margin: 10px;
-    }
-    .button {
-        font-size: medium; /* Smaller font size for smaller screens */
+      /* grid-template-columnsプロパティを1列に設定 */
+      margin-top: 5%;
+      grid-template-columns: 1fr;
     }
 
-    .follow_btn, .like_btn {
-        padding: 5px; /* Reduced padding for smaller screens */
-        margin: 5px; /* Reduced margin for smaller screens */
+    .post-list-item {
+      /* リストアイテムの最大幅を100%に変更し、flexプロパティを簡略化 */
+      width: 100%;
+      flex: none; /* Flex項目としての挙動を無効化 */
+      margin-bottom: 20px; /* 下余白を維持 */
     }
-}
-/* Updated media queries */
-@media (max-width: 900px) {
-    .post-container {
-        grid-template-columns: repeat(2, 1fr); /* Switches to 2 columns on smaller screens */
-    }
-}
 
-@media (max-width: 600px) {
-    .post-container {
-        grid-template-columns: 1fr; /* Stacks items into a single column on small screens */
-    }
-}
+    /* 必要に応じて他のレイアウト調整をここに追加 */
+  }
+
+

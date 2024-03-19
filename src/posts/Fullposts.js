@@ -288,12 +288,12 @@ function Fullposts() {
                                         )}
                                     </p>
                             </div>
-                            <p>=======================</p>
+
                             <div className="title">
                                 <p className = "top">タイトル</p>
                                 <span>{post.title}</span>
                             </div>
-                            <p>=======================</p>
+
                             <div className="content-and-like">
                               <div className = "top">
                                 <p>内容</p>

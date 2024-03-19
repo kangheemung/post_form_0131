@@ -1,8 +1,7 @@
-
 :root {
   --background-default: #f3ebf6; /* Default background color */
   --text-default: #000000; /* Default text color */
-  --header-height: 5px; 
+  --header-height: 10px;
 }
 .App {
   font-family: "Ubuntu", sans-serif;
@@ -34,11 +33,11 @@ body {
   box-sizing: border-box;
   background-color: var(--background-default);
   color: var(--text-default);
-  padding-top: var(--header-height); 
+  padding-top: var(--header-height);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; 
-  min-height: 100vh; 
+  justify-content: flex-start;
+  min-height: 100vh;
   align-items: center;
   height: auto;
   overflow-y: auto;
@@ -52,7 +51,6 @@ body {
 .main-content {
   min-height: calc(100vh - var(--header-height)); /* Adjust the height to consider header's space */
   padding-top: var(--header-height); /* Push content below the fixed header */
-  
 }
 
 .Sidebar{
@@ -103,7 +101,7 @@ margin-left: 30%;
 
 .content-below-header {
   padding-top: var(--header-height); /* パディングをヘッダーの高さに設定 */
-  
+
  /* Adjust the value according to your header's height */
 }
 .header_a{
@@ -130,7 +128,6 @@ margin-left: 30%;
   background-color: var(--background-default);
   color: var(--text-default);
 
- 
 }
 
 
@@ -287,19 +284,6 @@ a {
   text-decoration: none;
 }
 
-@media (max-width: 767px) {
-  body, .main-content, .flex-container, .content-below-header {
-    padding-top: calc(var(--header-height) / 2); /* モバイルデバイスでのヘッダーの高さを調整 */
-  }
-  .main {
-    width: 95%; /* 小さいデバイスではより余白を減らす */
-  }
-  .main-content,
-  .flex-container,
-  .content-below-header  {
-    padding-top: var(--header-height);/* 小さい画面では最小の高さを半分に */
-  }
-}
 
 .switch {
   justify-content: center;
@@ -323,4 +307,31 @@ a {
 
 #dark .switch label {
   color: white;
+}
+
+
+@media (max-width: 767px) {
+  body, .main-content, .flex-container, .content-below-header {
+    padding-top: calc(var(--header-height) / 2); /* モバイルデバイスでのヘッダーの高さを調整 */
+  }
+  .main {
+    width: 95%; /* 小さいデバイスではより余白を減らす */
+  }
+  .main-content,
+  .flex-container,
+  .content-below-header  {
+    padding-top: var(--header-height);/* 小さい画面では最小の高さを半分に */
+  }
+}
+
+@media (max-width: 400px) {
+
+
+  .header {
+    /* Further reduced padding, font-sizes etc. for header elements */
+  }
+
+  .content-container {
+    padding-top: var(--header-height);
+  }
 }

@@ -103,7 +103,7 @@ function PostsList() {
 
     {/* Footer with back button */}
     <div className='bottom'>
-      <button onClick={handleHome} className="button">homeに戻る</button> 
+      <button onClick={handleHome} className="button">homeに戻る</button>
     </div>
   </>
   );

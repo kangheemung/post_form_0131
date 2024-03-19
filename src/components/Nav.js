@@ -17,29 +17,31 @@ const Nav = ({ themeSwitch }) => {
     //console.log(isUserLoggedIn);    // Debug login flag state
 
     return (
-        <nav>
-          <ul className="nav_link">
-            {/* Always visible links */}
-            <li><Link to='/' className='header_a'><p>Home</p></Link></li>
-            <li> <Link to='/about' className='header_a'><p>About</p></Link></li>
+        <nav className="navbar_container">
+          <div className="navbar_container_1">
+            <ul className="nav_link">
+              {/* Always visible links */}
+              <li><Link to='/' className='header_a'><p>Home</p></Link></li>
+              <li> <Link to='/about' className='header_a'><p>About</p></Link></li>
 
-            {isUserLoggedIn ? (
-              // Render these links only when the user is logged in
-              <>
-                <li><Link to="/microposts" className='header_a'><p>FullPost</p></Link></li>
-                <li><Link to={`/users/${userId}`} className='header_a'><p>mypage</p></Link></li>
-                <li><Link to={`/users/${userId}/micropost`} className='header_a'><p>NewPost</p></Link></li>
-                <li><Link  onClick={handleLogoutClick} className='header_a'><p>Logout</p></Link></li><br/>
-              </>
-            ) : (
-              // Render these links only when the user is not logged in
-              <>
-                <li><Link to='/auth' className='header_a'><p>Login</p></Link></li>
-                <li><Link to='/users' className='header_a'><p>Sign in</p></Link></li>
-              </>
-            )}
-            <li>{themeSwitch}</li>
-          </ul>
+              {isUserLoggedIn ? (
+                // Render these links only when the user is logged in
+                <>
+                  <li><Link to="/microposts" className='header_a'><p>FullPost</p></Link></li>
+                  <li><Link to={`/users/${userId}`} className='header_a'><p>mypage</p></Link></li>
+                  <li><Link to={`/users/${userId}/micropost`} className='header_a'><p>NewPost</p></Link></li>
+                  <li><Link  onClick={handleLogoutClick} className='header_a'><p>Logout</p></Link></li><br/>
+                </>
+              ) : (
+                // Render these links only when the user is not logged in
+                <>
+                  <li><Link to='/auth' className='header_a'><p>Login</p></Link></li>
+                  <li><Link to='/users' className='header_a'><p>Sign in</p></Link></li>
+                </>
+              )}
+              <li>{themeSwitch}</li>
+            </ul>
+          </div>
           <div className="greeting_box">
            <p className="greeting">{userName}様こんにちは</p>
           </div>
