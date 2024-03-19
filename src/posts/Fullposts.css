@@ -1,4 +1,7 @@
 .Posts_List {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     border: 5px solid hsl(0, 0%, 100%); /* Background color */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
     margin: 20px auto; /* Outer margin */
@@ -6,7 +9,6 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     list-style: none;
-    display: grid;
     width: auto;
     text-align: center;
     overflow: auto;
@@ -22,6 +24,13 @@
     height: 100vh; /* Take up full viewport height */
     text-align: center;
 }
+.post-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* This will create three equal columns */
+    gap: 20px; /* Adjust the space between columns as needed */
+    align-items: start; /* Aligns the content to the top of the container */
+    text-align: center; /* Centers text horizontally */
+  }
 
 .form-container {
   position: relative; 
@@ -58,29 +67,55 @@ label, h2, button {
     background-color: #ffbdbd; /* Set different background for Like button */
 }
 .fullposts{ 
+
   margin-top: 10%;
   max-width: 1200px; /* Set a maximum width */
   margin-left: auto;
   margin-right: auto;}
 
 .fullposts ul {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Creates 3 columns of equal width */
-    gap: 20px; /* Adds space between grid items */
-    list-style-type: none; /* Remove default list styling */
-    padding: 0; /* Reset default padding */
+    list-style: none;
+    padding: 0;
     margin: 0 auto; /* Centers the grid horizontally */
     max-width: 1200px; /* Optional - sets a max-width for the grid */
 }
 .post-container {
-    padding-top: 15%; /* Adjust according to your header's height */
+    padding-top: 15%;
+    display: flex;
+  flex-direction: column;
+  align-items: center; /* Adjust according to your header's height */
   }
+  .post-list-item {
+    width: 80%; /* Or any other suitable width */
+    flex: 0 1 calc(33% - 20px); /* Each item takes up roughly a third minus margin/padding */
+    margin-bottom: 20px;
+     /* Card styling */
+    background-color: #ffffff; /* Change as needed for your design */
+    border: 1px solid #dddddd; /* Light grey border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Simple shadow effect */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+  }
+  .posts-grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* This ensures that the spacing between items is even */
+    padding: 0; /* Remove default padding */
+    list-style: none; /* Remove default list styling */
+  }
+ .myPosts_List_top{
+    margin-top: 8%;
+    margin-bottom: 8%;
+    text-align: center;
+ }
   .post-container p,
 .post-container button {
   text-align: center;
 }
+
   .post-container ul {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr); /* Creates 3 columns of equal width */
     gap: 20px; /* Adds space between grid items */
     list-style-type: none; /* Remove default list styling */
@@ -88,9 +123,10 @@ label, h2, button {
     margin: 0 auto; /* Centers the grid horizontally */
     max-width: 1200px; /* Optional - sets a max-width for the grid */
 }
+
 .Posts_List li {
     background-color: #3c3c3c; /* Set background for individual posts */
-    margin: 20px 0; /* Vertical margin with zero horizontal margin */
+    margin:5%; /* Vertical margin with zero horizontal margin */
     padding: 20px; /* Inner padding reduced from % to fixed px */
     border: 5px solid #ffbdbd;
     border-radius: 10px; /* Consistent border-radius */
@@ -99,6 +135,8 @@ label, h2, button {
 }
 .bottom{
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 .darkmode_box{
     margin-bottom: 3%;
@@ -108,13 +146,11 @@ label, h2, button {
 
 .button {
     background-color: #33003c;
-    width: auto;
     height: 40%;
     font-weight: bolder;
     margin-top: 10%;
     margin-bottom: 10%;
-    padding-top: 3%;
-    padding-bottom: 3%;
+    padding: 8px 16px;
     border: solid 1px;
     font-size: large;
     border-radius: 5%;
@@ -124,6 +160,32 @@ label, h2, button {
     display: block; /* Make the button a block element */
     margin: 20px auto;
 }
+.button:hover {
+    background-color: #e03515; /* Darker shade on hover */
+  }
+.post-list-item p:first-child {
+    font-weight: bold;
+    margin-bottom: 0.5rem; /* Adds spacing between title and content */
+  }
+.title{text-align: center;}
+.author-and-follow,  .content-and-like {
+    /* This will ensure that each div appears on a new line */
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between; /* Adjust spacing as needed */
+}
+
+.follow_btn, .like_btn {
+    background-color: #33003c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 10%; /* Spacing between the text and button */
+    cursor: pointer;
+    border-radius: 4px;
+   /* Adjust spacing as needed */
+}
 
 
 /* Example Media Query for screens smaller than 600px wide */
@@ -132,6 +194,11 @@ label, h2, button {
         grid-template-columns: repeat(2, 1fr); /* Switches to 2 columns */
     }
 }
+@media (max-width: 768px) {
+    .post-list-item {
+      width: 95%; /* Full width on smaller screens */
+    }
+  }
 @media (max-width: 600px) {
     .fullposts ul {
         grid-template-columns: 1fr; /* Stacks items into a single column */
@@ -139,7 +206,15 @@ label, h2, button {
     .Posts_List {
         grid-template-columns: 1fr;
       }
-    
+      .follow_btn:hover,
+      .like_btn:hover {
+        background-color: #0056b3;
+      }
+      
+      .top {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
     .fullposts li, .Posts_List, .button  {
         padding: 10px; /* Less padding for smaller screens */
         margin: 10px 0; /* Reduced margin for smaller screens */
@@ -166,5 +241,17 @@ label, h2, button {
     .follow_btn, .like_btn {
         padding: 5px; /* Reduced padding for smaller screens */
         margin: 5px; /* Reduced margin for smaller screens */
+    }
+}
+/* Updated media queries */
+@media (max-width: 900px) {
+    .post-container {
+        grid-template-columns: repeat(2, 1fr); /* Switches to 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .post-container {
+        grid-template-columns: 1fr; /* Stacks items into a single column on small screens */
     }
 }

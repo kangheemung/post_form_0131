@@ -264,17 +264,20 @@ function Fullposts() {
     };
 
     return (
+    <>
         <div className="fullposts">
             {notification && <div className="notification">{notification}</div>}
-            <ul>
+            <div className="myPosts_List_top">
+                <h2>投稿された記録</h2>
+            </div>
+            <ul className="posts-grid-container">
                 {microposts.map((post) => {
                     const authorId = post.user_id.toString();
                     const isAuthorCurrentUser = currentUser && String(currentUser.id) === authorId;
 
                     return (
-                        <li key={post.id.toString()}>
-                            <div className="Posts_List">
-                                <div className='follow'>
+                        <li key={post.id.toString()} className="post-list-item">
+                            <div className='author-and-follow'>
                                     <p>投稿者: {post.user.name}</p>
                                     <p>
                                         {!isAuthorCurrentUser && (
@@ -284,18 +287,25 @@ function Fullposts() {
                                             </button>
                                         )}
                                     </p>
-                                </div>
-                                <p>==================</p>
-                                <div></div>
+                            </div>
+                            <p>=======================</p>
+                            <div className="title">
                                 <p className = "top">タイトル</p>
                                 <span>{post.title}</span>
-                                <p className = "top">内容</p>
+                            </div>
+                            <p>=======================</p>
+                            <div className="content-and-like">
+                              <div className = "top">
+                                <p>内容</p>
                                 <p>{post.body}</p>
-                                {!isAuthorCurrentUser && (
-                                  <button className = "like_btn" onClick={() => handleToggleLike(post.id)}>
-                                    {likedPosts.has(post.id) ? 'Likeしました' : 'Likeする'}
-                                  </button>
-                                )}
+                              </div>
+                              <div>
+                              {!isAuthorCurrentUser && (
+                              <button className = "like_btn" onClick={() => handleToggleLike(post.id)}>
+                                {likedPosts.has(post.id) ? 'Likeしました' : 'Like!'}
+                              </button>
+                              )}
+                              </div>
                             </div>
                         </li>
                     );
@@ -305,6 +315,7 @@ function Fullposts() {
                 <button className='button' onClick={handleHome}>Homeに戻る</button>
             </div>
         </div>
+    </>
     );
 }
 

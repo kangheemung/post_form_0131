@@ -77,32 +77,35 @@ function PostsList() {
 
 
   return (
-    <div className='post-container'>
+    <>
+    <div className="myPosts_List_top">
       <h2>{username}様の投稿したPosts</h2>
       <p>email:{email}</p>
-
-      <ul>
-      {microposts.map((post) => (
-        <div className= "Posts_List_ul">
-        <li key={post.id}>
-          {/* Make sure to use the correct property name as defined in the serializer */}
-          <p></p>
-          <p>title <span>{post.title}</span></p>
-
-          <p>post内容</p>
-          <p>{post.body}</p>
-          <button onClick={() => handleDelete(post.id)} className="button">
-                削除する
-          </button>
-        </li>
-        </div>
-      ))}
-
-      </ul>
-      <div className='bottom'>
-      <button onClick={handleHome} className="button">homeに戻る</button> 
-      </div>
     </div>
+    <div className='post-container'>
+      {/* The <ul> tag should start here and not inside the map function */}
+      <ul>
+        {microposts.map((post) => (
+          // The key should be on the <li> element, not on a div wrapper.
+          <li key={post.id} className="post-list-item">
+            {/* Title and content */}
+            <p>title: <span>{post.title}</span></p>
+            <p>post内容: {post.body}</p>
+
+            {/* Delete button */}
+            <button className='button' onClick={() => handleDelete(post.id)} className="button">
+              削除
+            </button>
+          </li>
+        ))}
+      </ul> {/* The </ul> tag should end after the map function */}
+    </div>
+
+    {/* Footer with back button */}
+    <div className='bottom'>
+      <button onClick={handleHome} className="button">homeに戻る</button> 
+    </div>
+  </>
   );
 }
 
