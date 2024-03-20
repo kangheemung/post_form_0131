@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './PostsList.css';
 function PostsList() {
-  const [microposts, setMicroposts] = useState([]);
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
+  const [microposts, setMicroposts] = useState(null);
+
+  const [error, setError] = useState(null);
   //const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"; // Replace with actual JWT token
   //const user_id = 1; // Replace with actual user ID
   const jwtToken = localStorage.getItem('token')
@@ -13,7 +13,8 @@ function PostsList() {
   // Fetch the user's microposts
   useEffect(() => {
     const fetchMicroposts = async () => {
-      const url = `http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${id}/`;
+      const url = `http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${id}`;
+
       try {
         const response = await fetch(url, {
           method: 'GET',
@@ -22,22 +23,27 @@ function PostsList() {
             'Authorization': `Bearer ${jwtToken}`,
           },
         });
-        const result = await response.json();
-        console.log(result); // Logs the API response for debugging
-        if (response.ok) {
-          setUsername(result.user.name);
-          setEmail(result.user.email);
-          setMicroposts(result.data);
-        } else {
-          throw new Error(`HTTP error! status: ${response.status}`);
+
+        if (!response.ok) {
+          const errorBody = await response.text();
+          throw new Error(`HTTP error! Status: ${response.status} - ${errorBody}`);
         }
+
+        const result = await response.json();
+
+        setMicroposts(result.data || []);
       } catch (error) {
-        console.error("Fetching user data error:", error);
+        console.error("Fetching microposts error:", error);
+        setError('Failed to load microposts. Please check your connection and try again.');
       }
     };
+
     fetchMicroposts();
   }, [id, jwtToken]);
 
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
 
   const handleHome = () => {
@@ -58,7 +64,7 @@ function PostsList() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      console.log('Post deleted successfully');
+      //console.log('Post deleted successfully');
       // Remove the deleted post from the state to update the UI
       setMicroposts(microposts.filter(post => post.id !== postId));
     } catch (error) {
@@ -68,35 +74,32 @@ function PostsList() {
 
 
   return (
-    <>
-    <div className="myPosts_top">
-      <h2>{username}様の投稿したPosts</h2>
-      <p>email:{email}</p>
-    </div>
     <div className='post-container'>
-      {/* The <ul> tag should start here and not inside the map function */}
-      <ul className='post-list'>
-        {microposts && microposts.map((post) => (
-          // The key should be on the <li> element, not on a div wrapper.
-          <li key={post.id} className="post-list-item">
-            {/* Title and content */}
-            <p>title: <span>{post.title}</span></p>
-            <p>post内容: {post.body}</p>
+    {microposts ? (
+      microposts.length > 0 ? (
+        <ul className="Posts_List_ul">
+          {microposts.map((post) => (
+            <li key={post.id}>
+              <p>title <span>{post.title}</span></p>
+              <p>post内容</p>
+              <p>{post.body}</p>
+              <button onClick={() => handleDelete(post.id)} className="button">
+                削除
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>投稿ポストがないです</p>
+      )
+    ) : (
+      <p>Loading...</p>
+    )}
 
-            {/* Delete button */}
-            <button className='button' onClick={() => handleDelete(post.id)} >
-              削除
-            </button>
-          </li>
-        ))}
-      </ul> {/* The </ul> tag should end after the map function */}
-    </div>
 
-    {/* Footer with back button */}
-    <div className='bottom'>
-      <button onClick={handleHome} className="button">homeに戻る</button>
-    </div>
-  </>
+      <button className='button'onClick={handleHome} >home</button>
+
+  </div>
   );
 }
 

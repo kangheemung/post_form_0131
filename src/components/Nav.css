@@ -9,7 +9,7 @@
   display: flex;
   padding: 5% 5%;
   align-items: center;
-  z-index: 1000;
+  z-index: 2000;
 
   position: relative;
 
@@ -108,12 +108,22 @@
   text-decoration: none;
   color: inherit; /* Will take the color from its parent element */
 }
+@media (min-width: 2200px) {
+  .navbar_container {
+    background-color: #FFF;
+    width: 70%; /* Reduced width for larger screens */
+   /* Center the navbar by setting equal left and right margins */
+    
+  }
 
+  /* Additional styles for large screens can go here */
+}
 
 
 /* 小さな画面用のスタイル（例：携帯電話） */
 @media (max-width: 767px) {
   .navbar_container {
+    width: 100%; /* 画面の幅が768px以上なら幅を80%に */
     padding: 0.5rem; /* Adjust as needed */
   }
 

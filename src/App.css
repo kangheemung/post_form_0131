@@ -279,6 +279,7 @@ form.form1 {
   font-size: 13px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
+.submit_body{margin-top: 30%;}
 .submit_body .p{
   text-align: center;
 }
@@ -320,6 +321,15 @@ a {
 
 #dark .switch label {
   color: white;
+}
+.flash-message{
+  background-color: #f8d7da; /* Red */
+  color:green;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  text-align: center;
 }
 .flash-error {
   background-color: #f8d7da; /* Red */

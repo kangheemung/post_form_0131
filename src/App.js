@@ -3,14 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PostsList from './users/PostsList';
 import Page from './posts/Page';
 import EditPostComponent from './posts/EditPostComponent';
-import Todo from './posts/Todo';
+
 // Removed the unused Post import
 import NewPost from './posts/Newpost';
 import Nav from './components/Nav';
 import Home from './Home';
 import About from './components/About';
 import './App.css';
-import jwtDecode from 'jwt-decode';
 import Login from './users/Login';
 import Form from './users/Form';
 import { AuthProvider } from './components/AuthContext';
@@ -39,7 +38,7 @@ function App() {
   
        
           <Routes className='contain_main'>
-            {/*<Route path='/' element={<Home />} />*/}
+            <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
             <Route path='/auth' element={<Login />} />
             <Route path='/users' element={<Form />} />

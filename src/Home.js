@@ -6,12 +6,12 @@ function Home() {
     <div >
       <div className='submit_body'>
         <p>
-          <Link to="/api/v1/auth">
+          <Link to="/auth">
             <button className='submit'>Login</button>
           </Link>
         </p>
         <p>
-          <Link to="/api/v1/users">
+          <Link to="/users">
             <button className='submit'>signup</button>
           </Link>
         </p>

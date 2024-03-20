@@ -7,6 +7,7 @@ function Newpost({ todos, setTodos}) {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [userName, setUserName] = useState('');
+  const [flashMessage, setFlashMessage] = useState(''); 
   const navigate = useNavigate();
   //let { user_id } = useParams();
 //testのため仮のトークンを入れます。本来ならいらないです。
@@ -15,7 +16,11 @@ function Newpost({ todos, setTodos}) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    if (!title.trim() || !body.trim()) {
+      setFlashMessage('投稿内容を入力してください。');  // You can also use a state variable to show an error message
+      return;
+    }
+    setFlashMessage('');
     // Retrieve the JWT token from local storage
     const jwtToken = localStorage.getItem('token');
     if (!jwtToken) {
@@ -33,7 +38,7 @@ function Newpost({ todos, setTodos}) {
         body: body,
       };
 
-      console.log('Sending postData:', postData);
+      //console.log('Sending postData:', postData);
       const response = await fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${user_id}/microposts`, {
         method: 'POST',
         headers: {
@@ -68,8 +73,14 @@ function Newpost({ todos, setTodos}) {
   }, []);
     return (
       <div className ="post_body">
-        <div className="form-container">
-         <h2>{userName ? ` ${userName}` : ''}様の投稿ページ</h2>
+         <div>
+           <h2>{userName ? ` ${userName}` : ''}様の投稿ページ</h2>
+         </div>
+         {flashMessage && (
+         <div className="flash-message">
+           {flashMessage}
+         </div>
+       )}
           <form onSubmit={handleSubmit}>
             <div>
               <label className ="post-title">タイトル</label><br/>
@@ -88,10 +99,9 @@ function Newpost({ todos, setTodos}) {
                 onChange={(e) => setBody(e.target.value)}
               />
             </div>
-            <button className="button" type="submit">投稿する！</button>
+            <button className="button" > 投稿！</button>
           </form>
         </div>
-      </div>
     );
   }
   export default Newpost;

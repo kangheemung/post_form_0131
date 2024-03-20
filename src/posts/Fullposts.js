@@ -43,7 +43,7 @@ function Fullposts() {
             }
         })
         .then(data => {
-            console.log(data);
+            //console.log(data);
             setMicroposts(data || []);
             // log just the data to inspect its structure
 
@@ -65,8 +65,8 @@ function Fullposts() {
 
     // Event handler for liking a post
     const handleLike = (postId) => {;
-        console.log('Attempting to like post with ID:', postId); // Check if postId is correct
-        console.log('Current User:', currentUser);
+        //console.log('Attempting to like post with ID:', postId); // Check if postId is correct
+        //console.log('Current User:', currentUser);
         // Call your API endpoint to like a post
         fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts/${postId}/likes`, {
             method: 'POST',
@@ -84,7 +84,7 @@ function Fullposts() {
             return response.json();
         })
         .then(data => {
-            console.log('Liked successfully:', data);
+            //console.log('Liked successfully:', data);
             setLikedPosts((prevLikedPosts) => {
                 const updatedLikedPosts = new Set(prevLikedPosts);
                 updatedLikedPosts.add(postId);
@@ -127,7 +127,7 @@ function Fullposts() {
         })
         .then(data => {
             localStorage.setItem('followedUserIds', JSON.stringify([...new Set([...followedUserIds, userIdToFollow])]));
-            console.log('Followed successfully:', data);
+            //console.log('Followed successfully:', data);
             setFollowedUserIds(new Set([...followedUserIds, userIdToFollow]));
 
             // Optionally, set a notification message for the user interface
@@ -168,7 +168,7 @@ function Fullposts() {
         })
         .then(response => {
             if (response.status === 204 || response.ok) {
-                console.log('Unfollowed successfully');
+                //console.log('Unfollowed successfully');
                 setFollowedUserIds(prevFollowedUserIds => {
                     const updatedFollowedUserIds = new Set(prevFollowedUserIds);
                     updatedFollowedUserIds.delete(userIdToUnfollow);
@@ -219,7 +219,7 @@ function Fullposts() {
             }, 3000);
             return;
           }
-      console.log('Attempting to unlike post with ID:', postId);
+      //console.log('Attempting to unlike post with ID:', postId);
       // Call your API endpoint to unlike a post
       fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts/${postId}/likes`, {
         method: 'DELETE',
@@ -237,7 +237,7 @@ function Fullposts() {
         return response.text();
       })
       .then(() => {
-        console.log('Unliked successfully');
+        //console.log('Unliked successfully');
         setLikedPosts((prevLikedPosts) => {
           const updatedLikedPosts = new Set(prevLikedPosts);
           updatedLikedPosts.delete(postId);

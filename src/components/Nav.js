@@ -22,8 +22,7 @@ const Nav = ({ themeSwitch }) => {
           <div className="nav_links_container">
             <ul className="nav_link">
               {/* Always visible links */}
-              <li><Link to='/' className='header_a'><p>Home</p></Link></li>
-              <li> <Link to='/about' className='header_a'><p>About</p></Link></li>
+             
 
               {isUserLoggedIn ? (
                 // Render these links only when the user is logged in
@@ -36,8 +35,10 @@ const Nav = ({ themeSwitch }) => {
               ) : (
                 // Render these links only when the user is not logged in
                 <>
+                 <li><Link to='/' className='header_a'><p>Home</p></Link></li>
+                  <li> <Link to='/about' className='header_a'><p>About</p></Link></li>
                   <li><Link to='/auth' className='header_a'><p>Login</p></Link></li>
-                  <li><Link to='/users' className='header_a'><p>Sign in</p></Link></li>
+                  <li><Link to='/users' className='header_a'><p>Sign up</p></Link></li>
                 </>
               )}
               <li>{themeSwitch}</li>

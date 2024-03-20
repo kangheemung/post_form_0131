@@ -22,10 +22,9 @@
     justify-content: space-between;
 }
 .post_body {
-    display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center;
-    margin-top: 20%; /* Center vertically */
+    margin-top: 10%; /* Center vertically */
  /* Take up full viewport height */
     text-align: center;
 }
@@ -143,10 +142,7 @@ label, h2, button {
     display: flex;
     justify-content: center;
 }
-.navbar_container{
-    margin-top: 2%;
-    display: center;
-}
+
 .darkmode_box{
     margin-left: 10%;
     margin-bottom: 3%;
@@ -251,7 +247,6 @@ label, h2, button {
 
     .post_body,
     .form-container,
-    .navbar_container,
     .darkmode_box,
     .post-container p,
     .post-container button,
@@ -262,9 +257,6 @@ label, h2, button {
         text-align: center;
     }
 
-    .button {
-        width: 80%; /* Make button wider on small screens */
-    }
 }
 @media (max-width: 640px) {
     .post-list {

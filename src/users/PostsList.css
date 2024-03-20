@@ -1,29 +1,25 @@
 .Posts_List_ul {
-    padding: 8px;
+
     border: 5px solid #ddd;
     width: 100%;
     min-height: 200px; /* Minimum height */
     background-color: #ffe4f6;
     border: 2px solid #ffffff;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-    margin: 20px;
-    padding: 20px;
+    margin: 20%,20%;
+    padding: 20%,20%;
 }
 .dark-mode .Posts_List_ul {
     background-color: #33003c; /* New background color for dark mode */
   }
-.bottom{
-    text-align: center;
-}
+
 .button {
     background-color: #33003c;
     width: 50%;
     height: 40%;
     font-weight: bolder;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    padding-top: 3%;
-    padding-bottom: 3%;
+    margin: auto;
+    padding: auto;
     border: solid 1px;
     font-size: large;
     border-radius: 5%;

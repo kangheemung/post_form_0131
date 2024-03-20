@@ -28,7 +28,7 @@ function EditPostComponent() {
         .then(data => {
           // Log the fetched post data
           const { data: postData } = data;
-          console.log('Fetched post:', postData);
+          //console.log('Fetched post:', postData);
           setPost({
               title: postData.title || '',
               body: postData.body || ''
