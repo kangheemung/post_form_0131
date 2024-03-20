@@ -29,11 +29,15 @@
     text-align: center;
 }
 .post-container {
-    margin-top: 10%;
-    display: grid;
+    display: flex;
+    flex-direction: column; /* Stacking content vertically */
+    align-items: center; /* Centering content horizontally */
+    /* Centering content vertically when there are few items */
+    min-height: 80vh;
+
     grid-template-columns: repeat(3, 1fr); /* This will create three equal columns */
     gap: 20px; /* Adjust the space between columns as needed */
-    align-items: start; /* Aligns the content to the top of the container */
+  /* Aligns the content to the top of the container */
     text-align: center; /* Centers text horizontally */
   }
 
@@ -82,11 +86,7 @@ label, h2, button {
     margin: 0 auto; /* Centers the grid horizontally */
     max-width: 1200px; /* Optional - sets a max-width for the grid */
 }
-.post-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Adjust according to your header's height */
-  }
+
   .post-list-item {
     width: 80%; /* Or any other suitable width */
     flex: 0 1 calc(33% - 20px); /* Each item takes up roughly a third minus margin/padding */
@@ -101,11 +101,16 @@ label, h2, button {
   }
   .posts-grid-container {
     margin-bottom: 10%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* This ensures that the spacing between items is even */
+    flex-wrap: wrap; /* This ensures that the spacing between items is even */
     padding: 0; /* Remove default padding */
     list-style: none; /* Remove default list styling */
+    width: 100%;
+    max-width: 1200px; /* Set a maximum width if necessary */
+    margin: 0 auto; /* Horizontal alignment */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Space between posts */
+    justify-content: center;
   }
  .myPosts_List_top{
     margin-top:10%;
@@ -170,17 +175,14 @@ label, h2, button {
     background-color: #e03515; /* Darker shade on hover */
   }
 .post-list-item p:first-child {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
     font-weight: bold;
     margin-bottom: 0.5rem; /* Adds spacing between title and content */
   }
-.title{text-align: center;}
-.author-and-follow,  .content-and-like {
-    /* This will ensure that each div appears on a new line */
-    margin-bottom: 10px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between; /* Adjust spacing as needed */
-}
+
 
 .follow_btn, .like_btn {
     background-color: #33003c;
@@ -216,7 +218,8 @@ label, h2, button {
     .fullposts ul,
     .posts-grid-container {
         grid-template-columns: 1fr; /* Changes the layout to a single column */
-    }
+        margin-top: 5%; 
+      }
     .myPosts_List_top{
         margin-top: 10%;
      }
@@ -268,12 +271,13 @@ label, h2, button {
      .myPosts_top {
         margin-top: 20%; /* Increased margin-top for mobile devices */
       }
-    
+
 
       .post-container {
-        margin-top: 0; /* Reset margin-top to remove excess space */
+        margin-top: 3%; /* Even less margin for mobile screens */
+        min-height: 70vh; /* Adjust minimum height as needed */
       }
-    
+
 
     .post-list-item {
       margin-bottom: 10px;

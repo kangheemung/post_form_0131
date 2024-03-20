@@ -52,7 +52,7 @@ function PostsList() {
 
   const handleDelete = async (postId) => {
     try {
-      const response = await fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/microposts/${postId}`, {
+      const response = await fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${id}/microposts/${postId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +77,8 @@ function PostsList() {
     <div className='post-container'>
     {microposts ? (
       microposts.length > 0 ? (
-        <ul className="Posts_List_ul">
+        <div className='Posts_List_ul'>
+
           {microposts.map((post) => (
             <li key={post.id}>
               <p>title <span>{post.title}</span></p>
@@ -88,7 +89,8 @@ function PostsList() {
               </button>
             </li>
           ))}
-        </ul>
+
+        </div>
       ) : (
         <p>投稿ポストがないです</p>
       )

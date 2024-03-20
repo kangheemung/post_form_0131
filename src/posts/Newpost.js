@@ -52,7 +52,7 @@ function Newpost({ todos, setTodos}) {
       //console.log('Response data:', data);
       if (response.ok) {
         setUserName(data.user.name);
-        navigate(`/api/v1/users/${user_id}/microposts/${data.data.id}`);
+        navigate(`/users/${user_id}`);
       } else {
         throw new Error(`Error in creating post: ${data.message || "HTTP error! status: " + response.status}`);
       }

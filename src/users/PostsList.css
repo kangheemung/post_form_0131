@@ -1,10 +1,9 @@
 .Posts_List_ul {
-
-    border: 5px solid #ddd;
+    list-style-type: none; /* リストマーカーを非表示にします */
+    border: 2px solid #ddd;
     width: 100%;
     min-height: 200px; /* Minimum height */
     background-color: #ffe4f6;
-    border: 2px solid #ffffff;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     margin: 20%,20%;
     padding: 20%,20%;
