@@ -31,12 +31,9 @@ function App() {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <AuthProvider>
       <Router>
-      <div className={`app ${theme === 'dark' ? 'dark-mode' : ''}`} id={theme}>
-        <div className='content-below-header'>
-        <Nav className='header' themeSwitch={<ThemeSwitch className='switch'/>} />
-        </div>
-  
-       
+      <div className='App' id={theme}>
+        <Nav themeSwitch={<ThemeSwitch className='switch'/>} />
+        <div>
           <Routes className='contain_main'>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
@@ -52,6 +49,7 @@ function App() {
             <Route path='/users/:user_id/microposts/:id' element={<Page />} />
             <Route path='/users/:user_id/micropost/:id' element={<EditPostComponent />} />
           </Routes>
+        </div>
       </div>
       </Router>
       </AuthProvider>

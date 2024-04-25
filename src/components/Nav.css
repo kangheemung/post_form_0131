@@ -1,49 +1,39 @@
 .navbar_container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  flex-direction: column;
-  width: 100%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  background-color: #FFF;
   display: flex;
   padding: 5% 5%;
   align-items: center;
   z-index: 2000;
-
   position: relative;
-
+  margin-bottom: 10%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* 他の要素よりも手前に表示されるようにする */
+  background-color: #004A54; /* ナビゲーションバーの背景色 */
+  color: #DBE5E6;
 }
-
-
 .logo_container {
   display: flex;
   align-items: center;
   /* additional styling */
 }
-
-
 .nav_link {
   list-style: none; /* リストのスタイルをなくす */
   display: flex; /* Flexboxによる横並び表示 */
   margin: 0; /* 外側余白をなくす */
   padding: 0; /* 内側余白をなくす */
   justify-content: center; /* 子要素を中央揃えにする */
-  width: 100%;
   flex-wrap: wrap;
 }
 .nav_link li{
   color: #000;
 }
-/* Default link styles */
-
-
 /* Light mode link styles */
 #light .nav_link a,
 #light .nav_link a:visited {
   color: #000; /* Or any other color suitable for light mode */
 }
-
 /* Dark mode link styles */
 #dark .nav_link a,
 #dark .nav_link a:visited
@@ -61,13 +51,7 @@
   flex-direction: column;/* ナビゲーションリンクを左から始める */
 }
 
-.nav_and_greeting_container {
-  width: 100%; /* Ensure it takes full width */
-  display: flex;
-  flex-direction: row; /* Keep nav links horizontal */
-/* Space out nav links and theme switch */
-  align-items: center;
-}
+
 
 .greeting_box {
   color: #000;
@@ -79,8 +63,6 @@
   padding-top: 1rem; /* 上余白（必要に応じて調整） */
   padding-bottom: 1rem; /* 下余白（必要に応じて調整） */
 }
-
-
 .header {
   position: fixed; /* Keep the header at the top */
   width: 100%; /* Full width */
@@ -92,12 +74,10 @@
   align-items: center; /* Center vertically */
   padding-bottom: var(--header-height); /* Adjust padding as needed */
 }
-
 /* Adjust spacing between links */
 .nav_link li {
   margin-right: 20px;
 }
-
 /* Remove the right margin from the last item in the list */
 .nav_link li:last-child {
   margin-right: 0;
@@ -111,9 +91,8 @@
 @media (min-width: 2200px) {
   .navbar_container {
     background-color: #FFF;
-    width: 70%; /* Reduced width for larger screens */
+ 
    /* Center the navbar by setting equal left and right margins */
-    
   }
 
   /* Additional styles for large screens can go here */
@@ -123,7 +102,6 @@
 /* 小さな画面用のスタイル（例：携帯電話） */
 @media (max-width: 767px) {
   .navbar_container {
-    width: 100%; /* 画面の幅が768px以上なら幅を80%に */
     padding: 0.5rem; /* Adjust as needed */
   }
 

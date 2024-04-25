@@ -42,14 +42,12 @@
   }
 
 .form-container {
-  position: relative; 
+  position: relative;
   display: flex;
   flex-direction: column; /* Stack children vertically */
   align-items: center; /* Optional shadow for better visibility */
 }
-
 /* Continue with the rest of your CSS... */
-
 /* Make sure that only relevant elements inherit the text-align property */
 label, h2, button {
     text-align: center;
@@ -75,7 +73,7 @@ label, h2, button {
 .like_btn {
     background-color: #ffbdbd; /* Set different background for Like button */
 }
-.fullposts{ 
+.fullposts{
   max-width: 1200px; /* Set a maximum width */
   margin-left: auto;
   margin-right: auto;}
@@ -92,7 +90,6 @@ label, h2, button {
     flex: 0 1 calc(33% - 20px); /* Each item takes up roughly a third minus margin/padding */
     margin-bottom: 20px;
     text-align: center;
-     /* Card styling */
     background-color: #ffffff; /* Change as needed for your design */
     border: 1px solid #dddddd; /* Light grey border */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Simple shadow effect */
@@ -124,7 +121,6 @@ label, h2, button {
   .post-container ul {
     display: grid;
     text-align: center;
-
     grid-template-columns: repeat(3, 1fr); /* Creates 3 columns of equal width */
     gap: 20px; /* Adds space between grid items */
     list-style-type: none; /* Remove default list styling */

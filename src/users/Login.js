@@ -95,7 +95,7 @@ function Login() {
     }
 }
   return (
-    <div className='main_body'>
+    <div >
     <div className="main">
       <p className="sign" align="center">
         Login

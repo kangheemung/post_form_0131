@@ -18,12 +18,9 @@ const Nav = ({ themeSwitch }) => {
 
     return (
         <nav className="navbar_container">
-          <div className="nav_and_greeting_container">
           <div className="nav_links_container">
             <ul className="nav_link">
               {/* Always visible links */}
-             
-
               {isUserLoggedIn ? (
                 // Render these links only when the user is logged in
                 <>
@@ -43,7 +40,6 @@ const Nav = ({ themeSwitch }) => {
               )}
               <li>{themeSwitch}</li>
             </ul>
-          </div>
           </div>
           <div className="greeting_box">
            <p className="greeting">{userName}様こんにちは</p>
