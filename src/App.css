@@ -312,29 +312,36 @@ a {
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  width: 80%;
-  height: 50px;
-  transform: translate(30%, 0%);
-   /* パディングを一律に設定 */
+  position: absolute;
+  top: 50%;
   text-align: center;
-  display: inline-block;
+  left: 50%;
+  transform: translate(30%, 0%);
+  width: 30%;
+  height: 50px;
+  padding: 10px; /* パディングを適切な値に修正 */
+  max-width: 200px; /* ボタンの最大幅を設定 */
+  height: 50px; /* ボタンの高さを設定 */
   background-color: #004A54;
-  color: #DBE5E6;
-  font-weight: bolder;
+  color: #F0F3F3;
+  font-weight: bold;
+  font-size: large;
   border: none;
   outline: none;
   border-radius: 10px;
+  cursor: pointer;
 }
 .large-button_1:nth-child(2) {
   top: 50%; /* 上から50%の位置に配置 */
   left: 50%; /* 左から50%の位置に配置 */
-  transform: translate(50%, 50%); /* 要素の中央揃え */
+  transform: translate(30%, 50%); /* 要素の中央揃え */
 }
 .large-button_1 {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(30%, 0%);
+  text-align: center;
+  transform: translate(-130%, 0%);
   width: 30%;
   height: 50px;
   padding: 10px; /* パディングを適切な値に修正 */
