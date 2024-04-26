@@ -1,18 +1,15 @@
 .navbar_container {
-  display: flex;
-  padding: 5% 5%;
+  padding: 2% 3%;
   align-items: center;
-  z-index: 2000;
-  position: relative;
-  margin-bottom: 10%;
+  z-index: 300;
   position: fixed;
+  justify-content: space-between;
   top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000; /* 他の要素よりも手前に表示されるようにする */
-  background-color: #004A54; /* ナビゲーションバーの背景色 */
-  color: #DBE5E6;
+  left: 0;/* Set the left side to center */ /* Adjust to center horizontally */
+  width: 100%; /* Full width */
+  background-color: #004A54; /* Navigation bar background color */
 }
+
 .logo_container {
   display: flex;
   align-items: center;
@@ -26,38 +23,66 @@
   justify-content: center; /* 子要素を中央揃えにする */
   flex-wrap: wrap;
 }
-.nav_link li{
-  color: #000;
+
+.nav_link_text{
+  display: flex;
+  margin-left: 5%;
+  margin-top: 5%;
+  justify-content: center;
+}
+.nav_link_text p{
+  margin-left: 5%;
+  font-size: large;
 }
 /* Light mode link styles */
 #light .nav_link a,
-#light .nav_link a:visited {
-  color: #000; /* Or any other color suitable for light mode */
+#light .nav_link a:visited,
+#light  .nav_link a:hover,
+#light .darkmode_box,
+#light .nav_link_text,
+#light .header_a{
+  color:#DBE5E6; /* ナビゲーションバーの背景色 */ 
+  font-weight: bold;/* Or any other color suitable for light mode */
 }
 /* Dark mode link styles */
 #dark .nav_link a,
 #dark .nav_link a:visited
 #dark .nav_link a:hover,
-#dark .nav_link a:active {
-  color: #000000;
+#dark .nav_link a:active,
+#dark .navbar_container,
+#dark .nav_link_text,
+#dark .header_a,
+#dark .switch_box,
+#dark .darkmode_box,
+#dark .greeting{
+  background-color:#DBE5E6;
+  color:#004A54;
+  font-weight: bold;
+}
+
+.switch_box {
+  align-self: center;
+  margin-right: 2%;
 }
 
 #dark .theme-switch {
   color: #000; /* ダークモードでのテーマ切り替えスイッチの文字色も黒に (class name is an example) */
 }
 
-.nav_links_container {
-  flex-grow: 1; /* 利用可能な追加のスペースを伸ばす */
-  flex-direction: column;/* ナビゲーションリンクを左から始める */
+.nav_links_container{
+  display: flex;
+  justify-content: space-between;
+
 }
-
-
-
+.nav_link{
+  display: flex;
+}
 .greeting_box {
-  color: #000;
+  color: #DBE5E6;
 /* アイテムを縦に並べる */
-  align-items: center; /* 水平方向の中央揃え */
-  justify-content: center; /* 垂直方向の中央揃え */
+  display: flex;
+  justify-content: center;
+  text-align: center;
   margin-left: auto; /* 右寄せにする */
   margin-right: auto; /* 左寄せにする */
   padding-top: 1rem; /* 上余白（必要に応じて調整） */
@@ -82,45 +107,36 @@
 .nav_link li:last-child {
   margin-right: 0;
 }
-
 /* Style for logo text */
 .logo_text p {
   text-decoration: none;
   color: inherit; /* Will take the color from its parent element */
 }
-@media (min-width: 2200px) {
-  .navbar_container {
-    background-color: #FFF;
- 
-   /* Center the navbar by setting equal left and right margins */
+
+@media screen and (min-width: 768px) {
+  .nav_link_text {
+      justify-content: center;
+      font-size: x-large;
+    }
+    .nav_link_text{
+      display: flex;
+      margin-left: 15%;
+      margin-top: 1%;
+      justify-content: center;
+    }
+    .navbar_container, .header_a{
+    justify-content: center;
+    font-size: x-large;
+    }
+  .nav_link_text p{
+    margin-left: 15%;
   }
-
-  /* Additional styles for large screens can go here */
-}
-
-
-/* 小さな画面用のスタイル（例：携帯電話） */
-@media (max-width: 767px) {
-  .navbar_container {
-    padding: 0.5rem; /* Adjust as needed */
+  .switch_box,
+  .darkmode_box,
+  .darkmode_box p{
+    font-size: medium;
   }
-
-  .nav_link {
-    gap: 10px; /* nav items間の余白 */
-    flex-direction: row; /* 横並びに表示されるように設定 */
-    justify-content: center; /* 横方向中央寄せ */
-    align-items: center;
-    flex-wrap: wrap; /* アイテムが収まりきらない場合は折り返す */
-  }
-
-}
-
-/* 大きな画面用のスタイル */
-@media (min-width: 768px) {
-
-
-  /* リスト要素のマージン調整など */
-  .nav_link li:last-child {
-    margin-right: 0;
+  @media only screen and (max-width: 600px) {
+  
   }
 }

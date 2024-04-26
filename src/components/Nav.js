@@ -17,35 +17,36 @@ const Nav = ({ themeSwitch }) => {
     //console.log(isUserLoggedIn);    // Debug login flag state
 
     return (
+      <div>
         <nav className="navbar_container">
-          <div className="nav_links_container">
-            <ul className="nav_link">
               {/* Always visible links */}
+          <div className="nav_links_container">
               {isUserLoggedIn ? (
                 // Render these links only when the user is logged in
-                <>
-                  <li><Link to="/microposts" className='header_a'><p>FullPost</p></Link></li>
-                  <li><Link to={`/users/${userId}`} className='header_a'><p>mypage</p></Link></li>
-                  <li><Link to={`/users/${userId}/micropost`} className='header_a'><p>NewPost</p></Link></li>
-                  <li><Link  onClick={handleLogoutClick} className='header_a'><p>Logout</p></Link></li><br/>
-                </>
+                <div className = "nav_link_text">
+                  <p><Link to="/microposts" className='header_a'><p>FullPost</p></Link></p>
+                  <p><Link to={`/users/${userId}`} className='header_a'><p>mypage</p></Link></p>
+                  <p><Link to={`/users/${userId}/micropost`} className='header_a'><p>NewPost</p></Link></p>
+                  <p><Link  onClick={handleLogoutClick} className='header_a'><p>Logout</p></Link></p><br/>
+                </div>
               ) : (
                 // Render these links only when the user is not logged in
-                <>
-                 <li><Link to='/' className='header_a'><p>Home</p></Link></li>
-                  <li> <Link to='/about' className='header_a'><p>About</p></Link></li>
-                  <li><Link to='/auth' className='header_a'><p>Login</p></Link></li>
-                  <li><Link to='/users' className='header_a'><p>Sign up</p></Link></li>
-                </>
+                <div className="nav_link_text">
+                  <p><Link to='/' className='header_a'>home</Link></p>
+                  <p><Link to='/about' className='header_a'>About</Link></p>
+                  <p><Link to='/auth' className='header_a'>Login</Link></p>
+                  <p><Link to='/users' className='header_a'>Sign_up</Link></p>
+                </div>
               )}
-              <li>{themeSwitch}</li>
-            </ul>
+               <div className="switch_box">
+                 {themeSwitch}
+               </div>
           </div>
           <div className="greeting_box">
-           <p className="greeting">{userName}様こんにちは</p>
+          <p className="greeting">{userName}様こんにちは</p>
           </div>
-        </nav>
-
+       </nav>
+     </div>
     );
 };
 

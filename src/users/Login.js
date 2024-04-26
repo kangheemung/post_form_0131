@@ -96,12 +96,12 @@ function Login() {
 }
   return (
     <div >
-    <div className="main">
+    <div className="main_body">
+      <form className="main_form" onSubmit={handleSubmit}>
       <p className="sign" align="center">
         Login
       </p>
 
-      <form className="form1" onSubmit={handleSubmit}>
         <input
           className="username"
           type="text"

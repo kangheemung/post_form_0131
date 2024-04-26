@@ -1,5 +1,3 @@
-// ThemeSwitch.js
-
 import  {  useContext, useEffect} from 'react';
 import { ThemeContext } from '../App'; // Make sure this path matches the location of your App.js file
 import ReactSwitch from 'react-switch'; // Ensure ReactSwitch is imported
@@ -18,7 +16,7 @@ const ThemeSwitch = () => {
   return (
     <div className='darkmode_box'>
     <label>
-      <p><span>{theme === 'dark' ? 'Dark ' : 'Light'}</span></p>
+      <p><span className='darkmode_box_t'>{theme === 'dark' ? 'Dark ' : 'Light'}</span></p>
       <p><ReactSwitch onChange={toggleTheme} checked={theme === 'dark'} /></p>
     </label>
     </div>

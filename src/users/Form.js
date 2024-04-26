@@ -97,12 +97,12 @@ function Form() {
     }
   return (
     <div className='main_body'>
-    <div className= "main">
-      <p className= "sign" align="center">
-        Sign up
-      </p>
+    
+      <form className="main_form" onSubmit={handleSubmit}>
+        <h2 className= "sign" align="center">
+          Sign up
+        </h2>
       {flashMessage && <div className="flash-message">{flashMessage}</div>}
-      <form className="form1" onSubmit={handleSubmit}>
         <input className= "username" type = "text" placeholder= "Username" value={name} onChange={(e) => setName(e.target.value)} />
         {error.name && <div className="flash-error">{error.name}</div>}
         <input className= "username" type = "text" placeholder= "Email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -113,7 +113,6 @@ function Form() {
         {error.passwordConfirmation && <div className="flash-error">{error.passwordConfirmation}</div>}
         <button type="submit" className="submit">Submit</button>
       </form>
-    </div>
     </div>
   );
 }
