@@ -17,7 +17,7 @@ const Nav = ({ themeSwitch }) => {
     //console.log(isUserLoggedIn);    // Debug login flag state
 
     return (
-      <div>
+      <div >
         <nav className="navbar_container">
               {/* Always visible links */}
           <div className="nav_links_container">
