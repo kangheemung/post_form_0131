@@ -1,27 +1,165 @@
-.Posts_List_ul {
+.Posts_List {
     list-style-type: none; /* リストマーカーを非表示にします */
-    border: 2px solid #ddd;
+    border: solid #004A54 1px;
     width: 100%;
     min-height: 200px; /* Minimum height */
-    background-color: #ffe4f6;
+    background-color: #DBE5E6;;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     margin: 20%,20%;
     padding: 20%,20%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
 }
-.dark-mode .Posts_List_ul {
-    background-color: #33003c; /* New background color for dark mode */
+.Posts_List_ul {
+    list-style-type: none;
+    grid-template-columns: repeat(3, 1fr); /* Change to 3 columns */
+    display: flex;
+    flex-wrap: wrap;
   }
-
-.button {
-    background-color: #33003c;
+#dark .Posts_List_ul
+ {
+    background-color: #03282e;
+    color: #DBE5E6; /* New background color for dark mode */
+  }
+  #dark .post-container_t{
+    color: #DBE5E6;
+  }
+.dark-mode .p_button {
+    background-color: #03282e;
     width: 50%;
-    height: 40%;
-    font-weight: bolder;
-    margin: auto;
-    padding: auto;
     border: solid 1px;
-    font-size: large;
+
     border-radius: 5%;
     text-align: center;
     color: whitesmoke;
+}
+#light .p_button {
+    background-color: #DBE5E6;
+    margin-top: 5%;
+    width: 50%;
+    border: solid 1px;
+    border-radius: 5%;
+    text-align: center;
+    color:  #03282e;
+}
+.post_box{
+    width: 98%;
+    border: solid #004A54 1px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.post_box_b {
+    font-size: 15px; /* Default font size for smaller screens */
+}
+.Posts_List_ul{
+padding: 5%;
+}
+.post_box_p {
+    font-size: 15px;
+}
+.post-container_t{
+margin-top: 30%;
+margin-bottom:5%;
+color:#004A54;
+text-align: center;
+}
+.p_submit_box{
+    text-align: center;
+}
+.post-container_m{
+  /* Center the element both horizontally and vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 90vmin; /* Set width and height to the same value for a perfect circle */
+    font-size: 5vw;
+    text-align: center;
+}
+.p_submit{
+    width: 80%;
+    background-color: #F0F3F3;
+    color:#004A54;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-weight: bolder;
+    border:0;
+    outline:0;
+    border-radius: 10px;
+}
+#dark .p_submit{
+    width: 80%;
+    display: inline-block;
+    background-color:#004A54;
+    color:#F0F3F3;
+    margin-top: 1%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-weight: bolder;
+    border:0;
+    outline:0;
+    border-radius: 10px;
+}
+  @media (min-width: 768px) {
+    .post-container{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        width: 80vmin; /* Set width and height to same value for a perfect circle */
+        height: 80vmin;
+        font-size: 5vw;
+        text-align: center;
+      }
+    .p_submit{
+        width: 30%;
+        display: inline-block;
+        background-color: #F0F3F3;
+        color:#004A54;
+        margin-top: 1%;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        font-weight: bolder;
+        border:0;
+        outline:0;
+        border-radius: 10px;
+    }
+
+
+    .post-container_t{
+        margin-top: 40%;
+    }
+    .post_box_b {
+        font-size: 20px;
+        font-weight: bold; /* Adjust font size for larger screens */
+    }
+
+    .post_box_p {
+        font-size: 18px; /* Adjust font size for larger screens */
+    }
+}
+    @media (max-width: 768px) {
+        .post-container_t{
+            margin-top: 60%;
+        }
+        .post_box_b {
+            font-size: 20px;
+            font-weight: bold; /* Adjust font size for larger screens */
+        }
+        .post_box_p {
+            font-size: 18px; /* Adjust font size for larger screens */
+        }
+        .p_submit_box{
+            margin-top: 5%;
+        }
+       
+       .Posts_List_ul li {
+            width: 50%; /* Displaying two items per row on smaller screens */
+        }
 }

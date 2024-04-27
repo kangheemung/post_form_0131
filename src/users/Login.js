@@ -31,7 +31,14 @@ function Login() {
     } else {
       setErrors(prevErrors => ({ ...prevErrors, password: '' })); // Clear error
     }
-
+    if (!email || !password) {
+      setErrors(prevErrors => ({
+        ...prevErrors,
+        email: !email ? "Email is required." : "",
+        password: !password ? "Password is required." : ""
+    }));
+    isValid = false;
+    }
     return isValid;
   };
   useEffect(() => {
@@ -39,7 +46,7 @@ function Login() {
     if (flashMessage) {
         timer = setTimeout(() => {
             setFlashMessage(''); // Clear the flash message after 3000ms (3 seconds)
-        }, 3000);
+        }, 2000);
     }
     return () => clearTimeout(timer); // Cleanup the timer when the component unmounts or flashMessage changes
 }, [flashMessage]);
@@ -48,6 +55,7 @@ function Login() {
     event.preventDefault(); // Prevents the default form submission
     setErrors({ email: '', password: '' });
     setFlashMessage('');
+
 
     if (!validateFields()) {
       return;
@@ -83,15 +91,28 @@ function Login() {
           }, 2000)
         } else {
           console.errors('User ID is undefined.');
-          alert('Failed to retrieve user ID.');
+          setFlashMessage('会員登録されてないIDです');
         }
       } else {
-        console.errors('Failed to login:', data);
-        console.errors('There was an error!', errors);
+          if (data.error === 'UserNotFound') {
+              setErrors(prevErrors => ({ ...prevErrors, email: "User not found. Please check your email." }));
+              setFlashMessage('User not found. Please check your email.');
+            } else {
+              setErrors(prevErrors => ({ ...prevErrors, email: data.message }));
+              setFlashMessage("Please check your email or password.");
+          }
       }
-    } catch (errors) {
-      console.errors('There was an error!', errors);
-      alert(errors.message);
+    } catch (error) {
+      console.error('There was an error!', error); // Corrected from console.errors to console.error
+      setFlashMessage('This ID is not registered as a member.'); // Set a flash message for login failure
+      if (error.message === 'UserNotFound') {
+          setErrors(prevErrors => ({ ...prevErrors, email: "User not found. Please check your email." }));
+          setFlashMessage('User not found. Please check your email.');
+      } else {
+          console.error('Failed to login:', error);
+          setErrors(prevErrors => ({ ...prevErrors, email: error.message }));
+          setFlashMessage('User not found. Please check your email.');
+      }
     }
 }
   return (
@@ -101,7 +122,7 @@ function Login() {
       <p className="sign" align="center">
         Login
       </p>
-
+      {flashMessage && <div className="flash-message">{flashMessage}</div>}
         <input
           className="username"
           type="text"

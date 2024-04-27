@@ -23,7 +23,7 @@ const Nav = ({ themeSwitch }) => {
           <div className="nav_links_container">
               {isUserLoggedIn ? (
                 // Render these links only when the user is logged in
-                <div className = "nav_link_text">
+                <div className = "nav_link_text_login">
                   <p><Link to="/microposts" className='header_a'><p>FullPost</p></Link></p>
                   <p><Link to={`/users/${userId}`} className='header_a'><p>mypage</p></Link></p>
                   <p><Link to={`/users/${userId}/micropost`} className='header_a'><p>NewPost</p></Link></p>
@@ -38,9 +38,9 @@ const Nav = ({ themeSwitch }) => {
                   <p><Link to='/users' className='header_a'>Sign_up</Link></p>
                 </div>
               )}
-               <div className="switch_box">
-                 {themeSwitch}
-               </div>
+            <div className="switch_box">
+                    {themeSwitch}
+            </div>
           </div>
           <div className="greeting_box">
           <p className="greeting">{userName}様こんにちは</p>

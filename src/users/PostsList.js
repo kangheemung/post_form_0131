@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './PostsList.css';
 function PostsList() {
   const [microposts, setMicroposts] = useState(null);
-
   const [error, setError] = useState(null);
   //const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"; // Replace with actual JWT token
   //const user_id = 1; // Replace with actual user ID
@@ -47,7 +46,7 @@ function PostsList() {
 
 
   const handleHome = () => {
-    navigate('/'); // Navigate back to home
+    navigate('/microposts'); // Navigate back to home
   };
 
   const handleDelete = async (postId) => {
@@ -74,34 +73,39 @@ function PostsList() {
 
 
   return (
-    <div className='post-container'>
-    {microposts ? (
-      microposts.length > 0 ? (
-        <div className='Posts_List_ul'>
+  <>
+    <div className='post-container_t'><h1>あなたが投稿した内容</h1></div>
+    <div className='post-container_m'>
+      {microposts ? (
+        microposts.length > 0 ? (
+          <div className='Posts_List_ul'>
 
-          {microposts.map((post) => (
-            <li key={post.id}>
-              <p>title <span>{post.title}</span></p>
-              <p>post内容</p>
-              <p>{post.body}</p>
-              <button onClick={() => handleDelete(post.id)} className="button">
-                削除
-              </button>
-            </li>
-          ))}
-
-        </div>
+            {microposts.map((post) => (
+              <li key={post.id} className='post_box'>
+                <p className="post_box_b">title </p>
+                <p className="post_box_p">{post.title}</p>
+                <p className="post_box_b">post内容</p>
+                <p className="post_box_p">{post.body}</p>
+                <button onClick={() => handleDelete(post.id)} className="p_button">
+                  削除
+                </button>
+              </li>
+            ))}
+          </div>
+        ) : (
+          <p>投稿ポストがないです。</p>
+        )
       ) : (
-        <p>投稿ポストがないです</p>
-      )
-    ) : (
-      <p>Loading...</p>
-    )}
-
-
-      <button className='button'onClick={handleHome} >home</button>
-
+        <p>Loading...</p>
+      )}
+    </div>
+  <div className='p_submit_box'>
+  <button className='p_submit' onClick={handleHome}>
+    みんなのポスト見に行く！
+  </button>
   </div>
+
+</>
   );
 }
 

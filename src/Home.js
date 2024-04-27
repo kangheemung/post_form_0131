@@ -3,21 +3,21 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   return (
-    <>
+    <div className='home_kao'>
       <div className="home_body">
         <div className="top_main">
-          <div className='large-button_1'>
-              <Link to="/auth" >Login</Link>
-          </div>
           <div>
+              <Link to="/auth" className='large-button_1'>Login</Link>
+          </div>
+          <div className="animated-img-container">
             <img className="top_img" src={process.env.PUBLIC_URL + '/hand.png'} alt="Description" />
           </div>
-          <div className="btn">
-            <Link to="/users" >Signup</Link>
+          <div>
+            <Link to="/users" className="btn">Signup</Link>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

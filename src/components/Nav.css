@@ -9,6 +9,17 @@
   width: 100%; /* Full width */
   background-color: #004A54; /* Navigation bar background color */
 }
+.nav_link_text_login{
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  justify-content: center;
+}
+.nav_link_text_login p{
+  margin-left: 5%;
+
+}
 
 .logo_container {
   display: flex;
@@ -26,9 +37,9 @@
 
 .nav_link_text{
   display: flex;
-  margin-left: 5%;
+  margin-left: 1%;
   margin-top: 5%;
-  justify-content: center;
+  justify-content: space-between;
 }
 .nav_link_text p{
   margin-left: 5%;
@@ -137,6 +148,6 @@
     font-size: medium;
   }
   @media only screen and (max-width: 600px) {
-  
+    .nav_link_text{margin-left: 2;}
   }
 }

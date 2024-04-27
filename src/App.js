@@ -1,7 +1,8 @@
-import React, { createContext,useState } from 'react';
+import React, { createContext,useState} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PostsList from './users/PostsList';
 import Page from './posts/Page';
+import Bottom from './components/Bottom';
 import EditPostComponent from './posts/EditPostComponent';
 
 // Removed the unused Post import
@@ -31,26 +32,27 @@ function App() {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <AuthProvider>
       <Router>
-      <div className='App' id={theme}>
-        <Nav themeSwitch={<ThemeSwitch className='switch'/>} />
-        <div>
-          <Routes className='contain_main'>
-            <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/auth' element={<Login />} />
-            <Route path='/users' element={<Form />} />
-            <Route
-               path='/users/:id'
-               element={<PostsList />}
-            />
-            <Route path='/microposts' element={<Fullposts/>}/>
-            <Route path='/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />
-            {/* Make sure to define ShowPostComponent or remove this line if it's not needed */}
-            <Route path='/users/:user_id/microposts/:id' element={<Page />} />
-            <Route path='/users/:user_id/micropost/:id' element={<EditPostComponent />} />
-          </Routes>
+        <div className='App' id={theme}>
+          <Nav themeSwitch={<ThemeSwitch className='switch'/>} />
+          <div>
+            <Routes className='contain_main'>
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/auth' element={<Login />} />
+              <Route path='/users' element={<Form />} />
+              <Route
+                path='/users/:id'
+                element={<PostsList />}
+              />
+              <Route path='/microposts' element={<Fullposts/>}/>
+              <Route path='/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />
+              {/* Make sure to define ShowPostComponent or remove this line if it's not needed */}
+              <Route path='/users/:user_id/microposts/:id' element={<Page />} />
+              <Route path='/users/:user_id/micropost/:id' element={<EditPostComponent />} />
+            </Routes>
+          </div>
+          <Bottom/>
         </div>
-      </div>
       </Router>
       </AuthProvider>
     </ThemeContext.Provider>

@@ -97,7 +97,6 @@ function Form() {
     }
   return (
     <div className='main_body'>
-    
       <form className="main_form" onSubmit={handleSubmit}>
         <h2 className= "sign" align="center">
           Sign up
