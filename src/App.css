@@ -111,6 +111,7 @@ body {
   background-color: #fff;
   color: #004A54;
 }
+.mainbody{margin-top: 10%;}
 .username {
   font-family: 'Mali', cursive;
   width: 76%;
@@ -576,8 +577,8 @@ input{
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    width: 75vmin; /* Set width and height to same value for a perfect circle */
-    height: 75vmin;
+    width: 80vmin;  /* Set width and height to same value for a perfect circle */
+    height: 80vmin;
     font-size: 5vw;
     border-radius: 50%;
     text-align: center;

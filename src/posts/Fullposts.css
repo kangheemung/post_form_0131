@@ -118,6 +118,7 @@ label, h2, button {
 }
 
  .myPosts_List_top{
+   margin-top: 5%;
     margin-bottom: 5%;
     text-align: center;
  }
@@ -216,14 +217,13 @@ label, h2, button {
 }
 @media (max-width: 768px) {
   .fullposts{
-    margin-top: 15%;
+   
     padding: 5%;
   }
   .posts-grid-container {
     grid-template-columns: 1fr; /* Change to a single column layout */
 }
-.post-container,
-.fullposts ul{
+.post-container{
     margin-top: 10%;
   }
   #post-title_box,
@@ -233,12 +233,8 @@ label, h2, button {
 }
 
 @media (min-width: 768px) {
-  .fullposts {
-    margin-top: 20%;
-  }
-  .myPosts_List_top{
-      margin-top: 10%;
-    }
+
+
   .myPosts_top {
     margin-top: 30%; /* Less margin for slightly larger screens */
   }

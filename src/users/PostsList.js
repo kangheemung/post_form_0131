@@ -78,6 +78,7 @@ function PostsList() {
     <div className='post-container_m'>
       {microposts ? (
         microposts.length > 0 ? (
+
           <div className='Posts_List_ul'>
 
             {microposts.map((post) => (
@@ -94,7 +95,7 @@ function PostsList() {
           </div>
         ) : (
           <>
-          <div className='post-container_t_1'><h2>あなたが投稿した内容</h2></div>
+        
           <p className='post-container_m_p'>投稿ポストがないです。</p>
           </>
         )

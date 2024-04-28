@@ -34,7 +34,7 @@ function App() {
       <Router>
         <div className='App' id={theme}>
           <Nav themeSwitch={<ThemeSwitch className='switch'/>} />
-          <div>
+          <div className='mainbody'>
             <Routes className='contain_main'>
               <Route path='/' element={<Home />} />
               <Route path='/about' element={<About />} />

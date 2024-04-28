@@ -7,6 +7,8 @@
     padding: 20px;
     display: grid;
     grid-gap: 20px;
+    justify-content: center; /* Horizontally center the element */
+    align-items: center
   }
   .post-body_main {
     display: flex;
@@ -24,10 +26,6 @@
     padding: 3%;
     border-radius: 5%;
   }
-  .post-container_t_1{
-    margin-top: 40%;
-    margin-bottom: 10%;
-}
   #dark .Posts_List_ul,
   #dark.post_box
   {
@@ -63,6 +61,9 @@
   .p_submit_box_bottom{
     text-align: center;
   }
+  #dark .post-container_t_1 h2{
+    color:#ffffff;
+  }
   .post_box {
     width: 98%;
     border: solid #F0F3F3 2px;
@@ -92,7 +93,6 @@
     margin-bottom: 10%;
   }
   .post-container_t {
-    margin-top: 45%;
     color: #004A54;
     text-align: center;
   }
@@ -139,7 +139,5 @@
     .post_box_p {
       font-size: 15px;
     }
-    .post-container_t {
-      margin-top: 10%;
-    }
+   
   }
