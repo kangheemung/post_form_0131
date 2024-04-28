@@ -73,7 +73,7 @@ function Newpost({ todos, setTodos}) {
   }, []);
     return (
       <div className ="post_body">
-         <div>
+         <div className ="post_body_top">
            <h2>{userName ? ` ${userName}` : ''}様の投稿ページ</h2>
          </div>
          {flashMessage && (
@@ -81,27 +81,29 @@ function Newpost({ todos, setTodos}) {
            {flashMessage}
          </div>
        )}
-          <form onSubmit={handleSubmit}>
+        <div className="post-container_m">
+          <form onSubmit={handleSubmit} className='post_body_main'>
             <div>
               <label className ="post-title">タイトル</label><br/>
               <input
                 type="text"
-                id="post-title"
+                id='post-title_box'
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor="post-content">内容</label><br/>
+              <label htmlFor="post-content_t">内容</label><br/>
               <textarea
-                id="post-content"
+                id="post-content_box"
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
               />
             </div>
-            <button className="button" > 投稿！</button>
+            <button className="post-button" > 投稿！</button>
           </form>
         </div>
+      </div>
     );
   }
   export default Newpost;

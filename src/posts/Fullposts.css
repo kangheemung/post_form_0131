@@ -22,11 +22,38 @@
     justify-content: space-between;
 }
 .post_body {
-    justify-content: center; /* Center horizontally */
-    align-items: center;
-    margin-top: 10%; /* Center vertically */
- /* Take up full viewport height */
-    text-align: center;
+  position: fixed; /* Position the element relative to the viewport */
+  top: 55%; /* Align the top edge of the element at the vertical midpoint */
+  left: 50%; /* Align the left edge of the element at the horizontal midpoint */
+  transform: translate(-50%, -50%); /* Move the element back by half of its own size */
+  width: 70%; /* Set desired width */
+  height: 50vh; /* Set desired height */
+  border: 2px solid #333; /* Add a border styling */
+  border-radius: 10px; /* Add rounded corners */
+  background-color: #f0f0f0; /* Set background color */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add shadow effect */
+  max-width: 800px; /* Set a maximum width for the post_body container */
+  margin: 3% auto; 
+}
+.post_body_main {
+  position: fixed; /* Position the element relative to the viewport */
+  top: 55%; /* Align the top edge of the element at the vertical midpoint */
+  left: 50%; /* Align the left edge of the element at the horizontal midpoint */
+  transform: translate(-50%, -50%); /* Move the element back by half of its own size */
+  width: 70%; /* Set desired width */
+  height: 50vh; /* Set desired height */
+   /* Add a border styling */
+  border-radius: 10px; /* Add rounded corners */
+  text-align: center;
+  margin-top: 15%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#post-content {
+  width: 80%; /* Set the width of the input box to 100% of its container */
+  box-sizing: border-box
 }
 .post-container {
     display: flex;
@@ -51,6 +78,9 @@
 /* Make sure that only relevant elements inherit the text-align property */
 label, h2, button {
     text-align: center;
+    font-weight: bold;
+    color:#004A54
+
 }
 
 .Posts_List ul {
@@ -170,6 +200,8 @@ label, h2, button {
 .button:hover {
     background-color: #e03515; /* Darker shade on hover */
   }
+
+
 .post-list-item p:first-child {
     text-align: center;
     background-color: #ffffff;
@@ -177,6 +209,11 @@ label, h2, button {
     border-radius: 10px;
     font-weight: bold;
     margin-bottom: 0.5rem; /* Adds spacing between title and content */
+  }
+  #post-content {
+    width: 100%; /* Set the width of the textarea to 100% */
+    height: 200px; /* Set the height of the textarea in pixels */
+    resize: vertical; /* Allow vertical resizing of the textarea */
   }
 
 
@@ -248,8 +285,8 @@ label, h2, button {
     .form-container,
     .darkmode_box,
     .post-container p,
-    .post-container button,
-    .bottom {
+    .post-container,
+    .post-button {
         /* Stack content vertically, reduce sizes, etc., as appropriate */
         flex-direction: column;
         align-items: stretch; /* Full-width elements */
