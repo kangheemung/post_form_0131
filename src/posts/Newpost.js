@@ -72,7 +72,7 @@ function Newpost({ todos, setTodos}) {
     }
   }, []);
     return (
-      <div className ="post_body">
+      <div className ="post_body_main ">
          <div className ="post_body_top">
            <h2>{userName ? ` ${userName}` : ''}様の投稿ページ</h2>
          </div>
@@ -81,10 +81,10 @@ function Newpost({ todos, setTodos}) {
            {flashMessage}
          </div>
        )}
-        <div className="post-container_m">
-          <form onSubmit={handleSubmit} className='post_body_main'>
+        <div>
+          <form onSubmit={handleSubmit}>
             <div>
-              <label className ="post-title">タイトル</label><br/>
+              <label>タイトル</label><br/>
               <input
                 type="text"
                 id='post-title_box'
@@ -93,7 +93,7 @@ function Newpost({ todos, setTodos}) {
               />
             </div>
             <div>
-              <label htmlFor="post-content_t">内容</label><br/>
+              <label>内容</label><br/>
               <textarea
                 id="post-content_box"
                 value={body}

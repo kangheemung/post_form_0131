@@ -8,14 +8,17 @@
     margin: 20%,20%;
     padding: 20%,20%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
 }
 .Posts_List_ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    text-align: center;
     list-style-type: none;
-    grid-template-columns: repeat(2, 1fr); /* Change to 3 columns */
-    display: flex;
-    flex-wrap: wrap;
+    margin-bottom: 5%;
+    padding: 3%;
+    border-radius: 5%;
   }
 #dark .Posts_List_ul
  {
@@ -40,7 +43,7 @@
     display: block; /* Make the button a block element */
     margin: 10% auto;
   }
-  #dark .p_button 
+  #dark .p_button
   #dark .post-button{
     background-color: #03282e;
     width: 50%;
@@ -63,6 +66,7 @@
     width: 98%;
     border: solid #004A54 1px;
     padding: 5px;
+    border-radius: 5%;
     box-sizing: border-box;
 }
 .post_box_b {
@@ -72,41 +76,15 @@
     font-size: 15px;
 }
 .post-container_t{
-margin-top: 30%;
-margin-bottom:5%;
-color:#004A54;
-text-align: center;
-}
-.post_body_top{
-    margin-top:3%;
-    margin-bottom: 5%;
-}
-.post_body_main {
-    position: fixed; /* Position the element relative to the viewport */
-    top: 55%; /* Align the top edge of the element at the vertical midpoint */
-    left: 50%; /* Align the left edge of the element at the horizontal midpoint */
-    transform: translate(-50%, -50%); /* Move the element back by half of its own size */
-    width: 70%; /* Set desired width */
-    height: 50vh; /* Set desired height */
-     /* Add a border styling */
-    border-radius: 10px; /* Add rounded corners */
+    margin-top: 40%;
+    color:#004A54;
     text-align: center;
-    margin-top: 15%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-.p_submit_box{
-    text-align: center;
-}
+    }
 .post-container_m{
-  /* Center the element both horizontally and vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vmin; /* Set width and height to the same value for a perfect circle */
-    height: 100vh;
-    font-size: 5vw;
+        margin: 1%;
+        padding: 3%;
+}
+.p_submit_box{
     text-align: center;
 }
 #post-title_box {
@@ -158,12 +136,6 @@ text-align: center;
         font-size: 5vw;
         text-align: center;
       }
-      .Posts_List_ul {
-        list-style-type: none;
-        grid-template-columns: repeat(5, 1fr); /* Change to 3 columns */
-        display: flex;
-        flex-wrap: wrap;
-      }
     .p_submit{
         width: 30%;
         display: inline-block;
@@ -181,77 +153,25 @@ text-align: center;
         width: 100%; /* Set the width of the textarea to 100% */
         height: 100%; /* Set the height of the textarea in pixels */
         resize: vertical;
-
+    }
+    .post-container_m{
+        margin-left: 5%;
+        margin-right: 5%;}
+    .Posts_List_ul {
+        grid-template-columns: repeat(5, 1fr); /* Display 5 columns on larger screens */
+    }
+    .post-container_t {
+        margin-top: 2cap; /* Adjust top margin for smaller screens */
     }
 
-    .post-container_t{
-        margin-top: 40%;
-    }
     .post_box_b {
-        font-size: 20px;
-        font-weight: bold; /* Adjust font size for larger screens */
+        font-size: 15px; /* Adjust font size for smaller screens */
     }
 
     .post_box_p {
-        font-size: 18px; /* Adjust font size for larger screens */
+        font-size: 15px; /* Adjust font size for smaller screens */
     }
-}
-    @media (max-width: 768px) {
-        .post-container_t{
-            margin-top: 60%;
-        }
-        .post_box_b {
-            font-size: 20px;
-            font-weight: bold; /* Adjust font size for larger screens */
-        }
-        .post_box_p {
-            font-size: 18px; /* Adjust font size for larger screens */
-        }
-        .p_submit_box{
-            margin-top: 5%;
-        }
-       .Posts_List_ul li {
-            width: 50%; /* Displaying two items per row on smaller screens */
-        }
-        .post-body {
-            padding: 10px; /* Add padding to the post body container for smaller screens */
-        }
-        .post-body-top {
-            margin-top: 5%; /* Reduce top margin for smaller screens */
-            margin-bottom: 2%; /* Reduce bottom margin for smaller screens */
-        }
-        .post-button {
-            margin-top: 10px; /* Add some spacing above the button on smaller screens */
-            margin-bottom: 10px; /* Add some spacing below the button on smaller screens */
-        }
-        .post-title,
-        label {
-            font-size: 14px; /* Decrease font size for labels on smaller screens */
-        }
-        #post-title_box{
-            width: 100%; /* Make the input fields occupy full width on smaller screens */
-        }
-        @media (min-width: 768px) {
-            .post-container_t {
-                margin-top: 30%; /* Adjust margin for larger screens */
-            }
-        
-            .post-box_b {
-                font-size: 20px; /* Increase font size for larger screens */
-                font-weight: bold; /* Add bold font weight for better readability */
-            }
-        
-            .post-box_p {
-                font-size: 18px; /* Adjust font size for larger screens */
-            }
-        
-            .p_submit_box {
-                text-align: center;
-                margin-top: 5%; /* Add some spacing at the top for better alignment */
-            }
-        
-            .Posts_List_ul li {
-                width: 50%; /* Display two items per row on larger screens */
-            }
-        }
+    .post-container_t{
+        margin-top: 20%;
+    }
 }

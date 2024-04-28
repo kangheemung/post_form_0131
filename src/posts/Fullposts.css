@@ -36,21 +36,23 @@
   margin: 3% auto; 
 }
 .post_body_main {
-  position: fixed; /* Position the element relative to the viewport */
-  top: 55%; /* Align the top edge of the element at the vertical midpoint */
-  left: 50%; /* Align the left edge of the element at the horizontal midpoint */
-  transform: translate(-50%, -50%); /* Move the element back by half of its own size */
-  width: 70%; /* Set desired width */
-  height: 50vh; /* Set desired height */
-   /* Add a border styling */
-  border-radius: 10px; /* Add rounded corners */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%; 
+  height: 50vh; 
+  background-color: #DBE5E6; 
+  padding: 20px; 
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); 
+  border-radius: 10px; 
   text-align: center;
-  margin-top: 15%;
   display: flex;
   flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
   gap: 10px;
 }
-
 #post-content {
   width: 80%; /* Set the width of the input box to 100% of its container */
   box-sizing: border-box
@@ -106,6 +108,7 @@ label, h2, button {
 .fullposts{
   max-width: 1200px; /* Set a maximum width */
   margin-left: auto;
+  margin-top: 25%;
   margin-right: auto;}
 
 .fullposts ul {
@@ -245,7 +248,9 @@ label, h2, button {
     color: #000; /* Set text color to black */
 }
 
-
+@media (min-width: 768px) {
+  .post_body_main {margin-top: 10%;
+}}
 @media (max-width: 900px) {
     .post-container,
     .fullposts ul,
