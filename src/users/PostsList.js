@@ -73,8 +73,8 @@ function PostsList() {
 
 
   return (
-  <>
-    <div className='post-container_t'><h1>あなたが投稿した内容</h1></div>
+  <div className='post-container_body'>
+    <div className='post-container_t'><h2>あなたが投稿した内容</h2></div>
     <div className='post-container_m'>
       {microposts ? (
         microposts.length > 0 ? (
@@ -93,19 +93,22 @@ function PostsList() {
             ))}
           </div>
         ) : (
-          <p>投稿ポストがないです。</p>
+          <>
+          <div className='post-container_t_1'><h2>あなたが投稿した内容</h2></div>
+          <p className='post-container_m_p'>投稿ポストがないです。</p>
+          </>
         )
       ) : (
         <p>Loading...</p>
       )}
     </div>
-  <div className='p_submit_box'>
-  <button className='p_submit' onClick={handleHome}>
+  <div className='p_submit_box_bottom'>
+  <button  className='p_submit_box' onClick={handleHome}>
     みんなのポスト見に行く！
   </button>
   </div>
 
-</>
+</div>
   );
 }
 

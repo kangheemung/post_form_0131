@@ -228,13 +228,6 @@ a {
 .page1{
   text-align: center;
 }
-.darkmode_box_t{
-  font-size: x-small;
-}
-.darkmode_box_b .react-switch {
-  width: 30%; /* Adjust the width as needed */
-  height: 15%; /* Adjust the height as needed */
-}
 .main-text{
   color:#004A54;
   text-align: center;

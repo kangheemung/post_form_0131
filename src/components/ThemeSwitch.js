@@ -15,10 +15,8 @@ const ThemeSwitch = () => {
 
   return (
     <div className='darkmode_box'>
-    <label>
-      <p><span className='darkmode_box_t'>{theme === 'dark' ? 'Dark ' : 'Light'}</span></p>
+      <p>{theme === 'dark' ? 'Dark ' : 'Light'}</p>
       <p><ReactSwitch onChange={toggleTheme} checked={theme === 'dark'} /></p>
-    </label>
     </div>
   );
 };

@@ -8,7 +8,7 @@ const Nav = ({ themeSwitch }) => {
     const { logout, currentUser } = useAuth();
     const isUserLoggedIn = Boolean(currentUser && currentUser.jwtToken);
     const userId = currentUser?.id; // Assuming 'id' exists on currentUser
-    const userName = currentUser?.name || 'Guest'; // Use 'Guest' if no user name
+    //const userName = currentUser?.name || 'Guest'; // Use 'Guest' if no user name
     const handleLogoutClick = async () => {
         await logout(); // Wait for the logout process to finish
         navigate('/'); // Redirect to the home page after logging out
@@ -38,12 +38,10 @@ const Nav = ({ themeSwitch }) => {
                   <p><Link to='/users' className='header_a'>Sign_up</Link></p>
                 </div>
               )}
-            <div className="switch_box">
-                    {themeSwitch}
-            </div>
           </div>
-          <div className="greeting_box">
-          <p className="greeting">{userName}様こんにちは</p>
+  
+          <div className="switch_box">
+                    {themeSwitch}
           </div>
        </nav>
      </div>

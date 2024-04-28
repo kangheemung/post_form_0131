@@ -1,18 +1,4 @@
-.Posts_List {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border: 5px solid hsl(0, 0%, 100%); /* Background color */
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
-    margin: 20px auto; /* Outer margin */
-    padding: 0;/* Inner padding */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    list-style: none;
-    width: auto;
-    text-align: center;
-    overflow: auto;
-}
+
 .myPosts_top {
     text-align: center;
     font-weight: bold;
@@ -21,14 +7,18 @@
     display:flex;
     justify-content: space-between;
 }
+.post_body_top h3{
+  color: #004A54;
+}
 .post_body {
   position: fixed; /* Position the element relative to the viewport */
   top: 55%; /* Align the top edge of the element at the vertical midpoint */
   left: 50%; /* Align the left edge of the element at the horizontal midpoint */
   transform: translate(-50%, -50%); /* Move the element back by half of its own size */
-  width: 70%; /* Set desired width */
-  height: 50vh; /* Set desired height */
+  width: 300px; /* Set desired width */
+  height: 200px; /* Set desired height */
   border: 2px solid #333; /* Add a border styling */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   border-radius: 10px; /* Add rounded corners */
   background-color: #f0f0f0; /* Set background color */
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add shadow effect */
@@ -63,12 +53,17 @@
     align-items: center; /* Centering content horizontally */
     /* Centering content vertically when there are few items */
     min-height: 80vh;
-
     grid-template-columns: repeat(3, 1fr); /* This will create three equal columns */
     gap: 20px; /* Adjust the space between columns as needed */
   /* Aligns the content to the top of the container */
     text-align: center; /* Centers text horizontally */
   }
+#dark .myPosts_List_top h2{
+  color: #DBE5E6;
+}
+#light .myPosts_List_top h2{
+  color:#004A54
+}
 
 .form-container {
   position: relative;
@@ -85,65 +80,45 @@ label, h2, button {
 
 }
 
-.Posts_List ul {
-    list-style-type: none; /* Remove default list styling */
-    padding: 0; /* Reset default padding */
-    margin:  0;;
-}
+
 .top{
     font-weight: bold;
 }
-.follow_btn, .like_btn {
-    background-color: #ffc3b7;
-    border: none;
-    border-radius: 10px;
-    margin: 10px; /* Outer margin, reduced from % to fixed px */
-    padding: 10px; /* Inner padding, reduced from % to fixed px */
-    cursor: pointer;
-    text-align: center;
-}
-.like_btn {
-    background-color: #ffbdbd; /* Set different background for Like button */
-}
+
+
 .fullposts{
-  max-width: 1200px; /* Set a maximum width */
+   /* Set a maximum width */
   margin-left: auto;
-  margin-top: 25%;
+  margin-bottom: 5%;
   margin-right: auto;}
 
 .fullposts ul {
     list-style: none;
     padding: 0;
     margin: 0 auto; /* Centers the grid horizontally */
-    max-width: 1200px; /* Optional - sets a max-width for the grid */
 }
 
   .post-list-item {
-    width: 80%; /* Or any other suitable width */
-    flex: 0 1 calc(33% - 20px); /* Each item takes up roughly a third minus margin/padding */
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
     margin-bottom: 20px;
     text-align: center;
-    background-color: #ffffff; /* Change as needed for your design */
-    border: 1px solid #dddddd; /* Light grey border */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Simple shadow effect */
-    padding: 20px;
-    border-radius: 10px; /* Rounded corners */
-  }
+}
   .posts-grid-container {
-    margin-bottom: 10%;
-    flex-wrap: wrap; /* This ensures that the spacing between items is even */
-    padding: 0; /* Remove default padding */
-    list-style: none; /* Remove default list styling */
-    width: 100%;
-    max-width: 1200px; /* Set a maximum width if necessary */
-    margin: 0 auto; /* Horizontal alignment */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
-    gap: 20px; /* Space between posts */
-    justify-content: center;
-  }
+    grid-template-columns: repeat(3, 1fr); /* Display in 3 columns */
+    gap: 20px; /* Adjust spacing between items */
+    list-style: none; /* Remove default list styling */
+    justify-content: center; /* Center the content horizontally */
+    width: 100%; /* Set width to 100% */
+    max-width: 1200px;
+}
+
  .myPosts_List_top{
-    margin-top:10%;
+    margin-bottom: 5%;
     text-align: center;
  }
   .post-container p,
@@ -161,27 +136,22 @@ label, h2, button {
     margin: 0 auto; /* Centers the grid horizontally */
     max-width: 1200px; /* Optional - sets a max-width for the grid */
 }
-
-.Posts_List li {
-    background-color: #3c3c3c; /* Set background for individual posts */
-    margin:5%; /* Vertical margin with zero horizontal margin */
-    padding: 20px; /* Inner padding reduced from % to fixed px */
-    border: 5px solid #ffbdbd;
-    border-radius: 10px; /* Consistent border-radius */
-    text-align: center;
-    max-width: calc((100% - 40px) / 3);
+.post-button {
+  background-color: #03282e;
+  font-weight: bold;
+  margin: 10% auto;
+  padding: 8px 16px;
+  border: solid 1px;
+  font-size: large;
+  border-radius: 5%;
+  color: whitesmoke;
+  cursor: pointer;
+  display: block;
 }
 .bottom{
     text-align: center;
     display: flex;
     justify-content: center;
-}
-
-.darkmode_box{
-    margin-left: 10%;
-    margin-bottom: 3%;
-    margin-left: auto; /* Push the box to the right edge of its container */
-    width: fit-content; /* Set the width to fit its content if not already defined */
 }
 
 .button {
@@ -201,17 +171,7 @@ label, h2, button {
     margin: 20px auto;
 }
 .button:hover {
-    background-color: #e03515; /* Darker shade on hover */
-  }
-
-
-.post-list-item p:first-child {
-    text-align: center;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    font-weight: bold;
-    margin-bottom: 0.5rem; /* Adds spacing between title and content */
+    background-color: #15e0b7; /* Darker shade on hover */
   }
   #post-content {
     width: 100%; /* Set the width of the textarea to 100% */
@@ -221,8 +181,8 @@ label, h2, button {
 
 
 .follow_btn, .like_btn {
-    background-color: #33003c;
-    color: white;
+    background-color:#004A54;
+    color: #DBE5E6;
     border: none;
     padding: 8px 12px;
     margin-left: 10%; /* Spacing between the text and button */
@@ -231,9 +191,7 @@ label, h2, button {
    /* Adjust spacing as needed */
 }
 
-#dark .Posts_List p {
-    color: #000; /* Sets the text color to black */
-}
+
 #dark .post-list-item p{
     color: #000;
 }
@@ -247,33 +205,49 @@ label, h2, button {
 #dark .content-and-like {
     color: #000; /* Set text color to black */
 }
+.author-and-follow{
+  display: flex; 
+  justify-content: space-between;
+}
+.content-and-like {
+  display: flex; /* Display as flex container */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Place items at the ends of the container */
+}
+@media (max-width: 768px) {
+  .fullposts{
+    margin-top: 15%;
+    padding: 5%;
+  }
+  .posts-grid-container {
+    grid-template-columns: 1fr; /* Change to a single column layout */
+}
+.post-container,
+.fullposts ul{
+    margin-top: 10%;
+  }
+  #post-title_box,
+  #post-main_box{
+      width: 80%; /* Set full width on smaller screens */
+  }
+}
 
 @media (min-width: 768px) {
-  .post_body_main {margin-top: 10%;
-}}
-@media (max-width: 900px) {
-    .post-container,
-    .fullposts ul,
-    .posts-grid-container {
-        grid-template-columns: 1fr; /* Changes the layout to a single column */
-        margin-top: 5%; 
-      }
-    .myPosts_List_top{
-        margin-top: 10%;
-     }
-     .myPosts_top {
-        margin-top: 30%; /* Less margin for slightly larger screens */
-      }
-
-    .Posts_List,
-    .post-list-item,
-    .Posts_List li {
-        /* Adjusts the width and margins for narrow screens */
+  .fullposts {
+    margin-top: 20%;
+  }
+  .myPosts_List_top{
+      margin-top: 10%;
+    }
+  .myPosts_top {
+    margin-top: 30%; /* Less margin for slightly larger screens */
+  }
+  .post-list-item
+   { /* Adjusts the width and margins for narrow screens */
         width: auto; /* Allows the element to expand naturally */
         max-width: none; /* Removes any previous max-width settings */
         margin: 10px; /* Adds some margin around elements */
     }
-
     .follow,
     .author-and-follow,
     .content-and-like {
@@ -281,15 +255,13 @@ label, h2, button {
         justify-content: center;
         align-items: center;
     }
-
     .follow_btn, .like_btn {
         margin: 10px auto; /* Centres buttons with margin */
     }
-
     .post_body,
     .form-container,
-    .darkmode_box,
     .post-container p,
+    .comments,
     .post-container,
     .post-button {
         /* Stack content vertically, reduce sizes, etc., as appropriate */
@@ -297,51 +269,9 @@ label, h2, button {
         align-items: stretch; /* Full-width elements */
         text-align: center;
     }
-
-}
-@media (max-width: 640px) {
-    .post-list {
-      grid-template-columns: 1fr; /* Single column view */
-    }
-    .myPosts_List_top{
-        margin-top:15%;
-     }
-     .myPosts_top {
-        margin-top: 20%; /* Increased margin-top for mobile devices */
-      }
-
-
-      .post-container {
-        margin-top: 3%; /* Even less margin for mobile screens */
-        min-height: 70vh; /* Adjust minimum height as needed */
-      }
-
-
-    .post-list-item {
-      margin-bottom: 10px;
-    }
-  }
-
-@media (max-width: 400px) {
-    body {
-        font-size: 14px; /* Reduce font size for very small devices */
-    }
-    .post-list {
-        grid-template-columns: 1fr; /* Single column view */
-      }
-
-      .post-list-item {
-        margin-bottom: 10px;
-      }
-      post-container{
-      margin-bottom: 10px;
-    }
-      .myPosts_List_top{
-        margin-top:15%;
-     }
-    .myPosts_top {
-        margin-top: 15%; /* Adjust margin-top as needed */
+    #post-title_box,
+    #post-main_box {
+        width: 80%; /* Set full width on smaller screens */
     }
 
-    /* Further fine-tune your layout and typography here */
 }

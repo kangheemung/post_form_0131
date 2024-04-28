@@ -205,9 +205,9 @@ function Fullposts() {
             handleFollow(userId);
         }
     };
-    const handleHome = () => {
-        navigate('/');
-    };
+    //const handleHome = () => {
+      //  navigate('/');
+    //};
 
     // Event handler for unliking a post
     const handleUnlike = (postId) => {
@@ -270,7 +270,7 @@ function Fullposts() {
             <div className="myPosts_List_top">
                 <h2>投稿された記録</h2>
             </div>
-            <ul className="posts-grid-container">
+            <div className="posts-grid-container">
                 {microposts.map((post) => {
                     const authorId = post.user_id.toString();
                     const isAuthorCurrentUser = currentUser && String(currentUser.id) === authorId;
@@ -296,7 +296,6 @@ function Fullposts() {
 
                             <div className="content-and-like">
                               <div className = "top">
-                                <p>内容</p>
                                 <p>{post.body}</p>
                               </div>
                               <div>
@@ -310,10 +309,7 @@ function Fullposts() {
                         </li>
                     );
                 })}
-            </ul>
-            <div className='bottom'>
-                <button className='button' onClick={handleHome}>Homeに戻る</button>
-            </div>
+          </div>
         </div>
     </>
     );

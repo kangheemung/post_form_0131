@@ -74,7 +74,7 @@ function Newpost({ todos, setTodos}) {
     return (
       <div className ="post_body_main ">
          <div className ="post_body_top">
-           <h2>{userName ? ` ${userName}` : ''}様の投稿ページ</h2>
+           <h3>{userName ? ` ${userName}` : ''}様の投稿ページ</h3>
          </div>
          {flashMessage && (
          <div className="flash-message">
@@ -95,7 +95,7 @@ function Newpost({ todos, setTodos}) {
             <div>
               <label>内容</label><br/>
               <textarea
-                id="post-content_box"
+                id="post-main_box"
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
               />
