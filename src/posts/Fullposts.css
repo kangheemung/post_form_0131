@@ -230,6 +230,11 @@ label, h2, button {
   #post-main_box{
       width: 80%; /* Set full width on smaller screens */
   }
+  .post_body_main {
+    text-align: center; /* Center text horizontally on smaller screens */
+    width: 80%; /* Adjust the width of the post body on smaller screens */
+    margin: auto; /* Center the post body horizontally */
+  }
 }
 
 @media (min-width: 768px) {
