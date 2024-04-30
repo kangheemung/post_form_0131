@@ -11,7 +11,7 @@
   color: #004A54;
 }
 .post_body {
-  position: static; /* Change to static positioning */
+  position: fixed; /* Change to static positioning */
   top: 50%; /* Center vertically */
   left: 50%; /* Align the left edge of the element at the horizontal midpoint */
   transform: none;  /* Move the element back by half of its own size */
