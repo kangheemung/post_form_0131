@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+
 function Page() {
   let { id, user_id } = useParams();
   const navigate = useNavigate();

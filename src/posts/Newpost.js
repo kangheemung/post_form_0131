@@ -1,6 +1,7 @@
 import { useState ,useEffect} from 'react';
 import {jwtDecode} from 'jwt-decode'; // Corrected import statement
 import { useNavigate } from 'react-router-dom';
+import './Fullposts.css';
 
 
 function Newpost({ todos, setTodos}) {

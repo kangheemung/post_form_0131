@@ -8,6 +8,7 @@
   overflow: auto; /* Enable vertical scrollbar for overflowing content */
   padding-bottom: 5%;
 }
+
 #light {
   background-color: #DBE5E6;;
 }
@@ -68,8 +69,9 @@ body {
   font-weight: bold;
   font-size: xx-large;
 }
-
-.main_body{
+.top_img,
+.main_body,
+.about-content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -111,7 +113,13 @@ body {
   background-color: #fff;
   color: #004A54;
 }
-.mainbody{margin-top: 20%;}
+.main_body {
+  width: 80vmin; /* Set width and height to maintain circular shape */
+  height: 80vmin;
+  font-size: 5vw;
+  border-radius: 50%;
+}
+
 .username {
   font-family: 'Mali', cursive;
   width: 76%;
@@ -454,23 +462,8 @@ input{
   align-items: center;
   height: 100vh; /* Center vertically */
 }
-.about-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 10%;
-  padding-left: 10%;
-  padding-right: 10%;
-  background-color: #F0F3F3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90vmin; /* Set width and height to same value for a perfect circle */
-  height: 90vmin;
-  border-radius: 50%;
-  text-align: center;
-}
+
+
 .foot{
   background-color: #fff;
   color:#004A54;
@@ -580,21 +573,6 @@ input{
     width: 80vmin;  /* Set width and height to same value for a perfect circle */
     height: 80vmin;
     font-size: 5vw;
-    border-radius: 50%;
-    text-align: center;
-  }
-  .about-content{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    width: 75vmin; /* Set width and height to same value for a perfect circle */
-    height: 75vmin;
     border-radius: 50%;
     text-align: center;
   }

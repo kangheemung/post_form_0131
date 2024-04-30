@@ -11,38 +11,37 @@
   color: #004A54;
 }
 .post_body {
-  position: fixed; /* Position the element relative to the viewport */
-  top: 55%; /* Align the top edge of the element at the vertical midpoint */
+  position: static; /* Change to static positioning */
+  top: 50%; /* Center vertically */
   left: 50%; /* Align the left edge of the element at the horizontal midpoint */
-  transform: translate(-50%, -50%); /* Move the element back by half of its own size */
-  width: 300px; /* Set desired width */
-  height: 200px; /* Set desired height */
+  transform: none;  /* Move the element back by half of its own size */
+  width: 90vw; /* Set desired width */
+  height: auto; /* Set desired height */
   border: 2px solid #333; /* Add a border styling */
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   border-radius: 10px; /* Add rounded corners */
   background-color: #f0f0f0; /* Set background color */
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add shadow effect */
   max-width: 800px; /* Set a maximum width for the post_body container */
-  margin: 3% auto; 
+  margin: 0; 
 }
 .post_body_main {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70%; 
-  height: 50vh; 
-  background-color: #DBE5E6; 
-  padding: 20px; 
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); 
-  border-radius: 10px; 
-  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* Position the element relative to the viewport */
+  top: 50%; /* Center vertically at 50% from the top */
+  left: 50%; /* Center horizontally at 50% from the left */
+  transform: translate(-50%, -50%); /* Move back by half of its width and height */
+  width: 90vw;
+  height: auto;
+  background-color: #DBE5E6;
+  padding: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  text-align: center;
 }
+
 #post-content {
   width: 80%; /* Set the width of the input box to 100% of its container */
   box-sizing: border-box
@@ -79,23 +78,17 @@ label, h2, button {
     color:#004A54
 
 }
-
-
 .top{
     font-weight: bold;
 }
-
-
 .fullposts{
    /* Set a maximum width */
-  margin-left: auto;
-  margin-bottom: 5%;
-  margin-right: auto;}
+  margin-top:10%}
 
 .fullposts ul {
     list-style: none;
     padding: 0;
-    margin: 0 auto; /* Centers the grid horizontally */
+  
 }
 
   .post-list-item {
@@ -114,7 +107,7 @@ label, h2, button {
     list-style: none; /* Remove default list styling */
     justify-content: center; /* Center the content horizontally */
     width: 100%; /* Set width to 100% */
-    max-width: 1200px;
+    max-width: 90vw;
 }
 
  .myPosts_List_top{
@@ -207,7 +200,7 @@ label, h2, button {
     color: #000; /* Set text color to black */
 }
 .author-and-follow{
-  display: flex; 
+  display: flex;
   justify-content: space-between;
 }
 .content-and-like {
@@ -217,29 +210,61 @@ label, h2, button {
 }
 @media (max-width: 768px) {
   .fullposts{
-   
-    padding: 5%;
+   margin-top:30%;
   }
   .posts-grid-container {
     grid-template-columns: 1fr; /* Change to a single column layout */
+ }
+  .post_body,
+  .post_body_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Position the element relative to the viewport */
+    top: 50%; /* Center vertically at 50% from the top */
+    left: 50%; /* Center horizontally at 50% from the left */
+    transform: translate(-50%, -50%); /* Move back by half of its width and height */
+    width: 90vw;
+    height: auto;
+    background-color: #DBE5E6;
+    padding: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    text-align: center;
 }
-.post-container{
-    margin-top: 10%;
-  }
+.post-container_body{margin-top: 20%;}
+  .post-container{
+      margin-top: 10%;
+    }
   #post-title_box,
   #post-main_box{
       width: 80%; /* Set full width on smaller screens */
   }
-  .post_body_main {
-    text-align: center; /* Center text horizontally on smaller screens */
-    width: 80%; /* Adjust the width of the post body on smaller screens */
-    margin: auto; /* Center the post body horizontally */
-  }
+  .post-list-item {
+    width: 100%; /* Set to full width of the container */
+    margin: 10px 0; /* Add margin top and bottom */
+}
+
 }
 
 @media (min-width: 768px) {
 
-
+  .post-container_body
+  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: auto;
+    background-color: #DBE5E6;
+    padding: 20px;
+    margin-top: 10vh; /* Center vertically with 10% from the top */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    text-align: center;
+  }
   .myPosts_top {
     margin-top: 30%; /* Less margin for slightly larger screens */
   }
