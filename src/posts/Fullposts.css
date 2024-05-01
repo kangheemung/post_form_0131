@@ -10,32 +10,21 @@
 .post_body_top h3{
   color: #004A54;
 }
-.post_body {
-  position: fixed; /* Change to static positioning */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Align the left edge of the element at the horizontal midpoint */
-  transform: none;  /* Move the element back by half of its own size */
-  width: 90vw; /* Set desired width */
-  height: auto; /* Set desired height */
-  border: 2px solid #333; /* Add a border styling */
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-  border-radius: 10px; /* Add rounded corners */
-  background-color: #f0f0f0; /* Set background color */
-  max-width: 800px; /* Set a maximum width for the post_body container */
-  margin: 0; 
-}
+
+.post_body,
 .post_body_main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: fixed; /* Position the element relative to the viewport */
-  top: 50%; /* Center vertically at 50% from the top */
+  position: static; /* Position the element relative to the viewport */
+  left: unset; /* Center vertically at 50% from the top */
   left: 50%; /* Center horizontally at 50% from the left */
-  transform: translate(-50%, -50%); /* Move back by half of its width and height */
-  width: 30%;
+  transform: none; /* Move back by half of its width and height */
+  width: 90vw;
   height: auto;
   background-color: #DBE5E6;
+  margin: 10px auto;
   padding: 20px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -287,10 +276,10 @@ label, h2, button {
        top: 50%; /* Center vertically at 50% from the top */
        left: 50%; /* Center horizontally at 50% from the left */
        transform: translate(-50%, -50%); /* Move back by half of its width and height */
-       width: 80%;
+       width: 50%;
        height: auto;
        background-color: #DBE5E6;
-       padding: 20px;
+       padding: 40px;
        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
        border-radius: 10px;
        text-align: center;
@@ -303,6 +292,24 @@ label, h2, button {
      
     /*태블릿 디바이스 (가로 해상도가 768px보다 크고 991px 보다 작은 화면에 적용)  */
     @media (min-width: 768px) and (max-width: 991px) {
+      .post_body,
+      .post_body_main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed; /* Position the element relative to the viewport */
+        top: 50%; /* Center vertically at 50% from the top */
+        left: 50%; /* Center horizontally at 50% from the left */
+        transform: translate(-50%, -50%); /* Move back by half of its width and height */
+        width: 50%;
+        height: auto;
+        background-color: #DBE5E6;
+        padding: 50px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        text-align: center;
+   }
   .post-container_body{
     display: flex;
     flex-direction: column;
@@ -355,7 +362,24 @@ label, h2, button {
      
     /* 데스크탑 (가로 해상도가 992px보다 크고 1199px 보다 작은 화면에 적용)  */
     @media (min-width: 992px) and (max-width: 1199px) {
-
+      .post_body,
+      .post_body_main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed; /* Position the element relative to the viewport */
+        top: 50%; /* Center vertically at 50% from the top */
+        left: 50%; /* Center horizontally at 50% from the left */
+        transform: translate(-50%, -50%); /* Move back by half of its width and height */
+        width: 50%;
+        height: auto;
+        background-color: #DBE5E6;
+        padding: 40px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        text-align: center;
+   }
   .post-container_body{
     display: flex;
     flex-direction: column;
@@ -408,6 +432,24 @@ label, h2, button {
      
     /* 큰화면 데스크탑 (가로 해상도가 1200px 보다 큰 화면에 적용)  */
     @media (min-width: 1200px) {
+      .post_body,
+      .post_body_main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed; /* Position the element relative to the viewport */
+        top: 50%; /* Center vertically at 50% from the top */
+        left: 50%; /* Center horizontally at 50% from the left */
+        transform: translate(-50%, -50%); /* Move back by half of its width and height */
+        width: 40%;
+        height: auto;
+        background-color: #DBE5E6;
+        padding: 40px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        text-align: center;
+   }
       .post-container_body{
         display: flex;
         flex-direction: column;
