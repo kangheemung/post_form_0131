@@ -208,49 +208,141 @@ label, h2, button {
   align-items: center; /* Center items vertically */
   justify-content: space-between; /* Place items at the ends of the container */
 }
-@media (max-width: 768px) {
-  .fullposts{
-   margin-top:20%;
+
+    @media (max-width: 375px) {
+      .fullposts{
+        margin-top:20%;
+       }
+       .posts-grid-container {
+         grid-template-columns: 1fr; /* Change to a single column layout */
+      }
+       .post_body,
+       .post_body_main {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         position: fixed; /* Position the element relative to the viewport */
+         top: 50%; /* Center vertically at 50% from the top */
+         left: 50%; /* Center horizontally at 50% from the left */
+         transform: translate(-50%, -50%); /* Move back by half of its width and height */
+         width: 80%;
+         height: auto;
+         background-color: #DBE5E6;
+         padding: 20px;
+         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+         border-radius: 10px;
+         text-align: center;
+    }
   }
-  .posts-grid-container {
-    grid-template-columns: 1fr; /* Change to a single column layout */
- }
-  .post_body,
-  .post_body_main {
+    @media (max-width: 575px) {
+      .fullposts{
+        margin-top:20%;
+       }
+       .posts-grid-container {
+         grid-template-columns: 1fr; /* Change to a single column layout */
+      }
+       .post_body,
+       .post_body_main {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         position: fixed; /* Position the element relative to the viewport */
+         top: 50%; /* Center vertically at 50% from the top */
+         left: 50%; /* Center horizontally at 50% from the left */
+         transform: translate(-50%, -50%); /* Move back by half of its width and height */
+         width: 80%;
+         height: auto;
+         background-color: #DBE5E6;
+         padding: 20px;
+         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+         border-radius: 10px;
+         text-align: center;
+    }
+    }
+    /* 가로모드 모바일 디바이스 (가로 해상도가 576px보다 크고 768px 보다 작은 화면에 적용)  */
+    @media (min-width: 576px) and (max-width: 767px) {
+    .fullposts{
+      margin-top:20%;
+     }
+     .posts-grid-container {
+       grid-template-columns: 1fr; /* Change to a single column layout */
+    }
+     .post_body,
+     .post_body_main {
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       position: fixed; /* Position the element relative to the viewport */
+       top: 50%; /* Center vertically at 50% from the top */
+       left: 50%; /* Center horizontally at 50% from the left */
+       transform: translate(-50%, -50%); /* Move back by half of its width and height */
+       width: 80%;
+       height: auto;
+       background-color: #DBE5E6;
+       padding: 20px;
+       box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+       border-radius: 10px;
+       text-align: center;
+  }
+}
+     
+    /*태블릿 디바이스 (가로 해상도가 768px보다 크고 991px 보다 작은 화면에 적용)  */
+    @media (min-width: 768px) and (max-width: 991px) {
+  .post-container_body{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: fixed; /* Position the element relative to the viewport */
-    top: 50%; /* Center vertically at 50% from the top */
-    left: 50%; /* Center horizontally at 50% from the left */
-    transform: translate(-50%, -50%); /* Move back by half of its width and height */
-    width: 80%;
+    width: 90vw;
     height: auto;
     background-color: #DBE5E6;
     padding: 20px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 10vh; /* Center vertically with 10% from the top */
+    box-shadow: 5px 5px 10px #0000004d;
     border-radius: 10px;
     text-align: center;
-}
-   .post-container_body{
-      margin-top: 20%;
   }
-  .post-container{
-      margin-top: 10%;
+  .myPosts_top {
+    margin-top: 30%; /* Less margin for slightly larger screens */
+  }
+  .post-list-item
+   { /* Adjusts the width and margins for narrow screens */
+        width: auto; /* Allows the element to expand naturally */
+        max-width: none; /* Removes any previous max-width settings */
+        margin: 10px; /* Adds some margin around elements */
     }
-  #post-title_box,
-  #post-main_box{
-      width: 80%; /* Set full width on smaller screens */
-  }
-  .post-list-item {
-    width: 100%; /* Set to full width of the container */
-    margin: 10px 0; /* Add margin top and bottom */
-  }
-
-}
-
-@media (min-width: 768px) {
+    .follow,
+    .author-and-follow,
+    .content-and-like {
+        flex-direction: column; /* Stacks the elements vertically */
+        justify-content: center;
+        align-items: center;
+    }
+    .follow_btn, .like_btn {
+        margin: 10px auto; /* Centres buttons with margin */
+    }
+    .post_body,
+    .form-container,
+    .post-container p,
+    .comments,
+    .post-container,
+    .post-button {
+        /* Stack content vertically, reduce sizes, etc., as appropriate */
+        flex-direction: column;
+        align-items: stretch; /* Full-width elements */
+        text-align: center;
+    }
+    #post-title_box,
+    #post-main_box {
+        width: 80%; /* Set full width on smaller screens */
+    }
+    } 
+     
+    /* 데스크탑 (가로 해상도가 992px보다 크고 1199px 보다 작은 화면에 적용)  */
+    @media (min-width: 992px) and (max-width: 1199px) {
 
   .post-container_body{
     display: flex;
@@ -300,5 +392,56 @@ label, h2, button {
     #post-main_box {
         width: 80%; /* Set full width on smaller screens */
     }
-
+    } 
+     
+    /* 큰화면 데스크탑 (가로 해상도가 1200px 보다 큰 화면에 적용)  */
+    @media (min-width: 1200px) {
+      .post-container_body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90vw;
+        height: auto;
+        background-color: #DBE5E6;
+        padding: 20px;
+        margin-top: 10vh; /* Center vertically with 10% from the top */
+        box-shadow: 5px 5px 10px #0000004d;
+        border-radius: 10px;
+        text-align: center;
+      }
+      .myPosts_top {
+        margin-top: 30%; /* Less margin for slightly larger screens */
+      }
+      .post-list-item
+       { /* Adjusts the width and margins for narrow screens */
+            width: auto; /* Allows the element to expand naturally */
+            max-width: none; /* Removes any previous max-width settings */
+            margin: 10px; /* Adds some margin around elements */
+        }
+        .follow,
+        .author-and-follow,
+        .content-and-like {
+            flex-direction: column; /* Stacks the elements vertically */
+            justify-content: center;
+            align-items: center;
+        }
+        .follow_btn, .like_btn {
+            margin: 10px auto; /* Centres buttons with margin */
+        }
+        .post_body,
+        .form-container,
+        .post-container p,
+        .comments,
+        .post-container,
+        .post-button {
+            /* Stack content vertically, reduce sizes, etc., as appropriate */
+            flex-direction: column;
+            align-items: stretch; /* Full-width elements */
+            text-align: center;
+        }
+        #post-title_box,
+        #post-main_box {
+            width: 80%; /* Set full width on smaller screens */
+        }
 }
