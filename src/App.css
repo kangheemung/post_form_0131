@@ -1,10 +1,9 @@
 .App {
   font-family: 'Mali', cursive;
-  width: 100vh;
+  width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   overflow: auto; /* Enable vertical scrollbar for overflowing content */
   padding-bottom: 5%;
@@ -17,7 +16,6 @@
   background-color: #004A54; /* ダークモード時の背景色 */
 }
 body {
-
   font-family: 'Mali', cursive;
   margin: 0;
   padding: 0;
@@ -515,6 +513,7 @@ input{
     margin-top: 30%; /* 適切な位置に配置されるように調整 */
   }
   .main_body{
+    -webkit-overflow-scrolling: touch;
     position: absolute;
     top: 50%;
     left: 50%;
