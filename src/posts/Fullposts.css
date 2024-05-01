@@ -83,12 +83,12 @@ label, h2, button {
 }
 .fullposts{
    /* Set a maximum width */
-  margin-top:10%}
+  margin-top:15%;
+}
 
 .fullposts ul {
     list-style: none;
     padding: 0;
-  
 }
 
   .post-list-item {
@@ -115,7 +115,7 @@ label, h2, button {
     margin-bottom: 5%;
     text-align: center;
  }
-  .post-container p,
+.post-container p,
 .post-container button {
   text-align: center;
 }
@@ -210,7 +210,7 @@ label, h2, button {
 }
 @media (max-width: 768px) {
   .fullposts{
-   margin-top:30%;
+   margin-top:20%;
   }
   .posts-grid-container {
     grid-template-columns: 1fr; /* Change to a single column layout */
@@ -225,7 +225,7 @@ label, h2, button {
     top: 50%; /* Center vertically at 50% from the top */
     left: 50%; /* Center horizontally at 50% from the left */
     transform: translate(-50%, -50%); /* Move back by half of its width and height */
-    width: 90%;
+    width: 80%;
     height: auto;
     background-color: #DBE5E6;
     padding: 20px;
@@ -233,7 +233,9 @@ label, h2, button {
     border-radius: 10px;
     text-align: center;
 }
-.post-container_body{margin-top: 20%;}
+   .post-container_body{
+      margin-top: 20%;
+  }
   .post-container{
       margin-top: 10%;
     }
@@ -244,14 +246,13 @@ label, h2, button {
   .post-list-item {
     width: 100%; /* Set to full width of the container */
     margin: 10px 0; /* Add margin top and bottom */
-}
+  }
 
 }
 
 @media (min-width: 768px) {
 
-  .post-container_body
-  {
+  .post-container_body{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -261,7 +262,7 @@ label, h2, button {
     background-color: #DBE5E6;
     padding: 20px;
     margin-top: 10vh; /* Center vertically with 10% from the top */
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 10px #0000004d;
     border-radius: 10px;
     text-align: center;
   }

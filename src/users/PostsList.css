@@ -59,6 +59,8 @@
   }
   .p_submit_box_bottom{
     text-align: center;
+    margin-top: 5%;
+    margin-bottom: 10%;
   }
   #dark .post-container_t_1 h2{
     color:#ffffff;
@@ -88,7 +90,7 @@
     box-sizing: border-box
   }
   .post-container_m{
-    margin-top: 10%;
+    margin-top: 5%;
 
   }
   .post-container_t {
