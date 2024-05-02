@@ -1,7 +1,5 @@
 .App {
   font-family: 'Mali', cursive;
-  width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -323,14 +321,7 @@ input{
   display: inline-block;
 }
 
-.workshop_enter{
-  display: flex;
-  object-fit: cover;
-  width: 100%;
-  margin-left: 5%;
-  margin-right: 5%;
-  text-align: center;
-}
+
 .page3{
   padding-bottom: 8%;
 }

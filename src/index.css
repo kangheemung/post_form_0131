@@ -16,13 +16,15 @@ body {
 body.dark-mode {
   background-color: var(--background-color-dark);
 }
+html, body {
+  -webkit-overflow-scrolling : touch !important;
+    overflow: auto !important;
+    height: 100% !important;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-.element-with-touch-scrolling {
-  -webkit-overflow-scrolling: touch;
 }
 
 :root {
