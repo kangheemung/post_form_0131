@@ -5,49 +5,47 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  overflow: auto; /* Enable vertical scrollbar for overflowing content */
   padding-bottom: 5%;
 }
-
-#light {
-  background-color: #DBE5E6;;
-}
-#dark{
-  background-color: #004A54; /* ダークモード時の背景色 */
-}
-body {
-  font-family: 'Mali', cursive;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-.App,
-.main_form,
-.sign,
-.username,
-.password,
-.header,
-.s_header ,
-.submit {
-  font-family: 'Mali', cursive;
-}
-
-.main {
-  font-family: 'Mali', cursive;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.main_body{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #fff;
-  width: 60vmin; /* Set width and height to same value for a perfect circle */
-  height: 60vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vmin; /* Set width and height to same value for a perfect circle */
+  height: 100vmin;
   font-size: 5vw;
   border-radius: 50%;
-  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  text-align: center;
 }
-
+.main_body_box{
+  font-family: 'Mali', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95vmin; /* Set width and height to same value for a perfect circle */
+  height: 95vmin;
+  font-size: 5vw;
+}
+.about-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80vmin; /* Set width and height to same value for a perfect circle */
+  height: 80vmin;
+  font-size: 5vw;
+  border-radius: 50%;
+  text-align: center;
+}
 .main_form {
   text-align: center;
   width: 75%;
@@ -69,24 +67,6 @@ body {
   font-weight: bold;
   font-size: xx-large;
 }
-
-.main_body,
-.about-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  width: 100%; /* Set width and height to same value for a perfect circle */
-  height: 90vmin;
-  font-size: 5vw;
-  border-radius: 50%;
-  text-align: center;
-}
 #light .main,
 #light .sign,
 #light .username,
@@ -103,22 +83,9 @@ body {
   background-color:#004A54;
   color: #fff;
 }
-#dark .main,
-#dark .username{
-  background-color: #fff;
-  color: #004A54;
-}
-#dark .btn,
-#dark .large-button_1{
-  background-color: #fff;
-  color: #004A54;
-}
-.main_body {
-  width: 100%; /* Set width and height to maintain circular shape */
-  height: 80vmin;
-  font-size: 5vw;
-  border-radius: 50%;
-}
+
+
+
 
 .username {
   font-family: 'Mali', cursive;
@@ -164,9 +131,10 @@ body {
   background: rgba(255, 247, 247, 0.299);
 }
 .about-content_t{
-  font-size: medium;
-  font-weight: bold;
-  color:#004A54;}
+    font-size: medium;
+    font-weight: bold;
+    color:#004A54;
+}
 .username:focus,
 .password:focus {
   border: 2px solid rgba(0, 0, 0, 0.18) !important;
@@ -234,6 +202,9 @@ a {
 #dark .switch label {
   color: #DBE5E6;
 }
+#dark .username,
+#dark .btn,
+#dark .large-button_1
 .page1{
   text-align: center;
 }
@@ -243,14 +214,7 @@ a {
   font-weight: bolder;
   margin-top: none;
 }
-.main-body{
-  object-fit: cover;
-  margin:10%,10%;
-}
 
-.image-container {
-  position: relative;
-}
 .top {
   display: flex;
   justify-content: center; /* Horizontal centering */
@@ -444,7 +408,7 @@ input{
   font-size: medium; }
 .s_header{
  color: #DBE5E6;
- background-color:  #004A54; 
+ background-color:  #004A54;
  text-align: left;
  font-family: 'Mali', cursive;
 }
@@ -456,13 +420,6 @@ input{
   display: flex;
   text-align: center;
 }
-.about-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Center vertically */
-}
-
 
 .foot{
   background-color: #fff;
@@ -513,18 +470,15 @@ input{
     margin-top: 30%; /* 適切な位置に配置されるように調整 */
   }
   .main_body{
-    -webkit-overflow-scrolling: touch;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin-top: 10%;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
-    width: 100%; /* Set width and height to same value for a perfect circle */
-    height: 80vmin;
+    width: 90%; /* Set width and height to same value for a perfect circle */
     font-size: 5vw;
     border-radius: 50%;
     text-align: center;
@@ -551,13 +505,11 @@ input{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin-top: 10%;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
-    width: 100%; /* Set width and height to same value for a perfect circle */
-    height: 80vmin;
+    width: 90%; /* Set width and height to same value for a perfect circle */
     font-size: 5vw;
     border-radius: 50%;
     text-align: center;
@@ -585,12 +537,11 @@ input{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin-top: 10%;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
-    width: 100%; /* Set width and height to same value for a perfect circle */
+    width: 80vmin; /* Set width and height to same value for a perfect circle */
     height: 80vmin;
     font-size: 5vw;
     border-radius: 50%;
@@ -619,12 +570,11 @@ input{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 10%;
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  width: 100%; /* Set width and height to same value for a perfect circle */
+  width: 80vmin; /* Set width and height to same value for a perfect circle */
   height: 80vmin;
   font-size: 5vw;
   border-radius: 50%;
@@ -653,12 +603,11 @@ input{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 3%;
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  width: 100%; /* Set width and height to same value for a perfect circle */
+  width: 80vmin; /* Set width and height to same value for a perfect circle */
   height: 80vmin;
   font-size: 5vw;
   border-radius: 50%;
@@ -688,12 +637,11 @@ input{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 3%;
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  width: 100%; /* Set width and height to same value for a perfect circle */
+  width: 80vmin; /* Set width and height to same value for a perfect circle */
   height: 80vmin;
   font-size: 5vw;
   border-radius: 50%;

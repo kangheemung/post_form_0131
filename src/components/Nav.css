@@ -10,20 +10,15 @@
   display: flex;
   justify-content: space-between;
 }
-.contain_main{
-  padding-top: 60%;
-}
+
 .nav_link_text_login{
   display: flex;
-
-  margin-right: 5%;
   margin-top: 5%;
 }
 .nav_link_text_login p{
-  margin-left: 3%;
+  margin-left: 2%;
 
 }
-
 .logo_container {
   display: flex;
   align-items: center;
@@ -144,13 +139,14 @@
   .darkmode_box,
   .darkmode_box p{
     margin: 0;
-    font-size: small;
+    font-size: x-small;
   }
   @media (max-width: 600px) {
-    .nav_link_text{margin-left: 2;
-      font-size: small;}
+    .nav_link_text{
+      margin-left: 2;
+      font-size: x-small;}
     .nav_link_text_login p{
-      font-size: small;
+      font-size: x-small;
       }
   }
 }

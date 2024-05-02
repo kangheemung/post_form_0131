@@ -10,6 +10,11 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color-light);
+  transition: background-color 0.5s;
+}
+body.dark-mode {
+  background-color: var(--background-color-dark);
 }
 
 code {
@@ -18,4 +23,9 @@ code {
 }
 .element-with-touch-scrolling {
   -webkit-overflow-scrolling: touch;
+}
+
+:root {
+  --background-color-light: #DBE5E6;
+  --background-color-dark: #004A54;
 }

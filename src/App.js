@@ -26,15 +26,16 @@ function App() {
   const [theme, setTheme] = useState('light');
   const toggleTheme = () => {
     setTheme((current) => current === 'light' ? 'dark' : 'light');
+    document.body.classList.toggle('dark-mode');
   };
-
+  
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <AuthProvider>
       <Router>
         <div className='App' id={theme}>
           <Nav themeSwitch={<ThemeSwitch className='switch'/>} />
-          <div className='mainbody'>
+          <div className='container_box'>
             <Routes className='contain_main'>
               <Route path='/' element={<Home />} />
               <Route path='/about' element={<About />} />

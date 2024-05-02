@@ -116,8 +116,8 @@ function Login() {
     }
 }
   return (
-    <div>
-    <div className="main_body">
+    <div className='main_body'>
+    <div className="main_body_box">
       <form className="main_form" onSubmit={handleSubmit}>
       <p className="sign" align="center">
         Login

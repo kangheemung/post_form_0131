@@ -97,6 +97,7 @@ function Form() {
     }
   return (
     <div className='main_body'>
+    <div className='main_body_box'>
       <form className="main_form" onSubmit={handleSubmit}>
         <h2 className= "sign" align="center">
           Sign up
@@ -113,6 +114,7 @@ function Form() {
         <button type="submit" className="submit">Submit</button>
       </form>
     </div>
+  </div>
   );
 }
 
