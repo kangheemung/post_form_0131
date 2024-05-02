@@ -19,8 +19,8 @@ html {
   /* Prevent font scaling in landscape */
  -ms-content-zooming: none;
  -ms-touch-action: pan-x pan-y;
- -webkit-text-size-adjust: none; /*Chrome, Safari, newer versions of Opera*/
-
+ -webkit-text-size-adjust: none;
+ -webkit-appearance: none;
  -moz-text-size-adjust: none; /*Firefox*/
 
  -ms-text-size-adjust: none;  /*Ie*/
