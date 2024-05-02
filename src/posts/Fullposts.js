@@ -293,6 +293,7 @@ function Fullposts() {
                             <div className="post_top_title">
                                 <p className = "post_top">タイトル</p>
                                 <span>{post.title}</span>
+                      mkdir www
                             </div>
 
                             <div className="content-and-like">

@@ -35,13 +35,13 @@
 
 .nav_link_text{
   display: flex;
-  margin-left: 1%;
+  margin-left: 5%;
   margin-top: 5%;
   justify-content: space-between;
 }
 .nav_link_text p{
   margin-left: 5%;
-  font-size: large;
+  font-size: medium;
 }
 .switch_box {
   margin-left: auto; /* Align switch_box to the right */
@@ -120,12 +120,13 @@
 }
 @media (max-width: 375px) {
   .nav_link_text {
+    margin-left: 5%;
     justify-content: center;
     font-size: x-large;
   }
   .nav_link_text{
     display: flex;
-    margin-left: 15%;
+    margin-left: 5%;
     margin-top: 1%;
     justify-content: center;
   }
@@ -134,7 +135,7 @@
   font-size: large;
   }
 .nav_link_text p{
-  margin-left: 15%;
+  margin-left: 5%;
 }
 .darkmode_box,
 .darkmode_box p{
@@ -143,9 +144,10 @@
 }
 @media (max-width: 600px) {
   .nav_link_text{
-    margin-left: 2;
+    margin-left: 5%;
     font-size: small;}
   .nav_link_text_login p{
+    margin-left: 5%;
     font-size: small;
     }
 }
@@ -158,7 +160,7 @@
     }
     .nav_link_text{
       display: flex;
-      margin-left: 15%;
+      margin-left: 5%;
       margin-top: 1%;
       justify-content: center;
     }
@@ -167,19 +169,11 @@
     font-size: large;
     }
   .nav_link_text p{
-    margin-left: 15%;
+    margin-left: 5%;
   }
   .darkmode_box,
   .darkmode_box p{
     margin: 0;
     font-size: x-small;
-  }
-  @media (max-width: 600px) {
-    .nav_link_text{
-      margin-left: 2;
-      font-size: x-small;}
-    .nav_link_text_login p{
-      font-size: x-small;
-      }
   }
 }

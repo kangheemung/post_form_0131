@@ -8,18 +8,28 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--background-color-light);
   transition: background-color 0.5s;
+  height: 100vh; /* Set body height to take up full viewport height */
+  overflow-y: auto; /* Enable vertical scrollbar if content exceeds height */
+}
+html {
+
+  /* Prevent font scaling in landscape */
+ -ms-content-zooming: none;
+ -ms-touch-action: pan-x pan-y;
+ -webkit-text-size-adjust: none; /*Chrome, Safari, newer versions of Opera*/
+
+ -moz-text-size-adjust: none; /*Firefox*/
+
+ -ms-text-size-adjust: none;  /*Ie*/
+
+ -o-text-size-adjust: none; /*old versions of Opera*/
+
 }
 body.dark-mode {
   background-color: var(--background-color-dark);
-}
-html, body {
-  -webkit-overflow-scrolling : touch !important;
-    overflow: auto !important;
-    height: 100% !important;
 }
 
 code {
