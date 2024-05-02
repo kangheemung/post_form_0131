@@ -15,19 +15,17 @@ body {
   overflow-y: auto; /* Enable vertical scrollbar if content exceeds height */
 }
 html {
-
   /* Prevent font scaling in landscape */
- -ms-content-zooming: none;
- -ms-touch-action: pan-x pan-y;
- -webkit-text-size-adjust: none;
- -webkit-appearance: none;
- -moz-text-size-adjust: none; /*Firefox*/
-
- -ms-text-size-adjust: none;  /*Ie*/
-
- -o-text-size-adjust: none; /*old versions of Opera*/
-
+  -ms-content-zooming: none;
+  -ms-touch-action: pan-x pan-y;
+  -webkit-text-size-adjust: none;
+  -webkit-appearance: none;
+  -moz-text-size-adjust: none; /* Firefox */
+  -ms-text-size-adjust: none; /* Internet Explorer */
+  -o-text-size-adjust: none; /* Opera */
+  height: 100%; /* Set html height to 100% */
 }
+
 body.dark-mode {
   background-color: var(--background-color-dark);
 }
