@@ -19,9 +19,6 @@ html, body {
   content-zooming: none;
   -ms-touch-action: pan-x pan-y;
   -webkit-text-size-adjust: none;
-  -webkit-min-device-pixel-ratio: 3;
-  -min-moz-device-pixel-ratio: 3;
-  -min-device-pixel-ratio: 3;
   -webkit-appearance: none;
   -moz-text-size-adjust: none;
   -ms-text-size-adjust: none;
