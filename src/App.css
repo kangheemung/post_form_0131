@@ -19,6 +19,9 @@
   border-radius: 50%;
   text-align: center;
 }
+.container_box{
+  margin: 5%;
+}
 .main_body_box{
   font-family: 'Mali', cursive;
   display: flex;

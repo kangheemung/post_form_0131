@@ -8,7 +8,7 @@
   width: 100%; /* Full width */
   background-color: #004A54; /* Navigation bar background color */
   display: flex;
-  justify-content: space-between;
+
 }
 
 .nav_link_text_login{
@@ -44,7 +44,7 @@
   font-size: medium;
 }
 .switch_box {
-  margin-left: auto; /* Align switch_box to the right */
+margin-right: 2%;
 }
 /* Light mode link styles */
 #light .nav_link a,
@@ -131,7 +131,7 @@
     justify-content: center;
   }
   .navbar_container{
-  justify-content: center;
+
   font-size: large;
   }
 .nav_link_text p{
@@ -165,7 +165,7 @@
       justify-content: center;
     }
     .navbar_container{
-    justify-content: center;
+
     font-size: large;
     }
   .nav_link_text p{
