@@ -278,22 +278,20 @@ function Fullposts() {
                     return (
                         <li key={post.id.toString()} className="post-list-item">
                             <div className='author-and-follow'>
-                                    <div>
-                                    <p>投稿者: {post.user.name}</p>
+                                    <div className='author-and-follow_name'>
+                                    <p>{post.user.name}様の投稿</p>
                                     </div>
                                     <div>
                                         {!isAuthorCurrentUser && (
                                             <button className="follow_btn"
                                             onClick={() => handleToggleFollow(authorId)}>
-                                                {followedUserIds.has(authorId) ? 'フォローしました' : 'フォロー'}
+                                                {followedUserIds.has(authorId) ? 'Followed' : 'follow'}
                                             </button>
                                         )}
                                     </div>
                             </div>
                             <div className="post_top_title">
-                                <p className = "post_top">タイトル</p>
-                                <span>{post.title}</span>
-                      mkdir www
+                                <p className = "post_top">タイトル -{post.title}-</p>
                             </div>
 
                             <div className="content-and-like">

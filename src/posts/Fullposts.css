@@ -31,15 +31,14 @@ text-align: center;
 }
 
 #post-content {
-width: 80%; /* Set the width of the input box to 100% of its container */
+width: 90%; /* Set the width of the input box to 100% of its container */
 box-sizing: border-box
 }
 .post-container {
   display: flex;
   flex-direction: column; /* Stacking content vertically */
   align-items: center; /* Centering content horizontally */
-  /* Centering content vertically when there are few items */
-  min-height: 80vh;
+  min-height: 90vh;
   grid-template-columns: repeat(3, 1fr); /* This will create three equal columns */
   gap: 20px; /* Adjust the space between columns as needed */
 /* Aligns the content to the top of the container */
@@ -84,7 +83,6 @@ margin-top:15%;
   border: 1px solid #dddddd;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  margin-bottom: 20px;
   text-align: center;
 }
 .posts-grid-container {
@@ -94,7 +92,15 @@ margin-top:15%;
   list-style: none; /* Remove default list styling */
   justify-content: center; /* Center the content horizontally */
   width: 100%; /* Set width to 100% */
-  max-width: 90vw;
+  padding: 3%;
+}
+.author-and-follow_name p{
+  margin-top: 3%;
+  text-align: center;
+}
+.post_top{
+  margin-top: 7%;
+  font-weight: bold;
 }
 .myPosts_List_top{
  margin-top: 5%;
@@ -157,7 +163,17 @@ display: block;
   height: 200px; /* Set the height of the textarea in pixels */
   resize: vertical; /* Allow vertical resizing of the textarea */
 }
-.follow_btn, .like_btn {
+.follow_btn{
+  background-color:#004A54;
+  color: #DBE5E6;
+  border: none;
+  padding: 5px 12px;
+  margin-left: 10%; /* Spacing between the text and button */
+  cursor: pointer;
+  border-radius: 4px;
+ /* Adjust spacing as needed */
+}
+.like_btn {
   background-color:#004A54;
   color: #DBE5E6;
   border: none;
@@ -178,7 +194,7 @@ display: block;
 /* Add other selectors for any additional text elements you want to target, for example: */
 #dark .author-and-follow,
 #dark .content-and-like {
-  color: #000; /* Set text color to black */
+  color: #004A54; /* Set text color to black */
 }
 .author-and-follow{
 display: flex;
@@ -466,6 +482,7 @@ justify-content: space-between; /* Place items at the ends of the container */
           flex-direction: column; /* Stacks the elements vertically */
           justify-content: center;
           align-items: center;
+          
       }
       .follow_btn, .like_btn {
           margin: 10px auto; /* Centres buttons with margin */

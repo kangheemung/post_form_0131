@@ -1,8 +1,10 @@
 .App {
   font-family: 'Mali', cursive;
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
 }
 .main_body{
   position: absolute;
@@ -19,9 +21,7 @@
   border-radius: 50%;
   text-align: center;
 }
-.container_box{
-  margin: 5%;
-}
+
 .main_body_box{
   font-family: 'Mali', cursive;
   display: flex;
