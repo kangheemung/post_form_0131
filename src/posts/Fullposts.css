@@ -64,7 +64,6 @@ label, h2, button {
   text-align: center;
   font-weight: bold;
   color:#004A54
-
 }
 .top{
   font-weight: bold;
@@ -97,17 +96,16 @@ margin-top:15%;
   width: 100%; /* Set width to 100% */
   max-width: 90vw;
 }
-
 .myPosts_List_top{
  margin-top: 5%;
   margin-bottom: 5%;
   text-align: center;
 }
 .post-container p,
-.post-container button {
+.post-container button
+{
 text-align: center;
 }
-
 .post-container ul {
   display: grid;
   text-align: center;
@@ -135,7 +133,6 @@ display: block;
   display: flex;
   justify-content: center;
 }
-
 .button {
   background-color: #33003c;
   height: 40%;
@@ -160,8 +157,6 @@ display: block;
   height: 200px; /* Set the height of the textarea in pixels */
   resize: vertical; /* Allow vertical resizing of the textarea */
 }
-
-
 .follow_btn, .like_btn {
   background-color:#004A54;
   color: #DBE5E6;
@@ -172,8 +167,6 @@ display: block;
   border-radius: 4px;
  /* Adjust spacing as needed */
 }
-
-
 #dark .post-list-item p{
   color: #000;
 }
