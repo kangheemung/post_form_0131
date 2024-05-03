@@ -25,7 +25,7 @@ html, body {
   -o-text-size-adjust: none;
 }
 
-body.dark-mode {
+body.dark-mode{
   background-color: var(--background-color-dark);
 }
 
