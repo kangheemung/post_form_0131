@@ -23,6 +23,7 @@ html, body {
   -ms-text-size-adjust: none;
   -o-text-size-adjust: none;
   background-color:#DBE5E6;
+  height:100vh
 }
 
 body.dark-mode{
