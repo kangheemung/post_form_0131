@@ -25,10 +25,14 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [theme, setTheme] = useState('light');
   const toggleTheme = () => {
-    setTheme((current) => current === 'light' ? 'dark' : 'light');
-    document.body.classList.toggle('dark-mode');
+    const body = document.body;
+    setTheme((current) => {
+      const newTheme = current === 'light' ? 'dark' : 'light';
+      body.classList.remove(`${current}-mode`);
+      body.classList.add(`${newTheme}-mode`);
+      return newTheme;
+    });
   };
-  
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <AuthProvider>

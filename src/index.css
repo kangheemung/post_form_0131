@@ -9,17 +9,17 @@ html, body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-touch-callout:none;
-  -webkit-user-select:none;
-  background-color: var(--background-color-light);
   transition: background-color 0.5s -webkit-transition;
   overflow-y: auto;
   overscroll-behavior: auto;
   -webkit-overflow-scrolling: touch;
-  content-zooming: none;
+
   -ms-touch-action: pan-x pan-y;
   -webkit-text-size-adjust: none;
+  /*CSSにおいて該当のボタンに対して以下の指定を行い、iOS のデフォルトスタイルを適用させないことで回避できます。*/
   -webkit-appearance: none;
+  /*自動調整時の倍率を1倍にする以下の指定をCSSに記載します。*/
+  -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: none;
   -ms-text-size-adjust: none;
   -o-text-size-adjust: none;
@@ -28,12 +28,14 @@ html, body {
 body.dark-mode{
   background-color: var(--background-color-dark);
 }
-
+body.light-mode{
+  background-color: var(--background-color-light);
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 :root {
-  --background-color-light: #DBE5E6;
+  --background-color-light: #DBE5E6;;
   --background-color-dark: #004A54;
 }
