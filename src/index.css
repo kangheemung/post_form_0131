@@ -13,7 +13,6 @@ html, body {
   overflow-y: auto;
   overscroll-behavior: auto;
   -webkit-overflow-scrolling: touch;
-
   -ms-touch-action: pan-x pan-y;
   -webkit-text-size-adjust: none;
   /*CSSにおいて該当のボタンに対して以下の指定を行い、iOS のデフォルトスタイルを適用させないことで回避できます。*/
@@ -23,6 +22,7 @@ html, body {
   -moz-text-size-adjust: none;
   -ms-text-size-adjust: none;
   -o-text-size-adjust: none;
+  background-color:#DBE5E6;
 }
 
 body.dark-mode{
@@ -36,6 +36,6 @@ code {
 }
 
 :root {
-  --background-color-light: #DBE5E6;;
+  --background-color-light: #DBE5E6;
   --background-color-dark: #004A54;
 }

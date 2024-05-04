@@ -50,7 +50,9 @@ color: #DBE5E6;
 #light .myPosts_List_top h2{
 color:#004A54
 }
-
+.container_box{
+  margin-top: 5%;
+}
 .form-container {
 position: relative;
 display: flex;
@@ -69,12 +71,12 @@ label, h2, button {
 }
 .fullposts{
  /* Set a maximum width */
-margin-top:15%;
+margin-top:10%;
 }
 
 .fullposts ul {
+  margin-top:25%;
   list-style: none;
-  padding: 0;
 }
 
 .post-list-item {
@@ -104,8 +106,7 @@ margin-top:15%;
   font-weight: bold;
 }
 .myPosts_List_top{
- margin-top: 5%;
-  margin-bottom: 5%;
+
   text-align: center;
 }
 .post-container p,
@@ -209,7 +210,7 @@ justify-content: space-between; /* Place items at the ends of the container */
 
   @media (max-width: 375px) {
     .fullposts{
-      margin-top:20%;
+      margin-top:30%;
      }
      .posts-grid-container {
        grid-template-columns: 1fr; /* Change to a single column layout */
@@ -239,9 +240,10 @@ justify-content: space-between; /* Place items at the ends of the container */
 }
   @media (max-width: 575px) {
     .fullposts{
-      margin-top:20%;
+      margin-top:10%;
      }
      .posts-grid-container {
+      margin-top:10%;
        grid-template-columns: 1fr; /* Change to a single column layout */
     }
      .post_body,
@@ -270,9 +272,10 @@ justify-content: space-between; /* Place items at the ends of the container */
   /* 가로모드 모바일 디바이스 (가로 해상도가 576px보다 크고 768px 보다 작은 화면에 적용)  */
   @media (min-width: 576px) and (max-width: 767px) {
   .fullposts{
-    margin-top:20%;
+    margin-top:5%;
    }
    .posts-grid-container {
+    margin-top:5%;
      grid-template-columns: 1fr; /* Change to a single column layout */
   }
    .post_body,
@@ -300,6 +303,9 @@ justify-content: space-between; /* Place items at the ends of the container */
 }
   /*태블릿 디바이스 (가로 해상도가 768px보다 크고 991px 보다 작은 화면에 적용)  */
   @media (min-width: 768px) and (max-width: 991px) {
+    .fullposts{
+      margin-top:5%;
+     }
     .post_body,
     .post_body_main {
       display: flex;
@@ -368,6 +374,9 @@ justify-content: space-between; /* Place items at the ends of the container */
   }
   /* 데스크탑 (가로 해상도가 992px보다 크고 1199px 보다 작은 화면에 적용)  */
   @media (min-width: 992px) and (max-width: 1199px) {
+    .fullposts{
+      margin-top:5%;
+     }
     .post_body,
     .post_body_main {
       display: flex;
@@ -436,6 +445,9 @@ justify-content: space-between; /* Place items at the ends of the container */
   }
   /* 큰화면 데스크탑 (가로 해상도가 1200px 보다 큰 화면에 적용)  */
   @media (min-width: 1200px) {
+    .fullposts{
+      margin-top:5%;
+     }
     .post_body,
     .post_body_main {
       display: flex;
@@ -461,7 +473,6 @@ justify-content: space-between; /* Place items at the ends of the container */
       align-items: center;
       width: 100%;
       height: auto;
-
       padding: 20px;
       margin-top: 10vh; /* Center vertically with 10% from the top */
       box-shadow: 5px 5px 10px #0000004d;
@@ -483,7 +494,6 @@ justify-content: space-between; /* Place items at the ends of the container */
           flex-direction: column; /* Stacks the elements vertically */
           justify-content: center;
           align-items: center;
-          
       }
       .follow_btn, .like_btn {
           margin: 10px auto; /* Centres buttons with margin */
