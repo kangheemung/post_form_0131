@@ -47,7 +47,6 @@
   border-radius: 50%;
   text-align: center;
 }
-
 .main_body_box{
   font-family: 'Mali', cursive;
   display: flex;
@@ -600,7 +599,7 @@ input{
   }
   .username,
   .password {
-    width: 95%;
+    width: 85%;
   }
   .submit {
     width: 80%;
@@ -621,7 +620,7 @@ input{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 100vw; /* Set the form max-width to 90% of the viewport width */
+  max-width: 80vw; /* Set the form max-width to 90% of the viewport width */
   width: 100%; /* Ensure the form takes up the full width available */
   height: 100vh; /* Set the form height to 100% of the viewport height */
 }
@@ -661,7 +660,7 @@ input{
 }
   .username,
   .password {
-    width: 95%;
+    width: 85%;
   }
   .submit {
     width: 80%;
@@ -723,7 +722,7 @@ input{
 }
   .username,
   .password {
-    width: 95%;
+    width: 85%;
   }
   .submit {
     width: 80%;
