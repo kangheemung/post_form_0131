@@ -45,6 +45,8 @@
 }
 .switch_box {
 margin-right: 2%;
+  display: flex;
+  align-items: center;
 }
 /* Light mode link styles */
 #light .nav_link a,

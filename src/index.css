@@ -10,7 +10,6 @@ html, body {
     sans-serif;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.5s -webkit-transition;
-  overflow-y: auto;
   overscroll-behavior: auto;
   -webkit-overflow-scrolling: touch;
   -ms-touch-action: pan-x pan-y;
@@ -23,7 +22,7 @@ html, body {
   -ms-text-size-adjust: none;
   -o-text-size-adjust: none;
   background-color:#DBE5E6;
-  height:100vh
+  overflow-y: auto;
 }
 
 body.dark-mode{
@@ -35,7 +34,6 @@ body.light-mode{
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-
 :root {
   --background-color-light: #DBE5E6;
   --background-color-dark: #004A54;
