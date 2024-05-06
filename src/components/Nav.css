@@ -55,7 +55,7 @@ margin-right: 5%;
 #light .darkmode_box,
 #light .nav_link_text,
 #light .header_a{
-  color:#DBE5E6; /* ナビゲーションバーの背景色 */ 
+  color:#DBE5E6; /* ナビゲーションバーの背景色 */
   font-weight: bold;/* Or any other color suitable for light mode */
 }
 /* Dark mode link styles */
@@ -134,9 +134,9 @@ margin-right: 5%;
   width: 100%;
   font-size: large;
   }
-
-  .nav_link_text_login p{
-    margin-left: 2%;
+  .nav_link_text p{
+    margin-right: 5%;
+    font-size: medium;
   }
 .darkmode_box,
 .darkmode_box p{
@@ -163,8 +163,9 @@ margin-right: 5%;
   width: 100%;
   font-size: large;
   }
-.nav_link_text p{
-
+..nav_link_text p{
+  margin-right: 5%;
+  font-size: medium;
 }
 .darkmode_box,
 .darkmode_box p{

@@ -15,7 +15,7 @@
   flex: 1; /* Allow the container to grow and take up remaining space */
 }
 .nav_links_container {
-  margin-left: 3%;
+  margin-left: 5%;
   display: flex;
   justify-content: space-around; /* Distribute links evenly */
   align-items: center;
@@ -561,8 +561,20 @@ input{
   .big_title {
     margin-top: 15%;
   }
+}
+@media only screen and (max-width: 375px) {
+  .username,
+  .password {
+    width: 90%; /* フォーム要素の幅を調整 */
+  }
 
+  .submit {
+    width: 70%; /* ボタンの幅を調整 */
+  }
 
+  .big_title {
+    margin-top: 10%; /* タイトルのマージンを調整 */
+  }
 }
 @media (max-width: 575px) {
   .top_img {
