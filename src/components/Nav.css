@@ -78,9 +78,10 @@ margin-right: 5%;
 }
 
 .nav_links_container{
+  margin-left: 5%;
   display: flex;
-  justify-content: space-between;
-
+  justify-content: space-around; /* Distribute links evenly */
+  align-items: center;
 }
 .nav_link{
   display: flex;
@@ -163,7 +164,7 @@ margin-right: 5%;
   width: 100%;
   font-size: large;
   }
-..nav_link_text p{
+.nav_link_text p{
   margin-right: 5%;
   font-size: medium;
 }
