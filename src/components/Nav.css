@@ -1,6 +1,5 @@
 .navbar_container {
   align-items: center;
-  z-index: 1000;
   position: fixed;
   justify-content: space-between;
   top: 0;
@@ -14,9 +13,10 @@
 .nav_link_text_login{
   display: flex;
   margin-top: 5%;
+  margin-left: 2%;
 }
 .nav_link_text_login p{
-  margin-left: 2%;
+  margin-right: 2%;
 
 }
 .logo_container {
@@ -40,11 +40,11 @@
   justify-content: space-between;
 }
 .nav_link_text p{
-  margin-left: 5%;
+  margin-right: 5%;
   font-size: medium;
 }
 .switch_box {
-margin-right: 2%;
+margin-right: 5%;
   display: flex;
   align-items: center;
 }
@@ -78,7 +78,6 @@ margin-right: 2%;
 }
 
 .nav_links_container{
-  margin: 2%;
   display: flex;
   justify-content: space-between;
 
@@ -120,38 +119,69 @@ margin-right: 2%;
   text-decoration: none;
   color: inherit; /* Will take the color from its parent element */
 }
-@media (max-width: 375px) {
+@media (min-width: 375px) {
   .nav_link_text {
-    margin-left: 5%;
-    justify-content: center;
-    font-size: x-large;
+    margin-left: 0%;
+    justify-content: space-around;
+    font-size: small;
   }
   .nav_link_text{
     display: flex;
-    margin-left: 5%;
     margin-top: 1%;
     justify-content: center;
   }
   .navbar_container{
+  width: 100%;
+  font-size: large;
+  }
 
+  .nav_link_text_login p{
+    margin-left: 2%;
+  }
+.darkmode_box,
+.darkmode_box p{
+  margin: 10%;
+  font-size: small;
+}
+.nav_link_text_login p {
+  margin-left: 0;
+  font-size: small;
+}
+}
+@media (max-width: 375px) {
+  .nav_link_text {
+    margin-left: 0%;
+    justify-content: space-around;
+    font-size: small;
+  }
+  .nav_link_text{
+    display: flex;
+    margin-top: 1%;
+    justify-content: center;
+  }
+  .navbar_container{
+  width: 100%;
   font-size: large;
   }
 .nav_link_text p{
-  margin-left: 5%;
+
 }
 .darkmode_box,
 .darkmode_box p{
-  margin: 0;
   font-size: small;
 }
+
+/* Add this new media query at the end of your CSS file */
 @media (max-width: 600px) {
-  .nav_link_text{
-    margin-left: 5%;
-    font-size: small;}
-  .nav_link_text_login p{
-    margin-left: 5%;
+  .nav_link_text {
+    justify-content: space-around; /* Adjust spacing between links */
+    font-size: small; /* Decrease font size for smaller screens */
+  }
+
+  .nav_link_text_login p {
+    margin-left: 0;
     font-size: small;
-    }
+  }
 }
 
 }
