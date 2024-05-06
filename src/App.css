@@ -563,6 +563,39 @@ input{
   }
 }
 @media only screen and (max-width: 375px) {
+  .top_img {
+    width: 150px;
+    height: auto;
+    margin-top: 20%; /* 適切な位置に配置されるように調整 */
+  }
+  .main_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 90vw; /* Set the form max-width to 90% of the viewport width */
+    width: 90%; /* Ensure the form takes up the full width available */
+    height: 100vh; /* Set the form height to 100% of the viewport height */
+  }
+  .main_body{
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75vmin; /* Set width and height to same value for a perfect circle */
+    height: 75vmin;
+    font-size: 5vw;
+    border-radius: 50%;
+    text-align: center;
+  }
+  .main_body_box{
+    justify-content: center;
+    align-items: center;
+    width: 75vmin; /* Set width and height to same value for a perfect circle */
+    height: 75vmin;
+    font-size: 5vw;
+  }
+
   .username,
   .password {
     width: 90%; /* フォーム要素の幅を調整 */
