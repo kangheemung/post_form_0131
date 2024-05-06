@@ -27,6 +27,7 @@
   max-width: 90vw; /* Set the form max-width to 90% of the viewport width */
   width: 100%; /* Ensure the form takes up the full width available */
   height: 100vh; /* Set the form height to 100% of the viewport height */
+  -webkit-appearance: none;
 }
 
 #dark .App{
@@ -118,6 +119,7 @@
   text-align: center;
   margin: 1% auto;
   font-family: "Ubuntu", sans-serif;
+  -webkit-appearance: none;
 }
 .password {
   font-family: 'Mali', cursive;
@@ -134,6 +136,7 @@
   text-align: center;
   margin: 1% auto;
   font-family: "Ubuntu", sans-serif;
+  -webkit-appearance: none;
 }
 #light .username,
 #light .password {
@@ -315,6 +318,7 @@ input{
   font-size: 130%;
   font-family: 'Mali', cursive;
   font-weight: bolder;
+  -webkit-appearance: none; 
 }
 .big_title{
   display: flex;
