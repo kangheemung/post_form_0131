@@ -67,7 +67,7 @@ label, h2, button {
 }
 .fullposts{
  /* Set a maximum width */
-margin-top:25%;
+  margin-top:25%;
 }
 
 .fullposts ul {
@@ -240,7 +240,7 @@ justify-content: space-between; /* Place items at the ends of the container */
      }
      .posts-grid-container {
       margin-top:10%;
-       grid-template-columns: 1fr; /* Change to a single column layout */
+      grid-template-columns: 1fr; /* Change to a single column layout */
     }
      .post_body,
      .post_body_main {
@@ -407,7 +407,7 @@ justify-content: space-between; /* Place items at the ends of the container */
   margin-top: 30%; /* Less margin for slightly larger screens */
 }
 .post-list-item
- { /* Adjusts the width and margins for narrow screens */
+ {
       width: auto; /* Allows the element to expand naturally */
       max-width: none; /* Removes any previous max-width settings */
       margin: 10px; /* Adds some margin around elements */
@@ -428,7 +428,6 @@ justify-content: space-between; /* Place items at the ends of the container */
   .comments,
   .post-container,
   .post-button {
-      /* Stack content vertically, reduce sizes, etc., as appropriate */
       flex-direction: column;
       align-items: stretch; /* Full-width elements */
       text-align: center;
