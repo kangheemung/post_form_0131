@@ -50,9 +50,6 @@ function Form() {
       hasError = true;
     }
       if (hasError) return;
-
-
-
     try {
       const response = await fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users`, {
         method: 'POST',
@@ -86,7 +83,7 @@ function Form() {
           navigate(`/users/${userId}`); // Navigate after the timeout
         }, 2000)
       } else {
-        setError("Invalid token received. Registration failed.");  
+        setError("Invalid token received. Registration failed.");
         setFlashMessage('Failed to register.');
       }
   } catch (error) {

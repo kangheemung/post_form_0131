@@ -40,7 +40,7 @@ function App() {
         <div className='App' id={theme}>
           <Nav themeSwitch={<ThemeSwitch className='switch'/>} />
           <div className='container_box'>
-            <Routes className='contain_main'>
+            <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/about' element={<About />} />
               <Route path='/auth' element={<Login />} />
