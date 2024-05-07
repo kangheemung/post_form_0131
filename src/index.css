@@ -1,19 +1,24 @@
 * {
   margin: 0;
-  padding: 0;
+  padding: 0%;
   box-sizing: border-box;
 }
 
-html,body {
+body {
+  height: -webkit-fill-available;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  -webkit-overflow-scrolling:auto;
+  -webkit-tap-highlight-color:transparent;
+  background-color: var(--background-color-light);
   transition: background-color 0.5s;
-  background-color:#DBE5E6;
-}
-body.dark-mode{
-  background-color: var(--background-color-dark);
+  box-sizing : border-box;
 }
 
-body.light-mode{
-  background-color: var(--background-color-light);
+body.dark-mode {
+  background-color: var(--background-color-dark);
 }
 
 code {

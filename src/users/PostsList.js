@@ -74,7 +74,7 @@ function PostsList() {
 
   return (
   <div className='post-container_body'>
-    <div className='post-container_t'><h2>あなたが投稿した内容</h2></div>
+    <div className='post-container_t'><h3>あなたが投稿した内容</h3></div>
     <div className='post-container_m'>
       {microposts ? (
         microposts.length > 0 ? (
@@ -93,10 +93,9 @@ function PostsList() {
             ))}
           </div>
         ) : (
-          <>
-        
+        <div className='no_Posts'>
           <p className='post-container_m_p'>投稿ポストがないです。</p>
-          </>
+        </div>
         )
       ) : (
         <p>Loading...</p>

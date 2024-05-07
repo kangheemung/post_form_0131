@@ -144,19 +144,17 @@ margin-right: 5%;
     font-size: small;
   }
   .nav_link_text_login p {
-    margin-left: 0;
     font-size: small;
   }
 }
 @media (max-width: 375px) {
   .nav_link_text {
-    margin-left: 0%;
+
     justify-content: space-around;
     font-size: small;
   }
   .nav_link_text{
     display: flex;
-    margin-top: 1%;
     justify-content: center;
   }
   .navbar_container{

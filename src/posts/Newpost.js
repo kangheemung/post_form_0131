@@ -1,14 +1,14 @@
 import { useState ,useEffect} from 'react';
 import {jwtDecode} from 'jwt-decode'; // Corrected import statement
 import { useNavigate } from 'react-router-dom';
-import './Fullposts.css';
+import './Newpost.css';
 
 
 function Newpost({ todos, setTodos}) {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [userName, setUserName] = useState('');
-  const [flashMessage, setFlashMessage] = useState(''); 
+  const [flashMessage, setFlashMessage] = useState('');
   const navigate = useNavigate();
   //let { user_id } = useParams();
 //testのため仮のトークンを入れます。本来ならいらないです。
