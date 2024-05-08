@@ -80,14 +80,16 @@ function PostsList() {
           {microposts ? (
             microposts.length > 0 ? (
               microposts.map((post) => (
-                <li key={post.id} className='post_box'>
-                  <p className="post_box_t_b">title --{post.title}--</p>
-                  <p className="post_box_b">post内容</p>
-                  <p className="post_box_p">{post.body}</p>
-                  <button onClick={() => handleDelete(post.id)} className="p_button">
-                    削除
-                  </button>
-                </li>
+                <div className='post_box'>
+                  <li key={post.id}>
+                    <p className="post_box_t_b">title --{post.title}--</p>
+                    <p className="post_box_b">post内容</p>
+                    <p className="post_box_p">{post.body}</p>
+                    <button onClick={() => handleDelete(post.id)} className="p_button">
+                      削除
+                    </button>
+                  </li>
+                </div>
               ))
             ) : (
               <div className='no_Posts'>

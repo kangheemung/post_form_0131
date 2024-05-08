@@ -277,7 +277,8 @@ function Fullposts() {
 
                     return (
                             <div className="posts-grid-container">
-                                <li key={post.id.toString()} className="post-list-item">
+                              <div className="post-list-item">
+                                <li key={post.id.toString()} >
                                     <div className='author-and-follow'>
                                             <div>
                                             <p>投稿者: {post.user.name}</p>
@@ -309,6 +310,7 @@ function Fullposts() {
                                     </div>
                                     </div>
                                 </li>
+                              </div>
                             </div>
                     );
                 })}
