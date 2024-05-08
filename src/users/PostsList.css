@@ -10,8 +10,12 @@
 .post-container_body{
   margin: 20px;
 }
-#dark .Posts_List_ul,
-#dark.post_box
+#light .post_box
+{
+  background-color: #ffffff;
+  color: #03282e;
+}
+#dark .post_box
 {
   background-color: #03282e;
   color: #DBE5E6;
@@ -19,9 +23,10 @@
 
 #light .p_submit_box,
 #light .p_button{
-  background-color: #ffffff;
-  border-radius: 5%;
-  border: solid 1px #ffffff;
+  background-color: #004A54;
+  border-radius: 15%;
+  border: solid 1px #DBE5E6;
+  color: #DBE5E6;
 }
 #light .post-container_m_p,
 #light .post-container_t h2{
@@ -31,7 +36,7 @@
 #dark .p_submit_box,
 #dark .p_button{
   background-color: #ffffff;
-  border-radius: 5%;
+  border-radius: 15%;
   border: solid 1px #ffffff;
 }
 .p_submit_box_bottom{
@@ -74,7 +79,7 @@
 .p_button{
   margin-top: 5%;
   padding: 2%;
-  border-radius: 5%;
+  border-radius: 15%;
 }
 @media (max-width: 375px) {
   .post-container_body{
