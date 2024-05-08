@@ -20,7 +20,6 @@
     .post_body_top h3{
       color: #004A54;
       }
-   
     @media (max-width: 375px) {
         .post_body_main {
             display: flex;

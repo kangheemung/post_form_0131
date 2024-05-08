@@ -8,8 +8,9 @@
   box-sizing: border-box;
   width: 100%;
   background-color: #F0F3F3;
-  align-items: stretch; 
+  align-items: stretch;
 }
+
 #dark .post-list-item{
   background-color: #03282e;
 }
