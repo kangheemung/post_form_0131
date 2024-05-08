@@ -270,48 +270,50 @@ function Fullposts() {
             <div className="myPosts_List_top">
                 <h2>投稿された記録</h2>
             </div>
-            <div className="posts-grid-container">
+            <div className="posts-grid-body">
                 {microposts.map((post) => {
                     const authorId = post.user_id.toString();
                     const isAuthorCurrentUser = currentUser && String(currentUser.id) === authorId;
 
                     return (
-                        <li key={post.id.toString()} className="post-list-item">
-                            <div className='author-and-follow'>
-                                    <div>
-                                    <p>投稿者: {post.user.name}</p>
+                            <div className="posts-grid-container">
+                                <li key={post.id.toString()} className="post-list-item">
+                                    <div className='author-and-follow'>
+                                            <div>
+                                            <p>投稿者: {post.user.name}</p>
+                                            </div>
+                                            <div>
+                                                {!isAuthorCurrentUser && (
+                                                    <button className="follow_btn"
+                                                    onClick={() => handleToggleFollow(authorId)}>
+                                                        {followedUserIds.has(authorId) ? 'Followed' : 'Follow'}
+                                                    </button>
+                                                )}
+                                            </div>
                                     </div>
-                                    <div>
-                                        {!isAuthorCurrentUser && (
-                                            <button className="follow_btn"
-                                            onClick={() => handleToggleFollow(authorId)}>
-                                                {followedUserIds.has(authorId) ? 'Followed' : 'Follow'}
-                                            </button>
-                                        )}
+                                    <div className="post_top_title">
+                                        <p className = "post_top">タイトル</p>
+                                        <span>{post.title}</span>
                                     </div>
-                            </div>
-                            <div className="post_top_title">
-                                <p className = "post_top">タイトル</p>
-                                <span>{post.title}</span>
-                            </div>
 
-                            <div className="content-and-like">
-                              <div>
-                                {post.body}
-                              </div>
-                              <div>
-                              {!isAuthorCurrentUser && (
-                              <button className = "like_btn" onClick={() => handleToggleLike(post.id)}>
-                                {likedPosts.has(post.id) ? 'Likeしました' : 'Like!'}
-                              </button>
-                              )}
-                              </div>
+                                    <div className="content-and-like">
+                                    <div>
+                                        {post.body}
+                                    </div>
+                                    <div>
+                                    {!isAuthorCurrentUser && (
+                                    <button className = "like_btn" onClick={() => handleToggleLike(post.id)}>
+                                        {likedPosts.has(post.id) ? 'Likeしました' : 'Like!'}
+                                    </button>
+                                    )}
+                                    </div>
+                                    </div>
+                                </li>
                             </div>
-                        </li>
                     );
                 })}
+            </div>
           </div>
-        </div>
     </>
     );
 }

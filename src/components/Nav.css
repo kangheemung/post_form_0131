@@ -9,6 +9,14 @@
   display: flex;
 
 }
+.header {
+  color: #DBE5E6;
+  background-color: #004A54;
+  text-align: left;
+  font-family: 'Mali', cursive;
+  padding-bottom: 5%;
+}
+
 
 .nav_link_text_login{
   display: flex;
@@ -32,7 +40,11 @@
   justify-content: center; /* 子要素を中央揃えにする */
   flex-wrap: wrap;
 }
-
+.header_a{
+    color: #DBE5E6;
+    text-decoration: none;
+    margin-right: 2%;
+}
 .nav_link_text{
   display: flex;
   margin-left: 5%;
@@ -78,7 +90,7 @@ margin-right: 5%;
 }
 
 .nav_links_container{
-  margin-left: 5%;
+  margin-left: 20px;
   display: flex;
   justify-content: space-around; /* Distribute links evenly */
   align-items: center;
@@ -121,14 +133,14 @@ margin-right: 5%;
 }
 @media (min-width: 375px) {
   .nav_link_text {
-    margin-left: 0%;
     justify-content: space-around;
     font-size: small;
   }
-  .nav_link_text{
+  .nav_links_container{
+    margin-left: 20px;
     display: flex;
-    margin-top: 1%;
-    justify-content: center;
+    justify-content: space-around; /* Distribute links evenly */
+    align-items: center;
   }
   .navbar_container{
   width: 100%;
@@ -147,9 +159,9 @@ margin-right: 5%;
     font-size: small;
   }
 }
+
 @media (max-width: 375px) {
   .nav_link_text {
-
     justify-content: space-around;
     font-size: small;
   }
@@ -187,6 +199,12 @@ margin-right: 5%;
       justify-content: center;
       font-size: x-large;
     }
+    .nav_links_container{
+      margin-left: 40px;
+      display: flex;
+      justify-content: space-around; /* Distribute links evenly */
+      align-items: center;
+    }
     .nav_link_text{
       display: flex;
       margin-left: 5%;
@@ -208,19 +226,131 @@ margin-right: 5%;
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .nav_link_text {
+    justify-content: center;
+    font-size: x-large;
+  }
+  .nav_links_container{
+    margin-left: 40px;
+    display: flex;
+    justify-content: space-around; /* Distribute links evenly */
+    align-items: center;
+  }
+  .nav_link_text{
+    display: flex;
+    margin-left: 5%;
+    margin-top: 1%;
+    justify-content: center;
+  }
+  .navbar_container{
+
+  font-size: large;
+  }
+  .nav_link_text p{
+    margin-left: 5%;
+  }
+  .darkmode_box,
+  .darkmode_box p{
+    margin: 0;
+    font-size: x-small;
+  }
 
 }
 /*태블릿 디바이스 (가로 해상도가 768px보다 크고 991px 보다 작은 화면에 적용)  */
 @media (min-width: 768px) and (max-width: 991px) {
+  .nav_link_text {
+    justify-content: center;
+    font-size: x-large;
+  }
+  .nav_links_container{
+    margin-left: 40px;
+    display: flex;
+    justify-content: space-around; /* Distribute links evenly */
+    align-items: center;
+  }
+  .nav_link_text{
+    display: flex;
+    margin-left: 5%;
+    margin-top: 1%;
+    justify-content: center;
+  }
+  .navbar_container{
+
+  font-size: large;
+  }
+  .nav_link_text p{
+    margin-left: 5%;
+  }
+  .darkmode_box,
+  .darkmode_box p{
+    margin: 0;
+    font-size: x-small;
+  }
 
 }
 /* 데스크탑 (가로 해상도가 992px보다 크고 1199px 보다 작은 화면에 적용)  */
 @media (min-width: 992px) and (max-width: 1199px) {
+  .nav_link_text {
+    justify-content: center;
+    font-size: x-large;
+  }
+  .nav_links_container{
+    margin-left: 40px;
+    display: flex;
+    justify-content: space-around; /* Distribute links evenly */
+    align-items: center;
+  }
+  .nav_link_text{
+    display: flex;
+    margin-left: 5%;
+    margin-top: 1%;
+    justify-content: center;
+  }
+  .navbar_container{
+
+  font-size: large;
+  }
+  .nav_link_text p{
+    margin-left: 5%;
+  }
+  .darkmode_box,
+  .darkmode_box p{
+    margin: 0;
+    font-size: x-small;
+  }
 
 
 
 }
 /* 큰화면 데스크탑 (가로 해상도가 1200px 보다 큰 화면에 적용)  */
 @media (min-width: 1200px) {
+  .nav_link_text {
+    justify-content: center;
+    font-size: x-large;
+  }
+  .nav_links_container{
+    margin-left: 40px;
+    display: flex;
+    justify-content: space-around; /* Distribute links evenly */
+    align-items: center;
+  }
+  .nav_link_text{
+    display: flex;
+    margin-left: 5%;
+    margin-top: 1%;
+    justify-content: center;
+  }
+  .navbar_container{
+
+  font-size: large;
+  }
+  .nav_link_text p{
+    margin-left: 5%;
+  }
+  .darkmode_box,
+  .darkmode_box p{
+    margin: 0;
+    font-size: x-small;
+  }
 
 }

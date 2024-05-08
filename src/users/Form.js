@@ -96,9 +96,9 @@ function Form() {
     <div className='main_body'>
     <div className='main_body_box'>
       <form className="main_form" onSubmit={handleSubmit}>
-        <h2 className= "sign" align="center">
+        <p className= "sign" align="center">
           Sign up
-        </h2>
+        </p>
       {flashMessage && <div className="flash-message">{flashMessage}</div>}
         <input className= "username" type = "text" placeholder= "Username" value={name} onChange={(e) => setName(e.target.value)} />
         {error.name && <div className="flash-error">{error.name}</div>}

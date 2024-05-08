@@ -4,8 +4,14 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
+  overflow: auto;
 
+}
+.main_body_box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #light {
   background-color: #DBE5E6;;
 }
@@ -21,23 +27,19 @@
   width: 90%; /* Ensure the form takes up the full width available */
 
 }
+.sign{font-size: 24px;
+  color:  #004A54;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 .flash-error{
   font-size: x-small;
   color:  #004A54;
   font-weight: bold;
 }
-.form1 {
-  padding-top: 40px;
-}
-.sign {
-  text-align: center;
-  margin-bottom: 3%;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: bold;
-  font-size: xx-large;
-}
 .main_body {
   position: absolute;
+  margin-top: 50px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -45,18 +47,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90vmin; /* Set width and height to same value for a perfect circle */
-  height: 90vmin;
+  width: 80vmin; /* Set width and height to same value for a perfect circle */
+  height: 80vmin;
   font-size: 5vw;
   border-radius: 50%;
   text-align: center;
 }
-#light .main,
-#light .sign,
-#light .username,
-#light .password{
-  color:  #004A54;
-}
+
 #light .greeting,
 #light .greeting_box{
   color:  #fff;
@@ -67,7 +64,6 @@
   background-color:#004A54;
   color: #fff;
 }
-#dark .main,
 #dark .username{
   background-color: #fff;
   color: #004A54;
@@ -141,38 +137,8 @@
   outline:0;
   border-radius: 10px;
 }
-.forgot {
-  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-  color: #DBE5E6;
-  padding-top: 15px;
-}
-a {
-  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-  color: #DBE5E6;
-  text-decoration: none;
-}
-.header {
-  color: #DBE5E6;
-  background-color: #004A54;
-  text-align: left;
-  font-family: 'Mali', cursive;
-  padding-bottom: 5%;
-}
-.header1 a {
-  color: #DBE5E6;
-  text-decoration: none;
-  margin-right: 2%;
-}
-.header1 {
-  color: #DBE5E6;
-  background-color: #004A54;
-  text-align: left;
-  font-family: 'Mali', cursive;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  display: flex;
-  width: 100%;
-}
+
+
 .switch {
   position: fixed;
   top: 0;
@@ -190,44 +156,12 @@ a {
 #dark .switch label {
   color: #DBE5E6;
 }
-.page1{
-  text-align: center;
-}
-.main-text{
-  color:#004A54;
-  text-align: center;
-  font-weight: bolder;
-  margin-top: none;
-}
-.main-body{
-  object-fit: cover;
-  margin:10%,10%;
-}
-.image-container {
-  position: relative;
-}
-.top {
-  display: flex;
-  justify-content: center; /* Horizontal centering */
-  align-items: center; /* Vertical centering */
-  text-align: center;
-}
 .top_main{
   margin: 3%,3%;
   display: flex;
   justify-content: center; /* Horizontal centering */
   align-items: center; /* Vertical centering */
   height: 100vh;
-}
-
-.top2 {
-  position: relative;
-  z-index: 2; /* 下の画像を重ねる */
-}
-
-.top2 h4{
-  text-align: center;
-  position: absolute;
 }
 .home_body {
   display: flex;
@@ -245,18 +179,12 @@ a {
   height: 50px;
   padding: 10px; /* パディングを適切な値に修正 */
   max-width: 200px; /* ボタンの最大幅を設定 */
-  height: 50px; /* ボタンの高さを設定 */
   font-weight: bold;
   font-size: large;
   border: none;
   outline: none;
   border-radius: 10px;
   cursor: pointer;
-}
-.large-button_1:nth-child(2) {
-  top: 50%; /* 上から50%の位置に配置 */
-  left: 50%; /* 左から50%の位置に配置 */
-  transform: translate(30%, 50%); /* 要素の中央揃え */
 }
 .flash-message{
   font-size: small;
@@ -278,7 +206,6 @@ a {
   height: 50px;
   padding: 10px; /* パディングを適切な値に修正 */
   max-width: 200px; /* ボタンの最大幅を設定 */
-  height: 50px; /* ボタンの高さを設定 */
   font-weight: bold;
   font-size: large;
   border: none;
@@ -286,47 +213,6 @@ a {
   border-radius: 10px;
   cursor: pointer;
 }
-input{
-  font-size: 130%;
-  font-family: 'Mali', cursive;
-  font-weight: bolder;
-}
-.big_title{
-  display: flex;
-  color:#004A54;
-  margin-top: 5%;
-  }
-
-.square{
-  width: 5%;
-  height: 5%;
-  margin-top: 2%;
-  margin-right: 2%;
-  margin-left: 2%;
-}
-.main_button{
-  margin-top: 10%;
-  margin-bottom: 30%;
-  text-align: center;
-
-}
-.detail_box1_target_user{
-  font-weight: bold;
-  display: inline-block;
-}
-
-.workshop_enter{
-  display: flex;
-  object-fit: cover;
-  width: 100%;
-  margin-left: 5%;
-  margin-right: 5%;
-  text-align: center;
-}
-.page3{
-  padding-bottom: 8%;
-}
-
 
 #dark .top_img {
   filter: brightness(0) invert(1);
@@ -341,50 +227,10 @@ input{
 #dark .about p {
   color: #004A54
 }
-.check {
-  width: 3%;
-  transform: translate(5%, 5%);
-}
-.check1 {
-  width: 4%;
-  transform: translate(7%, 5%);
-}
-.s-text{
-  color:#004A54;
-}
-.foot-text{
-  color:#004A54;
-  font-family: 'Mali', cursive;
-}
-.bottom-text{
-  font-size: medium;
-}
-.bottom-text1{
-  font-size: small;
-}
-.bottom-text2{
-  font-size: x-small;
 
-}
-.name{
-  color:#004A54;
-  font-size: medium; }
-.s_header{
- color: #DBE5E6;
- background-color:  #004A54;
- text-align: left;
- font-family: 'Mali', cursive;
-}
-.s_header h4{
-  padding-top:3%;
-  padding-bottom: 3%;
-}
-.position_btn{
-  display: flex;
-  text-align: center;
-}
 .about-container{
   position: absolute;
+  margin-top: 50px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -392,8 +238,8 @@ input{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90vmin; /* Set width and height to same value for a perfect circle */
-  height: 90vmin;
+  width: 80vmin; /* Set width and height to same value for a perfect circle */
+  height: 80vmin;
   font-size: 5vw;
   border-radius: 50%;
   text-align: center;
@@ -407,33 +253,6 @@ input{
   bottom: 0;
   text-align: center;
   width: 100%;
-}
-.position-text{
-  color:#004A54;
-  text-align: right;
-  font-family: 'Mali', cursive;
-  font-weight: bolder;
-  font-size: medium;
-  text-align: center;
-  margin-top: 30%;
-}
-.position{
-  display: center;
-  text-align: center;
-}
-.hand_img_home{
-  margin-top: 30%;
-  margin-right:10%;
-  margin-bottom: 10%;
-  width: 45%;
-}
-.select_header{
-  display: flex;
-  background-color:  #004A54;
-}
-.select_b{
-  text-align: right;
-  margin-left: 40%;
 }
 .animated-img-container {
   animation: moveUpDown 3s infinite; /* Adjust animation duration as needed */
@@ -461,8 +280,8 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90vmin; /* Set width and height to same value for a perfect circle */
-    height: 90vmin;
+    width: 70vmin; /* Set width and height to same value for a perfect circle */
+    height: 70vmin;
     font-size: 5vw;
     border-radius: 50%;
     text-align: center;
@@ -474,9 +293,7 @@ input{
   .submit {
     width: 80%;
   }
-  .big_title {
-    margin-top: 15%;
-  }
+
 }
 @media (max-width: 575px) {
   .top_img {
@@ -506,9 +323,7 @@ input{
   .submit {
     width: 80%;
   }
-  .big_title {
-    margin-top: 15%;
-  }
+
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
@@ -539,9 +354,7 @@ input{
   .submit {
     width: 80%;
   }
-  .big_title {
-    margin-top: 15%;
-  }
+
 }
 /*태블릿 디바이스 (가로 해상도가 768px보다 크고 991px 보다 작은 화면에 적용)  */
 @media (min-width: 768px) and (max-width: 991px) {
@@ -580,9 +393,7 @@ input{
   .submit {
     width: 80%;
   }
-  .big_title {
-    margin-top: 15%;
-  }
+
 }
 
 /* 데스크탑 (가로 해상도가 992px보다 크고 1199px 보다 작은 화면에 적용)  */
@@ -601,8 +412,8 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90vmin; /* Set width and height to same value for a perfect circle */
-    height: 90vmin;
+    width: 70vmin; /* Set width and height to same value for a perfect circle */
+    height: 70vmin;
     font-size: 5vw;
     border-radius: 50%;
     text-align: center;
@@ -623,16 +434,18 @@ input{
   .submit {
     width: 80%;
   }
-  .big_title {
-    margin-top: 15%;
-  }
   }
   /* 큰화면 데스크탑 (가로 해상도가 1200px 보다 큰 화면에 적용)  */
   @media (min-width: 1200px) {
-    .top_img {
+  .top_img {
     width: 150px;
     height: auto;
     margin-top: 15%; /* 適切な位置に配置されるように調整 */
+  }
+  .sign{font-size: 34px;
+    color:  #004A54;
+    font-weight: bold;
+    margin-bottom: 20px;
   }
   .main_form {
     display: flex;
@@ -665,7 +478,5 @@ input{
   .submit {
     width: 80%;
   }
-  .big_title {
-    margin-top: 15%;
-  }
+
 }
