@@ -19,7 +19,7 @@ function Form() {
     };
     const checkDuplicateEmail = (email) => {
       const registeredEmails = ['example1@example.com', 'example2@example.com'];
-      return registeredEmails.indexOf(email);
+      return registeredEmails.includes(email);
   };
 
 
@@ -49,7 +49,8 @@ function Form() {
       hasError = true;
     }
     if (checkDuplicateEmail(email)) {
-      setError(prev => ({ ...prev, email: "Email is already registered." }));
+      setError({ email: 'Email is already registered.' });
+      setFlashMessage('Email is already registered.');
       hasError = true;
   }
 
@@ -79,31 +80,36 @@ function Form() {
       });
       if (!response.ok) {
         throw new Error('Failed to register.');
-      }
-
-      const data = await response.json();
-      //console.log(data);
-      localStorage.setItem('token', data.data.token);
-        // セキュリティ上の観点から、本番環境では localStorage へのトークン保存には注意が必要です
-      const decodedToken = jwtDecode(data.data.token);
-      const userId = decodedToken.user_id;
-
-      if (userId) {
-        login(data.data.token, userId);
-        setFlashMessage('会員登録 successful!');
-        setTimeout(() => {
-          navigate(`/users/${userId}`); // Navigate after the timeout
-        }, 2000)
-      } else {
-        setError("Invalid token received. Registration failed.");
-        setFlashMessage('Failed to register.');
-      }
-  } catch (error) {
-        console.error(error);
-        setError(prev => ({ ...prev, global: error.message }));
-        setFlashMessage(error.message);
-      }
     }
+
+    const data = await response.json();
+
+    if (!data.token) {
+        throw new Error('Invalid token received.');
+    }
+
+    localStorage.setItem('token', data.token);
+
+    const decodedToken = jwtDecode(data.token);
+    const userId = decodedToken.user_id;
+
+    login(data.token, userId);
+    setFlashMessage('会員登録 successful!');
+
+    setTimeout(() => {
+        navigate(`/users/${userId}`);
+    }, 2000);
+} catch (error) {
+  console.error(error);
+  if (error.message === 'Invalid token received.') {
+      setError({ global: 'Invalid token received. Please try again.' });
+      setFlashMessage('Email is already registered.');
+  } else {
+      setError({ global: 'Unexpected error occurred. Registration failed.' });
+      setFlashMessage('Failed to register.');
+  }
+ }
+}
   return (
     <div className='main_body'>
     <div className='main_body_box'>
