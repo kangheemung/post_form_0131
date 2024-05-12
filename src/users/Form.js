@@ -17,6 +17,13 @@ function Form() {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return re.test(String(email).toLowerCase());
     };
+    const checkDuplicateEmail = (email) => {
+      const registeredEmails = ['example1@example.com', 'example2@example.com'];
+      return registeredEmails.indexOf(email);
+  };
+
+
+
     useEffect(() => {
       let timer;
       if (flashMessage) {
@@ -41,6 +48,11 @@ function Form() {
       setError(prev => ({ ...prev, email: "Please enter a valid email." }));
       hasError = true;
     }
+    if (checkDuplicateEmail(email)) {
+      setError(prev => ({ ...prev, email: "Email is already registered." }));
+      hasError = true;
+  }
+
     if (password.length < 8) {
       setError(prev => ({ ...prev, password: "The password must be at least 8 characters long." }));
       hasError = true;
