@@ -62,7 +62,8 @@ function Form() {
       setError(prev => ({ ...prev, passwordConfirmation: "Passwords do not match." }));
       hasError = true;
     }
-      if (hasError) return;
+    if (hasError) return;
+
     try {
       const response = await fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users`, {
         method: 'POST',
@@ -78,39 +79,48 @@ function Form() {
           }
         })
       });
-      if (!response.ok) {
-        throw new Error('Failed to register.');
+      const data = await response.json();
+      if (response.ok) {
+        if (data && data.data && data.data.token) {
+
+        const decodedToken = jwtDecode(data.data.token); // Use the token from data.data
+        const userId = decodedToken.user_id;
+        localStorage.setItem('token', data.data.token); // Adjusted for nested data structure
+        //alert('Login successful!');
+
+        if (userId) {
+          login(data.data.token, userId);
+          setFlashMessage('Login出来ました!');
+          setTimeout(() => {
+            navigate(`/users/${userId}`); // Navigate after the timeout
+          }, 2000)
+        } else {
+          console.errors('User ID is undefined.');
+          setFlashMessage('会員登録されてないIDです');
+        }
+      } else {
+        if (data.error === 'DuplicateEmail') {
+          setError({ email: 'Email is already registered.' });
+              setFlashMessage('User not found. Please check your email.');
+            } else {
+              setError(prevErrors => ({ ...prevErrors, email: data.message }));
+              setFlashMessage('This email is already registered.');
+          }
+      }
+    } 
+  }catch (error) {
+    console.error(error);
+    if (error.message === 'Invalid token received.') {
+        setError({ global: 'Invalid token received. Please try again.' });
+        setFlashMessage('Invalid token received.');
+    } else {
+        setError({ global: 'Unexpected error occurred. Registration failed.' });
+        setFlashMessage('Failed to register.');
     }
-
-    const data = await response.json();
-
-    if (!data.token) {
-        throw new Error('Invalid token received.');
-    }
-
-    localStorage.setItem('token', data.token);
-
-    const decodedToken = jwtDecode(data.token);
-    const userId = decodedToken.user_id;
-
-    login(data.token, userId);
-    setFlashMessage('会員登録 successful!');
-
-    setTimeout(() => {
-        navigate(`/users/${userId}`);
-    }, 2000);
-} catch (error) {
-  console.error(error);
-  if (error.message === 'Invalid token received.') {
-      setError({ global: 'Invalid token received. Please try again.' });
-      setFlashMessage('Email is already registered.');
-  } else {
-      setError({ global: 'Unexpected error occurred. Registration failed.' });
-      setFlashMessage('Failed to register.');
   }
- }
 }
-  return (
+
+return (
     <div className='main_body'>
     <div className='main_body_box'>
       <form className="main_form" onSubmit={handleSubmit}>
