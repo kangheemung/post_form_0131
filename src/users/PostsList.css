@@ -5,10 +5,12 @@
   gap: 20px;
   text-align: center;
   list-style-type: none;
+  margin-bottom: 5px;
+  padding: 10px;
   border-radius: 5%;
 }
-.post-container_body{
-  margin: 20px;
+.post-container_body {
+  margin-top: 120px;
 }
 #light .post_box
 {
@@ -82,8 +84,8 @@
   border-radius: 15%;
 }
 @media (max-width: 375px) {
-  .post-container_body{
-    margin: 10px;
+  .post-container_body {
+    margin-top: 120px;
   }
   .Posts_List_ul {
     display: grid;
@@ -94,7 +96,7 @@
     border-radius: 5%;
   }
   .post-container_t {
-    margin-top: 35%;
+    margin-top: 55px;
     color: #004A54;
     text-align: center;
   }
@@ -112,9 +114,9 @@
   }
 }
   @media (max-width: 575px) {
-  .post-container_body{
-    margin: 20px;
-  }
+    .post-container_body {
+      margin-top: 120px;
+    }
   .Posts_List_ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 5fr));
@@ -141,8 +143,8 @@
     }
   }
   @media (min-width: 576px) and (max-width: 767px) {
-    .post-container_body{
-      margin: 50px;
+    .post-container_body {
+      margin-top: 120px;
     }
     .Posts_List_ul {
       display: grid;
@@ -170,8 +172,16 @@
     }
   }
   @media (min-width: 768px) and (max-width: 991px) {
-    .post-container_body{
-      margin: 50px;
+    .Posts_List_ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 5fr));
+      gap: 20px;
+      text-align: center;
+      list-style-type: none;
+      border-radius: 5%;
+    }
+    .post-container_body {
+      margin-top: 120px;
     }
   .Posts_List_ul {
     display: grid;
@@ -199,8 +209,16 @@
     }
   }
   @media (min-width: 992px) and (max-width: 1199px) {
-    .post-container_body{
-      margin: 50px;
+    .Posts_List_ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 5fr));
+      gap: 20px;
+      text-align: center;
+      list-style-type: none;
+      border-radius: 5%;
+    }
+    .post-container_body {
+      margin-top: 120px;
     }
   .Posts_List_ul {
     display: grid;
@@ -227,15 +245,8 @@
       font-size: 15px;
     }
   }
+
   @media (min-width: 1200px) {
-    .post-container_body{
-      margin: 50px;
-    }
-    .post-container_t {
-      margin-top: 5%;
-      color: #004A54;
-      text-align: center;
-    }
     .Posts_List_ul {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 5fr));
@@ -244,21 +255,8 @@
       list-style-type: none;
       border-radius: 5%;
     }
-    .post_box {
-      width: 100%;
-      border: solid #F0F3F3 2px;
-      padding: 5px;
-      border-radius: 5%;
-      box-sizing: border-box;
-    }
-    .post_box_b,
-    .post_box_p {
-      font-size: 15px;
-    }
-  }
-  @media (min-width: 1200px) {
-    .post-container_body{
-      margin: 50px;
+    .post-container_body {
+      margin-top: 120px;
     }
     .Posts_List_ul {
       display: grid;
@@ -285,9 +283,9 @@
       font-size: 15px;
     }
   }
-  @media (min-width: 1200px) {
-    .post-container_body{
-      margin: 20px;
+  @media (max-width: 1200px) {
+    .post-container_body {
+      margin-top: 120px;
     }
     .Posts_List_ul {
       display: grid;

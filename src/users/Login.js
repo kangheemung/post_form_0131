@@ -91,7 +91,7 @@ function Login() {
           }, 2000)
         } else {
           console.errors('User ID is undefined.');
-          setFlashMessage('会員登録されてないIDです');
+          setFlashMessage('This is an ID that is not registered as a member.');
         }
       } else {
           if (data.error === 'UserNotFound') {

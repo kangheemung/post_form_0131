@@ -1,26 +1,38 @@
 * {
   margin: 0;
   padding: 0%;
+  border: 0;
   box-sizing: border-box;
 }
 
 body {
   height: -webkit-fill-available;
+  -webkit-text-size-adjust: none;
   -webkit-overflow-scrolling:auto;
   -webkit-tap-highlight-color:transparent;
   background-color: var(--background-color-light);
   transition: background-color 0.5s;
+  line-height: 1;
+
 }
 
 body.dark-mode {
   background-color: var(--background-color-dark);
 }
-
+ol, ul {
+	list-style: none;
+}
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: 'Mali', cursive;
 }
 
 :root {
   --background-color-light: #DBE5E6;
   --background-color-dark: #004A54;
+}
+input, select, textarea {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
 }

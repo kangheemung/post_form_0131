@@ -90,13 +90,13 @@ function Form() {
 
         if (userId) {
           login(data.data.token, userId);
-          setFlashMessage('Login出来ました!');
+          setFlashMessage('Login!');
           setTimeout(() => {
             navigate(`/users/${userId}`); // Navigate after the timeout
           }, 2000)
         } else {
           console.errors('User ID is undefined.');
-          setFlashMessage('会員登録されてないIDです');
+          setFlashMessage('This is an ID that is not registered as a member.');
         }
       } else {
         if (data.error === 'DuplicateEmail') {
@@ -107,7 +107,7 @@ function Form() {
               setFlashMessage('This email is already registered.');
           }
       }
-    } 
+    }
   }catch (error) {
     console.error(error);
     if (error.message === 'Invalid token received.') {

@@ -1,356 +1,159 @@
-.navbar_container {
-  align-items: center;
-  position: fixed;
-  justify-content: space-between;
-  top: 0;
-  left: 0;/* Set the left side to center */ /* Adjust to center horizontally */
-  width: 100%; /* Full width */
-  background-color: #004A54; /* Navigation bar background color */
-  display: flex;
 
+.logo {
+  position: absolute;
+  left: 20px;
+  width: 100px;
+  cursor: pointer;
 }
-.header {
-  color: #DBE5E6;
-  background-color: #004A54;
-  text-align: left;
+
+li, a, button{
+  font-weight: 600;
   font-family: 'Mali', cursive;
-  padding-bottom: 5%;
+  font-size: 16px;
+  text-decoration: none;
 }
-
-
-.nav_link_text_login{
+header{
+  position: fixed; /* Make the header fixed */
+  top: 0; /* Position it at the top of the viewport */
+  width: 100vw; /* Set width to 100% of the viewport width */
   display: flex;
-  margin-top: 5%;
-  margin-left: 2%;
-}
-.nav_link_text_login p{
-  margin-right: 2%;
-
-}
-.logo_container {
-  display: flex;
-  align-items: center;
-  /* additional styling */
-}
-.nav_link {
-  list-style: none; /* リストのスタイルをなくす */
-  display: flex; /* Flexboxによる横並び表示 */
-  margin: 0; /* 外側余白をなくす */
-  padding: 0; /* 内側余白をなくす */
-  justify-content: center; /* 子要素を中央揃えにする */
-  flex-wrap: wrap;
-}
-.header_a{
-    color: #DBE5E6;
-    text-decoration: none;
-    margin-right: 2%;
-}
-.nav_link_text{
-  display: flex;
-  margin-left: 5%;
-  margin-top: 5%;
   justify-content: space-between;
-}
-.nav_link_text p{
-  margin-right: 5%;
-  font-size: medium;
-}
-.switch_box {
-margin-right: 5%;
-  display: flex;
   align-items: center;
+  box-shadow: 2px 2px 10px black;
+  z-index: 999;
 }
-/* Light mode link styles */
-#light .nav_link a,
-#light .nav_link a:visited,
-#light  .nav_link a:hover,
-#light .darkmode_box,
+header:hover{
+  box-shadow: 2px 2px 25px black;
+  transition: 0.5s;
+}
+#light .header,
+#light .nav,
+#light .header:hover,
+#light .nav_link a:hover,
 #light .nav_link_text,
-#light .header_a{
+#light .navlinks,
+#light .header_a,
+#light .darkmode_box{
+  background-color: #004A54;
   color:#DBE5E6; /* ナビゲーションバーの背景色 */
   font-weight: bold;/* Or any other color suitable for light mode */
 }
 /* Dark mode link styles */
-#dark .nav_link a,
-#dark .nav_link a:visited
+#dark .header,
+#dark .header:hover,
+#dark .navlinks li,
 #dark .nav_link a:hover,
-#dark .nav_link a:active,
-#dark .navbar_container,
-#dark .nav_link_text,
-#dark .header_a,
-#dark .greeting{
+#dark .navlinks,
+#dark .navlinks li a:hover,
+#dark .darkmode_box{
   background-color:#DBE5E6;
   color:#004A54;
   font-weight: bold;
 }
-
-
-#dark .theme-switch {
-  color: #000; /* ダークモードでのテーマ切り替えスイッチの文字色も黒に (class name is an example) */
+.navlinks{
+  width: 100vw;
+  height: 80px;
 }
-
-.nav_links_container{
-  margin-left: 20px;
-  display: flex;
-  justify-content: space-around; /* Distribute links evenly */
+.navlinks li{
+  display: inline-block;
+  margin: 30px;
   align-items: center;
+  color:#DBE5E6
 }
-.nav_link{
-  display: flex;
+.darkmode_box{
+margin: 10px;
 }
-.greeting_box {
-  color: #DBE5E6;
-/* アイテムを縦に並べる */
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin-left: auto; /* 右寄せにする */
-  margin-right: auto; /* 左寄せにする */
-  padding-top: 1rem; /* 上余白（必要に応じて調整） */
+.navlinks li a:hover{
+  color: rgb(227, 255, 188);
+  text-shadow: 1px 1px 5px rgb(147, 103, 103);
 }
-.header {
-  position: fixed; /* Keep the header at the top */
-  width: 100%; /* Full width */
+.items_switch_box{
+  background-color:#DBE5E6;
+
+
+
+}
+button{
+  width: 100%;
+  padding: 12px;
+  background-color: firebrick;
+  border-radius: 50px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.5s, ease 0s;
+  border: none;
+  z-index: 999;
+}
+button:hover{
+  box-shadow: 1px 1px 5px black;
+}
+.switch_box{
+  float: right;
+  margin: 20px;
+}
+.sidebar{
+  position: fixed;
   top: 0;
-  left: 0;
-  display: flex; /* Use Flexbox to center the content */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  padding-bottom: var(--header-height); /* Adjust padding as needed */
+  right: 0;
+  height: 100vh;
+  width: 300px;
+  z-index: 999;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  box-shadow: -3px 0 10px black;
+  display: none;
+  justify-content: flex-start;
+  list-style: none;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  transform: translateX(100%);
 }
-/* Adjust spacing between links */
-.nav_link li {
-  margin-right: 20px;
-}
-/* Remove the right margin from the last item in the list */
-.nav_link li:last-child {
-  margin-right: 0;
-}
-/* Style for logo text */
-.logo_text p {
-  text-decoration: none;
-  color: inherit; /* Will take the color from its parent element */
-}
-@media (min-width: 375px) {
-  .nav_link_text {
-    justify-content: space-around;
-    font-size: small;
-  }
-  .nav_links_container{
-    margin-left: 20px;
-    display: flex;
-    justify-content: space-around; /* Distribute links evenly */
-    align-items: center;
-  }
-  .navbar_container{
+.sidebar li{
   width: 100%;
-  font-size: large;
-  }
-  .nav_link_text p{
-    margin-right: 5%;
-    font-size: medium;
-  }
-  .darkmode_box,
-  .darkmode_box p{
-    margin: 10%;
-    font-size: small;
-  }
-  .nav_link_text_login p {
-    font-size: small;
-  }
+  margin: 25px;
+  text-shadow: 1px 1px 2px black;
 }
-
-@media (max-width: 375px) {
-  .nav_link_text {
-    justify-content: space-around;
-    font-size: small;
-  }
-  .nav_link_text{
-    display: flex;
-    justify-content: center;
-  }
-  .navbar_container{
+.sidebar img{
+  position: absolute;
+  bottom: 20px;
   width: 100%;
-  font-size: large;
-  }
-  .nav_link_text p{
-    margin-right: 5%;
-    font-size: medium;
-  }
-  .darkmode_box,
-  .darkmode_box p{
-    font-size: small;
-  }
+  height: 120px;
 }
-/* Add this new media query at the end of your CSS file */
-@media (max-width: 600px) {
-  .nav_link_text {
-    justify-content: space-around; /* Adjust spacing between links */
-    font-size: small; /* Decrease font size for smaller screens */
-  }
-
-  .nav_link_text_login p {
-    margin-left: 0;
-    font-size: small;
-  }
+nav ion-icon{
+  font-size: 2em;
+  position: absolute;
+  top: 35px;
+  right: 20px;
 }
-@media(min-width: 768px) {
-  .nav_link_text {
-      justify-content: center;
-      font-size: x-large;
-    }
-    .nav_links_container{
-      margin-left: 40px;
-      display: flex;
-      justify-content: space-around; /* Distribute links evenly */
-      align-items: center;
-    }
-    .nav_link_text{
-      display: flex;
-      margin-left: 5%;
-      margin-top: 1%;
-      justify-content: center;
-    }
-    .navbar_container{
-
-    font-size: large;
-    }
-    .nav_link_text p{
-      margin-left: 5%;
-    }
-    .darkmode_box,
-    .darkmode_box p{
-      margin: 0;
-      font-size: x-small;
-    }
+h2{
+  color: #DBE5E6;
+  text-shadow: #002423 -2px 2px 10px;
+  font-size: 2em;
+  margin: 20%;
+  text-align: center;
 }
-
-@media (min-width: 576px) and (max-width: 767px) {
-  .nav_link_text {
-    justify-content: center;
-    font-size: x-large;
+@media only screen and (min-width: 830px){
+  .navlinks ion-icon
+  {
+      display: none;
   }
-  .nav_links_container{
-    margin-left: 40px;
-    display: flex;
-    justify-content: space-around; /* Distribute links evenly */
-    align-items: center;
+  .navlinks{
+    width: 100vw;
   }
-  .nav_link_text{
-    display: flex;
-    margin-left: 5%;
-    margin-top: 1%;
-    justify-content: center;
+  .switch_box{
+    display: none;
   }
-  .navbar_container{
-
-  font-size: large;
-  }
-  .nav_link_text p{
-    margin-left: 5%;
-  }
-  .darkmode_box,
-  .darkmode_box p{
-    margin: 0;
-    font-size: x-small;
-  }
-
-}
-/*태블릿 디바이스 (가로 해상도가 768px보다 크고 991px 보다 작은 화면에 적용)  */
-@media (min-width: 768px) and (max-width: 991px) {
-  .nav_link_text {
-    justify-content: center;
-    font-size: x-large;
-  }
-  .nav_links_container{
-    margin-left: 40px;
-    display: flex;
-    justify-content: space-around; /* Distribute links evenly */
-    align-items: center;
-  }
-  .nav_link_text{
-    display: flex;
-    margin-left: 5%;
-    margin-top: 1%;
-    justify-content: center;
-  }
-  .navbar_container{
-
-  font-size: large;
-  }
-  .nav_link_text p{
-    margin-left: 5%;
-  }
-  .darkmode_box,
-  .darkmode_box p{
-    margin: 0;
-    font-size: x-small;
-  }
-
-}
-/* 데스크탑 (가로 해상도가 992px보다 크고 1199px 보다 작은 화면에 적용)  */
-@media (min-width: 992px) and (max-width: 1199px) {
-  .nav_link_text {
-    justify-content: center;
-    font-size: x-large;
-  }
-  .nav_links_container{
-    margin-left: 40px;
-    display: flex;
-    justify-content: space-around; /* Distribute links evenly */
-    align-items: center;
-  }
-  .nav_link_text{
-    display: flex;
-    margin-left: 5%;
-    margin-top: 1%;
-    justify-content: center;
-  }
-  .navbar_container{
-
-  font-size: large;
-  }
-  .nav_link_text p{
-    margin-left: 5%;
-  }
-  .darkmode_box,
-  .darkmode_box p{
-    margin: 0;
-    font-size: x-small;
-  }
-
 
 
 }
-/* 큰화면 데스크탑 (가로 해상도가 1200px 보다 큰 화면에 적용)  */
-@media (min-width: 1200px) {
-  .nav_link_text {
-    justify-content: center;
-    font-size: x-large;
+@media only screen and (max-width: 830px){
+  .navlinks .items{
+      display: none;
   }
-  .nav_links_container{
-    margin-left: 40px;
-    display: flex;
-    justify-content: space-around; /* Distribute links evenly */
-    align-items: center;
+  .navlinks{
+    width: 100vw;
   }
-  .nav_link_text{
-    display: flex;
-    margin-left: 5%;
-    margin-top: 1%;
-    justify-content: center;
+  .switch_box{
+    display: none;
   }
-  .navbar_container{
-
-  font-size: large;
-  }
-  .nav_link_text p{
-    margin-left: 5%;
-  }
-  .darkmode_box,
-  .darkmode_box p{
-    margin: 0;
-    font-size: x-small;
-  }
-
 }
