@@ -1,11 +1,11 @@
 
 .logo {
-  position: absolute;
-  left: 20px;
-  width: 30px;
+  position: fixed;
+  top: 450px; /* Adjust the desired top position as needed */
+  left: 20px; /* Adjust the desired left position as needed */
+  width: 30px; /* Set the desired width */
   cursor: pointer;
 }
-
 li, a, button{
   font-weight: 600;
   font-family: 'Mali', cursive;
@@ -29,12 +29,14 @@ header:hover{
 #light .opnen_img{
   width: 50px;
   margin-right: 20px;
+  margin-top: -10px;
   background-color: #004A54;
   color: #DBE5E6;
 }
 #dark .opnen_img{
   width: 50px;
   margin-right: 20px;
+  margin-top: -10px;
   background-color: #DBE5E6;
   color: #DBE5E6;
 }
@@ -78,7 +80,8 @@ header:hover{
 #dark .items_switch_box,
 #dark .navlinks li a,
 #dark .sidebar,
-#dark .open_img_box{
+#dark .open_img_box,
+#dark .nav_link_text{
   background-color:#DBE5E6;
   color:#004A54;
   font-weight: bold;
@@ -130,6 +133,13 @@ button{
 button:hover{
   box-shadow: 1px 1px 5px black;
 }
+.logo-container {
+  position: fixed;
+  top: 10px; /* Adjust the top position as needed */
+  right: 10px; /* Adjust the right position as needed */
+  z-index: 1000; /* Ensure the logo appears on top of other elements */
+}
+
 .switch_box{
   float: right;
   margin: 20px;
@@ -156,7 +166,6 @@ button:hover{
   margin: 25px;
 }
 
-
 .sidebar img{
   position: absolute;
   bottom: 300px;
@@ -179,6 +188,10 @@ h2{
 @media only screen and (min-width: 830px){
   .navlinks{
     width: 100vw;
+  }
+  .opnen_img{ 
+    float: right;
+    margin-right: 20px; /* Adjust the margin as needed */
   }
   .switch_box{
     display: none;

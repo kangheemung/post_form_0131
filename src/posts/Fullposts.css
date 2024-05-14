@@ -1,302 +1,465 @@
 .post-list-item {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: 300px;
   border: solid #F0F3F3 2px;
-  padding: 10px;
+  padding: 5px;
   border-radius: 5%;
   box-sizing: border-box;
-  width: 100%;
-  background-color: #F0F3F3;
-  align-items: stretch;
-}
-
-#dark .post-list-item{
-  background-color: #03282e;
-}
-#dark .myPosts_List_top h2,
-#dark .post-list-item {
-color: #DBE5E6;
-}
-#light .myPosts_List_top h2,
-#light .post-list-item {
-color:#004A54;
-}
-
-/* Continue with the rest of your CSS... */
-/* Make sure that only relevant elements inherit the text-align property */
-label, h2, button {
-  text-align: center;
-  font-weight: bold;
-  color:#004A54
-}
-.top{
-  font-weight: bold;
-}
-.fullposts ul {
-  list-style: none;
-}
-
-.myPosts_List_top{
-  margin-top: 20%;
-}
-.author-and-follow_name p{
-  margin-top: 3%;
-  text-align: center;
-}
-.post_top{
-  margin-top: 7%;
-  font-weight: bold;
-}
-.bottom{
-  text-align: center;
-  display: flex;
   justify-content: center;
+  margin: 10px;
+}
+.post-list-item p {
+  margin: 10px;
+  max-height: 200px;
+  max-width: 280px;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  word-wrap: break-word;
+  text-align: center;
 }
 
-.follow_btn{
-  background-color: #004A54;
-  color:  #F0F3F3;
-  border: none;
-  padding: 5px 12px;
-  margin-left: 10%; /* Spacing between the text and button */
-  cursor: pointer;
-  border-radius: 4px;
- /* Adjust spacing as needed */
-}
-#dark .follow_btn{
-  background-color: #DBE5E6;
-  color: #004A54;
-  border: none;
-  padding: 5px 12px;
-  margin-left: 10%; /* Spacing between the text and button */
-  cursor: pointer;
-  border-radius: 4px;
- /* Adjust spacing as needed */
+.myPosts_List_top {
+  margin-top: 200px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.like_btn {
-  background-color:#004A54;
-  color: #DBE5E6;
-  border: none;
-  padding: 8px 12px;
-  margin-left: 10%; /* Spacing between the text and button */
-  cursor: pointer;
-  border-radius: 4px;
- /* Adjust spacing as needed */
-}
-#dark .like_btn {
-  background-color: #DBE5E6;
-  color: #004A54;
-  border: none;
-  padding: 8px 12px;
-  margin-left: 10%; /* Spacing between the text and button */
-  cursor: pointer;
-  border-radius: 4px;
- /* Adjust spacing as needed */
-}
-#dark .post-list-item p{
-  color:#DBE5E6;
-}
-#dark .post-list-item span {
-  color:#DBE5E6;  /* Sets the text color to black */
-}
-
-/* Add other selectors for any additional text elements you want to target, for example: */
-#dark .author-and-follow,
-#dark .content-and-like {
-  color:#DBE5E6; /* Set text color to black */
-}
-.author-and-follow{
-display: flex;
-justify-content: space-between;
-}
-.content-and-like {
-display: flex; /* Display as flex container */
-align-items: center; /* Center items vertically */
-justify-content: space-between; /* Place items at the ends of the container */
-}
-.posts-grid-body{
+.posts-grid-body {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 5fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
   text-align: center;
   list-style-type: none;
   margin-bottom: 5px;
   padding: 10px;
   border-radius: 5%;
 }
+.myPosts_List_top{
+margin-top: 200px;
+text-align: center;
+margin-bottom: 30px;
+}
+#dark .post-list-item {
+  background-color: #03282e;
+  color: #DBE5E6;
+}
 
-  @media (max-width: 375px) {
+#light .post-list-item {
+  color: #004A54;
+}
+  #dark .myPosts_List_top h2,
+  #dark .myPosts_List_top{
+  color: #DBE5E6;
+  }
+  #light .myPosts_List_top,
+  #light .myPosts_List_top h2,
+  #light .post-list-item {
+  color:#004A54;
+  }
+  /* Continue with the rest of your CSS... */
+  /* Make sure that only relevant elements inherit the text-align property */
+  label, h2, button {
+    text-align: center;
+    font-weight: bold;
+    color:#004A54
+  }
+  .top{
+    font-weight: bold;
+  }
+  .fullposts ul {
+    list-style: none;
+  }
+
+  .author-and-follow_name p{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 3px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .author-and-follow_name{
+    font-size: 32px;
+  }
+  .post_top{
+    margin-top: 7px;
+    font-weight: bold;
+  }
+  .bottom{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  .follow_btn{
+    background-color: #004A54;
+    color:  #F0F3F3;
+    border: none;
+    padding: 5px 12px;
+    margin-left: 10px; /* Spacing between the text and button */
+    cursor: pointer;
+    border-radius: 4px;
+   /* Adjust spacing as needed */
+  }
+  #dark .follow_btn{
+    background-color: #DBE5E6;
+    color: #004A54;
+    border: none;
+    padding: 5px 12px;
+    margin-left: 10px; /* Spacing between the text and button */
+    cursor: pointer;
+    border-radius: 4px;
+   /* Adjust spacing as needed */
+  }
+  .like_btn {
+    background-color:#004A54;
+    color: #DBE5E6;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 10%; /* Spacing between the text and button */
+    cursor: pointer;
+    border-radius: 4px;
+   /* Adjust spacing as needed */
+  }
+  #dark .like_btn {
+    background-color: #DBE5E6;
+    color: #004A54;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 10%; /* Spacing between the text and button */
+    cursor: pointer;
+    border-radius: 4px;
+   /* Adjust spacing as needed */
+  }
+  #dark .post-list-item p{
+    color:#DBE5E6;
+  }
+  #dark .post-list-item span {
+    color:#DBE5E6;  /* Sets the text color to black */
+  }
+  /* Add other selectors for any additional text elements you want to target, for example: */
+  #dark .author-and-follow,
+  #dark .content-and-like {
+    color:#DBE5E6; /* Set text color to black */
+  }
+  .author-and-follow{
+  display: flex;
+  justify-content: space-between;
+  }
+  .content-and-like {
+  display: flex; /* Display as flex container */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Place items at the ends of the container */
+  }
+  @media only screen and (max-width: 375px) {
+    .posts-grid-body{
+        display: grid;
+          display: flex;
+          flex-direction: column; /* Display children in a column layout */
+          align-items: center; /* Center-align children horizontally */
+          width: 300px;
+          height: 300px;
+          border: solid #F0F3F3 2px;
+          padding: 5px;
+          border-radius: 5%;
+          box-sizing: border-box;
+          justify-content: center;
+          margin: 10px;
+      }
+      .post-list-item p{
+          margin: 10px;
+          max-height: 200px;
+          max-width: 280px; /* Set a maximum height for the post body content */
+          overflow: hidden; /* Hide overflow content if it exceeds the max height */
+          display: -webkit-box;
+          -webkit-line-clamp: 3; /* Limit the number of lines to display */
+          -webkit-box-orient: vertical;
+          word-wrap: break-word; /* Enable word wrapping */
+          text-align: center;
+      }
+      .content-and-like_body{
+          margin: 10px;
+          max-height: 200px;
+          max-width: 280px; /* Set a maximum height for the post body content */
+          overflow: hidden; /* Hide overflow content if it exceeds the max height */
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          word-wrap: break-word; /* Enable word wrapping */
+          text-align: center;
+      }
+      .myPosts_List_top{
+      margin-top: 200px;
+      text-align: center;
+      margin-bottom: 30px;
+      }
+      .posts-grid-body{
+          display: grid;
+          grid-template-columns: repeat(4, 1fr); /* Display five columns */
+          text-align: center;
+          list-style-type: none;
+          margin-bottom: 5px;
+          padding: 10px;
+          border-radius: 5%;
+        }
+        #dark .post-list-item{
+          background-color: #03282e;
+        }
+        #dark .myPosts_List_top h2,
+        #dark .post-list-item ,
+        #dark .myPosts_List_top{
+        color: #DBE5E6;
+        }
+        #light .myPosts_List_top,
+        #light .myPosts_List_top h2,
+        #light .post-list-item {
+        color:#004A54;
+        }
+        /* Continue with the rest of your CSS... */
+        /* Make sure that only relevant elements inherit the text-align property */
+        label, h2, button {
+          text-align: center;
+          font-weight: bold;
+          color:#004A54
+        }
+        .top{
+          font-weight: bold;
+        }
+        .fullposts ul {
+          list-style: none;
+        }
+        .author-and-follow_name p{
+          font-size: 20px;
+          font-weight: bold;
+          margin-top: 3px;
+          margin-bottom: 20px;
+          text-align: center;
+        }
+        .author-and-follow_name{
+          font-size: 32px;
+        }
+        .post_top{
+          margin-top: 7px;
+          font-weight: bold;
+        }
+        .bottom{
+          text-align: center;
+          display: flex;
+          justify-content: center;
+        }
+        .follow_btn{
+          background-color: #004A54;
+          color:  #F0F3F3;
+          border: none;
+          padding: 5px 12px;
+          margin-left: 10px; /* Spacing between the text and button */
+          cursor: pointer;
+          border-radius: 4px;
+         /* Adjust spacing as needed */
+        }
+        #dark .follow_btn{
+          background-color: #DBE5E6;
+          color: #004A54;
+          border: none;
+          padding: 5px 12px;
+          margin-left: 10px; /* Spacing between the text and button */
+          cursor: pointer;
+          border-radius: 4px;
+         /* Adjust spacing as needed */
+        }
+        .like_btn {
+          background-color:#004A54;
+          color: #DBE5E6;
+          border: none;
+          padding: 8px 12px;
+          margin-left: 10%; /* Spacing between the text and button */
+          cursor: pointer;
+          border-radius: 4px;
+         /* Adjust spacing as needed */
+        }
+        #dark .like_btn {
+          background-color: #DBE5E6;
+          color: #004A54;
+          border: none;
+          padding: 8px 12px;
+          margin-left: 10%; /* Spacing between the text and button */
+          cursor: pointer;
+          border-radius: 4px;
+         /* Adjust spacing as needed */
+        }
+        #dark .post-list-item p{
+          color:#DBE5E6;
+        }
+        #dark .post-list-item span {
+          color:#DBE5E6;  /* Sets the text color to black */
+        }
+        /* Add other selectors for any additional text elements you want to target, for example: */
+        #dark .author-and-follow,
+        #dark .content-and-like {
+          color:#DBE5E6; /* Set text color to black */
+        }
+        .author-and-follow{
+        display: flex;
+        justify-content: space-between;
+        }
+        .content-and-like {
+        display: flex; /* Display as flex container */
+        align-items: center; /* Center items vertically */
+        justify-content: space-between; /* Place items at the ends of the container */
+        }
+      }
+        @media only screen and (max-width: 375px) {
+          .posts-grid-body{
+              display: grid;
+              grid-template-columns: 1fr; /* Display four columns for screens larger than 375px */
+           /* Display five columns */
+              text-align: center;
+              list-style-type: none;
+              margin-bottom: 5px;
+              padding: 10px;
+              border-radius: 5%;
+          }
+          .post-list-item {
+              align-items: stretch;
+            }
+          .myPosts_top {
+              margin-top: 300px; /* Less margin for slightly larger screens */
+          }
+          .post-list-item {
+              align-items: stretch;
+          }
+              .follow,
+              .author-and-follow,
+              .content-and-like {
+                  flex-direction: column; /* Stacks the elements vertically */
+                  justify-content: center;
+                  align-items: center;
+              }
+              .follow_btn, .like_btn {
+                  margin: 10px auto; /* Centres buttons with margin */
+          }
+      }
+
+        @media only screen and (min-width: 375px) {
+
+              .post-list-item {
+                  align-items: stretch;
+                }
+              .myPosts_top {
+                  margin-top: 300px; /* Less margin for slightly larger screens */
+              }
+                  .follow,
+                  .author-and-follow,
+                  .content-and-like {
+                      flex-direction: column; /* Stacks the elements vertically */
+                      justify-content: center;
+                      align-items: center;
+                  }
+                  .follow_btn, .like_btn {
+                      margin: 10px auto; /* Centres buttons with margin */
+              }
+        }
+        @media only screen and (min-width: 830px){
+          .posts-grid-body {
+            grid-template-columns: repeat(4, 1fr); /* Display four columns for screens larger than 375px */
+        }
+
+            .post-list-item {
+              align-items: stretch;
+            }
+          .myPosts_top {
+              margin-top: 30px; /* Less margin for slightly larger screens */
+          }
+          .post-list-item {
+              align-items: stretch;
+          }
+              .follow,
+              .author-and-follow,
+              .content-and-like {
+                  flex-direction: column; /* Stacks the elements vertically */
+                  justify-content: center;
+                  align-items: center;
+              }
+              .follow_btn, .like_btn {
+                  margin: 10px auto; /* Centres buttons with margin */
+          }
+          }
+          @media only screen and (max-width: 830px){
+           
+            .myPosts_List_top{
+              margin-top: 150px;
+            }
+            .myPosts_top {
+              margin-top: 15px; /* Less margin for slightly larger screens */
+            }
+          .follow,
+          .author-and-follow,
+          .content-and-like {
+              flex-direction: column; /* Stacks the elements vertically */
+              justify-content: center;
+              align-items: center;
+          }
+          .follow_btn, .like_btn {
+              margin: 10px auto; /* Centres buttons with margin */
+          }
     .post-list-item {
-      align-items: stretch;
+        align-items: stretch;
+      }
+    .myPosts_top {
+        margin-top: 300px; /* Less margin for slightly larger screens */
+    }
+    .post-list-item {
+        align-items: stretch;
+    }
+        .follow,
+        .author-and-follow,
+        .content-and-like {
+            flex-direction: column; /* Stacks the elements vertically */
+            justify-content: center;
+            align-items: center;
+        }
+        .follow_btn, .like_btn {
+            margin: 10px auto; /* Centres buttons with margin */
+    }
+  }
+
+  @media only screen and (min-width: 375px) {
+    .posts-grid-body {
+      grid-template-columns: repeat(1, 1fr); /* Display four columns for screens larger than 375px */
+    }
+
+        .post-list-item {
+            align-items: stretch;
+          }
+        .myPosts_top {
+            margin-top: 300px; /* Less margin for slightly larger screens */
+        }
+        .post-list-item {
+            align-items: stretch;
+        }
+            .follow,
+            .author-and-follow,
+            .content-and-like {
+                flex-direction: column; /* Stacks the elements vertically */
+                justify-content: center;
+                align-items: center;
+            }
+            .follow_btn, .like_btn {
+                margin: 10px auto; /* Centres buttons with margin */
+        }
+
+  }
+  @media only screen and (min-width: 830px){
+    .posts-grid-body {
+      grid-template-columns: repeat(4, 1fr); /* Display four columns for screens larger than 375px */
+      }
+    .post-list-item {
+          align-items: stretch;
     }
     .myPosts_List_top{
-      margin-top: 20%;
-    }
-    .posts-grid-body{
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 5fr));
-      gap: 20px;
-      text-align: center;
-      list-style-type: none;
-      margin-bottom: 5px;
-      padding: 10px;
-      border-radius: 5%;
-    }
-  .myPosts_top {
-    margin-top: 30%; /* Less margin for slightly larger screens */
-  }
-  .follow,
-  .author-and-follow,
-  .content-and-like {
-      flex-direction: column; /* Stacks the elements vertically */
-      justify-content: center;
-      align-items: center;
-  }
-  .follow_btn, .like_btn {
-      margin: 10px auto; /* Centres buttons with margin */
-  }
-}
-  @media (max-width: 575px) {
-    .myPosts_List_top{
-      margin-top: 25%;
-    }
-    .posts-grid-body{
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 5fr));
-      gap: 20px;
-      text-align: center;
-      list-style-type: none;
-      margin-bottom: 5px;
-      padding: 10px;
-      border-radius: 5%;
-    }
-    .post-list-item {
-      align-items: stretch;
-    }
-
- .posts-grid-container {
-  grid-template-columns: repeat(auto-fill, minmax(350px, 5fr));
-}
-
-.myPosts_top {
-  margin-top: 30%; /* Less margin for slightly larger screens */
-}
-.post-list-item {
-  align-items: stretch;
-}
-  .follow,
-  .author-and-follow,
-  .content-and-like {
-      flex-direction: column; /* Stacks the elements vertically */
-      justify-content: center;
-      align-items: center;
-  }
-  .follow_btn, .like_btn {
-      margin: 10px auto; /* Centres buttons with margin */
-  }
-
-  }
-  /* 가로모드 모바일 디바이스 (가로 해상도가 576px보다 크고 768px 보다 작은 화면에 적용)  */
-  @media (min-width: 576px) and (max-width: 767px) {
-    .post-list-item {
-      align-items: stretch;
-    }
-    .posts-grid-body{
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 5fr));
-      gap: 20px;
-      text-align: center;
-      list-style-type: none;
-      margin-bottom: 5px;
-      padding: 10px;
-      border-radius: 5%;
-    }
-  .myPosts_top {
-    margin-top: 30%; /* Less margin for slightly larger screens */
-  }
-  .follow,
-  .author-and-follow,
-  .content-and-like {
-      flex-direction: column; /* Stacks the elements vertically */
-      justify-content: center;
-      align-items: center;
-  }
-  .follow_btn, .like_btn {
-      margin: 10px auto; /* Centres buttons with margin */
-  }
-}
-  /*태블릿 디바이스 (가로 해상도가 768px보다 크고 991px 보다 작은 화면에 적용)  */
-  @media (min-width: 768px) and (max-width: 991px) {
-    .post-list-item {
-      align-items: stretch;
-    }
-    .posts-grid-body{
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 5fr));
-      gap: 20px;
-      text-align: center;
-      list-style-type: none;
-      margin-bottom: 5px;
-      padding: 10px;
-      border-radius: 5%;
+      margin-top: 150px;
     }
     .myPosts_top {
-      margin-top: 30%; /* Less margin for slightly larger screens */
-    }
-  .follow,
-  .author-and-follow,
-  .content-and-like {
-      flex-direction: column; /* Stacks the elements vertically */
-      justify-content: center;
-      align-items: center;
-  }
-  .follow_btn, .like_btn {
-      margin: 10px auto; /* Centres buttons with margin */
-  }
-  }
-  /* 데스크탑 (가로 해상도가 992px보다 크고 1199px 보다 작은 화면에 적용)  */
-  @media (min-width: 992px) and (max-width: 1199px) {
-    .myPosts_List_top{
-      margin-top: 15%;
-    }
-    .post-list-item {
-      align-items: stretch;
-    }
-    .posts-grid-body{
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 5fr));
-      gap: 20px;
-      text-align: center;
-      list-style-type: none;
-      margin-bottom: 5px;
-      padding: 10px;
-      border-radius: 5%;
-    }
-.myPosts_top {
-  margin-top: 30%; /* Less margin for slightly larger screens */
-}
-  .follow,
-  .author-and-follow,
-  .content-and-like {
-      flex-direction: column; /* Stacks the elements vertically */
-      justify-content: center;
-      align-items: center;
-  }
-  .follow_btn, .like_btn {
-      margin: 10px auto; /* Centres buttons with margin */
-  }
-  }
-  /* 큰화면 데스크탑 (가로 해상도가 1200px 보다 큰 화면에 적용)  */
-  @media (min-width: 1200px) {
-    .post-list-item {
-      align-items: stretch;
-    }
-    .myPosts_List_top{
-      margin-top: 5%;
-    }
-    .myPosts_top {
-      margin-top: 30%; /* Less margin for slightly larger screens */
+      margin-top: 15px; /* Less margin for slightly larger screens */
     }
       .follow,
       .author-and-follow,
@@ -308,4 +471,24 @@ justify-content: space-between; /* Place items at the ends of the container */
       .follow_btn, .like_btn {
           margin: 10px auto; /* Centres buttons with margin */
       }
-}
+  }
+
+    @media only screen and (max-width: 830px){
+
+      .myPosts_List_top{
+        margin-top: 150px;
+      }
+      .myPosts_top {
+        margin-top: 15px; /* Less margin for slightly larger screens */
+      }
+    .follow,
+    .author-and-follow,
+    .content-and-like {
+        flex-direction: column; /* Stacks the elements vertically */
+        justify-content: center;
+        align-items: center;
+    }
+    .follow_btn, .like_btn {
+        margin: 10px auto; /* Centres buttons with margin */
+    }
+  }

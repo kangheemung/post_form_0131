@@ -43,31 +43,34 @@ const Nav = ({ themeSwitch }) => {
               {/* Always visible links */}
               {isUserLoggedIn ? (
                 // Render these links only when the user is logged in
-                <>
+                <div className='header_box'>
                   <ul class="navlinks">
                       <div className = "nav_link_text_login">
                         <li className="items"><Link to="/microposts">FullPost</Link></li>
                         <li className="items"><Link to={`/users/${userId}`}>mypage</Link></li>
                         <li className="items"><Link to={`/users/${userId}/micropost`}>NewPost</Link></li>
                         <li className="items" onClick={handleLogoutClick}>Logout</li>
-                      </div>
-                      <div className="switch_box">
-                        {themeSwitch}
-                      </div>
-                      <li onClick={showSidebar}><ion-icon name="menu-outline"></ion-icon></li>
+                        <ul className='open_img_box'>
+                          <li onClick={showSidebar}>
+                              <ion-icon name="menu-outline">
+                                  <img className="opnen_img" src={process.env.PUBLIC_URL + '/align-justify-svgrepo-com.svg'} />
+                              </ion-icon>
+                          </li>
+                        </ul>
+                      </div> 
                   </ul>
                   <ul className="sidebar">
-                      <li onClick={closeSidebar}><ion-icon name="close-outline"></ion-icon></li>
-                      <li><Link to="/microposts">FullPost</Link></li>
-                      <li><Link to={`/users/${userId}`}>mypage</Link></li>
-                      <li><Link to={`/users/${userId}/micropost`}>NewPost</Link></li>
-                      <li onClick={handleLogoutClick}>Logout</li>
-                      <img src={process.env.PUBLIC_URL + '/hand.png'} alt="" className="logo" />
-                      <div className="switch_box">
+                      <li onClick={closeSidebar}><ion-icon name="close-outline">x</ion-icon></li>
+                      <li><Link to="/microposts"  style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>FullPost</Link></li>
+                      <li><Link to={`/users/${userId}`}   style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>mypage</Link></li>
+                      <li><Link to={`/users/${userId}/micropost`}   style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>NewPost</Link></li>
+                      <li onClick={handleLogoutClick}   style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Logout</li>
+                      <li className="items_switch_box">
                         {themeSwitch}
-                      </div>
+                       </li>
+                      <img src={process.env.PUBLIC_URL + '/hand.png'} alt="" className="logo" />
                   </ul>
-                </>
+                  </div>
               ) : (
                 // Render these links only when the user is not logged in
                <div className='header_box'>
@@ -77,9 +80,6 @@ const Nav = ({ themeSwitch }) => {
                     <li className="items"><Link to="/about">About</Link></li>
                     <li className="items"><Link to="/auth">Login</Link></li>
                     <li className="items"><Link to="/users">Sign_up</Link></li>
-                    <div className="switch_box">
-                    {themeSwitch}
-                   </div>
                    <ul className='open_img_box'>
                     <li onClick={showSidebar}>
                         <ion-icon name="menu-outline">

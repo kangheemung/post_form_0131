@@ -74,22 +74,23 @@ function PostsList() {
 
   return (
     <div className='post-container_body'>
-      <div className='post-container_t'><h3>あなたが投稿した内容</h3></div>
+      <div className='post-container_t'><h1>あなたが投稿した内容</h1></div>
 
         <div className='Posts_List_ul'>
           {microposts ? (
             microposts.length > 0 ? (
               microposts.map((post) => (
-                <div className='post_box'>
-                  <li key={post.id}>
+
+                    <li key={post.id}>
+                    <div className='post_box'>
                     <p className="post_box_t_b">title --{post.title}--</p>
-                    <p className="post_box_b">post内容</p>
+                    <p className="post_box_p">post内容</p>
                     <p className="post_box_p">{post.body}</p>
                     <button onClick={() => handleDelete(post.id)} className="p_button">
                       削除
                     </button>
+                    </div>
                   </li>
-                </div>
               ))
             ) : (
               <div className='no_Posts'>
