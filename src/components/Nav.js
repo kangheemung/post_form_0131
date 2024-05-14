@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Nav.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import { ThemeContext } from '../App';
 
 
 const Nav = ({ themeSwitch }) => {
@@ -10,6 +11,8 @@ const Nav = ({ themeSwitch }) => {
     const isUserLoggedIn = Boolean(currentUser && currentUser.jwtToken);
     const userId = currentUser?.id; // Assuming 'id' exists on currentUser
     //const userName = currentUser?.name || 'Guest'; // Use 'Guest' if no user name
+    const { theme, toggleTheme } = useContext(ThemeContext);
+
     const handleLogoutClick = async () => {
         await logout(); // Wait for the logout process to finish
         navigate('/'); // Redirect to the home page after logging out
@@ -36,8 +39,7 @@ const Nav = ({ themeSwitch }) => {
 
 
     return (
-       <header> 
-      
+      <header className={theme === 'dark' ? 'dark-mode' : ''}>
               {/* Always visible links */}
               {isUserLoggedIn ? (
                 // Render these links only when the user is logged in
@@ -68,7 +70,7 @@ const Nav = ({ themeSwitch }) => {
                 </>
               ) : (
                 // Render these links only when the user is not logged in
-               <>
+               <div className='header_box'>
                 <ul className="navlinks">
                   <div className="nav_link_text">
                     <li className="items"><Link to="/">home</Link></li>
@@ -78,25 +80,28 @@ const Nav = ({ themeSwitch }) => {
                     <div className="switch_box">
                     {themeSwitch}
                    </div>
+                   <ul className='open_img_box'>
+                    <li onClick={showSidebar}>
+                        <ion-icon name="menu-outline">
+                            <img className="opnen_img" src={process.env.PUBLIC_URL + '/align-justify-svgrepo-com.svg'} />
+                        </ion-icon>
+                    </li>
+                  </ul>
                   </div>
                 </ul>
-                <ul>
-                    <li onClick={showSidebar}>
-                        <ion-icon name="menu-outline">アイコン</ion-icon> {/* Icon for opening the sidebar */}
-                    </li>
-                </ul>
+
                 <ul className="sidebar">
                   <li onClick={closeSidebar}><ion-icon name="close-outline">ｘ</ion-icon></li>
-                    <li className="items"><Link to="/">home</Link></li>
-                    <li className="items"><Link to="/about">About</Link></li>
-                    <li className="items"><Link to="/auth">Login</Link></li>
-                    <li className="items"><Link to="/users">Sign_up</Link></li>
+                  <li className="items"><Link to="/" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>home</Link></li>
+                    <li className="items"><Link to="/about" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>About</Link></li>
+                    <li className="items"><Link to="/auth" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Login</Link></li>
+                    <li className="items"><Link to="/users" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Sign_up</Link></li>
                     <li className="items_switch_box">
                     {themeSwitch}
                    </li>
-                    <img src={process.env.PUBLIC_URL + '/hand.png'} alt="" ></img>
+                    <img className='logo' src={process.env.PUBLIC_URL + '/hand.png'} alt="" ></img>
                 </ul>
-              </>
+              </div>
               )}
   
        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

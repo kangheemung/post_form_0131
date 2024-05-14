@@ -2,7 +2,7 @@
 .logo {
   position: absolute;
   left: 20px;
-  width: 100px;
+  width: 30px;
   cursor: pointer;
 }
 
@@ -26,14 +26,38 @@ header:hover{
   box-shadow: 2px 2px 25px black;
   transition: 0.5s;
 }
+#light .opnen_img{
+  width: 50px;
+  margin-right: 20px;
+  background-color: #004A54;
+  color: #DBE5E6;
+}
+#dark .opnen_img{
+  width: 50px;
+  margin-right: 20px;
+  background-color: #DBE5E6;
+  color: #DBE5E6;
+}
+.open_img_box{
+  background-color: #004A54;
+  float: right;
+}
+
 #light .header,
+#light .header_box,
 #light .nav,
+#light .items,
+#light .items li a,
 #light .header:hover,
 #light .nav_link a:hover,
 #light .nav_link_text,
 #light .navlinks,
+#light .navlinks .items a,
 #light .header_a,
-#light .darkmode_box{
+#light .darkmode_box,
+#light .items_switch_box,
+#light .navlinks li a,
+#light .sidebar{
   background-color: #004A54;
   color:#DBE5E6; /* ナビゲーションバーの背景色 */
   font-weight: bold;/* Or any other color suitable for light mode */
@@ -41,15 +65,34 @@ header:hover{
 /* Dark mode link styles */
 #dark .header,
 #dark .header:hover,
+#dark  .header_box,
 #dark .navlinks li,
+#dark .items li a,
+#dark .navlinks .items a,
 #dark .nav_link a:hover,
 #dark .navlinks,
+#dark .items,
+#dark .opnen_img,
 #dark .navlinks li a:hover,
-#dark .darkmode_box{
+#dark .darkmode_box,
+#dark .items_switch_box,
+#dark .navlinks li a,
+#dark .sidebar,
+#dark .open_img_box{
   background-color:#DBE5E6;
   color:#004A54;
   font-weight: bold;
 }
+/* Light mode styles for the image */
+#dark.logo {
+  filter: invert(0); /* Keep the original color in light mode */
+}
+
+/* Dark mode styles for the image */
+ #light .logo {
+  filter: invert(1); /* Invert the colors to make the image white in dark mode */
+}
+
 .navlinks{
   width: 100vw;
   height: 80px;
@@ -60,18 +103,18 @@ header:hover{
   align-items: center;
   color:#DBE5E6
 }
+.navlinks .items a {
+  color: rgb(248, 248, 250); /* Change the color to blue or any other color you prefer */
+}
 .darkmode_box{
 margin: 10px;
 }
 .navlinks li a:hover{
-  color: rgb(227, 255, 188);
-  text-shadow: 1px 1px 5px rgb(147, 103, 103);
+  color: rgb(237, 255, 211);
+  text-shadow: 1px 1px 5px rgb(255, 255, 255);
 }
 .items_switch_box{
   background-color:#DBE5E6;
-
-
-
 }
 button{
   width: 100%;
@@ -111,12 +154,13 @@ button:hover{
 .sidebar li{
   width: 100%;
   margin: 25px;
-  text-shadow: 1px 1px 2px black;
 }
+
+
 .sidebar img{
   position: absolute;
-  bottom: 20px;
-  width: 100%;
+  bottom: 300px;
+  width: 250px;
   height: 120px;
 }
 nav ion-icon{
@@ -133,18 +177,12 @@ h2{
   text-align: center;
 }
 @media only screen and (min-width: 830px){
-  .navlinks ion-icon
-  {
-      display: none;
-  }
   .navlinks{
     width: 100vw;
   }
   .switch_box{
     display: none;
   }
-
-
 }
 @media only screen and (max-width: 830px){
   .navlinks .items{
