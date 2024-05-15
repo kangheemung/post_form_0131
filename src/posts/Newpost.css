@@ -46,35 +46,30 @@
   font-size: 16px;
 }
 
-.new_post_body,
-.new_post {
-  margin-top: 10px;
-}
-
 .new_post_body label,
 .new_post label {
   font-weight: bold;
 
 }
 
-.new_body {
-  font-size: 16px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 .post_body_top {
-  margin-top: 10px;
   font-size: 20px;
   margin-bottom: 10px;
   font-weight: bold;
 }
 
 #post-main_box {
-  margin-top: 10px;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  height: 100vh; /* Set the height to full viewport height to center vertically */
+  /* Additional styling for the content inside .new_post_body */
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 15px;
   width: 100%; /* Adjusted width for better responsiveness */
   max-width: 300px;
-  height: 100px;/* Added max-width for larger screens */
+  height: 80px;/* Added max-width for larger screens */
 }
 
 .new_post_title,
@@ -85,11 +80,11 @@
  margin-bottom: 5px;
 }
 #post-title_box {
+  border-radius: 10px;
   width: 100%; /* Adjusted width for better responsiveness */
   max-width: 300px; /* Added max-width for larger screens */
   margin-top: 20px;
-  height: 30px;
-  margin-bottom: 10px;
+  height: 40px;
 }
 #light .new_post label,
 #light .new_post_title,
@@ -127,7 +122,7 @@
   margin-top: 10px;
   width: 100%; /* Adjusted width for better responsiveness */
   max-width: 300px;
-  height: 200px;/* Added max-width for larger screens */
+  height: 150px;/* Added max-width for larger screens */
 }
 
 }

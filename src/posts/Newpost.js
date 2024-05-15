@@ -93,7 +93,7 @@ function Newpost({ todos, setTodos}) {
                 onChange={(e) => setTitle(e.target.value)}
               />
               </div>
-            <div  className='new_post_body'>
+            <div className='new_post_body'>
               <label className='new_post_body_Text'>内容</label>
               <div>
               <textarea
