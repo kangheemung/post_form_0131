@@ -29,6 +29,7 @@
 }
 .container_box{
   margin-top: 10px;
+  text-align: center;
 }
 .sign{font-size: 24px;
   color:  #004A54;
@@ -76,70 +77,7 @@
   background-color: #fff;
   color: #004A54;
 }
-.username {
-  font-family: 'Mali', cursive;
-  width: 100%;
-  font-weight: 700;
-  font-size: small;
-  letter-spacing: 1px;
-  padding: 2% 2%;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-  box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.02);
-  text-align: center;
-  margin: 1% auto;
-  font-family: "Ubuntu", sans-serif;
-}
-.password {
-  font-family: 'Mali', cursive;
-  width: 76%;
-  font-weight: 700;
-  font-size: small;
-  letter-spacing: 1px;
-  padding: 2% 2%;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-  box-sizing: border-box;
-  border: 2px solid rgba(0, 0, 0, 0.02);
-  text-align: center;
-  margin: 1% auto;
-  font-family: "Ubuntu", sans-serif;
-}
-#light .username,
-#light .password {
-  color: rgb(38, 50, 56);
-  background: rgba(136, 126, 126, 0.04);
-}
-#dark .username,
-#dark .password {
-  color:#004A54;
-  border: 1px solid #F0F3F3;
-  background: rgba(255, 247, 247, 0.299);
-}
-.about-content_t{
-  font-size: medium;
-  font-weight: bold;
-  color:#004A54;}
-.username:focus,
-.password:focus {
-  border: 2px solid rgba(0, 0, 0, 0.18) !important;
-}
-.submit {
-  width: 30%;
-  display: inline-block;
-  background-color: #F0F3F3;
-  color:#004A54;
-  margin-top: 1%;
-  padding-top: 3%;
-  padding-bottom: 3%;
-  font-weight: bolder;
-  border:0;
-  outline:0;
-  border-radius: 10px;
-}
+
 
 
 .switch {

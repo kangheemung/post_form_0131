@@ -6,6 +6,7 @@
   width: 30px; /* Set the desired width */
   cursor: pointer;
 }
+.navlinks_log{font-size: 20px;}
 li, a, button{
   font-weight: 600;
   font-family: 'Mali', cursive;
@@ -185,11 +186,20 @@ h2{
   margin: 20%;
   text-align: center;
 }
+.items_switch {
+  float: right; /* Align the items switch to the right */
+  margin-right: 20px; /* Adjust the right margin as needed for spacing */
+}
 @media only screen and (min-width: 830px){
-  .navlinks{
-    width: 100vw;
+  .navlinks .opnen_img,
+  .navlinks .navlinks_log{
+    display: none; /* Hide the logo on PCs */
   }
-  .opnen_img{ 
+  .navlinks {
+    width: 100vw;
+    text-align: center;
+  }
+  .opnen_img{
     float: right;
     margin-right: 20px; /* Adjust the margin as needed */
   }
@@ -198,7 +208,8 @@ h2{
   }
 }
 @media only screen and (max-width: 830px){
-  .navlinks .items{
+  .navlinks .items,
+  .items_switch{
       display: none;
   }
   .navlinks{

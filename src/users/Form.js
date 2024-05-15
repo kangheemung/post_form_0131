@@ -2,6 +2,7 @@ import { useState ,useEffect} from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../components/AuthContext';
+import './User.css';
 function Form() {
     // ユーザー名とパスワードの状態を定義
     const [name, setName] = useState('');
@@ -124,19 +125,19 @@ return (
     <div className='main_body'>
     <div className='main_body_box'>
       <form className="main_form" onSubmit={handleSubmit}>
-        <p className= "sign" align="center">
+        <p className= "sign_up" align="center">
           Sign up
         </p>
       {flashMessage && <div className="flash-message">{flashMessage}</div>}
-        <input className= "username" type = "text" placeholder= "Username" value={name} onChange={(e) => setName(e.target.value)} />
+        <input className= "sign_up_username" type = "text" placeholder= "Username" value={name} onChange={(e) => setName(e.target.value)} />
         {error.name && <div className="flash-error">{error.name}</div>}
-        <input className= "username" type = "text" placeholder= "Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input className= "sign_up_username" type = "text" placeholder= "Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         {error.email && <div className="flash-error">{error.email}</div>}
-        <input className= "password" type = "password" placeholder= "password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input className= "sign_up_password" type = "password" placeholder= "password" value={password} onChange={(e) => setPassword(e.target.value)} />
         {error.password && <div className="flash-error">{error.password}</div>}
-        <input className= "password" type = "password" placeholder= "password_confirmation" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}/>
+        <input className= "sign_up_password" type = "password" placeholder= "password_confirmation" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}/>
         {error.passwordConfirmation && <div className="flash-error">{error.passwordConfirmation}</div>}
-        <button type="submit" className="submit">Submit</button>
+        <button type="sign_up_submit" className="submit">Submit</button>
       </form>
     </div>
   </div>

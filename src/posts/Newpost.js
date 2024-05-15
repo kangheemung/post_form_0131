@@ -75,31 +75,33 @@ function Newpost({ todos, setTodos}) {
     return (
       <div className ="post_body_main ">
          <div className ="post_body_top">
-           <h3>{userName ? ` ${userName}` : ''}様の投稿ページ</h3>
+           <p>{userName ? ` ${userName}` : ''}様の投稿ページ</p>
          </div>
          {flashMessage && (
          <div className="flash-message">
            {flashMessage}
          </div>
        )}
-        <div>
+        <div className='new_post'>
           <form onSubmit={handleSubmit}>
-            <div>
-              <label>タイトル</label><br/>
+              <label className='new_post_title'>タイトル</label>
+              <div className='post_body_top'>
               <input
                 type="text"
                 id='post-title_box'
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
-            </div>
-            <div>
-              <label>内容</label><br/>
+              </div>
+            <div  className='new_post_body'>
+              <label className='new_post_body_Text'>内容</label>
+              <div>
               <textarea
                 id="post-main_box"
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
               />
+              </div>
             </div>
             <button className="post-button" > 投稿！</button>
           </form>

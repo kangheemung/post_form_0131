@@ -2,6 +2,7 @@ import { useState ,useEffect} from 'react';
 import {jwtDecode} from 'jwt-decode'; // Corrected import statement
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../components/AuthContext';
+import './User.css';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -85,7 +86,7 @@ function Login() {
 
         if (userId) {
           login(data.data.token, userId);
-          setFlashMessage('Login出来ました!');
+          setFlashMessage('Login!');
           setTimeout(() => {
             navigate(`/users/${userId}`); // Navigate after the timeout
           }, 2000)

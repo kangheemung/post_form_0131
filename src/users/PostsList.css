@@ -18,8 +18,10 @@
   -webkit-line-clamp: 3; /* Limit the number of lines to display */
   -webkit-box-orient: vertical;
   word-wrap: break-word; /* Enable word wrapping */
-  text-align: center; 
+  text-align: center;
 }
+
+
 .post-container_body {
   margin-top:150px;
 }

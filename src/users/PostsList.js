@@ -73,40 +73,39 @@ function PostsList() {
 
 
   return (
-    <div className='post-container_body'>
-      <div className='post-container_t'><h1>あなたが投稿した内容</h1></div>
-
-        <div className='Posts_List_ul'>
-          {microposts ? (
-            microposts.length > 0 ? (
-              microposts.map((post) => (
-
-                    <li key={post.id}>
-                    <div className='post_box'>
-                    <p className="post_box_t_b">title --{post.title}--</p>
-                    <p className="post_box_p">post内容</p>
-                    <p className="post_box_p">{post.body}</p>
-                    <button onClick={() => handleDelete(post.id)} className="p_button">
-                      削除
-                    </button>
-                    </div>
-                  </li>
-              ))
-            ) : (
-              <div className='no_Posts'>
-                <p className='post-container_m_p'>投稿ポストがないです。</p>
+    <>
+      {microposts && (
+        <div className='post-container_body'>
+          <div className='post-container_t'>
+            <h1>あなたが投稿した内容</h1>
+          </div>
+          <div className='Posts_List_ul'>
+            {microposts.map((post) => (
+              <div key={post.id} className='post_box'>
+                <p className="post_box_t_b">title --{post.title}--</p>
+                <p className="post_box_p">post内容</p>
+                <p className="post_box_p">{post.body}</p>
+                <button onClick={() => handleDelete(post.id)} className="p_button">
+                  削除
+                </button>
               </div>
-            )
-          ) : (
-            <p>Loading...</p>
-          )}
+            ))}
+          </div>
+          <div className='p_submit_box_bottom'>
+            <button className='p_submit_box' onClick={handleHome}>
+              みんなのポスト見に行く！
+            </button>
+          </div>
         </div>
-      <div className='p_submit_box_bottom'>
-        <button className='p_submit_box' onClick={handleHome}>
-          みんなのポスト見に行く！
-        </button>
-      </div>
-    </div>
+      )}
+      {!microposts && <p>Loading...</p>}
+      {error && <div>Error: {error}</div>}
+      {(!microposts || microposts.length === 0) && (
+        <div className='no_Posts'>
+          <p className='post-container_m_p'>投稿ポストがないです。</p>
+        </div>
+      )}
+    </>
   );
 }
 

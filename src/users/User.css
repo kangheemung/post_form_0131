@@ -1,0 +1,316 @@
+.main_body {
+    position: absolute;
+    margin-top: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vmin; /* Set width and height to same value for a perfect circle */
+    height: 80vmin;
+    font-size: 5vw;
+    border-radius: 50%;
+    text-align: center;
+  }
+.username {
+    font-family: 'Mali', cursive;
+    width: 100%;
+    font-weight: 700;
+    font-size: small;
+    letter-spacing: 1px;
+    padding: 2% 2%;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    text-align: center;
+    margin: 1% auto;
+    font-family: "Ubuntu", sans-serif;
+  }
+  .password {
+    font-family: 'Mali', cursive;
+    width: 76%;
+    font-weight: 700;
+    font-size: small;
+    letter-spacing: 1px;
+    padding: 2% 2%;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    text-align: center;
+    margin: 1% auto;
+    font-family: "Ubuntu", sans-serif;
+  }
+  .sign_up_username,
+  .sign_up_password
+    {
+        font-family: 'Mali', cursive;
+        width: 76%;
+        font-weight: 700;
+        font-size: small;
+        letter-spacing: 1px;
+        padding: 2% 2%;
+        border: none;
+        border-radius: 20px;
+        outline: none;
+        box-sizing: border-box;
+        border: 2px solid rgba(0, 0, 0, 0.02);
+        text-align: center;
+        margin: 1% auto;
+        font-family: "Ubuntu", sans-serif;
+    }
+  #light .username,
+  #light .password {
+    color: rgb(38, 50, 56);
+    background: rgba(136, 126, 126, 0.04);
+  }
+  #dark .username,
+  #dark .password {
+    color:#004A54;
+    border: 1px solid #F0F3F3;
+    background: rgba(255, 247, 247, 0.299);
+  }
+  .about-content_t{
+    font-size: medium;
+    font-weight: bold;
+    color:#004A54;}
+  .username:focus,
+  .password:focus {
+    border: 2px solid rgba(0, 0, 0, 0.18) !important;
+  }
+  .submit {
+    width: 30%;
+    display: inline-block;
+    background-color: #F0F3F3;
+    color:#004A54;
+    margin-top: 1%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-weight: bolder;
+    border:0;
+    outline:0;
+    border-radius: 10px;
+  }
+  .sign_up_submit{
+    width: 30%;
+    display: inline-block;
+    background-color: #F0F3F3;
+    color:#004A54;
+    margin-top: 1%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-weight: bolder;
+    border:0;
+    outline:0;
+    border-radius: 10px;
+  }
+  .main_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 90%; /* Set the form max-width to 90% of the viewport width */
+    width: 90%; /* Ensure the form takes up the full width available */
+  }
+
+  .sign{font-size: 24px;
+    color:  #004A54;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .flash-error{
+    font-size: x-small;
+    color:  #004A54;
+    font-weight: bold;
+  }
+  .main_body_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+#dark .username,
+#dark .sign_up,
+#dark .sign_up_username,
+#dark .sign_up_password
+{
+  background-color: #fff;
+  color: #004A54;
+}
+#light .sign_up,
+#light .sign_up_username,
+#light .sign_up_password
+{
+  background-color: #fff;
+  color: #004A54;
+}
+.main_body_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 375px) {
+    .main_form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 100vw;  /* Set the form max-width to 90% of the viewport width */
+      width: 90%; /* Ensure the form takes up the full width available */
+    }
+    .main_body{
+      position: absolute;
+      top: 49%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80vmin; /* Set width and height to same value for a perfect circle */
+      height: 80vmin;
+      font-size: 5vw;
+      border-radius: 50%;
+      text-align: center;
+    }
+    .username,
+    .password {
+      width: 95%;
+    }
+    .submit {
+      width: 80%;
+    }
+    .sign_up_username,
+    .sign_up_password
+    {
+        width: 180px;
+        height: 10px;
+        margin-bottom:20px;
+    }
+    .sign_up_submit{
+        margin-top: 10px;
+        width: 200px;
+    }
+  }
+
+
+  /*태블릿 디바이스 (가로 해상도가 768px보다 크고 991px 보다 작은 화면에 적용)  */
+  @media only screen and (min-width: 830px){
+    .main_body {
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80vmin; /* Set width and height to same value for a perfect circle */
+      height: 80vmin;
+      font-size: 5vw;
+      border-radius: 50%;
+      text-align: center;
+    }
+    .main_form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 80vw; /* Set the form max-width to 90% of the viewport width */
+      width: 100%; /* Ensure the form takes up the full width available */ /* Set the form height to 100% of the viewport height */
+    }
+    .sign{
+        margin-bottom: 50px;
+        font-size: 50px;
+    }
+    .username,
+    .password {
+      width: 380px;
+      height: 50px;
+      margin-bottom:20px;
+    }
+    .submit {
+      margin-top: 30px;
+      width: 300px;
+    }
+    .sign_up_username,
+    .sign_up_password
+    {
+        width: 380px;
+        height: 50px;
+        margin-bottom:20px;
+    }
+    .sign_up_submit{
+        margin-top: 30px;
+        width: 300px;
+    }
+    .sign_up{
+        margin-bottom: 40px;
+        font-size: 45px;
+        font-weight: bold;
+    }
+  }
+
+  /* 데스크탑 (가로 해상도가 992px보다 크고 1199px 보다 작은 화면에 적용)  */
+  @media only screen and (max-width: 830px){
+    .main_body {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80vmin; /* Set width and height to same value for a perfect circle */
+      height: 80vmin;
+      font-size: 5vw;
+      border-radius: 50%;
+      text-align: center;
+    }
+    .main_form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 100vw; /* Set the form max-width to 90% of the viewport width */
+      width: 100%; /* Ensure the form takes up the full width available */
+    }
+    .sign{
+        margin-bottom: 30px;
+        font-size: 30px;
+    }
+    .sign_up{
+        margin-bottom: 10px;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .username,
+    .password {
+      width: 200px;
+      margin-bottom:20px;
+    }
+    .submit {
+      margin-top: 10px;
+      width: 100px;
+    }
+    .sign_up_username,
+    .sign_up_password
+    {
+        width: 150px;
+        height: 30px;
+        margin-bottom:4px;
+    }
+    .sign_up_submit{
+        margin-top: 10px;
+        width: 300px;
+        height: 30px;
+    }
+    }

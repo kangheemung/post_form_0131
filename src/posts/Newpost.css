@@ -1,48 +1,167 @@
+#light .post-button {
+  background-color: #f3f6f6;
+  margin-top: 5px;
+  padding: auto; /* This property is not valid, consider using specific padding values */
+  width: 80px;
+  border: solid 3px #DBE5E6;
+  border-radius: 10px;
+  color: #03282e;
+}
+#dark .post_body_top {
+ color: #DBE5E6;
+}
+#light .post_body_top{
+  color: #004A54;
+}
+#dark .post-button {
+  background-color:  #03282e;
+  width: 80px;
+  margin-top: 5px;
+  padding: auto; /* This property is not valid, consider using specific padding values */
+  border: solid 1px #f3f6f6;;
+  border-radius: 10px;
+  color: #f3f6f6;
+}
 
-    #light .post-button{
-        background-color: #f3f6f6;
-        margin-top: 5px;
-        padding: auto;
-        width: 80px;
-        border: solid 3px #DBE5E6;
-        border-radius: 10px;
-        color: #03282e;
-      }
-      #dark .post-button{
-        background-color: #03282e;
-        margin-top: 5px;
-        padding: auto;
-        width: 80px;
-        border: solid 1px  #03282e;
-        border-radius: 10px;
-        color: #f3f6f6;
-      }
-      .post_body_main {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 80%; /* Adjust width percentage as needed */
-        max-height: 80vh; /* Set a maximum height relative to the viewport height */
-        overflow-y: auto; /* Add vertical scrollbar when content overflows */
-        background-color: #DBE5E6;
-        padding: 20px;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-        border-radius: 10px;
-        text-align: center;
-      }
+.post_body_main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid 3px  #fff;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 20vmin; /* Set width and height to same value for a perfect circle */
+  font-size: 5vw;
+  padding: 10px;
+  text-align: center;
+}
+ #dark .new_post label,
+ #dark .new_post_title,
+ #dark .new_post_body_Text {
+  color: #DBE5E6;
+}
+.new_post label {
+  font-size: 16px;
+}
 
-      .post_body_top h3 {
-        color: #004A54;
-      }
-      @media only screen and (max-device-width: 480px) and (orientation: landscape) {
-        .post_body_main {
-          margin-top: 55px;
-          width: 60%; /* Adjust width percentage for landscape orientation */
-          max-height: 60vh; /* Adjust maximum height relative to viewport height */
-        }
-      }
+.new_post_body,
+.new_post {
+  margin-top: 10px;
+}
+
+.new_post_body label,
+.new_post label {
+  font-weight: bold;
+
+}
+
+.new_body {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.post_body_top {
+  margin-top: 10px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#post-main_box {
+  margin-top: 10px;
+  width: 100%; /* Adjusted width for better responsiveness */
+  max-width: 300px;
+  height: 100px;/* Added max-width for larger screens */
+}
+
+.new_post_title,
+.new_post_body_Text{
+ font-weight: bolder;
+ font-size: 16px;
+ margin-top: 5px;
+ margin-bottom: 5px;
+}
+#post-title_box {
+  width: 100%; /* Adjusted width for better responsiveness */
+  max-width: 300px; /* Added max-width for larger screens */
+  margin-top: 20px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+#light .new_post label,
+#light .new_post_title,
+#light .new_post_body_Text,
+#light .post_body_top h3 {
+  color: #004A54;
+}
+
+@media only screen and (max-device-width: 480px) and (orientation: landscape) {
+  .post_body_main {
+    margin-top: 10%; /* Adjusted margin for better positioning */
+    width: 100%; /* Adjusted width percentage for landscape orientation */
+    max-height: 90vh; /* Adjusted maximum height relative to viewport height */
+    overflow-y: auto;
+  }
+
+}
+
+@media only screen and (min-width: 830px) {
+  .post_body_main {
+    width: 50%; /* Adjusted width percentage for larger screens */
+    max-height: 90vh;
+  }
+  .post_body_top{
+    font-size: 32px;
+  }
+
+.new_post_body label,
+.new_post label {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+#post-main_box {
+  margin-top: 10px;
+  width: 100%; /* Adjusted width for better responsiveness */
+  max-width: 300px;
+  height: 200px;/* Added max-width for larger screens */
+}
+
+}
+
+@media only screen and (max-width: 830px) {
+  .post_body_main {
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid 3px  #fff;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 20vmin; /* Set width and height to same value for a perfect circle */
+    font-size: 5vw;
+    padding: 10px;
+    text-align: center;
+  }
+  .post_body_main ,
+  .new_body{
+    width: 80%; /* Adjusted width percentage for medium-sized screens */
+  }
+  #post-title_box {
+    width: 80%; /* Adjusted width for better responsiveness */
+    max-width: 300px; /* Added max-width for larger screens */
+    margin-top: 20px;
+    height: 30px;
+    margin-bottom: 10px;
+  }
+  #post-main_box {
+    margin-top: 10px;
+    width: 80%; /* Adjusted width for better responsiveness */
+    max-width: 300px;
+    height: 100px;/* Added max-width for larger screens */
+  }
+}
