@@ -4,9 +4,30 @@
   top: 450px; /* Adjust the desired top position as needed */
   left: 20px; /* Adjust the desired left position as needed */
   width: 30px; /* Set the desired width */
+}
+.header_main{display: flex;
+  justify-content: space-between;}
+.navlinks_log p{
+  float: left;
+  cursor: pointer;
+  font-size: 24px; /* Increase the font size to make the text larger */
+}
+
+.navlinks_header {
+  text-align: center; /* Align to the Center */
   cursor: pointer;
 }
-.navlinks_log{font-size: 20px;}
+.header_center_body{
+display: flex;
+
+}
+.navlinks{display: flex;
+  justify-content: space-between;}
+.header_main{
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center;
+}
 li, a, button{
   font-weight: 600;
   font-family: 'Mali', cursive;
@@ -41,11 +62,8 @@ header:hover{
   background-color: #DBE5E6;
   color: #DBE5E6;
 }
-.open_img_box{
-  background-color: #004A54;
-  float: right;
-}
 
+.header_box{display: flex;}
 #light .header,
 #light .header_box,
 #light .nav,
@@ -102,16 +120,12 @@ header:hover{
   height: 80px;
 }
 .navlinks li{
-  display: inline-block;
   margin: 30px;
   align-items: center;
   color:#DBE5E6
 }
 .navlinks .items a {
   color: rgb(248, 248, 250); /* Change the color to blue or any other color you prefer */
-}
-.darkmode_box{
-margin: 10px;
 }
 .navlinks li a:hover{
   color: rgb(237, 255, 211);
@@ -129,7 +143,8 @@ margin: 10px;
 
 .switch_box{
   float: right;
-  margin: 20px;
+  margin-right: 20px;
+  margin-top: 15px;
 }
 .sidebar{
   position: fixed;
@@ -151,6 +166,7 @@ margin: 10px;
 .sidebar li{
   width: 100%;
   margin: 25px;
+  cursor: pointer;
 }
 
 .sidebar img{
@@ -172,36 +188,59 @@ h2{
   margin: 20%;
   text-align: center;
 }
+.nav_link_text{
+  display: flex;
+  text-align: center;
+}
+.open_img_box {
+ 
+  display: flex;
+  justify-content: flex-end; /* Align the content to the right */
+  margin-right: 20px; /* Adjust the margin as needed */
+}
+
+
+.opnen_img {
+  cursor: pointer;
+  width: 50px;
+  margin-right: 20px;
+  margin-top: -10px;
+  background-color: #004A54;
+  color: #DBE5E6;
+}
 .items_switch {
   float: right; /* Align the items switch to the right */
   margin-right: 20px; /* Adjust the right margin as needed for spacing */
 }
 @media only screen and (min-width: 830px){
-  .navlinks .opnen_img,
-  .navlinks .navlinks_log{
-    display: none; /* Hide the logo on PCs */
-  }
+  .open_img_box,
+  .opnen_img {
+    display: none;}
   .navlinks {
     width: 100vw;
     text-align: center;
   }
+  .switch_box{
+     float: right;
+      margin-right: 20px;
+    }
   .opnen_img{
     float: right;
     margin-right: 20px; /* Adjust the margin as needed */
   }
-  .switch_box{
-    display: none;
-  }
+
 }
 @media only screen and (max-width: 830px){
-  .navlinks .items,
-  .items_switch{
-      display: none;
+  .open_img_box {
+        justify-content: flex-end; /* Align the content to the right */
+         margin-right: 20px; /* Optional: Adjust the margin if needed /* Adjust the margin as needed */
   }
+
+  .switch_box,
+  .items_switch_box,
+  .header_center{display: none;}
   .navlinks{
     width: 100vw;
   }
-  .switch_box{
-    display: none;
-  }
+
 }

@@ -38,87 +38,87 @@ const Nav = ({ themeSwitch }) => {
 
 
 
-    return (
-      <header className={theme === 'dark' ? 'dark-mode' : ''}>
-              {/* Always visible links */}
-              {isUserLoggedIn ? (
-                // Render these links only when the user is logged in
-                <div className='header_box'>
-                <ul className="navlinks">
-                  <div className="nav_link_text">
+        return (
+          <header className={theme === 'dark' ? 'dark-mode' : ''}>
+              <div className='header_box'>
+                  <ul className="navlinks">
                       <li className="navlinks_log">
-                        <p>Post_App</p>
+                        <Link to="/"><p>Post_App</p></Link>
                       </li>
-                        <li className="items"><Link to="/microposts">FullPost</Link></li>
-                        <li className="items"><Link to={`/users/${userId}`}>mypage</Link></li>
-                        <li className="items"><Link to={`/users/${userId}/micropost`}>NewPost</Link></li>
-                        <li className="items" onClick={handleLogoutClick}>Logout</li>
-                        <div className="items_switch">
-                          {themeSwitch}
-                        </div>
-                        <ul className='open_img_box'>
-                          <li onClick={showSidebar}>
-                              <ion-icon name="menu-outline">
-                                  <img className="opnen_img" src={process.env.PUBLIC_URL + '/align-justify-svgrepo-com.svg'} />
-                              </ion-icon>
-                          </li>
-                       </ul>
-                  </div>
-                </ul>
-                  <ul className="sidebar">
-                      <li onClick={closeSidebar}><ion-icon name="close-outline">x</ion-icon></li>
-                      <li><Link to="/microposts"  style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>FullPost</Link></li>
-                      <li><Link to={`/users/${userId}`}   style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>mypage</Link></li>
-                      <li><Link to={`/users/${userId}/micropost`}   style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>NewPost</Link></li>
-                      <li onClick={handleLogoutClick}   style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Logout</li>
-                      <li className="items_switch_box">
-                        {themeSwitch}
-                       </li>
-                      <img src={process.env.PUBLIC_URL + '/hand.png'} alt="" className="logo" />
+                      <div className='navlinks_header'>
+                          <ul className='header_center'>
+                              {/* Render links based on user login status */}
+                              {isUserLoggedIn ? (
+                                  <>
+                                      {/* Links for logged-in users */}
+                                      <div className='header_center_body'>
+                                      <li className="items"><Link to="/microposts">FullPost</Link></li>
+                                      <li className="items"><Link to={`/users/${userId}`}>mypage</Link></li>
+                                      <li className="items"><Link to={`/users/${userId}/micropost`}>NewPost</Link></li>
+                                      <li className="items" onClick={handleLogoutClick}>Logout</li>
+                                      </div>
+                                  </>
+                              ) : (
+                                  <>
+                                    <div className='header_main'>
+                                    < div className='header_center_body'>
+                                      {/* Links for non-logged-in users */}
+                                      <li className="items"><Link to="/">home</Link></li>
+                                      <li className="items"><Link to="/about">About</Link></li>
+                                      <li className="items"><Link to="/auth">Login</Link></li>
+                                      <li className="items"><Link to="/users">Sign_up</Link></li>
+                                    </div>
+                                  
+                                    </div>
+                                  </>
+                              )}
+                             
+                          </ul>
+                      </div>
+                      <div className="switch_box">
+                                          {themeSwitch}
+                      </div>
+                      <div className='open_img_box'>
+                      <li onClick={showSidebar}>
+                          <ion-icon name="menu-outline">
+                              <img className="opnen_img" src={process.env.PUBLIC_URL + '/align-justify-svgrepo-com.svg'} />
+                          </ion-icon>
+                      </li>
+                      </div>
                   </ul>
-                </div>
-              ) : (
-                // Render these links only when the user is not logged in
-               <div className='header_box'>
-                <ul className="navlinks">
-                  <div className="nav_link_text">
-                    <li className="navlinks_log">
-                      <h1>Post_App</h1>
-                    </li>
-                    <li className="items"><Link to="/">home</Link></li>
-                    <li className="items"><Link to="/about">About</Link></li>
-                    <li className="items"><Link to="/auth">Login</Link></li>
-                    <li className="items"><Link to="/users">Sign_up</Link></li>
-                    <div className="items_switch">
-                    {themeSwitch}
-                   </div>
-                   <ul className='open_img_box'>
-                    <li onClick={showSidebar}>
-                        <ion-icon name="menu-outline">
-                            <img className="opnen_img" src={process.env.PUBLIC_URL + '/align-justify-svgrepo-com.svg'} />
-                        </ion-icon>
-                    </li>
-                   </ul>
-                  </div>
-                </ul>
-                <ul className="sidebar">
-                  <li onClick={closeSidebar}><ion-icon name="close-outline">ｘ</ion-icon></li>
-                  <li className="items"><Link to="/" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>home</Link></li>
-                    <li className="items"><Link to="/about" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>About</Link></li>
-                    <li className="items"><Link to="/auth" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Login</Link></li>
-                    <li className="items"><Link to="/users" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Sign_up</Link></li>
-                    <li className="items_switch_box">
-                    {themeSwitch}
-                   </li>
-                    <img className='logo' src={process.env.PUBLIC_URL + '/hand.png'} alt="" ></img>
-                </ul>
+                  <ul className="sidebar">
+                      <li onClick={closeSidebar}>
+                          <ion-icon name="close-outline">x</ion-icon>
+                      </li>
+                      {isUserLoggedIn ? (
+                          <>
+                              <li><Link to="/microposts" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>FullPost</Link></li>
+                              <li><Link to={`/users/${userId}`} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>mypage</Link></li>
+                              <li><Link to={`/users/${userId}/micropost`} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>NewPost</Link></li>
+                              <li onClick={handleLogoutClick} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Logout</li>
+                              <li className="side_switch_box">
+                                  {themeSwitch}
+                              </li>
+                              <img src={process.env.PUBLIC_URL + '/hand.png'} alt="" className="logo" />
+                          </>
+                      ) : (
+                          <>
+                              <li><Link to="/" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>home</Link></li>
+                              <li><Link to="/about" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>About</Link></li>
+                              <li><Link to="/auth" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Login</Link></li>
+                              <li><Link to="/users" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Sign_up</Link></li>
+                              <li className="side_switch_box">
+                                  {themeSwitch}
+                              </li>
+                              <img src={process.env.PUBLIC_URL + '/hand.png'} alt="" className="logo" />
+                          </>
+                      )}
+
+
+                  </ul>
               </div>
-              )}
-  
-       <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-       <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-      </header> 
-    );
-};
+          </header>
+      );
+  };
 
 export default Nav;
