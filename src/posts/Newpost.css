@@ -6,6 +6,7 @@
   border: solid 3px #DBE5E6;
   border-radius: 10px;
   color: #03282e;
+  cursor: pointer;
 }
 #dark .post_body_top {
  color: #DBE5E6;
@@ -15,6 +16,7 @@
   color: #004A54;
 }
 #dark .post-button {
+  cursor: pointer;
   background-color:  #03282e;
   width: 80px;
   margin-top: 5px;
@@ -23,7 +25,9 @@
   border-radius: 10px;
   color: #f3f6f6;
 }
-
+input,
+textarea{margin: 5px;
+padding: 10px;}
 .post_body_main {
   position: absolute;
   top: 50%;

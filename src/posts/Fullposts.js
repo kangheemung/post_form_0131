@@ -294,7 +294,7 @@ function Fullposts() {
 
                                     <div className="content-and-like">
                                     <div className="content-and-like_body">
-                                        <p>{post.body}</p>
+                                    <p>{post.body.length > 100 ? `${post.body.slice(0, 100)}...` : post.body}</p>
                                     </div>
                                     <div>
                                     {!isAuthorCurrentUser && (

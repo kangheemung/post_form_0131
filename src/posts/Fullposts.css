@@ -11,12 +11,23 @@
   justify-content: center;
   margin: 10px;
 }
-.post-list-item p {
+.content-and-like_body {
   margin: 10px;
   max-height: 200px;
   max-width: 280px;
   overflow: hidden;
-  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.post-list-item p {
+  margin: 10px;
+  max-height: 200px; /* Maximum height for text */
+  max-width: 280px; /* Maximum width for text */
+  overflow: hidden;
+  -webkit-line-clamp: 3; /* Limit to 3 lines of text */
   word-wrap: break-word;
   text-align: center;
 }
@@ -30,6 +41,9 @@
 .posts-grid-body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: space-around; /* Distribute items evenly with space around them */
+  gap: 10px; 
   text-align: center;
   list-style-type: none;
   margin-bottom: 5px;
@@ -91,15 +105,15 @@ margin-bottom: 30px;
     display: flex;
     justify-content: center;
   }
-  .follow_btn{
+  .follow_btn,
+  .like_btn {
     background-color: #004A54;
-    color:  #F0F3F3;
+    color: #F0F3F3;
     border: none;
-    padding: 5px 12px;
-    margin-left: 10px; /* Spacing between the text and button */
+    padding: 8px 12px;
+    margin-left: 10px; /* Adjust spacing as needed */
     cursor: pointer;
     border-radius: 4px;
-   /* Adjust spacing as needed */
   }
   #dark .follow_btn{
     background-color: #DBE5E6;
@@ -111,16 +125,7 @@ margin-bottom: 30px;
     border-radius: 4px;
    /* Adjust spacing as needed */
   }
-  .like_btn {
-    background-color:#004A54;
-    color: #DBE5E6;
-    border: none;
-    padding: 8px 12px;
-    margin-left: 10%; /* Spacing between the text and button */
-    cursor: pointer;
-    border-radius: 4px;
-   /* Adjust spacing as needed */
-  }
+
   #dark .like_btn {
     background-color: #DBE5E6;
     color: #004A54;
@@ -154,7 +159,6 @@ margin-bottom: 30px;
   @media only screen and (max-width: 375px) {
     .posts-grid-body{
         display: grid;
-          display: flex;
           flex-direction: column; /* Display children in a column layout */
           align-items: center; /* Center-align children horizontally */
           width: 300px;
@@ -246,32 +250,12 @@ margin-bottom: 30px;
           display: flex;
           justify-content: center;
         }
-        .follow_btn{
-          background-color: #004A54;
-          color:  #F0F3F3;
-          border: none;
-          padding: 5px 12px;
-          margin-left: 10px; /* Spacing between the text and button */
-          cursor: pointer;
-          border-radius: 4px;
-         /* Adjust spacing as needed */
-        }
         #dark .follow_btn{
           background-color: #DBE5E6;
           color: #004A54;
           border: none;
           padding: 5px 12px;
           margin-left: 10px; /* Spacing between the text and button */
-          cursor: pointer;
-          border-radius: 4px;
-         /* Adjust spacing as needed */
-        }
-        .like_btn {
-          background-color:#004A54;
-          color: #DBE5E6;
-          border: none;
-          padding: 8px 12px;
-          margin-left: 10%; /* Spacing between the text and button */
           cursor: pointer;
           border-radius: 4px;
          /* Adjust spacing as needed */
@@ -334,9 +318,7 @@ margin-bottom: 30px;
                   justify-content: center;
                   align-items: center;
               }
-              .follow_btn, .like_btn {
-                  margin: 10px auto; /* Centres buttons with margin */
-          }
+
       }
 
         @media only screen and (min-width: 375px) {
@@ -354,9 +336,7 @@ margin-bottom: 30px;
                       justify-content: center;
                       align-items: center;
                   }
-                  .follow_btn, .like_btn {
-                      margin: 10px auto; /* Centres buttons with margin */
-              }
+
         }
         @media only screen and (min-width: 830px){
           .posts-grid-body {
@@ -379,9 +359,7 @@ margin-bottom: 30px;
                   justify-content: center;
                   align-items: center;
               }
-              .follow_btn, .like_btn {
-                  margin: 10px auto; /* Centres buttons with margin */
-          }
+
           }
           @media only screen and (max-width: 830px){
            
@@ -398,9 +376,7 @@ margin-bottom: 30px;
               justify-content: center;
               align-items: center;
           }
-          .follow_btn, .like_btn {
-              margin: 10px auto; /* Centres buttons with margin */
-          }
+      
     .post-list-item {
         align-items: stretch;
       }
@@ -417,9 +393,7 @@ margin-bottom: 30px;
             justify-content: center;
             align-items: center;
         }
-        .follow_btn, .like_btn {
-            margin: 10px auto; /* Centres buttons with margin */
-    }
+   
   }
 
   @media only screen and (min-width: 375px) {
@@ -443,9 +417,7 @@ margin-bottom: 30px;
                 justify-content: center;
                 align-items: center;
             }
-            .follow_btn, .like_btn {
-                margin: 10px auto; /* Centres buttons with margin */
-        }
+     
 
   }
   @media only screen and (min-width: 830px){
@@ -468,9 +440,7 @@ margin-bottom: 30px;
           justify-content: center;
           align-items: center;
       }
-      .follow_btn, .like_btn {
-          margin: 10px auto; /* Centres buttons with margin */
-      }
+   
   }
 
     @media only screen and (max-width: 830px){
@@ -488,7 +458,5 @@ margin-bottom: 30px;
         justify-content: center;
         align-items: center;
     }
-    .follow_btn, .like_btn {
-        margin: 10px auto; /* Centres buttons with margin */
-    }
+ 
   }

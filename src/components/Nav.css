@@ -83,6 +83,7 @@ header:hover{
   color:#DBE5E6; /* ナビゲーションバーの背景色 */
   font-weight: bold;/* Or any other color suitable for light mode */
 }
+.darkmode_box p{margin-bottom: 5px;}
 /* Dark mode link styles */
 #dark .header,
 #dark .header:hover,
@@ -196,7 +197,7 @@ h2{
  
   display: flex;
   justify-content: flex-end; /* Align the content to the right */
-  margin-right: 20px; /* Adjust the margin as needed */
+ /* Adjust the margin as needed */
 }
 
 
@@ -233,7 +234,7 @@ h2{
 @media only screen and (max-width: 830px){
   .open_img_box {
         justify-content: flex-end; /* Align the content to the right */
-         margin-right: 20px; /* Optional: Adjust the margin if needed /* Adjust the margin as needed */
+  /* Optional: Adjust the margin if needed /* Adjust the margin as needed */
   }
 
   .switch_box,

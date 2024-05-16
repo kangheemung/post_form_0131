@@ -9,12 +9,32 @@ function Newpost({ todos, setTodos}) {
   const [body, setBody] = useState('');
   const [userName, setUserName] = useState('');
   const [flashMessage, setFlashMessage] = useState('');
+  const [titleCharacterCount, setTitleCharacterCount] = useState(0);
+  const [bodyCharacterCount, setBodyCharacterCount] = useState(0);
+
   const navigate = useNavigate();
+  const MAX_TITLE_LENGTH = 15;
+  const MAX_BODY_LENGTH = 100;
   //let { user_id } = useParams();
 //testのため仮のトークンを入れます。本来ならいらないです。
   //const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"
   //const user_id = 1;
 
+  const handleTitleChange = (e) => {
+    const inputValue = e.target.value;
+    if (inputValue.length <= MAX_TITLE_LENGTH) {
+      setTitle(inputValue);
+      setTitleCharacterCount(inputValue.length);
+    }
+  };
+  
+  const handleBodyChange = (e) => {
+    const inputValue = e.target.value;
+    if (inputValue.length <= MAX_BODY_LENGTH) {
+      setBody(inputValue);
+      setBodyCharacterCount(inputValue.length);
+    }
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!title.trim() || !body.trim()) {
@@ -73,40 +93,49 @@ function Newpost({ todos, setTodos}) {
     }
   }, []);
     return (
-      <div className ="post_body_main ">
-         <div className ="post_body_top">
-           <p>{userName ? ` ${userName}` : ''}様の投稿ページ</p>
-         </div>
-         {flashMessage && (
-         <div className="flash-message">
-           {flashMessage}
-         </div>
-       )}
-        <div className='new_post'>
-          <form onSubmit={handleSubmit}>
-              <label className='new_post_title'>タイトル</label>
-              <div className='post_body_top'>
-              <input
-                type="text"
-                id='post-title_box'
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              </div>
-            <div className='new_post_body'>
-              <label className='new_post_body_Text'>内容</label>
-              <div>
-              <textarea
-                id="post-main_box"
-                value={body}
-                onChange={(e) => setBody(e.target.value)}
-              />
-              </div>
-            </div>
-            <button className="post-button" > 投稿！</button>
-          </form>
-        </div>
+      <div className="post_body_main ">
+  <div className="post_body_top">
+    <p>{userName ? `${userName}様の投稿ページ` : ''}</p>
+  </div>
+  {flashMessage && (
+    <div className="flash-message">
+      {flashMessage}
+    </div>
+  )}
+  <div className='new_post'>
+    <form onSubmit={handleSubmit}>
+      <label className='new_post_title'>タイトル(15文字以内まで)</label>
+      <p className='new_post_body_Text'>{`現在の文字数: ${titleCharacterCount}/15`}</p>
+
+      <div className='post_body_top'>
+        <input
+          type="text"
+          id='post-title_box'
+          value={title}
+          onChange={handleTitleChange}
+          maxLength={15} // Limit 'タイトル'
+        />
       </div>
+      <div className='new_post_body'>
+        <label className='new_post_body_Text'>内容（100文字以内まで）</label>
+        <p className='new_post_body_Text'>{`現在の文字数: ${bodyCharacterCount}/100`}</p>
+
+        <div>
+          <textarea
+            id="post-main_box"
+            value={body}
+            onChange={handleBodyChange}
+            maxLength={100}
+            // Limit '内容' to 100 characters
+          ></textarea>
+        </div>
+        <button className="post-button">投稿！</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
     );
   }
   export default Newpost;

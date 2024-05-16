@@ -103,6 +103,7 @@
   border-radius: 15%;
   padding: 10px;
   width: 500px;
+  cursor: pointer;
 }
 
 .post-container_m{
@@ -127,6 +128,7 @@
   font-size: 16px;
   border-radius: 15%;
   width: 50px;
+  cursor: pointer;
 }
 @media (max-width: 375px) {
   .Posts_List_ul {
