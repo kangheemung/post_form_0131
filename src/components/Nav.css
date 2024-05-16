@@ -120,20 +120,6 @@ margin: 10px;
 .items_switch_box{
   background-color:#DBE5E6;
 }
-button{
-  width: 100%;
-  padding: 12px;
-  background-color: firebrick;
-  border-radius: 50px;
-  outline: none;
-  cursor: pointer;
-  transition: all 0.5s, ease 0s;
-  border: none;
-  z-index: 999;
-}
-button:hover{
-  box-shadow: 1px 1px 5px black;
-}
 .logo-container {
   position: fixed;
   top: 10px; /* Adjust the top position as needed */
