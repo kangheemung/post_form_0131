@@ -120,7 +120,8 @@
   .container_box{
     margin-top: 10px;
   }
-  .sign{font-size: 24px;
+  .sign{
+    font-size: 24px;
     color:  #004A54;
     font-weight: bold;
     margin-bottom: 20px;
@@ -135,8 +136,6 @@
     justify-content: center;
     align-items: center;
   }
-
-
 #dark .username,
 #dark .sign_up,
 #dark .sign_up_username,

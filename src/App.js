@@ -13,6 +13,7 @@ import About from './components/About';
 import './App.css';
 import Login from './users/Login';
 import Form from './users/Form';
+import MicropostDetailPage from './posts/MicropostDetailPage';
 import { AuthProvider } from './components/AuthContext';
 import ThemeSwitch from './components/ThemeSwitch';
 
@@ -49,6 +50,7 @@ function App() {
                 path='/users/:id'
                 element={<PostsList />}
               />
+              <Route path="/microposts/:id" element={<MicropostDetailPage />} />
               <Route path='/microposts' element={<Fullposts/>}/>
               <Route path='/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />
               {/* Make sure to define ShowPostComponent or remove this line if it's not needed */}

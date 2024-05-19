@@ -27,7 +27,6 @@ function Newpost({ todos, setTodos}) {
       setTitleCharacterCount(inputValue.length);
     }
   };
-  
   const handleBodyChange = (e) => {
     const inputValue = e.target.value;
     if (inputValue.length <= MAX_BODY_LENGTH) {

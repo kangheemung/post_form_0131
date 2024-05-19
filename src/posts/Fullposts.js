@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {useNavigate } from 'react-router-dom';
+import {useNavigate ,Link } from 'react-router-dom';
 import './Fullposts.css';  // Ensure this path correctly points to your CSS file
 import { useAuth } from '../components/AuthContext'; // Make sure this path is correct
 
@@ -303,6 +303,11 @@ function Fullposts() {
                                     </button>
                                     )}
                                     </div>
+                                    </div>
+                                    <div>
+                                        <Link to={`/microposts/${post.id}`}>
+                                            <button>詳細</button>
+                                        </Link>
                                     </div>
                                 </li>
                               </div>

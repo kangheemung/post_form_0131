@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
-  height: 300px;
+  width: 100%; /* Adjust to occupy full width of the grid cell */
+  height: auto; /* Let content dictate height */
   border: solid #F0F3F3 2px;
   padding: 5px;
   border-radius: 5%;
@@ -22,32 +22,30 @@
   text-align: center;
 }
 
+.content-and-like_body p,
 .post-list-item p {
-  margin: 10px;
-  max-height: 200px; /* Maximum height for text */
-  max-width: 280px; /* Maximum width for text */
   overflow: hidden;
-  -webkit-line-clamp: 3; /* Limit to 3 lines of text */
+  max-height: 200px;
+  max-width: 280px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   word-wrap: break-word;
   text-align: center;
 }
-
 .myPosts_List_top {
-  margin-top: 200px;
+  margin-top: 150px; /* Adjusted margin for tablet screens */
   text-align: center;
   margin-bottom: 30px;
 }
 
 .posts-grid-body {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
-  justify-content: space-around; /* Distribute items evenly with space around them */
-  gap: 10px; 
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
   text-align: center;
   list-style-type: none;
-  margin-bottom: 5px;
-  padding: 10px;
+
   border-radius: 5%;
 }
 .myPosts_List_top{
@@ -110,12 +108,14 @@ margin-bottom: 30px;
     background-color: #004A54;
     color: #F0F3F3;
     border: none;
+    flex-shrink: 0;
     padding: 8px 12px;
     margin-left: 10px; /* Adjust spacing as needed */
     cursor: pointer;
     border-radius: 4px;
   }
   #dark .follow_btn{
+    flex-shrink: 0;
     background-color: #DBE5E6;
     color: #004A54;
     border: none;
@@ -157,19 +157,10 @@ margin-bottom: 30px;
   justify-content: space-between; /* Place items at the ends of the container */
   }
   @media only screen and (max-width: 375px) {
-    .posts-grid-body{
-        display: grid;
-          flex-direction: column; /* Display children in a column layout */
-          align-items: center; /* Center-align children horizontally */
-          width: 300px;
-          height: 300px;
-          border: solid #F0F3F3 2px;
-          padding: 5px;
-          border-radius: 5%;
-          box-sizing: border-box;
-          justify-content: center;
-          margin: 10px;
-      }
+    .posts-grid-body {
+      text-align: center;
+      grid-template-columns: repeat(1, 1fr); /* Adjust to display one column for screens smaller than 375px */
+  }
       .post-list-item p{
           margin: 10px;
           max-height: 200px;
@@ -192,17 +183,18 @@ margin-bottom: 30px;
           text-align: center;
       }
       .myPosts_List_top{
-      margin-top: 200px;
-      text-align: center;
-      margin-bottom: 30px;
+        margin-top: 150px; 
+        text-align: center;
+        margin-bottom: 30px;
       }
+      .myPosts_top {
+        margin-top: 15px; /* Less margin for slightly larger screens */
+    }
       .posts-grid-body{
           display: grid;
-          grid-template-columns: repeat(4, 1fr); /* Display five columns */
+          grid-template-columns: repeat(1, 1fr); /* Display five columns */
           text-align: center;
           list-style-type: none;
-          margin-bottom: 5px;
-          padding: 10px;
           border-radius: 5%;
         }
         #dark .post-list-item{
@@ -251,6 +243,7 @@ margin-bottom: 30px;
           justify-content: center;
         }
         #dark .follow_btn{
+          flex-shrink: 0; 
           background-color: #DBE5E6;
           color: #004A54;
           border: none;
@@ -281,135 +274,30 @@ margin-bottom: 30px;
         #dark .content-and-like {
           color:#DBE5E6; /* Set text color to black */
         }
-        .author-and-follow{
-        display: flex;
-        justify-content: space-between;
-        }
-        .content-and-like {
-        display: flex; /* Display as flex container */
-        align-items: center; /* Center items vertically */
-        justify-content: space-between; /* Place items at the ends of the container */
-        }
-      }
-        @media only screen and (max-width: 375px) {
-          .posts-grid-body{
-              display: grid;
-              grid-template-columns: 1fr; /* Display four columns for screens larger than 375px */
-           /* Display five columns */
-              text-align: center;
-              list-style-type: none;
-              margin-bottom: 5px;
-              padding: 10px;
-              border-radius: 5%;
-          }
-          .post-list-item {
-              align-items: stretch;
-            }
-          .myPosts_top {
-              margin-top: 300px; /* Less margin for slightly larger screens */
-          }
-          .post-list-item {
-              align-items: stretch;
-          }
-              .follow,
-              .author-and-follow,
-              .content-and-like {
-                  flex-direction: column; /* Stacks the elements vertically */
-                  justify-content: center;
-                  align-items: center;
-              }
-
-      }
-
-        @media only screen and (min-width: 375px) {
-
-              .post-list-item {
-                  align-items: stretch;
-                }
-              .myPosts_top {
-                  margin-top: 300px; /* Less margin for slightly larger screens */
-              }
-                  .follow,
-                  .author-and-follow,
-                  .content-and-like {
-                      flex-direction: column; /* Stacks the elements vertically */
-                      justify-content: center;
-                      align-items: center;
-                  }
-
-        }
-        @media only screen and (min-width: 830px){
-          .posts-grid-body {
-            grid-template-columns: repeat(4, 1fr); /* Display four columns for screens larger than 375px */
-        }
-
-            .post-list-item {
-              align-items: stretch;
-            }
-          .myPosts_top {
-              margin-top: 30px; /* Less margin for slightly larger screens */
-          }
-          .post-list-item {
-              align-items: stretch;
-          }
-              .follow,
-              .author-and-follow,
-              .content-and-like {
-                  flex-direction: column; /* Stacks the elements vertically */
-                  justify-content: center;
-                  align-items: center;
-              }
-
-          }
-          @media only screen and (max-width: 830px){
-           
-            .myPosts_List_top{
-              margin-top: 150px;
-            }
-            .myPosts_top {
-              margin-top: 15px; /* Less margin for slightly larger screens */
-            }
-          .follow,
-          .author-and-follow,
-          .content-and-like {
-              flex-direction: column; /* Stacks the elements vertically */
-              justify-content: center;
-              align-items: center;
-          }
-      
-    .post-list-item {
-        align-items: stretch;
-      }
-    .myPosts_top {
-        margin-top: 300px; /* Less margin for slightly larger screens */
-    }
-    .post-list-item {
-        align-items: stretch;
-    }
-        .follow,
         .author-and-follow,
         .content-and-like {
             flex-direction: column; /* Stacks the elements vertically */
             justify-content: center;
             align-items: center;
         }
-   
-  }
-
-  @media only screen and (min-width: 375px) {
-    .posts-grid-body {
-      grid-template-columns: repeat(1, 1fr); /* Display four columns for screens larger than 375px */
-    }
+      }
+      @media only screen and (min-width: 376px) and (max-width: 830px){
+        .posts-grid-body {
+          text-align: center;
+          grid-template-columns: repeat(1, 1fr); /* Display two columns for tablets */
+      }
 
         .post-list-item {
             align-items: stretch;
           }
-        .myPosts_top {
-            margin-top: 300px; /* Less margin for slightly larger screens */
+          .myPosts_top {
+            margin-top: 15px; /* Less margin for slightly larger screens */
         }
-        .post-list-item {
-            align-items: stretch;
-        }
+        .myPosts_List_top {
+          margin-top: 150px; /* Adjusted margin for tablet screens */
+          text-align: center;
+          margin-bottom: 30px;
+      }
             .follow,
             .author-and-follow,
             .content-and-like {
@@ -417,16 +305,18 @@ margin-bottom: 30px;
                 justify-content: center;
                 align-items: center;
             }
-     
-
   }
-  @media only screen and (min-width: 830px){
+  @media only screen and (min-width: 831px) and (max-width: 1280px){
     .posts-grid-body {
-      grid-template-columns: repeat(4, 1fr); /* Display four columns for screens larger than 375px */
-      }
-    .post-list-item {
-          align-items: stretch;
+        text-align: center;
+        grid-template-columns: repeat(2, 1fr); /* Display three columns for larger tablets */
     }
+    .myPosts_List_top {
+      margin-top: 150px; /* Adjusted margin for tablet screens */
+      text-align: center;
+      margin-bottom: 30px;
+  }
+
     .myPosts_List_top{
       margin-top: 150px;
     }
@@ -440,23 +330,27 @@ margin-bottom: 30px;
           justify-content: center;
           align-items: center;
       }
-   
   }
 
-    @media only screen and (max-width: 830px){
+  @media only screen and (min-width: 1281px) {
+    .posts-grid-body {
+        text-align: center;
+        grid-template-columns: repeat(4, 1fr); /* Display four columns for larger screens like PCs */
+    }
 
-      .myPosts_List_top{
-        margin-top: 150px;
-      }
-      .myPosts_top {
-        margin-top: 15px; /* Less margin for slightly larger screens */
-      }
-    .follow,
+    .myPosts_List_top {
+        margin-top: 150px; /* Adjusted margin for desktop screens */
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .myPosts_top {
+        margin-top: 15px; /* Less margin for desktop screens */
+    }
     .author-and-follow,
     .content-and-like {
         flex-direction: column; /* Stacks the elements vertically */
         justify-content: center;
         align-items: center;
     }
- 
-  }
+}
+

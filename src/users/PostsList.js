@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link} from 'react-router-dom';
 import './PostsList.css';
 function PostsList() {
   const [microposts, setMicroposts] = useState(null);
@@ -88,6 +88,7 @@ function PostsList() {
                 <button onClick={() => handleDelete(post.id)} className="p_button">
                   削除
                 </button>
+                <Link to={`/microposts/${post.id}`}>詳細を見る</Link>
               </div>
             ))}
           </div>
@@ -98,13 +99,7 @@ function PostsList() {
           </div>
         </div>
       )}
-      {!microposts && <p>Loading...</p>}
-      {error && <div>Error: {error}</div>}
-      {(!microposts || microposts.length === 0) && (
-        <div className='no_Posts'>
-          <p className='post-container_m_p'>投稿ポストがないです。</p>
-        </div>
-      )}
+
     </>
   );
 }
