@@ -288,13 +288,12 @@ function Fullposts() {
                                             </div>
                                     </div>
                                     <div className="post_top_title">
-                                        <p className = "post_top">タイトル</p>
-                                        <span>{post.title}</span>
+                                        <p className = "post_top">タイトル: {post.title}</p>
                                     </div>
 
                                     <div className="content-and-like">
                                     <div className="content-and-like_body">
-                                    <p>{post.body.length > 100 ? `${post.body.slice(0, 100)}...` : post.body}</p>
+                                    <p>内容 {post.body.length > 100 ? `${post.body.slice(0, 100)}...` : post.body}</p>
                                     </div>
                                     <div>
                                     {!isAuthorCurrentUser && (
@@ -304,10 +303,8 @@ function Fullposts() {
                                     )}
                                     </div>
                                     </div>
-                                    <div>
-                                        <Link to={`/microposts/${post.id}`}>
-                                            <button>詳細</button>
-                                        </Link>
+                                    <div className='fullposts_detail_button'>
+                                    <button className='fullposts_detail_button'>詳細</button>
                                     </div>
                                 </li>
                               </div>

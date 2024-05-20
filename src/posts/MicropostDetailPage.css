@@ -1,0 +1,94 @@
+#light .collapsible-content,
+#light .Microposts_Deatail_title,
+#light .Microposts_Deatail_body ,
+#light .Microposts_Deatail_box_button,
+#light .Microposts_Deatail_box_b_t_n {
+    color: #004A54;
+    background-color: #DBE5E6;
+}
+
+#dark .collapsible-content,
+#dark .Microposts_Deatail_title,
+#dark .Microposts_Deatail_body,
+#dark .Microposts_Deatail_box_button,
+#dark .Microposts_Deatail_box_b_t_n {
+
+    color:#DBE5E6;
+    background-color: #004A54;
+}
+.Microposts_Deatail_box {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.Microposts_Deatail_title{
+    font-size: 23px;
+    font-weight: bolder;
+    text-align: center;
+}
+.Microposts_Deatail_box_b_t_n{
+    cursor: pointer;}
+.Microposts_Deatail {
+    text-align: center;
+}
+#light .Microposts_Deatail_box_button{
+cursor: pointer;
+}
+.collapsible-content {
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    font-weight: 500;
+    box-sizing: border-box;
+    display: flex;
+    word-wrap: break-word;
+    text-align: center;
+}
+.Microposts_Deatail_body {
+    text-align: center;
+    max-width: 100%;
+    margin-top: 25px;
+}
+.Microposts_Deatail_box_button{
+    margin: 20px;
+    text-align: center;
+}
+@media only screen and (max-width: 375px) {
+
+    .Microposts_Deatail_box{
+        text-align: center;
+        color: #004A54;
+    }
+    .collapsible-content {
+        max-width: 200px;
+        text-align: center;
+        margin: 10px;
+        padding: 10px;
+    }
+}
+@media only screen and (min-width: 376px) and (max-width: 830px){
+    .collapsible-content {
+        max-width: 300px;
+        text-align: center;
+        margin: 10px;
+        padding: 10px;
+    }
+}
+@media only screen and (min-width: 831px) and (max-width: 1280px){
+    .collapsible-content {
+        max-width: 600px;
+        text-align: center;
+        margin: 10px;
+        padding: 10px;
+    }
+}
+@media only screen and (min-width: 1281px){
+    .collapsible-content {
+        max-width: 600px;
+        text-align: center;
+    }
+}

@@ -3,29 +3,63 @@
   flex-direction: column;
   align-items: center;
   width: 100%; /* Adjust to occupy full width of the grid cell */
-  height: auto; /* Let content dictate height */
   border: solid #F0F3F3 2px;
-  padding: 5px;
   border-radius: 5%;
   box-sizing: border-box;
   justify-content: center;
-  margin: 10px;
+  margin: 5px;
+  padding: 10px;
+}
+.fullposts_detail_button_box {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#light .fullposts_detail_button{
+  background-color:  #DBE5E6;
+  color: #004A54;;
+  cursor: pointer;
+}
+.post_top {
+  margin-top: 7px;
+  font-weight: bold;
+  height: 24px; /* Set a fixed height for the post title */
+}
+.fullposts_detail_button {
+  color: #004A54;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  height: 30px; /* Set a fixed height for the '詳細' button */
+}
+#dark .fullposts_detail_button{
+  background-color:  #03282e;
+  color:  #DBE5E6;
+  cursor: pointer;
 }
 .content-and-like_body {
-  margin: 10px;
-  max-height: 200px;
-  max-width: 280px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  word-wrap: break-word;
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+  justify-items: center;
+  list-style-type: none;
+  padding: 10px; /* Remove default padding */
 }
-
+.post-list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border: solid #F0F3F3 2px;
+  border-radius: 5%;
+  box-sizing: border-box;
+  justify-content: center;
+}
 .content-and-like_body p,
 .post-list-item p {
   overflow: hidden;
-  max-height: 200px;
+  max-height: 100px;
   max-width: 280px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -38,14 +72,12 @@
   text-align: center;
   margin-bottom: 30px;
 }
-
 .posts-grid-body {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 10px;
   text-align: center;
   list-style-type: none;
-
   border-radius: 5%;
 }
 .myPosts_List_top{
@@ -56,10 +88,6 @@ margin-bottom: 30px;
 #dark .post-list-item {
   background-color: #03282e;
   color: #DBE5E6;
-}
-
-#light .post-list-item {
-  color: #004A54;
 }
   #dark .myPosts_List_top h2,
   #dark .myPosts_List_top{
@@ -72,31 +100,23 @@ margin-bottom: 30px;
   }
   /* Continue with the rest of your CSS... */
   /* Make sure that only relevant elements inherit the text-align property */
-  label, h2, button {
-    text-align: center;
-    font-weight: bold;
-    color:#004A54
-  }
+
   .top{
     font-weight: bold;
   }
   .fullposts ul {
     list-style: none;
   }
-
-  .author-and-follow_name p{
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 3px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
   .author-and-follow_name{
-    font-size: 32px;
+    font-size: 16px;
+    align-items: center;
+    margin-bottom: 10px;
   }
   .post_top{
-    margin-top: 7px;
     font-weight: bold;
+    white-space: nowrap; /* Prevent line breaks in the title */
+    text-overflow: ellipsis; /* Display ellipsis for overflowing text */
+    overflow: hidden;
   }
   .bottom{
     text-align: center;
@@ -105,37 +125,26 @@ margin-bottom: 30px;
   }
   .follow_btn,
   .like_btn {
+    margin-top: 10px;
     background-color: #004A54;
     color: #F0F3F3;
     border: none;
     flex-shrink: 0;
-    padding: 8px 12px;
-    margin-left: 10px; /* Adjust spacing as needed */
+    padding: 5px 15px;
     cursor: pointer;
     border-radius: 4px;
   }
-  #dark .follow_btn{
-    flex-shrink: 0;
+  #dark .follow_btn,
+  #dark .like_btn{
+    cursor: pointer;
     background-color: #DBE5E6;
     color: #004A54;
-    border: none;
-    padding: 5px 12px;
-    margin-left: 10px; /* Spacing between the text and button */
-    cursor: pointer;
-    border-radius: 4px;
-   /* Adjust spacing as needed */
   }
+.post_top_title{
+  overflow: hidden;
+  text-align: center;
+}
 
-  #dark .like_btn {
-    background-color: #DBE5E6;
-    color: #004A54;
-    border: none;
-    padding: 8px 12px;
-    margin-left: 10%; /* Spacing between the text and button */
-    cursor: pointer;
-    border-radius: 4px;
-   /* Adjust spacing as needed */
-  }
   #dark .post-list-item p{
     color:#DBE5E6;
   }
@@ -147,20 +156,40 @@ margin-bottom: 30px;
   #dark .content-and-like {
     color:#DBE5E6; /* Set text color to black */
   }
-  .author-and-follow{
-  display: flex;
-  justify-content: space-between;
+
+  .content-and-like,
+  .fullposts_detail_button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px; /* Add margin between content and like section */
+  }
+
+  @media only screen and (max-width: 375px) {
+    .content-and-like_body {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 10px;
+      justify-items: center; /* Ensure items are centered horizontally */
+      list-style-type: none;
+      margin: 10px; /* Remove default margin */
+      padding: 0; /* Remove default padding */
+
+    }
+
+    .posts-grid-body {
+       text-align: center;
+        grid-template-columns: repeat(1, 1fr);
+        display: grid;
+        text-align: center;
+        list-style-type: none;
+        margin-bottom: 20px;
+        border-radius: 5%;
   }
   .content-and-like {
-  display: flex; /* Display as flex container */
-  align-items: center; /* Center items vertically */
-  justify-content: space-between; /* Place items at the ends of the container */
+    margin-top: 10px; /* Adjust margin for smaller screens */
   }
-  @media only screen and (max-width: 375px) {
-    .posts-grid-body {
-      text-align: center;
-      grid-template-columns: repeat(1, 1fr); /* Adjust to display one column for screens smaller than 375px */
-  }
+
       .post-list-item p{
           margin: 10px;
           max-height: 200px;
@@ -173,9 +202,9 @@ margin-bottom: 30px;
           text-align: center;
       }
       .content-and-like_body{
+        flex-direction: column;
           margin: 10px;
-          max-height: 200px;
-          max-width: 280px; /* Set a maximum height for the post body content */
+          max-width: 280px; /* Adjust width for better visibility */
           overflow: hidden; /* Hide overflow content if it exceeds the max height */
           display: -webkit-box;
           -webkit-box-orient: vertical;
@@ -183,20 +212,13 @@ margin-bottom: 30px;
           text-align: center;
       }
       .myPosts_List_top{
-        margin-top: 150px; 
+        margin-top: 150px;
         text-align: center;
         margin-bottom: 30px;
       }
       .myPosts_top {
         margin-top: 15px; /* Less margin for slightly larger screens */
     }
-      .posts-grid-body{
-          display: grid;
-          grid-template-columns: repeat(1, 1fr); /* Display five columns */
-          text-align: center;
-          list-style-type: none;
-          border-radius: 5%;
-        }
         #dark .post-list-item{
           background-color: #03282e;
         }
@@ -234,7 +256,7 @@ margin-bottom: 30px;
           font-size: 32px;
         }
         .post_top{
-          margin-top: 7px;
+          max-width: 200px;
           font-weight: bold;
         }
         .bottom{
@@ -242,23 +264,13 @@ margin-bottom: 30px;
           display: flex;
           justify-content: center;
         }
-        #dark .follow_btn{
-          flex-shrink: 0; 
+        #dark .follow_btn,
+        #dark .like_btn{
+          flex-shrink: 0;
           background-color: #DBE5E6;
           color: #004A54;
           border: none;
           padding: 5px 12px;
-          margin-left: 10px; /* Spacing between the text and button */
-          cursor: pointer;
-          border-radius: 4px;
-         /* Adjust spacing as needed */
-        }
-        #dark .like_btn {
-          background-color: #DBE5E6;
-          color: #004A54;
-          border: none;
-          padding: 8px 12px;
-          margin-left: 10%; /* Spacing between the text and button */
           cursor: pointer;
           border-radius: 4px;
          /* Adjust spacing as needed */
@@ -275,7 +287,8 @@ margin-bottom: 30px;
           color:#DBE5E6; /* Set text color to black */
         }
         .author-and-follow,
-        .content-and-like {
+        .content-and-like,
+        .fullposts_detail_button {
             flex-direction: column; /* Stacks the elements vertically */
             justify-content: center;
             align-items: center;
@@ -284,27 +297,35 @@ margin-bottom: 30px;
       @media only screen and (min-width: 376px) and (max-width: 830px){
         .posts-grid-body {
           text-align: center;
+          margin-bottom: 20px;
           grid-template-columns: repeat(1, 1fr); /* Display two columns for tablets */
       }
-
         .post-list-item {
             align-items: stretch;
           }
-          .myPosts_top {
-            margin-top: 15px; /* Less margin for slightly larger screens */
-        }
+          .post_top {
+            max-width: 200px; /* Limit the width for small screens */
+          }
         .myPosts_List_top {
           margin-top: 150px; /* Adjusted margin for tablet screens */
           text-align: center;
           margin-bottom: 30px;
       }
-            .follow,
-            .author-and-follow,
-            .content-and-like {
+            .follow {
                 flex-direction: column; /* Stacks the elements vertically */
                 justify-content: center;
                 align-items: center;
             }
+          .author-and-follow,
+          .content-and-like ,
+          .fullposts_detail_button{
+            flex-direction: column; /* Stacks the elements vertically */
+            justify-content: center;
+            align-items: center;
+        }
+        .fullposts_detail_button {
+          margin: 10px; /* Adjust padding for desktop screens */
+          }
   }
   @media only screen and (min-width: 831px) and (max-width: 1280px){
     .posts-grid-body {
@@ -316,6 +337,12 @@ margin-bottom: 30px;
       text-align: center;
       margin-bottom: 30px;
   }
+  .fullposts_detail_button {
+    margin: 10px; /* Adjust padding for desktop screens */
+    }
+  .post_top {
+    max-width: 250px; /* Adjust maximum width for tablets */
+  }
 
     .myPosts_List_top{
       margin-top: 150px;
@@ -325,7 +352,8 @@ margin-bottom: 30px;
     }
       .follow,
       .author-and-follow,
-      .content-and-like {
+      .content-and-like,
+      .fullposts_detail_button{
           flex-direction: column; /* Stacks the elements vertically */
           justify-content: center;
           align-items: center;
@@ -333,11 +361,14 @@ margin-bottom: 30px;
   }
 
   @media only screen and (min-width: 1281px) {
+
     .posts-grid-body {
         text-align: center;
         grid-template-columns: repeat(4, 1fr); /* Display four columns for larger screens like PCs */
     }
-
+    .fullposts_detail_button {
+    margin: 10px; /* Adjust padding for desktop screens */
+    }
     .myPosts_List_top {
         margin-top: 150px; /* Adjusted margin for desktop screens */
         text-align: center;
@@ -346,8 +377,12 @@ margin-bottom: 30px;
     .myPosts_top {
         margin-top: 15px; /* Less margin for desktop screens */
     }
+    .post_top {
+      max-width: 350px; /* Optimize width for desktop screens */
+    }
     .author-and-follow,
-    .content-and-like {
+    .content-and-like,
+    .fullposts_detail_button {
         flex-direction: column; /* Stacks the elements vertically */
         justify-content: center;
         align-items: center;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../components/AuthContext';
+import './MicropostDetailPage.css';
 
 const MicropostDetailPage = () => {
     const { id } = useParams();
@@ -19,7 +20,7 @@ const MicropostDetailPage = () => {
                 setCurrentUser(userData);
             }
         } else if (!jwtToken) {
-            navigate('/api/v1/auth'); 
+            navigate('/api/v1/auth');
             return;
         }
 
@@ -39,8 +40,7 @@ const MicropostDetailPage = () => {
                 }
             })
             .then(data => {
-                console.log(data); // Check the structure of the data
-                setMicropost(data.data || {}); // Set micropost data to the 'data' property
+                setMicropost(data.data || {});
             })
             .catch(error => {
                 console.error('Error fetching microposts:', error);
@@ -49,14 +49,26 @@ const MicropostDetailPage = () => {
         }
     }, [currentUser, navigate, setCurrentUser, id]);
 
+    const handleBack = () => {
+        window.history.back(); // Navigate to the previous page
+    };
+
+
     if (!micropost) {
         return <div>Error: Failed to load micropost details</div>;
     }
 
     return (
-        <div>
-            <h2>タイトル：{micropost.title}</h2>
-            <p>内容：{micropost.body}</p> {/* Assuming 'body' contains the content */}
+        <div className='Microposts_Deatail'>
+            <div className='Microposts_Deatail_box'>
+                <p className='Microposts_Deatail_title'>タイトル：{micropost.title}</p>
+                <div className="collapsible-content">
+                    <p className='Microposts_Deatail_body'>内容：{micropost.body}</p>
+                </div>
+                <div className='Microposts_Deatail_box_button'>
+                <button className='Microposts_Deatail_box_b_t_n' onClick={handleBack}>Back</button> {/* Back button */}
+                </div>
+            </div>
         </div>
     );
 };
