@@ -262,56 +262,47 @@ function Fullposts() {
     };
 
     return (
-    <>
+        <>
         <div className="myPosts_List_top">
             <h1>投稿された記録</h1>
         </div>
         <div className="posts-grid-body">
-                {microposts.map((post) => {
-                    const authorId = post.user_id.toString();
-                    const isAuthorCurrentUser = currentUser && String(currentUser.id) === authorId;
-                    return (
-                        <>
-                        <div className="post-list-item">
-                                <li key={post.id.toString()} >
-                                    <div className='author-and-follow'>
-                                            <div  className='author-and-follow_name'>
-                                            <p>投稿者: {post.user.name}</p>
-                                            </div>
-                                            <div>
-                                                {!isAuthorCurrentUser && (
-                                                    <button className="follow_btn"
-                                                    onClick={() => handleToggleFollow(authorId)}>
-                                                        {followedUserIds.has(authorId) ? 'Followed' : 'Follow'}
-                                                    </button>
-                                                )}
-                                            </div>
-                                    </div>
-                                    <div className="post_top_title">
-                                        <p className = "post_top">タイトル: {post.title}</p>
-                                    </div>
-
-                                    <div className="content-and-like">
-                                    <div className="content-and-like_body">
-                                    <p>内容 {post.body.length > 100 ? `${post.body.slice(0, 100)}...` : post.body}</p>
-                                    </div>
-                                    <div>
-                                    {!isAuthorCurrentUser && (
-                                    <button className = "like_btn" onClick={() => handleToggleLike(post.id)}>
+            {microposts.map((post) => {
+                const authorId = post.user_id.toString();
+                const isAuthorCurrentUser = currentUser && String(currentUser.id) === authorId;
+                return (
+                    <div className="post-list-item" key={post.id.toString()}>
+                        <ul>
+                            <div className='author-and-follow'>
+                                <p className='author-and-follow_name'>投稿者: {post.user.name}</p>
+                                {!isAuthorCurrentUser && (
+                                    <button className="follow_btn" onClick={() => handleToggleFollow(authorId)}>
+                                        {followedUserIds.has(authorId) ? 'Followed' : 'Follow'}
+                                    </button>
+                                )}
+                            </div>
+                                <p className="post_top">タイトル: {post.title}</p>
+                            <div className="content-and-like">
+                                {post.body.length <= 100 && (
+                                    <p className="fullpost_box_p">{post.body}</p>
+                                )}
+                                {!isAuthorCurrentUser && (
+                                    <button className="like_btn" onClick={() => handleToggleLike(post.id)}>
                                         {likedPosts.has(post.id) ? 'Liked!' : 'Like!'}
                                     </button>
-                                    )}
-                                    </div>
-                                    </div>
-                                    <div className='fullposts_detail_button'>
-                                    <button className='fullposts_detail_button'>詳細</button>
-                                    </div>
-                                </li>
-                              </div>
-                        </>
-                    );
-                })}
-           </div>
+                                )}
+                            </div>
+                        </ul>
+                        <div className="fullposts_detail_button">
+                                <p Link to={`/post/${post.id}`} className='fullposts_detail_link'>
+                                    詳細
+                                </p>
+                        </div>
+                    </div>
+                );
+
+            })}
+        </div>
     </>
     );
 }

@@ -5,7 +5,7 @@
   list-style-type: none;
   cursor: pointer;
   width: fit-content; /* Set the width based on content */
-
+  position: relative;
   border-radius: 5%;
 }
 .post_box_t_b{
@@ -26,7 +26,7 @@
   color:  #ffffff;
 }
 .post-container_body {
-  margin-top:150px;
+  margin-top: 150px;
   text-align: center;
 }
 
@@ -103,6 +103,14 @@
   text-align: center; /* Center-align the text within the post box */
 }
 
+.detail-link{
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+}
 .p_submit_box{
   text-align: center;
   font-size: 16px;

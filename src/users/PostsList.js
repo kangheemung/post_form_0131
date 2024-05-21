@@ -88,9 +88,11 @@ function PostsList() {
                 <button onClick={() => handleDelete(post.id)} className="p_button">
                   削除
                 </button>
-                <Link to={`/microposts/${post.id}`} className="detail-link">
+                <div className='mypost_bottom_detail'>
+                <p Link to={`/microposts/${post.id}`} className="detail-link">
                   詳細
-                </Link>
+                </p>
+                </div>
               </div>
             ))}
           </div>

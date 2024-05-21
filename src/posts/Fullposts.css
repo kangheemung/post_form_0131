@@ -1,83 +1,102 @@
+
 .post-list-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%; /* Adjust to occupy full width of the grid cell */
-  border: solid #F0F3F3 2px;
-  border-radius: 5%;
-  box-sizing: border-box;
-  justify-content: center;
-  margin: 5px;
-  padding: 10px;
+  position: relative; /* Ensure relative positioning for child elements */
+  width: 100%;
+  max-width: 320px;
+  height: 350px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #d5d5d5;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  animation: slide-in-right-to-left 0.5s ease-in-out;
+}
+
+.content-and-like p {
+  max-height: 100px; /* Limit the maximum height of the content */
+  overflow: hidden; /* Hide any overflow content */
+  text-overflow: ellipsis; /* Show ellipsis (...) for truncated text */
+  white-space: nowrap; /* Prevent line breaks */
+}
+
+.post-body{
+  max-height: 200px; /* Set a maximum height for the post body */
+    overflow: hidden;
 }
 .fullposts_detail_button_box {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#light .fullposts_detail_button{
-  background-color:  #DBE5E6;
-  color: #004A54;;
-  cursor: pointer;
-}
-.post_top {
-  margin-top: 7px;
-  font-weight: bold;
-  height: 24px; /* Set a fixed height for the post title */
-}
-.fullposts_detail_button {
   color: #004A54;
   cursor: pointer;
   border: none;
-  border-radius: 4px;
-  height: 30px; /* Set a fixed height for the '詳細' button */
+}
+#light .fullposts_detail_button{
+  color: #004A54;;
+  cursor: pointer;
+}
+.fullposts_detail_button {
+  position: absolute; /* Set absolute position for precise alignment */
+  bottom: 2px; /* Adjust according to your design */
+  right: 50%; /* Position the button at horizontally middle of the post item */
+  transform: translate(50%, 10%); /* Adjust according to your design */
+  cursor: pointer;
+  z-index: 1; /* Ensure the button appears on top of other content */
+}
+.post_top {
+  text-align: center;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;/* Show '...' when text exceeds the container */
+}
+.fullposts_detail_link {
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+
+}
+.post-list-item ul {
+  list-style-type: none; /* Remove default list styling */
+}
+#dark .fullposts_detail_link {
+  color:  #DBE5E6;
 }
 #dark .fullposts_detail_button{
-  background-color:  #03282e;
   color:  #DBE5E6;
   cursor: pointer;
 }
 .content-and-like_body {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 10px;
-  justify-items: center;
-  list-style-type: none;
-  padding: 10px; /* Remove default padding */
-}
-.post-list-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  border: solid #F0F3F3 2px;
-  border-radius: 5%;
-  box-sizing: border-box;
-  justify-content: center;
-}
-.content-and-like_body p,
-.post-list-item p {
-  overflow: hidden;
-  max-height: 100px;
-  max-width: 280px;
+  margin-top: 10px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   text-align: center;
+  max-width: 300px; /* Maximum width for better visibility */
+  overflow: hidden; /* Hide overflowing content */
+}
+.content-and-like_body p,
+.post-list-item p {
+  margin: 10px;
+  margin-bottom: 1rem;
+  padding: 10px;
+  color:  #004A54;
+  font-family: sans-serif;
+  animation: fadetext 2.2s ease-in-out forwards;
 }
 .myPosts_List_top {
   margin-top: 150px; /* Adjusted margin for tablet screens */
   text-align: center;
   margin-bottom: 30px;
 }
-.posts-grid-body {
+.posts-grid-body{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
   text-align: center;
   list-style-type: none;
+  cursor: pointer;
+  width: fit-content; /* Set the width based on content */
   border-radius: 5%;
 }
 .myPosts_List_top{
@@ -98,41 +117,74 @@ margin-bottom: 30px;
   #light .post-list-item {
   color:#004A54;
   }
-  /* Continue with the rest of your CSS... */
-  /* Make sure that only relevant elements inherit the text-align property */
-
   .top{
     font-weight: bold;
   }
   .fullposts ul {
     list-style: none;
   }
+  .author-and-follow{
+    margin: 5px;
+  }
   .author-and-follow_name{
+    font-weight: bold;
     font-size: 16px;
     align-items: center;
-    margin-bottom: 10px;
-  }
-  .post_top{
-    font-weight: bold;
-    white-space: nowrap; /* Prevent line breaks in the title */
-    text-overflow: ellipsis; /* Display ellipsis for overflowing text */
-    overflow: hidden;
   }
   .bottom{
     text-align: center;
     display: flex;
     justify-content: center;
   }
-  .follow_btn,
-  .like_btn {
+  .follow_btn{
     margin-top: 10px;
+    text-align: center;
     background-color: #004A54;
     color: #F0F3F3;
     border: none;
-    flex-shrink: 0;
     padding: 5px 15px;
+    width: 80px;
+    height: 35px;
     cursor: pointer;
     border-radius: 4px;
+  }
+  .like_btn {
+    margin-top: 10px;
+    text-align: center;
+    background-color: #004A54;
+    color: #F0F3F3;
+    border: none;
+    padding: 5px 20px;
+    width: 80px;
+    height: 35px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .fullpost_box_p{
+    margin: 10px;
+    max-height: 200px;
+    max-width: 280px; /* Set a maximum height for the post body content */
+    overflow: hidden; /* Hide overflow content if it exceeds the max height */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit the number of lines to display */
+    -webkit-box-orient: vertical;
+    word-wrap: break-word; /* Enable word wrapping */
+    text-align: center; /* Center-align the text within the post box */
+  }
+  .content-and-like {
+    margin: 10px;
+    align-items: center;
+    width: 100%;
+    max-height: 200px;
+    max-width: 280px; /* Set a maximum height for the post body content */
+    overflow: hidden; /* Hide overflow content if it exceeds the max height */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    text-align: center;
+    white-space: nowrap; /* Prevent wrapping of text */
+    text-overflow: ellipsis;
   }
   #dark .follow_btn,
   #dark .like_btn{
@@ -141,9 +193,20 @@ margin-bottom: 30px;
     color: #004A54;
   }
 .post_top_title{
-  overflow: hidden;
+  top: 30px;
   text-align: center;
+  position: relative;
 }
+  .posts-grid-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+    text-align: center;
+    list-style-type: none;
+    border-radius: 5%;
+    margin-bottom: 50px;
+  }
+
 
   #dark .post-list-item p{
     color:#DBE5E6;
@@ -157,26 +220,29 @@ margin-bottom: 30px;
     color:#DBE5E6; /* Set text color to black */
   }
 
-  .content-and-like,
-  .fullposts_detail_button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px; /* Add margin between content and like section */
-  }
-
   @media only screen and (max-width: 375px) {
-    .content-and-like_body {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 10px;
-      justify-items: center; /* Ensure items are centered horizontally */
-      list-style-type: none;
-      margin: 10px; /* Remove default margin */
-      padding: 0; /* Remove default padding */
-
+    .post-list-item {
+      width: 100%;
+      max-width: 320px;
+      padding: 1rem;
+      background-color: #fff;
+      border: 1px solid #d5d5d5;
+      border-radius: 10px;
+      box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+      animation: slide-in-right-to-left 0.5s ease-in-out
     }
-
+    .like_btn {
+      margin-top: 10px;
+      text-align: center;
+      background-color: #004A54;
+      color: #F0F3F3;
+      border: none;
+      padding: 5px 12px;
+      width: auto;
+      height: 35px;
+      cursor: pointer;
+      border-radius: 4px;
+  }
     .posts-grid-body {
        text-align: center;
         grid-template-columns: repeat(1, 1fr);
@@ -185,11 +251,8 @@ margin-bottom: 30px;
         list-style-type: none;
         margin-bottom: 20px;
         border-radius: 5%;
+        margin-bottom: 50px;
   }
-  .content-and-like {
-    margin-top: 10px; /* Adjust margin for smaller screens */
-  }
-
       .post-list-item p{
           margin: 10px;
           max-height: 200px;
@@ -218,10 +281,11 @@ margin-bottom: 30px;
       }
       .myPosts_top {
         margin-top: 15px; /* Less margin for slightly larger screens */
-    }
+      }
         #dark .post-list-item{
           background-color: #03282e;
         }
+        #dark .fullposts_detail_link,
         #dark .myPosts_List_top h2,
         #dark .post-list-item ,
         #dark .myPosts_List_top{
@@ -232,8 +296,6 @@ margin-bottom: 30px;
         #light .post-list-item {
         color:#004A54;
         }
-        /* Continue with the rest of your CSS... */
-        /* Make sure that only relevant elements inherit the text-align property */
         label, h2, button {
           text-align: center;
           font-weight: bold;
@@ -245,18 +307,13 @@ margin-bottom: 30px;
         .fullposts ul {
           list-style: none;
         }
-        .author-and-follow_name p{
-          font-size: 20px;
-          font-weight: bold;
-          margin-top: 3px;
-          margin-bottom: 20px;
-          text-align: center;
-        }
-        .author-and-follow_name{
-          font-size: 32px;
+        .author-and-follow_name {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
         .post_top{
-          max-width: 200px;
+          max-width: 70%;
           font-weight: bold;
         }
         .bottom{
@@ -286,88 +343,88 @@ margin-bottom: 30px;
         #dark .content-and-like {
           color:#DBE5E6; /* Set text color to black */
         }
-        .author-and-follow,
-        .content-and-like,
-        .fullposts_detail_button {
-            flex-direction: column; /* Stacks the elements vertically */
-            justify-content: center;
-            align-items: center;
-        }
+
       }
       @media only screen and (min-width: 376px) and (max-width: 830px){
         .posts-grid-body {
           text-align: center;
-          margin-bottom: 20px;
-          grid-template-columns: repeat(1, 1fr); /* Display two columns for tablets */
+          grid-template-columns: repeat(1, 1fr); /* Display three columns for larger tablets */
       }
-        .post-list-item {
-            align-items: stretch;
-          }
-          .post_top {
-            max-width: 200px; /* Limit the width for small screens */
-          }
-        .myPosts_List_top {
-          margin-top: 150px; /* Adjusted margin for tablet screens */
-          text-align: center;
-          margin-bottom: 30px;
+      .myPosts_List_top {
+        margin-top: 150px; /* Adjusted margin for tablet screens */
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .post_top {
+      max-width: 200px; /* Adjust maximum width for tablets */
+    }
+     .myPosts_List_top{
+        margin-top: 150px;
       }
-            .follow {
-                flex-direction: column; /* Stacks the elements vertically */
-                justify-content: center;
-                align-items: center;
-            }
-          .author-and-follow,
-          .content-and-like ,
-          .fullposts_detail_button{
-            flex-direction: column; /* Stacks the elements vertically */
-            justify-content: center;
-            align-items: center;
-        }
-        .fullposts_detail_button {
-          margin: 10px; /* Adjust padding for desktop screens */
-          }
-  }
+      .myPosts_top {
+        margin-top: 15px; /* Less margin for slightly larger screens */
+      }
+    }
   @media only screen and (min-width: 831px) and (max-width: 1280px){
+    .post-list-item {
+      max-width: 400px; /* Set maximum width for tablet screens */
+  }
+  .author-and-follow {
+    display: flex;
+    justify-content: space-between;
+}
     .posts-grid-body {
         text-align: center;
         grid-template-columns: repeat(2, 1fr); /* Display three columns for larger tablets */
+        margin-bottom: 50px;
+    }
+    .content-and-like p {
+      max-height: 80px; /* Prevent line breaks */
     }
     .myPosts_List_top {
-      margin-top: 150px; /* Adjusted margin for tablet screens */
+      margin-top: 250px; /* Adjusted margin for tablet screens */
       text-align: center;
       margin-bottom: 30px;
   }
-  .fullposts_detail_button {
-    margin: 10px; /* Adjust padding for desktop screens */
+  
+    .like_btn{
+      bottom: 40px;
     }
   .post_top {
-    max-width: 250px; /* Adjust maximum width for tablets */
+    max-width: 200px; /* Adjust maximum width for tablets */
   }
-
-    .myPosts_List_top{
+  .content-and-like {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+   .myPosts_List_top{
       margin-top: 150px;
     }
     .myPosts_top {
       margin-top: 15px; /* Less margin for slightly larger screens */
     }
-      .follow,
-      .author-and-follow,
-      .content-and-like,
-      .fullposts_detail_button{
-          flex-direction: column; /* Stacks the elements vertically */
-          justify-content: center;
-          align-items: center;
-      }
   }
 
   @media only screen and (min-width: 1281px) {
-
+    .author-and-follow {
+      display: flex;
+      justify-content: space-between;
+  }
     .posts-grid-body {
         text-align: center;
-        grid-template-columns: repeat(4, 1fr); /* Display four columns for larger screens like PCs */
-    }
-    .fullposts_detail_button {
-    margin: 10px; /* Adjust padding for desktop screens */
+        grid-template-columns: repeat(4, 1fr);/* Display four columns for larger screens like PCs */
+        margin-bottom: 50px;
+      }
+   
+    .like_btn{margin-top: 40px;}
+    .content-and-like {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
     }
     .myPosts_List_top {
         margin-top: 150px; /* Adjusted margin for desktop screens */
@@ -378,14 +435,7 @@ margin-bottom: 30px;
         margin-top: 15px; /* Less margin for desktop screens */
     }
     .post_top {
-      max-width: 350px; /* Optimize width for desktop screens */
-    }
-    .author-and-follow,
-    .content-and-like,
-    .fullposts_detail_button {
-        flex-direction: column; /* Stacks the elements vertically */
-        justify-content: center;
-        align-items: center;
+      max-width: 250px; /* Optimize width for desktop screens */
     }
 }
 
