@@ -284,7 +284,9 @@ function Fullposts() {
                                 <p className="post_top">タイトル: {post.title}</p>
                             <div className="content-and-like">
                                 {post.body.length <= 100 && (
-                                    <p className="fullpost_box_p">{post.body}</p>
+                                    <div className="content-and-like_body">
+                                       <p className="fullpost_box_p">{post.body}</p>
+                                    </div>
                                 )}
                                 {!isAuthorCurrentUser && (
                                     <button className="like_btn" onClick={() => handleToggleLike(post.id)}>

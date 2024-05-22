@@ -3,7 +3,6 @@
   grid-template-columns: repeat(4, 1fr);
   text-align: center;
   list-style-type: none;
-  cursor: pointer;
   width: fit-content; /* Set the width based on content */
   position: relative;
   border-radius: 5%;
@@ -72,6 +71,7 @@
 }
 
 .post_box {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,14 +85,18 @@
 }
 
 .post_box_t_b{
+  position: absolute;
   max-height: 200px;
   max-width: 280px;
   font-size: 24px;
+  top:20px;
   font-weight: bolder;
   margin-bottom: 30px;}
 
 .post_box_p {
+  top:120px;
   margin: 10px;
+  position: absolute;
   max-height: 200px;
   max-width: 280px; /* Set a maximum height for the post body content */
   overflow: hidden; /* Hide overflow content if it exceeds the max height */
@@ -138,12 +142,26 @@
   text-align: center;
 }
 .p_button{
+  position: absolute;
+  top:200px;
   margin: 10px; /* Add space between post content and button */
   padding: 5px;
   font-size: 16px;
   border-radius: 15%;
   width: 50px;
+  bottom:30px;
   cursor: pointer;
+}
+.mypost_bottom_detail{
+
+   font-weight: bold;
+    position: absolute; /* Set absolute position for precise alignment */
+    bottom: 20px; /* Adjust according to your design */
+    right: 50%; /* Position the button at horizontally middle of the post item */
+    transform: translate(50%, 10%); /* Adjust according to your design */
+    cursor: pointer;
+    z-index: 1;
+
 }
 @media only screen and (max-width: 375px)  {
   .Posts_List_ul {
