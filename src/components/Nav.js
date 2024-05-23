@@ -43,7 +43,7 @@ const Nav = ({ themeSwitch }) => {
               <div className='header_box'>
                   <ul className="navlinks">
                       <li className="navlinks_log">
-                        <Link to="#"><p>Post_App</p></Link>
+                        <p>Post_App</p>
                       </li>
                       <div className='navlinks_header'>
                           <ul className='header_center'>

@@ -127,8 +127,13 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.flash-message{
-  font-size: small;
+#light .flash-message{
+  font-size: 16px;
+  color: #004A54;
+}
+#dark .flash-message{
+  font-size: 16px;
+  color: #004A54;
 }
 .top_img {
   position: absolute;

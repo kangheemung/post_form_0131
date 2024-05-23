@@ -97,8 +97,8 @@ function Newpost({ todos, setTodos}) {
     <p>{userName ? `${userName}様の投稿ページ` : ''}</p>
   </div>
   {flashMessage && (
-    <div className="flash-message">
-      {flashMessage}
+    <div>
+      <p className="flash-message_newpost">{flashMessage}</p>
     </div>
   )}
   <div className='new_post'>

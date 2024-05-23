@@ -77,7 +77,7 @@
   -webkit-line-clamp: 3; /* Limit the number of lines to display */
   -webkit-box-orient: vertical;
   word-wrap: break-word; /* Enable word wrapping */
-  text-align: center; /* 
+  text-align: center;
 }
 
 .myPosts_List_top {
@@ -130,8 +130,8 @@
     background-color: #004A54;
     color: #F0F3F3;
     border: none;
-    padding: 5px 15px;
-    width: 80px;
+    padding: 3px 10px;
+    width: 90px;
     height: 35px;
     cursor: pointer;
     border-radius: 4px;
@@ -149,8 +149,8 @@
     background-color: #004A54;
     color: #F0F3F3;
     border: none;
-    padding: 5px 20px;
-    width: 80px;
+    padding: 3px 10px;
+    width: 90px;
     height: 35px;
     cursor: pointer;
     border-radius: 4px;
@@ -198,12 +198,10 @@
     margin-bottom: 30px;
   }
   .like_btn {
-    width: 80px;
-    height: 35px;
     font-weight: bold;
     position: absolute; /* Set absolute position for precise alignment */
-    top: 220px;
-    left: 65px; /* Position the button at horizontally middle of the post item */
+    top: 210px;
+    left: 55px;/* Position the button at horizontally middle of the post item */
     transform: translate(50%, 10%);/* Adjust according to your design */
     cursor: pointer;
     z-index: 1;
@@ -213,15 +211,12 @@
     background-color: #004A54;
     color: #F0F3F3;
     border: none;
-    padding: 5px 15px;
-    width: 80px;
-    height: 35px;
     cursor: pointer;
     border-radius: 4px;
     font-weight: bold;
     position: absolute; /* Set absolute position for precise alignment */
     top: 40px; /* Adjust according to your design */
-    left: 65px; /* Position the button at horizontally middle of the post item */
+    left: 55px; /* Position the button at horizontally middle of the post item */
     transform: translate(50%, 10%); /* Adjust according to your design */
     cursor: pointer;
     z-index: 1;
@@ -259,12 +254,10 @@
         margin-bottom: 30px;
       }
       .like_btn {
-        width: 80px;
-        height: 35px;
         font-weight: bold;
         position: absolute; /* Set absolute position for precise alignment */
-        top: 220px;
-        left: 65px; /* Position the button at horizontally middle of the post item */
+        top: 210px;
+        left: 55px; /* Position the button at horizontally middle of the post item */
         transform: translate(50%, 10%);/* Adjust according to your design */
         cursor: pointer;
         z-index: 1;
@@ -274,15 +267,12 @@
         background-color: #004A54;
         color: #F0F3F3;
         border: none;
-        padding: 5px 15px;
-        width: 80px;
-        height: 35px;
         cursor: pointer;
         border-radius: 4px;
         font-weight: bold;
         position: absolute; /* Set absolute position for precise alignment */
         top: 40px; /* Adjust according to your design */
-        left: 65px; /* Position the button at horizontally middle of the post item */
+        left: 55px; /* Position the button at horizontally middle of the post item */
         transform: translate(50%, 10%); /* Adjust according to your design */
         cursor: pointer;
         z-index: 1;
@@ -321,12 +311,10 @@
       margin-bottom: 30px;
   }
   .like_btn {
-    width: 80px;
-    height: 35px;
     font-weight: bold;
     position: absolute; /* Set absolute position for precise alignment */
-    top: 220px;
-    left: 65px; /* Position the button at horizontally middle of the post item */
+    top: 210px;
+    left: 55px;; /* Position the button at horizontally middle of the post item */
     transform: translate(50%, 10%);/* Adjust according to your design */
     cursor: pointer;
     z-index: 1;
@@ -336,15 +324,12 @@
     background-color: #004A54;
     color: #F0F3F3;
     border: none;
-    padding: 5px 15px;
-    width: 80px;
-    height: 35px;
     cursor: pointer;
     border-radius: 4px;
     font-weight: bold;
     position: absolute; /* Set absolute position for precise alignment */
     top: 40px; /* Adjust according to your design */
-    left: 65px; /* Position the button at horizontally middle of the post item */
+    left: 55px; /* Position the button at horizontally middle of the post item */
     transform: translate(50%, 10%); /* Adjust according to your design */
     cursor: pointer;
     z-index: 1;
@@ -377,12 +362,10 @@
         z-index: 1;
       }
   .like_btn {
-    width: 80px;
-    height: 35px;
     font-weight: bold;
     position: absolute; /* Set absolute position for precise alignment */
-    top: 220px;
-    left: 65px; /* Position the button at horizontally middle of the post item */
+    top: 210px;
+    left: 55px; /* Position the button at horizontally middle of the post item */
     transform: translate(50%, 10%);/* Adjust according to your design */
     cursor: pointer;
     z-index: 1;
@@ -392,15 +375,12 @@
     background-color: #004A54;
     color: #F0F3F3;
     border: none;
-    padding: 5px 15px;
-    width: 80px;
-    height: 35px;
     cursor: pointer;
     border-radius: 4px;
     font-weight: bold;
     position: absolute; /* Set absolute position for precise alignment */
     top: 40px; /* Adjust according to your design */
-    left: 65px; /* Position the button at horizontally middle of the post item */
+    left: 55px; /* Position the button at horizontally middle of the post item */
     transform: translate(50%, 10%); /* Adjust according to your design */
     cursor: pointer;
     z-index: 1;

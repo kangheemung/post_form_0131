@@ -8,6 +8,14 @@
   color: #03282e;
   cursor: pointer;
 }
+#light .flash-message_newpost{
+  font-size: 16px;
+  color: #004A54;
+}
+#dark .flash-message_newpost{
+  font-size: 16px;
+  color: #DBE5E6;
+}
 #dark .post_body_top {
  color: #DBE5E6;
 }
