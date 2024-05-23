@@ -182,8 +182,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80vmin; /* Set width and height to same value for a perfect circle */
-  height: 80vmin;
+  width: 70vmin; /* Set width and height to same value for a perfect circle */
+  height: 70vmin;
   font-size: 5vw;
   border-radius: 50%;
   text-align: center;
@@ -254,8 +254,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90vmin; /* Set width and height to same value for a perfect circle */
-    height: 90vmin;
+    width: 70vmin; /* Set width and height to same value for a perfect circle */
+    height: 70vmin;
     font-size: 5vw;
     border-radius: 50%;
     text-align: center;
@@ -285,8 +285,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90vmin; /* Set width and height to same value for a perfect circle */
-    height: 90vmin;
+    width: 70vmin; /* Set width and height to same value for a perfect circle */
+    height: 70vmin;
     font-size: 5vw;
     border-radius: 50%;
     text-align: center;
@@ -316,8 +316,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80vmin; /* Set width and height to same value for a perfect circle */
-    height: 80vmin;
+    width: 70vmin; /* Set width and height to same value for a perfect circle */
+    height: 70vmin;
     font-size: 5vw;
     border-radius: 50%;
     text-align: center;

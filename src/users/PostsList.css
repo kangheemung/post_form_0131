@@ -129,11 +129,7 @@
   margin-top: 10%;
   margin-bottom: 10%;
 }
-.post-container_t {
-  margin-bottom: 5%;
-  color: #004A54;
-  text-align: center;
-}
+
 #dark .post-container_t,
 #dark  .post_box_t_b,
 #dark .post-container_m_p,
@@ -184,9 +180,29 @@
   }
 }
 
-
+@media only screen and (min-device-width: 480px) and (max-device-width: 736px) and (orientation: landscape) {
+  /* Styles specific to iPod landscape view */
+  .Posts_List_ul {
+    grid-template-columns: repeat(2, 1fr); /* Display in a single column */
+    gap: 20px;
+    text-align: center;
+    list-style-type: none;
+    border-radius: 5%;
+    display: grid;
+  }
+  .post-container_t {
+    margin-top: 5%;
+    color: #004A54;
+    text-align: center;
+  }
+  .post_box_b,
+  .post_box_p {
+    font-size: 15px;
+  }
+}
   @media only screen and (min-width: 376px) and (max-width: 830px){
     .Posts_List_ul {
+      text-align: center;
       grid-template-columns: repeat(1, 1fr); /* Display in a single column */
       border-radius: 5%;
     }
@@ -203,6 +219,7 @@
   @media only screen and (min-width: 831px) and (max-width: 1280px){
     .Posts_List_ul {
       display: grid;
+      text-align: center;
       grid-template-columns: repeat(2, 1fr); /* Display in a single column */
       gap: 20px;
       text-align: center;

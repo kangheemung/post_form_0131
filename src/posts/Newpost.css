@@ -140,7 +140,63 @@ padding: 10px;}
 }
 
 }
+@media only screen and (min-width: 831px) and (max-width: 1280px){
+  .post_body_main {
+    margin-top: 30px;
+    width: 50%; /* Adjusted width percentage for larger screens */
+    max-height: 90vh;
+  }
+  .post_body_top{
+    font-size: 32px;
+  }
 
+.new_post_body label,
+.new_post label {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+#post-main_box {
+  margin-top: 10px;
+  width: 100%; /* Adjusted width for better responsiveness */
+  max-width: 300px;
+  height: 150px;/* Added max-width for larger screens */
+}
+}
+
+@media only screen and (min-device-width: 480px) and (max-device-width: 736px) and (orientation: landscape) {
+  .post_body_main {
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid 3px  #fff;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 20vmin; /* Set width and height to same value for a perfect circle */
+    font-size: 5vw;
+    padding: 10px;
+    text-align: center;
+  }
+  .post_body_top{
+    font-size: 32px;
+  }
+
+.new_post_body label,
+.new_post label {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+#post-main_box {
+  margin-top: 10px;
+  width: 100%; /* Adjusted width for better responsiveness */
+  max-width: 300px;
+  height: 150px;/* Added max-width for larger screens */
+}
+
+}
 @media only screen and (max-width: 830px) {
   .post_body_main {
     position: absolute;

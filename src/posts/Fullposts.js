@@ -262,11 +262,12 @@ function Fullposts() {
     };
 
     return (
-        <>
-        <div className="myPosts_List_top">
-            <h1>投稿された記録</h1>
-        </div>
-        <div className="posts-grid-body">
+    <>
+        <div className="fullposts-container-body">
+            <div className="post-container_t">
+                <h1>投稿された記録</h1>
+            </div>
+            <div className="posts-grid-body">
             {microposts.map((post) => {
                 const authorId = post.user_id.toString();
                 const isAuthorCurrentUser = currentUser && String(currentUser.id) === authorId;
@@ -296,6 +297,7 @@ function Fullposts() {
                 );
 
             })}
+            </div>
         </div>
     </>
     );
