@@ -272,33 +272,25 @@ function Fullposts() {
                 const isAuthorCurrentUser = currentUser && String(currentUser.id) === authorId;
                 return (
                     <div className="post-list-item" key={post.id.toString()}>
-                        <ul>
-                            <div className='author-and-follow'>
                                 <p className='author-and-follow_name'>投稿者: {post.user.name}</p>
                                 {!isAuthorCurrentUser && (
                                     <button className="follow_btn" onClick={() => handleToggleFollow(authorId)}>
                                         {followedUserIds.has(authorId) ? 'Followed' : 'Follow'}
                                     </button>
                                 )}
-                            </div>
                                 <p className="post_top">タイトル: {post.title}</p>
-                            <div className="content-and-like">
                                 {post.body.length <= 100 && (
-                                    <div className="content-and-like_body">
                                        <p className="fullpost_box_p">{post.body}</p>
-                                    </div>
                                 )}
                                 {!isAuthorCurrentUser && (
                                     <button className="like_btn" onClick={() => handleToggleLike(post.id)}>
                                         {likedPosts.has(post.id) ? 'Liked!' : 'Like!'}
                                     </button>
                                 )}
-                            </div>
-                        </ul>
                         <div className="fullposts_detail_button">
-                                <p Link to={`/post/${post.id}`} className='fullposts_detail_link'>
+                                <Link to={`/micropost/${post.id}`} className='fullposts_detail_link'>
                                     詳細
-                                </p>
+                                </Link>
                         </div>
                     </div>
                 );

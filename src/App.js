@@ -50,7 +50,7 @@ function App() {
                 path='/users/:id'
                 element={<PostsList />}
               />
-              <Route path="/microposts/:id" element={<MicropostDetailPage />} />
+              <Route path="/micropost/:id" element={<MicropostDetailPage />} />
               <Route path='/microposts' element={<Fullposts/>}/>
               <Route path='/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />
               {/* Make sure to define ShowPostComponent or remove this line if it's not needed */}

@@ -88,9 +88,9 @@ function PostsList() {
                   削除
                 </button>
                 <div className='mypost_bottom_detail'>
-                <p Link to={`/microposts/${post.id}`} className="detail-link">
+                <Link to={`/micropost/${post.id}`} className="detail-link">
                   詳細
-                </p>
+                </Link>
                 </div>
               </div>
             ))}

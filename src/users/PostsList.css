@@ -18,7 +18,7 @@
   word-wrap: break-word; /* Enable word wrapping */
   text-align: center;
 }
-.detail-link{
+#light .detail-link{
   color: #004A54;
 }
 #dark .detail-link{
@@ -59,6 +59,7 @@
 #dark .p_button{
   background-color: #ffffff;
   border-radius: 15%;
+  color: #004A54;
   border: solid 1px #ffffff;
 }
 .p_submit_box_bottom{
@@ -137,7 +138,8 @@
 #dark  .post_box_t_b,
 #dark .post-container_m_p,
 #dark .post_box_t_b,
-#dark .post-container_t h2{
+#dark .post-container_t h2,
+#dark .detail-link{
   color: #f7feff;
   text-align: center;
 }
@@ -164,26 +166,17 @@
 
 }
 @media only screen and (max-width: 375px)  {
+  
   .Posts_List_ul {
-    display: grid;
+
     grid-template-columns: repeat(1, 1fr); /* Display in a single column */
-    gap: 20px;
-    text-align: center;
-    list-style-type: none;
+  
     border-radius: 5%;
   }
   .post-container_t {
-    margin-top: 55px;
+    margin-top: 5%;
     color: #004A54;
     text-align: center;
-  }
-  .post_box {
-    width: 100%;
-    border: solid #F0F3F3 2px;
-    padding: 10px;
-    border-radius: 5%;
-    box-sizing: border-box;
-    margin: 3%;
   }
   .post_box_b,
   .post_box_p {
@@ -192,34 +185,9 @@
 }
 
 
-
-
-@media only screen and (min-width: 376px) and (max-width: 830px){
-    .Posts_List_ul {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr); /* Display in a single column */
-      gap: 20px;
-      text-align: center;
-      list-style-type: none;
-      border-radius: 5%;
-    }
-    .post-container_t {
-      margin-top: 5%;
-      color: #004A54;
-      text-align: center;
-    }
-    .post_box_b,
-    .post_box_p {
-      font-size: 15px;
-    }
-  }
   @media only screen and (min-width: 376px) and (max-width: 830px){
     .Posts_List_ul {
-      display: grid;
       grid-template-columns: repeat(1, 1fr); /* Display in a single column */
-      gap: 20px;
-      text-align: center;
-      list-style-type: none;
       border-radius: 5%;
     }
     .post-container_t {
