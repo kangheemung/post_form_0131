@@ -62,6 +62,15 @@ function Fullposts() {
             setLikedPosts(new Set(JSON.parse(storedLikedPosts)));
         }
     }, []);
+
+    const handleToggleLike = (postId) => {
+        if (likedPosts.has(postId)) {
+          handleUnlike(postId);
+        } else {
+          handleLike(postId);
+        }
+      };
+    
     const handleLike = (postId) => {;
         //console.log('Attempting to like post with ID:', postId); // Check if postId is correct
         //console.log('Current User:', currentUser);
@@ -98,7 +107,7 @@ function Fullposts() {
             }, 3000);
         });
     };
-
+    
     const handleFollow = (userIdToFollow) => {
         if (!userIdToFollow) {
             console.error('User ID to follow is undefined or invalid');
@@ -219,7 +228,7 @@ function Fullposts() {
           }
       //console.log('Attempting to unlike post with ID:', postId);
       // Call your API endpoint to unlike a post
-      fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts/${postId}/likes`, {
+      fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts/${postId}/unlikes`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -227,22 +236,28 @@ function Fullposts() {
         }
       })
       .then(response => {
-        if (!response.ok) {
-          return response.json().then(data => {
-            throw new Error(data.message || 'Failed to unlike post.');
-          });
+        if (response.status === 204 || response.ok) {
+            //console.log('Unfollowed successfully');
+            setLikedPosts(prevLikedPosts => {
+                const updatedLikedPosts = new Set(prevLikedPosts);
+                updatedLikedPosts.delete(postId);
+                localStorage.setItem('likedPosts', JSON.stringify([...updatedLikedPosts]));
+                return updatedLikedPosts;
+            });
+            setNotification('Liked successfully');
+            setTimeout(() => {
+                setNotification('');
+            }, 3000);
+        } else {
+            return response.json().then(data => {
+                let errorMessage = data.message || 'Failed to Liked user.';
+                if (response.status === 404) {
+                    errorMessage = 'Relationship not found. User may have been already Liked .';
+                }
+                throw new Error(errorMessage);
+            });
         }
-        return response.text();
-      })
-      .then(() => {
-        //console.log('Unliked successfully');
-        setLikedPosts((prevLikedPosts) => {
-          const updatedLikedPosts = new Set(prevLikedPosts);
-          updatedLikedPosts.delete(postId);
-          localStorage.setItem('likedPosts', JSON.stringify([...updatedLikedPosts]));
-          return updatedLikedPosts;
-        });
-      })
+    })
       .catch(error => {
         console.error('Error unliking post:', error);
         setNotification(error.message || 'Failed to unlike post.');
@@ -250,15 +265,6 @@ function Fullposts() {
           setNotification('');
         }, 3000);
       });
-    };
-
-    // Updated handler for liking/unliking a post
-    const handleToggleLike = (postId) => {
-      if (likedPosts.has(postId)) {
-        handleUnlike(postId);
-      } else {
-        handleLike(postId);
-      }
     };
 
     return (
