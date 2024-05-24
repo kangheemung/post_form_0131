@@ -13,13 +13,13 @@ const Nav = ({ themeSwitch }) => {
     //const userName = currentUser?.name || 'Guest'; // Use 'Guest' if no user name
     const { theme, toggleTheme } = useContext(ThemeContext);
 
-    const handleLogoutClick = async () => {
-        await logout(); // Wait for the logout process to finish
-        navigate('/'); // Redirect to the home page after logging out
+    const handleSidebarLinkClick = () => {
+        // Close the sidebar when a sidebar link is clicked
+        closeSidebar();
     };
-    //console.log(currentUser);       // Debug current user state
-    //console.log(isUserLoggedIn);    // Debug login flag state
-        // Define showSidebar function
+       //console.log(currentUser);       // Debug current user state
+       //console.log(isUserLoggedIn);    // Debug login flag state
+       // Define showSidebar function
         const showSidebar = () => {
           const sidebar = document.querySelector(".sidebar");
           sidebar.style.display = 'flex';
@@ -35,7 +35,12 @@ const Nav = ({ themeSwitch }) => {
             sidebar.style.display = 'none';
           }, 300); // Adjust the timing here if needed
         };
-
+        const handleLogoutClick = async () => {
+            await logout();
+            // Close the sidebar upon logout
+            closeSidebar();
+            navigate('/');
+        };
 
 
         return (
@@ -90,22 +95,22 @@ const Nav = ({ themeSwitch }) => {
                       </li>
                       {isUserLoggedIn ? (
                           <>
-                              <li><Link to="/microposts" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>FullPost</Link></li>
-                              <li><Link to={`/users/${userId}`} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>mypage</Link></li>
-                              <li><Link to={`/users/${userId}/micropost`} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>NewPost</Link></li>
+                              <li onClick={handleSidebarLinkClick}><Link to="/microposts" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>FullPost</Link></li>
+                              <li onClick={handleSidebarLinkClick}><Link to={`/users/${userId}`} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>mypage</Link></li>
+                              <li onClick={handleSidebarLinkClick}><Link to={`/users/${userId}/micropost`} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>NewPost</Link></li>
                               <li onClick={handleLogoutClick} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Logout</li>
-                              <li className="side_switch_box">
+                              <li onClick={handleSidebarLinkClick} className="side_switch_box">
                                   {themeSwitch}
                               </li>
                               <img src={process.env.PUBLIC_URL + '/hand.png'} alt="" className="logo" />
                           </>
                       ) : (
                           <>
-                              <li><Link to="/" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>home</Link></li>
-                              <li><Link to="/about" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>About</Link></li>
-                              <li><Link to="/auth" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Login</Link></li>
-                              <li><Link to="/users" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Sign_up</Link></li>
-                              <li className="side_switch_box">
+                              <li onClick={handleSidebarLinkClick}><Link to="/" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>home</Link></li>
+                              <li onClick={handleSidebarLinkClick}><Link to="/about" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>About</Link></li>
+                              <li onClick={handleSidebarLinkClick}><Link to="/auth" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Login</Link></li>
+                              <li onClick={handleSidebarLinkClick}><Link to="/users" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Sign_up</Link></li>
+                              <li onClick={handleSidebarLinkClick} className="side_switch_box">
                                   {themeSwitch}
                               </li>
                               <img src={process.env.PUBLIC_URL + '/hand.png'} alt="" className="logo" />
