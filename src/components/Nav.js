@@ -42,7 +42,7 @@ const Nav = ({ themeSwitch }) => {
 
     const handleSidebarLinkClick = () => {
         closeSidebar();
-    
+
     };
 
 
@@ -52,7 +52,6 @@ const Nav = ({ themeSwitch }) => {
                     closeSidebar();
                 } else {
                     closeSidebar();
-            
                 }
             };
 
