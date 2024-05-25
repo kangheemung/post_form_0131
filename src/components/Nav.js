@@ -46,21 +46,23 @@ const Nav = ({ themeSwitch }) => {
     };
 
 
-        useEffect(() => {
-            const handleOutsideClick = (e) => {
-                if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
-                    closeSidebar();
-                } else {
-                    closeSidebar();
-                }
-            };
-
-            document.addEventListener("click", handleOutsideClick);
-
-            return () => {
-                document.removeEventListener("click", handleOutsideClick);
-            };
-        }, [navigate]);
+    useEffect(() => {
+        const handleOutsideClick = (e) => {
+            // Check if the clicked element is not inside the sidebar or its button
+            const sidebar = document.querySelector(".sidebar");
+            const sidebarButton = document.querySelector(".open_img_box li");
+    
+            if (sidebar && !sidebar.contains(e.target) && e.target !== sidebarButton) {
+                closeSidebar();
+            }
+        };
+    
+        document.addEventListener("click", handleOutsideClick);
+    
+        return () => {
+            document.removeEventListener("click", handleOutsideClick);
+        };
+    }, [navigate]);
 
         return (
           <header className={theme === 'dark' ? 'dark-mode' : ''}>
