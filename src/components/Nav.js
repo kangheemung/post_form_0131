@@ -12,18 +12,18 @@ const Nav = ({ themeSwitch }) => {
     const userId = currentUser?.id; // Assuming 'id' exists on currentUser
     //const userName = currentUser?.name || 'Guest'; // Use 'Guest' if no user name
     const { theme, toggleTheme } = useContext(ThemeContext);
+
     const sidebarRef = useRef(null);
-  
        //console.log(currentUser);       // Debug current user state
        //console.log(isUserLoggedIn);    // Debug login flag state
        // Define showSidebar function
-        const showSidebar = () => {
-          const sidebar = document.querySelector(".sidebar");
-          sidebar.style.display = 'flex';
-          setTimeout(() => {
+       const showSidebar = () => {
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.style.display = 'flex';
+        setTimeout(() => {
             sidebar.style.transform = 'translateX(0)';
-          });
-        };
+        });
+    };
 
         const closeSidebar = () => {
           const sidebar = document.querySelector(".sidebar");
@@ -33,11 +33,6 @@ const Nav = ({ themeSwitch }) => {
           }, 100000); // Adjust the timing here if needed
         };
 
-    const handleOutsideClick = (event) => {
-        if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-            closeSidebar();
-        }
-    };
         const handleLogoutClick = async () => {
             await logout();
             // Close the sidebar upon logout
@@ -45,14 +40,28 @@ const Nav = ({ themeSwitch }) => {
             navigate('/');
         };
 
+    const handleSidebarLinkClick = () => {
+        closeSidebar();
+    
+    };
+
 
         useEffect(() => {
+            const handleOutsideClick = (e) => {
+                if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+                    closeSidebar();
+                } else {
+                    closeSidebar();
+            
+                }
+            };
+
             document.addEventListener("click", handleOutsideClick);
 
             return () => {
                 document.removeEventListener("click", handleOutsideClick);
             };
-        }, []);;
+        }, [navigate]);
 
         return (
           <header className={theme === 'dark' ? 'dark-mode' : ''}>
@@ -100,35 +109,35 @@ const Nav = ({ themeSwitch }) => {
                       </li>
                       </div>
                   </ul>
-                  <ul className="sidebar">
-                      <li onClick={closeSidebar} ref={sidebarRef}>
+                  <ul className="sidebar" >
+                      <li onClick={closeSidebar}>
                           <ion-icon className="close-outline">x</ion-icon>
                       </li>
                       {isUserLoggedIn ? (
                           <>
-                              <li ref={sidebarRef}><Link to="/microposts" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>FullPost</Link></li>
-                              <li ref={sidebarRef}><Link to={`/users/${userId}`} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>mypage</Link></li>
-                              <li ref={sidebarRef}><Link to={`/users/${userId}/micropost`} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>NewPost</Link></li>
+                              <li  onClick={handleSidebarLinkClick } ><Link to="/microposts" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>FullPost</Link></li>
+                              <li  onClick={handleSidebarLinkClick } ><Link to={`/users/${userId}`} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>mypage</Link></li>
+                              <li  onClick={handleSidebarLinkClick } ><Link to={`/users/${userId}/micropost`} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>NewPost</Link></li>
                               <li onClick={handleLogoutClick} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Logout</li>
-                              <li  ref={sidebarRef} className="side_switch_box">
+                              <li   onClick={ handleSidebarLinkClick }  className="side_switch_box">
                                   {themeSwitch}
                               </li>
                               <img src={process.env.PUBLIC_URL + '/hand.png'} alt="" className="logo" />
                           </>
                       ) : (
                           <>
-                              <li ref={sidebarRef}><Link to="/" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>home</Link></li>
-                              <li ref={sidebarRef}><Link to="/about" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>About</Link></li>
-                              <li ref={sidebarRef}><Link to="/auth" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Login</Link></li>
-                              <li ref={sidebarRef}><Link to="/users" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Sign_up</Link></li>
-                              <li ref={sidebarRef} className="side_switch_box">
+                              <li  onClick={handleSidebarLinkClick } ><Link to="/" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>home</Link></li>
+                              <li  onClick={handleSidebarLinkClick } ><Link to="/about" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>About</Link></li>
+                              <li  onClick={handleSidebarLinkClick } ><Link to="/auth" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Login</Link></li>
+                              <li  onClick={handleSidebarLinkClick } ><Link to="/users" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Sign_up</Link></li>
+                              <li  onClick={handleSidebarLinkClick }  className="side_switch_box">
                                   {themeSwitch}
                               </li>
                               <img src={process.env.PUBLIC_URL + '/hand.png'} alt="" className="logo" />
                           </>
                       )}
 
-              
+
                   </ul>
               </div>
           </header>
