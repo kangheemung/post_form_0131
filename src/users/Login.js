@@ -2,6 +2,7 @@ import { useState ,useEffect} from 'react';
 import {jwtDecode} from 'jwt-decode'; // Corrected import statement
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../components/AuthContext';
+
 import './User.css';
 function Login() {
   const [email, setEmail] = useState('');
@@ -9,7 +10,7 @@ function Login() {
   const [errors, setErrors] = useState({ email: '', password: '' });
   const [flashMessage, setFlashMessage] = useState('');
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
 
   const validateFields = () => {
     let isValid = true;

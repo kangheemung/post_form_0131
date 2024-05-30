@@ -1,6 +1,8 @@
 import { useState ,useEffect} from 'react';
 import {jwtDecode} from 'jwt-decode'; // Corrected import statement
 import { useNavigate } from 'react-router-dom';
+
+
 import './Newpost.css';
 
 
@@ -11,6 +13,7 @@ function Newpost({ todos, setTodos}) {
   const [flashMessage, setFlashMessage] = useState('');
   const [titleCharacterCount, setTitleCharacterCount] = useState(0);
   const [bodyCharacterCount, setBodyCharacterCount] = useState(0);
+
 
   const navigate = useNavigate();
   const MAX_TITLE_LENGTH = 15;
@@ -82,15 +85,18 @@ function Newpost({ todos, setTodos}) {
   };
   useEffect(() => {
     const jwtToken = localStorage.getItem('token');
-    if (jwtToken) {
+    if (!jwtToken) {
+      navigate('/auth'); // Redirect to login page if not logged in
+    } else {
       try {
         const decodedToken = jwtDecode(jwtToken);
-        setUserName(decodedToken.name); // Set the username on load based on the JWT
+        setUserName(decodedToken.name);
       } catch (error) {
         console.error('Error decoding JWT:', error);
       }
     }
-  }, []);
+  }, [navigate]);
+
     return (
       <div className="post_body_main ">
   <div className="post_body_top">

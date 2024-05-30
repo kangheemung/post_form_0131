@@ -15,6 +15,8 @@ function Fullposts() {
         const jwtToken = localStorage.getItem('jwtToken');
             // currentUserを復元するための処理を追加
             if (!currentUser && jwtToken) {
+                navigate('/auth'); // Redirect to login page if not logged in
+                return;
                 // JWTトークンからユーザー情報を取得するためのAPIコールか、
                 // またはローカルストレージから直接ユーザー情報を取得します。
                 const storedUser = localStorage.getItem('currentUser');
@@ -24,7 +26,7 @@ function Fullposts() {
                     setCurrentUser(userData); // useAuthフックで提供される関数を使ってcurrentUserを更新
                 }
             } else if (!jwtToken) {
-                navigate('/api/v1/auth'); // Make sure this path leads to your login page
+                navigate('/auth'); // Make sure this path leads to your login page
                 return;
             }
     if (currentUser && currentUser.jwtToken) {
@@ -70,7 +72,6 @@ function Fullposts() {
           handleLike(postId);
         }
       };
-    
     const handleLike = (postId) => {;
         //console.log('Attempting to like post with ID:', postId); // Check if postId is correct
         //console.log('Current User:', currentUser);
