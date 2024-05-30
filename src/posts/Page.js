@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-
-
 function Page() {
   let { id, user_id } = useParams();
   const navigate = useNavigate();
@@ -10,11 +8,8 @@ function Page() {
   //const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg2OTg2MzB9.GDkGHpRF0im2I0y2jll2RUki4VPsQivvAC-OF8Nvh1o"; // Your JWT token
 
   useEffect(() => {
-    const url = `http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${user_id}/microposts/${id}`;
-
-    if (!jwtToken) {
-      navigate('/auth'); // Redirect to '/auth' if user is not logged in
-    } else { fetch(url, {
+    const url = `http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${user_id}`;
+    fetch(url, {
       headers: {
         'Authorization': `Bearer ${jwtToken}`
       }
@@ -34,8 +29,7 @@ function Page() {
       // Here you could set up state to display the error in your component,
       // like setting an error message in state and displaying it somewhere in your render.
     });
-  }
-}, [id, user_id,jwtToken,navigate]);
+  }, [id, user_id,jwtToken]);
 
   const handleEdit = () => {
     // Navigate to the edit page for the post

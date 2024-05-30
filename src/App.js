@@ -1,5 +1,5 @@
 import React, { createContext,useState,useEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'; 
+import { BrowserRouter as Router, Routes, Route, useNavigate} from 'react-router-dom';
 import PostsList from './users/PostsList';
 import Page from './posts/Page';
 import Bottom from './components/Bottom';
@@ -22,9 +22,10 @@ export const ThemeContext = createContext(null);
 
 function App() {
   const auth = useAuth();
-  const [redirectPath, setRedirectPath] = useState(null);
+  const currentUser = auth && auth.currentUser;
   const [todos, setTodos] = useState([]);
   const [theme, setTheme] = useState('light');
+
 
   const toggleTheme = () => {
     const body = document.body;
@@ -36,12 +37,6 @@ function App() {
     });
   };
 
-  useEffect(() => {
-    if (auth === null) {
-      // Handle the case where useAuth() returns null by setting the redirect path to '/auth'
-      setRedirectPath('/auth');
-    }
-  }, [auth]);
 
 
 
@@ -53,18 +48,18 @@ function App() {
           <Nav themeSwitch={<ThemeSwitch className='switch'/>} />
           <div className='container_box'>
             <Routes>
-            {redirectPath && <Route path="*" element={<Navigate to={redirectPath} />} />}
-
               <Route path='/' element={<Home />} />
               <Route path='/about' element={<About />} />
               <Route path='/auth' element={<Login />} />
               <Route path='/users' element={<Form />} />
-              <Route path="/micropost/:id" element={<MicropostDetailPage />} />
+              <Route path="/microposts/:id" element={<MicropostDetailPage />} />
               <Route path='/microposts' element={<Fullposts/>}/>
               <Route path='/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />
-              {/* Make sure to define ShowPostComponent or remove this line if it's not needed */}
-              <Route path='/users/:user_id/microposts/:id' element={<Page />} />
+              <Route path='/users/:user_id' element={<PostsList />} />
               <Route path='/users/:user_id/micropost/:id' element={<EditPostComponent />} />
+              
+              <Route path='*' element={<Login />} />
+
             </Routes>
           </div>
           <Bottom/>

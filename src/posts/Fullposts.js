@@ -296,7 +296,7 @@ function Fullposts() {
                                     </button>
                                 )}
                         <div className="fullposts_detail_button">
-                                <Link to={`/micropost/${post.id}`} className='fullposts_detail_link'>
+                                <Link to={`/microposts/${post.id}`} className='fullposts_detail_link'>
                                     詳細
                                 </Link>
                         </div>

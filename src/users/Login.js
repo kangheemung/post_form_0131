@@ -10,7 +10,7 @@ function Login() {
   const [errors, setErrors] = useState({ email: '', password: '' });
   const [flashMessage, setFlashMessage] = useState('');
   const navigate = useNavigate();
-  const { login, isAuthenticated } = useAuth();
+  const { login } = useAuth();
 
   const validateFields = () => {
     let isValid = true;
@@ -89,7 +89,7 @@ function Login() {
           login(data.data.token, userId);
           setFlashMessage('Login!');
           setTimeout(() => {
-            navigate(`/users/${userId}`); // Navigate after the timeout
+            navigate(`/users/${userId}`); // Navigate to the user's profile page
           }, 2000)
         } else {
           console.errors('User ID is undefined.');

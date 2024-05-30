@@ -9,8 +9,13 @@ const MicropostDetailPage = () => {
     const { currentUser, setCurrentUser } = useAuth();
     const navigate = useNavigate();
     const [micropost, setMicropost] = useState(null);
+    
     useEffect(() => {
         const fetchData = async () => {
+            if (!currentUser) {
+                navigate('/auth'); // Redirect to login page if user is not authenticated
+                return;
+            }
             try {
                 let headers = {
                     'Content-Type': 'application/json',
