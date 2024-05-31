@@ -11,7 +11,10 @@ function PostsList() {
   const navigate = useNavigate();
   // Fetch the user's microposts
   useEffect(() => {
-    const fetchMicroposts = async () => {
+    if (!jwtToken) {
+      navigate('/auth'); // Redirect to login page if not logged in
+    } else {
+      const fetchMicroposts = async () => {
       const url = `http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${id}`;
 
       try {
@@ -37,11 +40,16 @@ function PostsList() {
       }
     };
 
-    fetchMicroposts();
-  }, [id, jwtToken]);
+      fetchMicroposts();
+    }
+  }, [id, jwtToken, navigate]);
 
   if (error) {
     return <div>Error: {error}</div>;
+  }
+  if (!jwtToken) {
+    navigate('/auth');
+    return null; // 追加
   }
 
 

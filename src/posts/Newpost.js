@@ -1,8 +1,6 @@
 import { useState ,useEffect} from 'react';
 import {jwtDecode} from 'jwt-decode'; // Corrected import statement
 import { useNavigate } from 'react-router-dom';
-
-
 import './Newpost.css';
 
 
@@ -13,8 +11,6 @@ function Newpost({ todos, setTodos}) {
   const [flashMessage, setFlashMessage] = useState('');
   const [titleCharacterCount, setTitleCharacterCount] = useState(0);
   const [bodyCharacterCount, setBodyCharacterCount] = useState(0);
-
-
   const navigate = useNavigate();
   const MAX_TITLE_LENGTH = 15;
   const MAX_BODY_LENGTH = 100;

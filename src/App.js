@@ -1,7 +1,6 @@
-import React, { createContext,useState,useEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate} from 'react-router-dom';
+import React, { createContext, useState} from 'react';
+import { Routes, Route } from 'react-router-dom'; // Add Navigate import
 import PostsList from './users/PostsList';
-import Page from './posts/Page';
 import Bottom from './components/Bottom';
 import EditPostComponent from './posts/EditPostComponent';
 import NewPost from './posts/Newpost';
@@ -12,19 +11,18 @@ import './App.css';
 import Login from './users/Login';
 import Form from './users/Form';
 import MicropostDetailPage from './posts/MicropostDetailPage';
-import { AuthProvider } from './components/AuthContext';
+import { AuthProvider, useAuth } from './components/AuthContext';
 import ThemeSwitch from './components/ThemeSwitch';
-import { useAuth } from './components/AuthContext';
 import Fullposts from './posts/Fullposts';
-// Import ShowPostComponent if it exists
-// import ShowPostComponent from 'path-to-ShowPostComponent';
+import { Navigate } from 'react-router-dom';
+
 export const ThemeContext = createContext(null);
 
 function App() {
-  const auth = useAuth();
-  const currentUser = auth && auth.currentUser;
   const [todos, setTodos] = useState([]);
   const [theme, setTheme] = useState('light');
+  const auth = useAuth();
+  const currentUser = auth?.currentUser;
 
 
   const toggleTheme = () => {
@@ -38,33 +36,34 @@ function App() {
   };
 
 
-
-
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <AuthProvider>
-      <Router>
-        <div className='App' id={theme}>
-          <Nav themeSwitch={<ThemeSwitch className='switch'/>} />
-          <div className='container_box'>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/about' element={<About />} />
-              <Route path='/auth' element={<Login />} />
-              <Route path='/users' element={<Form />} />
-              <Route path="/microposts/:id" element={<MicropostDetailPage />} />
-              <Route path='/microposts' element={<Fullposts/>}/>
-              <Route path='/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />
-              <Route path='/users/:user_id' element={<PostsList />} />
-              <Route path='/users/:user_id/micropost/:id' element={<EditPostComponent />} />
-              
-              <Route path='*' element={<Login />} />
+          <div className='App' id={theme}>
+            <Nav themeSwitch={<ThemeSwitch className='switch' />} />
+            <div className='container_box'>
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                {!currentUser && <Route path='/*' element={<Navigate to="/auth" replace />} />}
+                {currentUser && (
+                  <>
+                    <Route path='/microposts/:id' element={<MicropostDetailPage />} />
+                    <Route path='/microposts' element={<Fullposts />} />
+                    <Route path='/users/:user_id/micropost' element={<NewPost todos={todos} setTodos={setTodos} />} />
+                    <Route path='/users/:user_id' element={<PostsList />} />
+                    <Route path='/users/:user_id/micropost/:id' element={<EditPostComponent />} />
+                  </>
+                )}
+                <Route path='/auth' element={<Login />} />
+                <Route path='/users' element={<Form />} />
+                </Routes>
+            </div>
 
-            </Routes>
-          </div>
+
           <Bottom/>
         </div>
-      </Router>
+       
       </AuthProvider>
     </ThemeContext.Provider>
   );

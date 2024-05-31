@@ -53,19 +53,19 @@ function Login() {
     return () => clearTimeout(timer); // Cleanup the timer when the component unmounts or flashMessage changes
 }, [flashMessage]);
 
-  async function handleSubmit(event) {
-    event.preventDefault(); // Prevents the default form submission
-    setErrors({ email: '', password: '' });
-    setFlashMessage('');
+async function handleSubmit(event) {
+  event.preventDefault(); // デフォルトのフォーム送信を防止
+  setErrors({ email: '', password: '' });
+  setFlashMessage('');
 
-
-    if (!validateFields()) {
+  if (!validateFields()) {
       return;
-    }
-    const payload = {
+  }
+
+  const payload = {
       email: email,
       password: password
-    };
+  };
 
     try {
       const response = await fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/auth`, {

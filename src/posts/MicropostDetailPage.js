@@ -9,7 +9,7 @@ const MicropostDetailPage = () => {
     const { currentUser, setCurrentUser } = useAuth();
     const navigate = useNavigate();
     const [micropost, setMicropost] = useState(null);
-    
+
     useEffect(() => {
         const fetchData = async () => {
             if (!currentUser) {

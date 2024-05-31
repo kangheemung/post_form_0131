@@ -1,11 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode'; // Corrected named import
-
+import { useNavigate } from 'react-router-dom';
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     // Auth state initialization effect
     const jwtToken = localStorage.getItem('jwtToken');
@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }) => {
         id: decodedToken.user_id,
         name: decodedToken.name
       });
+      navigate(`/users/${decodedToken.user_id}`);
     } catch (error) {
       console.error('Error during login:', error);
     }

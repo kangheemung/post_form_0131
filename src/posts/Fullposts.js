@@ -7,28 +7,18 @@ function Fullposts() {
     const navigate = useNavigate();
     const [followedUserIds, setFollowedUserIds] = useState(new Set());
     const [microposts, setMicroposts] = useState([]);
-    const { currentUser ,setCurrentUser} = useAuth();  // Use useAuth here instead of useContext
+    const { currentUser ,setCurrentUser} = useAuth();
     const [notification, setNotification] = useState('');
     const [likedPosts, setLikedPosts] = useState(new Set());
 
     useEffect(() => {
         const jwtToken = localStorage.getItem('jwtToken');
-            // currentUserを復元するための処理を追加
-            if (!currentUser && jwtToken) {
-                navigate('/auth'); // Redirect to login page if not logged in
-                return;
-                // JWTトークンからユーザー情報を取得するためのAPIコールか、
-                // またはローカルストレージから直接ユーザー情報を取得します。
-                const storedUser = localStorage.getItem('currentUser');
-                if (storedUser) {
-                    const userData = JSON.parse(storedUser);
-                    // この部分で、userDataの内容を確認し、currentUserにセットするロジックを入れます。
-                    setCurrentUser(userData); // useAuthフックで提供される関数を使ってcurrentUserを更新
-                }
-            } else if (!jwtToken) {
-                navigate('/auth'); // Make sure this path leads to your login page
-                return;
-            }
+        if (!currentUser && jwtToken) {
+            setCurrentUser(JSON.parse(localStorage.getItem('currentUser')));
+        } else if (!jwtToken) {
+            navigate('/auth');
+            return;
+        }
     if (currentUser && currentUser.jwtToken) {
         fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/microposts`, {
             method: 'GET',
@@ -56,7 +46,7 @@ function Fullposts() {
         });
 
       }
-    }, [currentUser, navigate,setCurrentUser]); // Depend on currentUser now
+    }, [currentUser, navigate, setCurrentUser]);
 
     useEffect(() => {
         const storedLikedPosts = localStorage.getItem('likedPosts');
@@ -72,6 +62,8 @@ function Fullposts() {
           handleLike(postId);
         }
       };
+
+
     const handleLike = (postId) => {;
         //console.log('Attempting to like post with ID:', postId); // Check if postId is correct
         //console.log('Current User:', currentUser);
@@ -108,7 +100,6 @@ function Fullposts() {
             }, 3000);
         });
     };
-    
     const handleFollow = (userIdToFollow) => {
         if (!userIdToFollow) {
             console.error('User ID to follow is undefined or invalid');
