@@ -90,7 +90,7 @@ function Form() {
         //alert('Login successful!');
 
         if (userId) {
-          login(data.data.token, userId);
+          login(data.data.token, userId, navigate);
           setFlashMessage('Login!');
           setTimeout(() => {
             navigate(`/users/${userId}`); // Navigate after the timeout

@@ -1,6 +1,7 @@
 import { useState ,useEffect} from 'react';
 import {jwtDecode} from 'jwt-decode'; // Corrected import statement
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../components/AuthContext';
 import './Newpost.css';
 
 
@@ -11,6 +12,8 @@ function Newpost({ todos, setTodos}) {
   const [flashMessage, setFlashMessage] = useState('');
   const [titleCharacterCount, setTitleCharacterCount] = useState(0);
   const [bodyCharacterCount, setBodyCharacterCount] = useState(0);
+  const { currentUser ,setCurrentUser} = useAuth();
+
   const navigate = useNavigate();
   const MAX_TITLE_LENGTH = 15;
   const MAX_BODY_LENGTH = 100;
@@ -46,7 +49,7 @@ function Newpost({ todos, setTodos}) {
       console.error('No JWT Token found, user might not be logged in');
       return;
     }
-
+    if (currentUser && currentUser.jwtToken) {
     try {
       const decodedToken = jwtDecode(jwtToken);
       const user_id = decodedToken.user_id;
@@ -78,29 +81,24 @@ function Newpost({ todos, setTodos}) {
     } catch (error) {
       console.error('Failed to decode JWT or perform POST request:', error);
     }
-  };
-  useEffect(() => {
-    const jwtToken = localStorage.getItem('token');
-    if (!jwtToken) {
-      navigate('/auth'); // Redirect to login page if not logged in
-    } else {
-      try {
-        const decodedToken = jwtDecode(jwtToken);
-        setUserName(decodedToken.name);
-      } catch (error) {
-        console.error('Error decoding JWT:', error);
-      }
-    }
-  }, [navigate]);
-
+  }
+};
+useEffect(() => {
+  const jwtToken = localStorage.getItem('jwtToken');
+  if (!currentUser && jwtToken) {
+    setCurrentUser(JSON.parse(localStorage.getItem('currentUser')));
+  } else if (!jwtToken) {
+    navigate('/auth');
+  }
+}, [currentUser, navigate, setCurrentUser]); 
     return (
       <div className="post_body_main ">
   <div className="post_body_top">
     <p>{userName ? `${userName}様の投稿ページ` : ''}</p>
   </div>
   {flashMessage && (
-    <div>
-      <p className="flash-message_newpost">{flashMessage}</p>
+    <div className="flash-message">
+      {flashMessage}
     </div>
   )}
   <div className='new_post'>

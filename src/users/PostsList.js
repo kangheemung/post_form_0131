@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link} from 'react-router-dom';
+import { useAuth } from '../components/AuthContext';
 import './PostsList.css';
 function PostsList() {
   const [microposts, setMicroposts] = useState(null);
   const [error, setError] = useState(null);
+  const { currentUser ,setCurrentUser} = useAuth();
   //const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"; // Replace with actual JWT token
   //const user_id = 1; // Replace with actual user ID
   const jwtToken = localStorage.getItem('token')
   let { id } = useParams();
   const navigate = useNavigate();
-  // Fetch the user's microposts
+
   useEffect(() => {
-    if (!jwtToken) {
-      navigate('/auth'); // Redirect to login page if not logged in
-    } else {
+    const jwtToken = localStorage.getItem('jwtToken');
+    if (!currentUser && jwtToken) {
+        setCurrentUser(JSON.parse(localStorage.getItem('currentUser')));
+    } else if (!jwtToken) {
+        navigate('/auth');
+        return;
+    }
+    if (currentUser && currentUser.jwtToken) {
       const fetchMicroposts = async () => {
       const url = `http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${id}`;
 
@@ -43,15 +50,6 @@ function PostsList() {
       fetchMicroposts();
     }
   }, [id, jwtToken, navigate]);
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-  if (!jwtToken) {
-    navigate('/auth');
-    return null; // 追加
-  }
-
 
   const handleHome = () => {
     navigate('/microposts'); // Navigate back to home
@@ -96,7 +94,7 @@ function PostsList() {
                   削除
                 </button>
                 <div className='mypost_bottom_detail'>
-                <Link to={`/micropost/${post.id}`} className="detail-link">
+                <Link to={`/microposts/${post.id}`} className="detail-link">
                   詳細
                 </Link>
                 </div>

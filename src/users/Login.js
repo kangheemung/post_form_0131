@@ -23,7 +23,6 @@ function Login() {
     } else {
       setErrors(prevErrors => ({ ...prevErrors, email: '' })); // Clear error
     }
-
     if (!password) {
       setErrors(prevErrors => ({ ...prevErrors, password: "Password is required." }));
       isValid = false;
@@ -86,7 +85,7 @@ async function handleSubmit(event) {
         //alert('Login successful!');
 
         if (userId) {
-          login(data.data.token, userId);
+          login(data.data.token, userId, navigate);
           setFlashMessage('Login!');
           setTimeout(() => {
             navigate(`/users/${userId}`); // Navigate to the user's profile page
