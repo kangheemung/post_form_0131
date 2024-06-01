@@ -44,6 +44,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('user_id');
     setCurrentUser(null);
+    navigate('/auth');
   };
 
   return (
