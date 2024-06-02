@@ -16,7 +16,12 @@ function PostsList() {
     const jwtToken = localStorage.getItem('jwtToken');
     if (!currentUser && jwtToken) {
         setCurrentUser(JSON.parse(localStorage.getItem('currentUser')));
-    } else if (!jwtToken) {
+    } else if (currentUser && id !== String(currentUser.id)) {
+      // Redirect to appropriate URL or display an error message
+      alert("You are trying to access an invalid URL. Please correct it.");
+      navigate(`/users/${id}`); // Redirect to home or another suitable page
+    }
+    else if (!jwtToken) {
         navigate('/auth');
         return;
     }
@@ -49,7 +54,7 @@ function PostsList() {
 
       fetchMicroposts();
     }
-  }, [id, jwtToken, navigate]);
+  }, [id, jwtToken, navigate, currentUser, setCurrentUser]);
 
   const handleHome = () => {
     navigate('/microposts'); // Navigate back to home
@@ -73,7 +78,7 @@ function PostsList() {
       // Remove the deleted post from the state to update the UI
       setMicroposts(microposts.filter(post => post.id !== postId));
     } catch (error) {
-      console.error("Error deleting post:", error);
+      console.error("Fetching microposts error:", error);
     }
   };
 

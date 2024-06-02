@@ -2,10 +2,14 @@ import React from 'react';
 import { Route, Navigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
-const PrivateRoute = ({ element, ...rest }) => {
+const PrivateRoute = ({ element, redirectTo, ...props }) => {
   const { currentUser } = useAuth();
 
-  return currentUser ? <Route {...rest} element={element} /> : <Navigate to="/auth" />;
+  if (!currentUser) {
+    return <Navigate to={redirectTo} replace />;
+  }
+
+  return <Route {...props} element={element} />;
 };
 
 export default PrivateRoute;

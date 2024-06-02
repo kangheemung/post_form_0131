@@ -1,4 +1,4 @@
-import React, { useContext, useEffect,useRef} from 'react';
+import React, { useContext, useEffect} from 'react';
 import './Nav.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
@@ -6,14 +6,16 @@ import { ThemeContext } from '../App';
 
 
 const Nav = ({ themeSwitch }) => {
+    
     const navigate = useNavigate();
     const { logout, currentUser } = useAuth();
     const isUserLoggedIn = Boolean(currentUser && currentUser.jwtToken);
-    const userId = currentUser?.id; // Assuming 'id' exists on currentUser
+    const userId = currentUser?.id;
+   
     //const userName = currentUser?.name || 'Guest'; // Use 'Guest' if no user name
-    const { theme, toggleTheme } = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
 
-    const sidebarRef = useRef(null);
+
        //console.log(currentUser);       // Debug current user state
        //console.log(isUserLoggedIn);    // Debug login flag state
        // Define showSidebar function
@@ -40,25 +42,23 @@ const Nav = ({ themeSwitch }) => {
             navigate('/');
         };
 
-    const handleSidebarLinkClick = () => {
-        closeSidebar();
-
-    };
-
+        const handleSidebarLinkClick = () => {
+            closeSidebar();
+      // Ensure 'url' is a valid path for navigation
+        };
 
     useEffect(() => {
         const handleOutsideClick = (e) => {
             // Check if the clicked element is not inside the sidebar or its button
             const sidebar = document.querySelector(".sidebar");
             const sidebarButton = document.querySelector(".open_img_box li");
-    
             if (sidebar && !sidebar.contains(e.target) && e.target !== sidebarButton) {
                 closeSidebar();
             }
         };
-    
+
         document.addEventListener("click", handleOutsideClick);
-    
+
         return () => {
             document.removeEventListener("click", handleOutsideClick);
         };
@@ -118,7 +118,7 @@ const Nav = ({ themeSwitch }) => {
                           <>
                               <li  onClick={handleSidebarLinkClick } ><Link to="/microposts" style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>FullPost</Link></li>
                               <li  onClick={handleSidebarLinkClick } ><Link to={`/users/${userId}`} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>mypage</Link></li>
-                              <li  onClick={handleSidebarLinkClick } ><Link to={`/users/${userId}/micropost`} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>NewPost</Link></li>
+                              <li onClick={handleSidebarLinkClick}><Link to={`/users/${userId}/micropost`} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>NewPost</Link></li>
                               <li onClick={handleLogoutClick} style={{ color: theme === 'dark' ? '#004A54' : 'white' }}>Logout</li>
                               <li   onClick={ handleSidebarLinkClick }  className="side_switch_box">
                                   {themeSwitch}
