@@ -9,6 +9,7 @@ const MicropostDetailPage = () => {
     const { currentUser, setCurrentUser } = useAuth();
     const navigate = useNavigate();
     const [micropost, setMicropost] = useState(null);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const jwtToken = localStorage.getItem('jwtToken');
@@ -18,7 +19,8 @@ const MicropostDetailPage = () => {
             navigate('/auth');
             return;
         }
-        if (currentUser && currentUser.jwtToken) { const fetchData = async () => {
+        if (currentUser && currentUser.jwtToken) {
+            const fetchData = async () => {
             try {
                 let headers = {
                     'Content-Type': 'application/json',
@@ -30,13 +32,20 @@ const MicropostDetailPage = () => {
                 });
                 if (response.ok) {
                     const data = await response.json();
-                    setMicropost(data.data || {});
+                    if(data.data) {
+                        setMicropost(data.data);
+                    } else {
+                        setError('Error: Micropost details not found');
+                        navigate('/microposts');
+                    }
                 } else {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
+
             } catch (error) {
                 console.error('Error fetching microposts:', error);
                 // Handle error or display a message to the user
+                setError(`Error: Failed to fetch micropost details - ${error.message}`);
             }
         };
 

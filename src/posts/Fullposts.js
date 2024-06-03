@@ -19,6 +19,7 @@ function Fullposts() {
             navigate('/auth');
             return;
         }
+        
     if (currentUser && currentUser.jwtToken) {
         fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/microposts`, {
             method: 'GET',
@@ -55,7 +56,15 @@ function Fullposts() {
         }
     }, []);
 
-    const handleToggleLike = (postId) => {
+    
+    const handleToggleLike = (postId , postUserId) => {
+        if (String(currentUser.id) !== postUserId) {
+            alert('Invalid access: You cannot like/unlike for a post of another user.');
+
+            navigate('/microposts');
+            return;
+        }
+   
         if (likedPosts.has(postId)) {
           handleUnlike(postId);
         } else {
@@ -149,6 +158,7 @@ function Fullposts() {
 
     // アンフォローボタンを押した時の処理
     const handleUnfollow = (userIdToUnfollow) => {
+
         if (typeof userIdToUnfollow === 'undefined') {
             console.error('User ID to unfollow is undefined');
             setNotification('Invalid user ID.');
@@ -198,6 +208,11 @@ function Fullposts() {
         });
     };
     const handleToggleFollow = (userId) => {
+        if (String(currentUser.id) !== userId) {
+            alert('Invalid access: Please use the appropriate UI to follow or unfollow users.');
+            return;
+        }
+
         if (followedUserIds.has(userId)) {
             handleUnfollow(userId);
         } else {
@@ -210,6 +225,7 @@ function Fullposts() {
 
     // Event handler for unliking a post
     const handleUnlike = (postId) => {
+
         if (typeof postId === 'undefined') {
             console.error('Post ID is undefined');
             setNotification('Post ID is undefined.');
