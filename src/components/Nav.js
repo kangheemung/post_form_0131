@@ -6,12 +6,11 @@ import { ThemeContext } from '../App';
 
 
 const Nav = ({ themeSwitch }) => {
-    
     const navigate = useNavigate();
     const { logout, currentUser } = useAuth();
     const isUserLoggedIn = Boolean(currentUser && currentUser.jwtToken);
     const userId = currentUser?.id;
-   
+
     //const userName = currentUser?.name || 'Guest'; // Use 'Guest' if no user name
     const { theme } = useContext(ThemeContext);
 

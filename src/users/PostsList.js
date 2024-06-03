@@ -4,6 +4,8 @@ import { useAuth } from '../components/AuthContext';
 import './PostsList.css';
 function PostsList() {
   const [microposts, setMicroposts] = useState(null);
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [error, setError] = useState(null);
   const { currentUser ,setCurrentUser} = useAuth();
   //const jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MDg3NTkyMTR9.IL8J7ngUjO5VPBJ4AoUOUWUGJzie_oS0JkoNePWBhVU"; // Replace with actual JWT token
@@ -44,8 +46,10 @@ function PostsList() {
         }
 
         const result = await response.json();
-
-        setMicroposts(result.data || []);
+        setMicroposts(result.data);
+        setUsername(result.user.name);
+        setEmail(result.user.email);
+        
       } catch (error) {
         console.error("Fetching microposts error:", error);
         setError('Failed to load microposts. Please check your connection and try again.');
@@ -76,7 +80,7 @@ function PostsList() {
 
       //console.log('Post deleted successfully');
       // Remove the deleted post from the state to update the UI
-      setMicroposts(microposts.filter(post => post.id !== postId));
+      setMicroposts(prevMicroposts => prevMicroposts.filter(post => post.id !== postId));
     } catch (error) {
       console.error("Fetching microposts error:", error);
     }
