@@ -137,7 +137,7 @@ return (
         {error.password && <div className="flash-error">{error.password}</div>}
         <input className= "sign_up_password" type = "password" placeholder= "password_confirmation" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}/>
         {error.passwordConfirmation && <div className="flash-error">{error.passwordConfirmation}</div>}
-        <button type="sign_up_submit" className="submit">Submit</button>
+        <button type="submit" className="submit">Submit</button>
       </form>
     </div>
   </div>

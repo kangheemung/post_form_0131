@@ -20,7 +20,6 @@ export const ThemeContext = createContext(null);
 function App() {
   const [theme, setTheme] = useState('light');
   const authContext = useAuth();
-  
   const toggleTheme = () => {
     const body = document.body;
     setTheme((current) => {
