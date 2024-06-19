@@ -276,45 +276,52 @@ function Fullposts() {
     };
 
     return (
-    <>
-        <div className="fullposts-container-body">
-            <div className="post-container_t">
-                <h1>投稿された記録</h1>
-            </div>
-            <div className="posts-grid-body">
-            {microposts.map((post) => {
-                const authorId = post.user_id.toString();
-                const isAuthorCurrentUser = currentUser && String(currentUser.id) === authorId;
-                return (
-                    <div className="post-list-item" key={post.id.toString()}>
-                                <p className='author-and-follow_name'>投稿者: {post.user.name}</p>
-                                {!isAuthorCurrentUser && (
-                                    <button className="follow_btn" onClick={() => handleToggleFollow(authorId)}>
-                                        {followedUserIds.has(authorId) ? 'Followed' : 'Follow'}
-                                    </button>
-                                )}
-                                <p className="post_top">タイトル: {post.title}</p>
-                                {post.body.length <= 100 && (
-                                       <p className="fullpost_box_p">{post.body}</p>
-                                )}
-                                {!isAuthorCurrentUser && (
-                                    <button className="like_btn" onClick={() => handleToggleLike(post.id)}>
-                                        {likedPosts.has(post.id) ? 'Liked!' : 'Like!'}
-                                    </button>
-                                )}
-                        <div className="fullposts_detail_button">
-                                <Link to={`/microposts/${post.id}`} className='fullposts_detail_link'>
-                                    詳細
-                                </Link>
-                        </div>
+        <>
+            <div className="fullposts-container-body">
+                <div className="post-container_t">
+                    <h1>投稿された記録</h1>
+                </div>
+    
+                {microposts.length > 0 ? (
+                    <div className="posts-grid-body">
+                        {microposts.map((post) => {
+                            const authorId = post.user_id.toString();
+                            const isAuthorCurrentUser = currentUser && String(currentUser.id) === authorId;
+                            return (
+                                <div className="post-list-item" key={post.id.toString()}>
+                                    <p className='author-and-follow_name'>投稿者: {post.user.name}</p>
+                                    {!isAuthorCurrentUser && (
+                                        <button className="follow_btn" onClick={() => handleToggleFollow(authorId)}>
+                                            {followedUserIds.has(authorId) ? 'Followed' : 'Follow'}
+                                        </button>
+                                    )}
+                                    <p className="post_top">タイトル: {post.title}</p>
+                                    {post.body.length <= 100 && (
+                                        <p className="fullpost_box_p">{post.body}</p>
+                                    )}
+                                    {!isAuthorCurrentUser && (
+                                        <button className="like_btn" onClick={() => handleToggleLike(post.id)}>
+                                            {likedPosts.has(post.id) ? 'Liked!' : 'Like!'}
+                                        </button>
+                                    )}
+                                    <div className="fullposts_detail_button">
+                                        <Link to={`/microposts/${post.id}`} className='fullposts_detail_link'>
+                                            詳細
+                                        </Link>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
-                );
-
-            })}
+                ) : (
+                    <div className='noposts' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+                        <p>No posts available.</p>
+                    </div>
+                )}
             </div>
-        </div>
-    </>
+        </>
     );
+    
 }
 
 export default Fullposts;
