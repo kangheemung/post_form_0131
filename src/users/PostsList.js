@@ -49,7 +49,6 @@ function PostsList() {
         setMicroposts(result.data);
         setUsername(result.user.name);
         setEmail(result.user.email);
-        
       } catch (error) {
         console.error("Fetching microposts error:", error);
         setError('Failed to load microposts. Please check your connection and try again.');
@@ -88,7 +87,7 @@ function PostsList() {
 
 
   return (
-    <>
+      <>
       {microposts && (
         <div className='post-container_body'>
           <div className='post-container_t'>
@@ -103,9 +102,9 @@ function PostsList() {
                   削除
                 </button>
                 <div className='mypost_bottom_detail'>
-                <Link to={`/microposts/${post.id}`} className="detail-link">
-                  詳細
-                </Link>
+                  <Link to={`/microposts/${post.id}`} className="detail-link">
+                    詳細
+                  </Link>
                 </div>
               </div>
             ))}
@@ -117,9 +116,22 @@ function PostsList() {
           </div>
         </div>
       )}
-
+      {!microposts && (
+        <div className='post-container_body'>
+          <div className='post-container_t'>
+            <h1>あなたが投稿した内容</h1>
+          </div>
+          <p>No posts available.</p>
+          <div className='p_submit_box_bottom'>
+            <button className='p_submit_box' onClick={handleHome}>
+              みんなのポスト見に行く！
+            </button>
+          </div>
+        </div>
+      )}
     </>
-  );
-}
+   );
+  }
+  
 
 export default PostsList;

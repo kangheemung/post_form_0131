@@ -25,7 +25,7 @@
   color:  #ffffff;
 }
 .post-container_body {
-  margin-top: 150px;
+  margin-top: 20vh;
   text-align: center;
 }
 
@@ -49,7 +49,9 @@
 }
 #light .post-container_m_p,
 #light .post-container_t h2,
+#light .post-container_t p,
 #light .p_submit_box_bottom,
+#light  .post-container_body p,
 #light .post_box_t_b,
 #light .post_box_p {
   color: #004A54;
@@ -67,7 +69,9 @@
   text-align: center;
   margin-bottom: 30px;
 }
-#dark .post-container_t_1 h2{
+#dark .post-container_t_1 h2,
+#dark .post-container_t p,
+#dark  .post-container_body p{
   color:#ffffff;
 }
 
