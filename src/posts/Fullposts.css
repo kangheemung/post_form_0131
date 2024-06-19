@@ -19,7 +19,7 @@
 }
 .posts-grid-body {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   text-align: center;
   list-style-type: none;
   width: fit-content; /* Set the width based on content */
@@ -212,14 +212,14 @@
   @media only screen and (min-width: 376px) and (max-width: 830px){
  
     .posts-grid-body {
-      /*grid-template-columns: repeat(2, 1fr); /* Display in two columns for landscape mobile devices */
+      grid-template-columns: repeat(2, 1fr); /* Display in two columns for landscape mobile devices */
   }
   }
   @media only screen and (min-width: 831px) and (max-width: 1280px){
     .posts-grid-body {
       display: grid;
       text-align: center;
-      /*grid-template-columns: repeat(3, 1fr); /* Display in a single column */
+      grid-template-columns: repeat(3, 1fr); /* Display in a single column */
       gap: 20px;
       text-align: center;
       list-style-type: none;
