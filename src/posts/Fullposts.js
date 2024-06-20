@@ -19,7 +19,7 @@ function Fullposts() {
             navigate('/auth');
             return;
         }
-        
+
     if (currentUser && currentUser.jwtToken) {
         fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/microposts`, {
             method: 'GET',
@@ -56,7 +56,6 @@ function Fullposts() {
         }
     }, []);
 
-    
     const handleToggleLike = (postId , postUserId) => {
         if (String(currentUser.id) !== postUserId) {
             alert('Invalid access: You cannot like/unlike for a post of another user.');
@@ -64,7 +63,7 @@ function Fullposts() {
             navigate('/microposts');
             return;
         }
-   
+
         if (likedPosts.has(postId)) {
           handleUnlike(postId);
         } else {
@@ -281,7 +280,6 @@ function Fullposts() {
                 <div className="post-container_t">
                     <h1>投稿された記録</h1>
                 </div>
-    
                 {microposts.length > 0 ? (
                     <div className="posts-grid-body">
                         {microposts.map((post) => {
@@ -321,7 +319,6 @@ function Fullposts() {
             </div>
         </>
     );
-    
 }
 
 export default Fullposts;

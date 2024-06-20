@@ -18,15 +18,7 @@
 #dark{
   background-color: #004A54; /* ダークモード時の背景色 */
 }
-.main_form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-height: 700px;
-  max-width: 90%; /* Set the form max-width to 90% of the viewport width */
-  width: 80%;  /* Ensure the form takes up the full width available */
-}
+
 .container_box{
   margin-top: 10px;
   text-align: center;
@@ -43,7 +35,7 @@
   color:  #004A54;
   font-weight: bold;
 }
-.main_body {
+.main_body_about {
   position: absolute;
   margin-top: 50px;
   top: 50%;
@@ -204,17 +196,7 @@
   animation: moveUpDown 3s infinite; /* Adjust animation duration as needed */
 }
 
-@media (max-height: 375px) {
-  .main_form {
-    width: 30vmin;
-    height: 30vmin; /* 画面高さが375px以下の場合、フォームの幅を拡大 */
-  }
 
-  .main_body {
-    width: 70vmin; /* 画面高さが375px以下の場合、フォームの幅と高さを縮小 */
-    height: 70vmin;
-  }
-}
 
 
 @media (max-width: 375px) {
@@ -223,94 +205,32 @@
     height: auto;
     margin-top: 30%; /* 適切な位置に配置されるように調整 */
   }
-  .main_form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 100vw;  /* Set the form max-width to 90% of the viewport width */
-    width: 90%; /* Ensure the form takes up the full width available */
-  }
-  .main_body{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70vmin; /* Set width and height to same value for a perfect circle */
-    height: 70vmin;
-    font-size: 5vw;
-    border-radius: 50%;
-    text-align: center;
-  }
-  .username,
-  .password {
-    width: 95%;
-  }
-  .submit {
-    width: 80%;
-  }
+
+ 
 
 }
 @media (max-height: 575px) {
-  .main_form {
-    width: 30vmin;
-  }
 
-  .main_body {
-    width: 30vmin;
-    height: 40vmin;
-  }
 }
 
 @media (min-height: 576px) and (max-height: 767px) {
-  .main_form {
-    width: 95%;
-  }
 
-  .main_body {
-    width: 70vmin;
-    height: 70vmin;
-  }
+
+
 }
 
 @media (min-height: 768px) and (max-height: 991px) {
-  .main_form {
-    max-width: 80vw; /* フォームの最大幅を80%に設定 */
-    width: 100%;
-  }
 
-  .main_body {
-    width: 70vmin;
-    height: 70vmin;
-  }
+
 }
 
 @media (min-height: 992px) and (max-height: 1199px) {
-  .main_form {
-    max-width: 100vw;
-    width: 100%;
-  }
 
-  .main_body {
-    width: 70vmin;
-    height: 70vmin;
-  }
+
 }
 
 @media (min-height: 1200px) {
-  .main_form {
-    max-width: 100vw;
-    width: 100%;
-  }
 
-  .main_body {
-    width: 70vmin;
-    height: 70vmin;
-  }
 }
 
 @media (max-width: 575px) {
@@ -319,28 +239,8 @@
     height: auto;
     margin-top: 20%; /* 適切な位置に配置されるように調整 */
   }
-  .main_body {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70vmin; /* Set width and height to same value for a perfect circle */
-    height: 70vmin;
-    font-size: 5vw;
-    border-radius: 50%;
-    text-align: center;
-  }
-  .username,
-  .password {
-    width: 95%;
-  }
-  .submit {
-    width: 80%;
-  }
+
+
 
 }
 
@@ -350,28 +250,8 @@
     height: auto;
     margin-top: 20%; /* 適切な位置に配置されるように調整 */
   }
-  .main_body {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70vmin; /* Set width and height to same value for a perfect circle */
-    height: 70vmin;
-    font-size: 5vw;
-    border-radius: 50%;
-    text-align: center;
-  }
-  .username,
-  .password {
-    width: 95%;
-  }
-  .submit {
-    width: 80%;
-  }
+
+
 
 }
 /*태블릿 디바이스 (가로 해상도가 768px보다 크고 991px 보다 작은 화면에 적용)  */
@@ -381,36 +261,7 @@
     height: auto;
     margin-top: 20%; /* 適切な位置に配置されるように調整 */
   }
-  .main_body {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70vmin; /* Set width and height to same value for a perfect circle */
-    height: 70vmin;
-    font-size: 5vw;
-    border-radius: 50%;
-    text-align: center;
-  }
-  .main_form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 80vw; /* Set the form max-width to 90% of the viewport width */
-    width: 100%; /* Ensure the form takes up the full width available */ /* Set the form height to 100% of the viewport height */
-  }
-  .username,
-  .password {
-    width: 95%;
-  }
-  .submit {
-    width: 80%;
-  }
+
 
 }
 
@@ -421,37 +272,10 @@
   height: auto;
   margin-top: 20%; /* 適切な位置に配置されるように調整 */
  }
-  .main_body {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70vmin; /* Set width and height to same value for a perfect circle */
-    height: 70vmin;
-    font-size: 5vw;
-    border-radius: 50%;
-    text-align: center;
-  }
 
-  .main_form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 100vw; /* Set the form max-width to 90% of the viewport width */
-    width: 100%; /* Ensure the form takes up the full width available */
-  }
-  .username,
-  .password {
-    width: 95%;
-  }
-  .submit {
-    width: 80%;
-  }
+
+
+
   }
   /* 큰화면 데스크탑 (가로 해상도가 1200px 보다 큰 화면에 적용)  */
   @media (min-width: 1200px) {
@@ -460,41 +284,6 @@
     height: auto;
     margin-top: 15%; /* 適切な位置に配置されるように調整 */
   }
-  .sign{font-size: 34px;
-    color:  #004A54;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  .main_form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 100vw; /* Set the form max-width to 90% of the viewport width */
-    width: 100%;
-  }
-  .main_body{
-    margin-top: 3%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70vmin; /* Set width and height to same value for a perfect circle */
-    height: 70vmin;
-    font-size: 5vw;
-    border-radius: 50%;
-    text-align: center;
-  }
-  .username,
-  .password {
-    width: 95%;
-  }
-  .submit {
-    width: 80%;
-  }
+
 
 }
