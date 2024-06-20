@@ -11,28 +11,14 @@
     border-radius: 50%;
     text-align: center;
   }
-.username {
-    font-family: 'Mali', cursive;
-    width: 80vh;
-    font-weight: 700;
-    font-size: small;
-    letter-spacing: 1px;
-    padding: 2% 2%;
-    border: none;
-    border-radius: 20px;
-    outline: none;
-    box-sizing: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.02);
-    text-align: center;
-    margin: 1% auto;
-    font-family: "Ubuntu", sans-serif;
-  }
+
   .sign_up{
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 2vh;
   }
-  .password {
+  .password ,
+  .username{
     font-family: 'Mali', cursive;
     width: 80vh;
     font-weight: 700;
@@ -50,6 +36,7 @@
   }
   .sign_up_username,
   .sign_up_password
+
     {
         font-family: 'Mali', cursive;
         width: 50vh;
@@ -117,15 +104,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   
-
   }
 
-  .sign{
+  .Login{
     font-size: 24px;
     color:  #004A54;
     font-weight: bold;
-    margin-bottom: 20vh;
   }
   .flash-error{
     font-size: x-small;
@@ -163,8 +147,14 @@
       width: 45vh; /* Adjust width for smaller height screens */
       height: 45vh;  /* Maintain height equal to the width for a perfect circle */
   }
+  .main_form{
+    width: 45vh; /* Adjust width for smaller height screens */
+    height: 45vh;
+  }
   .sign_up_username,
-  .sign_up_password {
+  .username,
+  .sign_up_password,
+  .password  {
       width: 35vh; /* Set width and height to same value for a perfect circle */
       height: 4vh;
   }
@@ -178,8 +168,14 @@
         width: 40vh; /* Adjust width for smaller height screens */
         height: 40vh; /* Maintain height equal to the width for a perfect circle */
       }
+      .main_form{
+        width: 45vh; /* Adjust width for smaller height screens */
+        height: 45vh;
+      }
       .sign_up_username,
-      .sign_up_password{
+      .username,
+      .sign_up_password,
+      .password{
         width: 25vh; /* Set width and height to same value for a perfect circle */
         height: 3vh;
       }
@@ -195,8 +191,14 @@
       width: 40vh; /* Adjust width for smaller screens */
         height: 40vh; /* Maintain height equal to the width for a perfect circle */
  }
- .sign_up_username,
- .sign_up_password{
+ .main_form{
+  width: 45vh; /* Adjust width for smaller height screens */
+  height: 45vh;
+}
+.sign_up_username,
+.username,
+.sign_up_password,
+.password{
    width: 25vh; /* Set width and height to same value for a perfect circle */
    height: 3vh;
  }
@@ -214,8 +216,10 @@
       width: 60vh; /* Adjust width for smaller screens */
         height: 60vh;/* Maintain height equal to the width for a perfect circle */
  }
- .sign_up_username,
- .sign_up_password{
+    .sign_up_username,
+    .username,
+    .sign_up_password,
+    .password{
    width: 35vh; /* Set width and height to same value for a perfect circle */
    height: 5vh;
  }
@@ -233,7 +237,9 @@
         height: 60vh; /* Maintain height equal to the width for a perfect circle */
       }
       .sign_up_username,
-      .sign_up_password{
+      .username,
+      .sign_up_password,
+      .password{
         width: 40vh; /* Set width and height to same value for a perfect circle */
         height: 5vh;
       }
