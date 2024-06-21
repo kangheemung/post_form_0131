@@ -47,7 +47,7 @@ function PostsList() {
 
         const result = await response.json();
         setMicroposts(result.data);
-        setUsername(result.user.name);
+        setUsername(result.user ? result.user.name : '');
         setEmail(result.user.email);
       } catch (error) {
         console.error("Fetching microposts error:", error);
