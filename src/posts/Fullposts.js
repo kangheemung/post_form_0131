@@ -7,7 +7,7 @@ function Fullposts() {
     const navigate = useNavigate();
     const [followedUserIds, setFollowedUserIds] = useState(new Set());
     const [microposts, setMicroposts] = useState([]);
-    const { currentUser ,setCurrentUser} = useAuth();
+    const {currentUser ,setCurrentUser} = useAuth();
     const [notification, setNotification] = useState('');
     const [likedPosts, setLikedPosts] = useState(new Set());
 
@@ -64,56 +64,7 @@ function Fullposts() {
         }
     }, []);
 
-    const handleToggleLike = (postId) => {
-        if (!microposts.length) {
-            console.error('Microposts data not available yet');
-            return;
-        }
 
-        const postToLike = microposts.find(post => post.id === postId);
-
-        if (!postToLike) {
-            console.error('Post not found');
-            return;
-        }
-
-        if (parseInt(currentUser.id) !== parseInt(postToLike.user_id)) {
-            alert('Invalid access: You cannot like/unlike for a post of another user.');
-            return;
-        }
-
-        if (likedPosts.has(postId)) {
-            handleUnlike(postId);
-        } else {
-            handleLike(postId);
-        }
-    };
-
-    const handleLike = (postId) => {;
-        //console.log('Attempting to like post with ID:', postId); // Check if postId is correct
-        //console.log('Current User:', currentUser);
-        // Call your API endpoint to like a post
-        fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts/${postId}/likes`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${currentUser.jwtToken}`
-            }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to like post.');
-            }
-            setLikedPosts(prevLikedPosts => new Set([...prevLikedPosts, postId]));
-        })
-          .catch(error => {
-            console.error('Error liking post:', error);
-            setNotification(error.message || 'Failed to like post.');
-            setTimeout(() => {
-                setNotification('');
-            }, 3000);
-        });
-    };
     const handleFollow = (userIdToFollow) => {
         if (!userIdToFollow) {
             console.error('User ID to follow is undefined or invalid');
@@ -228,35 +179,90 @@ function Fullposts() {
     //};
 
     // Event handler for unliking a post
-    const handleUnlike = (postId) => {
  
-      //console.log('Attempting to unlike post with ID:', postId);
-      // Call your API endpoint to unlike a post
-      fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts/${postId}/unlikes`, {
-        method: 'DELETE',
+   // Change `currentUser.id, post.id` to separate variables `userId` and `postId`
+   const handleLike = (postId) => {
+    console.log('Attempting to like post with ID:', postId); // Check if postId is correct
+    console.log('Current User:', currentUser);
+    // Call your API endpoint to like a post
+    fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts/${postId}/likes`, {
+        method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${currentUser.jwtToken}`
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${currentUser.jwtToken}`
         }
-      })
-      .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to unlike post.');
-        }
-        setLikedPosts((prevLikedPosts) => {
-            const updatedLikedPosts = new Set(prevLikedPosts);
-            updatedLikedPosts.delete(postId);
-            return updatedLikedPosts;
-        });
     })
-      .catch(error => {
-        console.error('Error unliking post:', error);
-        setNotification(error.message || 'Failed to unlike post.');
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to like post.'); // Throw an error for non-200 HTTP status codes
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Liked successfully:', data);
+        setLikedPosts(prevLikedPosts => new Set([...prevLikedPosts, postId])); // Update likedPosts state upon successful like
+    })
+    .catch(error => {
+        console.error('Error liking post:', error);
+        setNotification(error.message || 'Failed to like post.');
+        setTimeout(() => {
+            setNotification('');
+        }, 3000);
+    });
+};
+const handleUnlike = (postId) => {
+    if (typeof postId === 'undefined') {
+        console.error('Post ID is undefined');
+        setNotification('Post ID is undefined.');
         setTimeout(() => {
           setNotification('');
         }, 3000);
-      });
-    };
+        return;
+      }
+  
+    console.log('Attempting to unlike post with ID:', postId);
+
+    // Update the API endpoint to the correct unliking endpoint
+    fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts/${postId}/unlike`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${currentUser.jwtToken}`
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(data => {
+                throw new Error(data.message || 'Failed to unlike post.');
+            });
+        }
+        return response.text();
+    })
+    .then(() => {
+        console.log('Unliked successfully');
+        setLikedPosts((prevLikedPosts) => {
+            const updatedLikedPosts = new Set(prevLikedPosts);
+            updatedLikedPosts.delete(postId);
+            localStorage.setItem('likedPosts', JSON.stringify([...updatedLikedPosts]));
+            return updatedLikedPosts;
+        });
+    })
+    .catch(error => {
+        console.error('Error unliking post:', error);
+        setNotification(error.message || 'Failed to unlike post.');
+        setTimeout(() => {
+            setNotification('');
+        }, 3000);
+    });
+};
+
+const handleToggleLike = (postId) => {
+    if (likedPosts.has(postId)) {
+      handleUnlike(postId);
+    } else {
+      handleLike(postId);
+    }
+};
 
     return (
         <>
@@ -281,11 +287,13 @@ function Fullposts() {
                                     {post.body.length <= 100 && (
                                         <p className="fullpost_box_p">{post.body}</p>
                                     )}
+                                    <div>
                                     {!isAuthorCurrentUser && (
-                                        <button className="like_btn" onClick={() => handleToggleLike(post.id)}>
-                                            {likedPosts.has(post.id) ? 'Liked!' : 'Like!'}
-                                        </button>
+                                    <button className = "like_btn" onClick={() => handleToggleLike(post.id)}>
+                                        {likedPosts.has(post.id) ? 'Liked!' : 'Like!'}
+                                    </button>
                                     )}
+                                    </div>
                                     <div className="fullposts_detail_button">
                                         <Link to={`/microposts/${post.id}`} className='fullposts_detail_link'>
                                             詳細
