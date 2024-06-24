@@ -4,29 +4,65 @@
 .post-container_t{
   margin-bottom: 5vh;
 }
+.post-content.expanded .fullpost_box_p{
+  max-height: none; /* Show full content when expanded */
+}
+.name_box{
+  max-width: 300px;
+  margin-bottom: 5hv;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px; /* Add padding for spacing */
+  box-sizing: border-box;
+}
 .post-list-item {
-  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center; /* Center-align content vertically */
-  width: 300px;
-  height: 320px;
+  width: 100vh; /* Adjust to your desired width */
+  height: 30vh;
+  max-width: 300px;
+  list-style-type: none;
   border: solid #F0F3F3 2px;
   border-radius: 5%;
   box-sizing: border-box;
   margin: 10px;
-  animation: slide-in-right-to-left 0.5s ease-in-out;
+  position: relative;
 }
 
+
 .post-body{
-  max-height: 200px; /* Set a maximum height for the post body */
+  /*
+    複数行で省略する時　
+    */
+    padding: 20px;
+    width: 300px;
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+     /*
+  英語用
+    */
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
 }
 .fullposts_detail_button_box {
   color: #004A54;
   cursor: pointer;
   border: none;
+}
+.like{
+  text-align: center;
+}
+.fullposts_detail_button {
+  text-align: center;
+  cursor: pointer;
+  position: absolute; /* Position fullposts_detail_button absolutely within post-list-item */
+  text-align: center;
+  cursor: pointer;
+  top: 26vh; /* Align the top of fullposts_detail_button with the top of post-list-item */
+  left: 50%; /* Centering the element horizontally */
+  transform: translateX(-50%); 
 }
 #light .fullposts_detail_button,
 #light .fullposts_detail_link{
@@ -36,21 +72,12 @@
 
 
 .post_top {
-  top:100px;
-  margin: 10px;
   font-weight: bold;
-  position: absolute;
-  max-height: 200px;
-  max-width: 280px; /* Set a maximum height for the post body content */
-  overflow: hidden; /* Hide overflow content if it exceeds the max height */
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limit the number of lines to display */
-  -webkit-box-orient: vertical;
-  word-wrap: break-word; /* Enable word wrapping */
-  text-align: center;
+  max-height: 50px; /* Limit the height for the post title */
+
 }
 .fullposts_detail_link {
-  position: absolute;
+
   bottom: 20px;
   left: 44%;
   text-align: center;
@@ -61,9 +88,7 @@
 .content-and-like_body {
   margin: 0 auto; /* 左右中央に配置 */
 }
-.post-list-item ul {
-  list-style-type: none; /* Remove default list styling */
-}
+
 #dark .fullposts_detail_link {
   color:  #DBE5E6;
 }
@@ -71,34 +96,19 @@
   color:  #DBE5E6;
   cursor: pointer;
 }
-.fullpost_box_p{
-  top:150px;
-  margin: 10px;
-  position: absolute;
+.fullpost_box_p {
   max-height: 200px;
-  max-width: 280px; /* Set a maximum height for the post body content */
-  overflow: hidden; /* Hide overflow content if it exceeds the max height */
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limit the number of lines to display */
-  -webkit-box-orient: vertical;
-  word-wrap: break-word; /* Enable word wrapping */
-  text-align: center;
-}
+  width: 10vh; /* Set a maximum height for the post body */
 
-.myPosts_List_top {
-  margin-top: 150px; /* Adjusted margin for tablet screens */
-  text-align: center;
-  margin-bottom: 30px;
+  text-overflow: ellipsis; /* Add an ellipsis (...) to indicate truncated text if it overflows */
+  white-space: nowrap;
+
 }
 #dark .post-list-item {
   background-color: #03282e;
   color: #DBE5E6;
 }
-  #dark .myPosts_List_top h2,
-  #dark .myPosts_List_top,
-  #dark .noposts{
-  color: #DBE5E6;
-  }
+
   #light .myPosts_List_top,
   #light .myPosts_List_top h2,
   #light .post-list-item,
@@ -112,17 +122,10 @@
     list-style: none;
   }
   .author-and-follow{
-    max-width: 290px;
-    justify-content: center;
-    text-align: center;
+
   }
   .author-and-follow_name{
-    text-align: center;
     font-weight: bold;
-    position: absolute; /* Set absolute position for precise alignment */
-    top: 20px; /* Adjust according to your design */
-    right: 50%; /* Position the button at horizontally middle of the post item */
-    transform: translate(50%, 10%); /* Adjust according to your design */
     cursor: pointer;
     z-index: 1; /* Ensure the button appears on top of other content */
   }
@@ -137,28 +140,22 @@
     background-color: #004A54;
     color: #F0F3F3;
     border: none;
-    padding: 5px 15px;
-    width: 80px;
+    padding: 5px 20px;
+    width: 10vh;
     height: 35px;
     cursor: pointer;
     border-radius: 4px;
     font-weight: bold;
-    position: absolute; /* Set absolute position for precise alignment */
-    top: 10px; /* Adjust according to your design */
-    right: 50px; /* Position the button at horizontally middle of the post item */
-    transform: translate(50%, 10%); /* Adjust according to your design */
     cursor: pointer;
-    z-index: 1;
   }
   .like_btn {
     margin-top: 10px;
-    text-align: center;
     background-color: #004A54;
     color: #F0F3F3;
     border: none;
+    margin-bottom: 10px;
+    text-align: center;
     padding: 5px 20px;
-    width: 80px;
-    height: 35px;
     cursor: pointer;
     border-radius: 4px;
   }
@@ -172,15 +169,13 @@
     background-color: #DBE5E6;
     color: #004A54;
   }
-  .posts-grid-body{
+  .posts-grid-body {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-content: center; /* グリッド要素を水平方向中央に配置 */
-    align-items: center; /* グリッド要素を垂直方向中央に配置 */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
     list-style-type: none;
-    width: fit-content;
-    position: relative;
-    border-radius: 5%;
+    width: 100%;
+    padding: 0 20px;
   }
   #dark .post-list-item p{
     color:#DBE5E6;
@@ -199,58 +194,14 @@
       text-align: center;
       grid-template-columns: repeat(1, 1fr); /* Display three columns for larger tablets */
   }
-  .myPosts_List_top {
-    margin-top: 150px; /* Adjusted margin for tablet screens */
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  .like_btn {
-    width: 80px;
-    height: 35px;
-    font-weight: bold;
-    position: absolute; /* Set absolute position for precise alignment */
-    top: 220px;
-    left: 65px; /* Position the button at horizontally middle of the post item */
-    transform: translate(50%, 10%);/* Adjust according to your design */
-    cursor: pointer;
-    z-index: 1;
-  }
-  .follow_btn{
-    text-align: center;
-    background-color: #004A54;
-    color: #F0F3F3;
-    border: none;
-    padding: 5px 15px;
-    width: 80px;
-    height: 35px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-weight: bold;
-    position: absolute; /* Set absolute position for precise alignment */
-    top: 40px; /* Adjust according to your design */
-    left: 65px; /* Position the button at horizontally middle of the post item */
-    transform: translate(50%, 10%); /* Adjust according to your design */
-    cursor: pointer;
-    z-index: 1;
-  }
+
+
   .post_top {
-    position: absolute; /* Set absolute position for precise alignment */
-    top: 90px;
-    cursor: pointer;
-    z-index: 1;
-    margin: 10px;
-    max-width: 300px; /* Set a maximum height for the post body content */
+    font-weight: bold;
+    max-height: 50px; /* Limit the height for the post title */
     overflow: hidden;
-    justify-content: center; /* Hide overflow content if it exceeds the max height */
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limit the number of lines to display */
-    -webkit-box-orient: vertical;
-    word-wrap: break-word; /* Enable word wrapping */
-    text-align: center;/* Show '...' when text exceeds the container */
   }
- .myPosts_List_top{
-    margin-top: 150px;
-  }
+
   .myPosts_top {
     margin-top: 15px; /* Less margin for slightly larger screens */
   }
@@ -266,57 +217,22 @@
           text-align: center;
           grid-template-columns: repeat(2, 1fr); /* Display three columns for larger tablets */
       }
-      .myPosts_List_top {
-        margin-top: 150px; /* Adjusted margin for tablet screens */
-        text-align: center;
-        margin-bottom: 30px;
+      .post-container_t h1 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
       }
-      .like_btn {
-        width: 80px;
-        height: 35px;
-        font-weight: bold;
-        position: absolute; /* Set absolute position for precise alignment */
-        top: 220px;
-        left: 65px; /* Position the button at horizontally middle of the post item */
-        transform: translate(50%, 10%);/* Adjust according to your design */
-        cursor: pointer;
-        z-index: 1;
+      .author-and-follow_name_box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px; /* Add padding to the author section */
       }
-      .follow_btn{
+      .fullposts_detail_button {
         text-align: center;
-        background-color: #004A54;
-        color: #F0F3F3;
-        border: none;
-        padding: 5px 15px;
-        width: 80px;
-        height: 35px;
-        cursor: pointer;
-        border-radius: 4px;
-        font-weight: bold;
-        position: absolute; /* Set absolute position for precise alignment */
-        top: 40px; /* Adjust according to your design */
-        left: 65px; /* Position the button at horizontally middle of the post item */
-        transform: translate(50%, 10%); /* Adjust according to your design */
-        cursor: pointer;
-        z-index: 1;
+        margin-top: 10px;
       }
       .post_top {
-        position: absolute; /* Set absolute position for precise alignment */
-        top: 90px;
-        cursor: pointer;
-        z-index: 1;
-        margin: 10px;
-        max-width: 300px; /* Set a maximum height for the post body content */
-        overflow: hidden;
-        justify-content: center; /* Hide overflow content if it exceeds the max height */
-        display: -webkit-box;
-        -webkit-line-clamp: 3; /* Limit the number of lines to display */
-        -webkit-box-orient: vertical;
-        word-wrap: break-word; /* Enable word wrapping */
-        text-align: center;/* Show '...' when text exceeds the container */
-      }
-     .myPosts_List_top{
-        margin-top: 150px;
+        font-weight: bold;
+        max-height: 50px; /* Limit the height for the post title */
       }
       .myPosts_top {
         margin-top: 15px; /* Less margin for slightly larger screens */
@@ -328,53 +244,13 @@
         grid-template-columns: repeat(3, 1fr); /* Display three columns for larger tablets */
         margin-bottom: 50px;
     }
-    .myPosts_List_top {
-      margin-top: 250px; /* Adjusted margin for tablet screens */
-      text-align: center;
-      margin-bottom: 30px;
-  }
-  .like_btn {
-    width: 80px;
-    height: 35px;
-    font-weight: bold;
-    position: absolute; /* Set absolute position for precise alignment */
-    top: 220px;
-    left: 65px; /* Position the button at horizontally middle of the post item */
-    transform: translate(50%, 10%);/* Adjust according to your design */
-    cursor: pointer;
-    z-index: 1;
-  }
-  .follow_btn{
-    text-align: center;
-    background-color: #004A54;
-    color: #F0F3F3;
-    border: none;
-    padding: 5px 15px;
-    width: 80px;
-    height: 35px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-weight: bold;
-    position: absolute; /* Set absolute position for precise alignment */
-    top: 40px; /* Adjust according to your design */
-    left: 65px; /* Position the button at horizontally middle of the post item */
-    transform: translate(50%, 10%); /* Adjust according to your design */
-    cursor: pointer;
-    z-index: 1;
-  }
-   .myPosts_List_top{
-      margin-top: 150px;
-    }
+
     .myPosts_top {
       margin-top: 15px; /* Less margin for slightly larger screens */
     }
   }
 
   @media only screen and (min-width: 1281px) {
-  .post-list-item,
-  .author-and-follow_name{
-    text-align: center;
-  }
     .posts-grid-body {
         text-align: center;
         grid-template-columns: repeat(4, 1fr);/* Display four columns for larger screens like PCs */
@@ -382,47 +258,31 @@
       }
 
       .fullposts_detail_link {
-        position: absolute;
+
         bottom: 20px;
         left: 44%;
         text-align: center;
         cursor: pointer;
         z-index: 1;
       }
-  .like_btn {
-    width: 80px;
-    height: 35px;
-    font-weight: bold;
-    position: absolute; /* Set absolute position for precise alignment */
-    top: 220px;
-    left: 65px; /* Position the button at horizontally middle of the post item */
-    transform: translate(50%, 10%);/* Adjust according to your design */
-    cursor: pointer;
-    z-index: 1;
-  }
   .follow_btn{
+    margin-top: 10px;
     text-align: center;
     background-color: #004A54;
     color: #F0F3F3;
     border: none;
-    padding: 5px 15px;
-    width: 80px;
+    padding: 5px 20px;
+    width: 15vh;
     height: 35px;
     cursor: pointer;
     border-radius: 4px;
     font-weight: bold;
-    position: absolute; /* Set absolute position for precise alignment */
-    top: 40px; /* Adjust according to your design */
-    left: 65px; /* Position the button at horizontally middle of the post item */
+    top: 10px; /* Adjust according to your design */
+    right: 50px; /* Position the button at horizontally middle of the post item */
     transform: translate(50%, 10%); /* Adjust according to your design */
     cursor: pointer;
     z-index: 1;
   }
-    .myPosts_List_top {
-        margin-top: 150px; /* Adjusted margin for desktop screens */
-        text-align: center;
-        margin-bottom: 30px;
-    }
     .myPosts_top {
         margin-top: 15px;
         display: flex;

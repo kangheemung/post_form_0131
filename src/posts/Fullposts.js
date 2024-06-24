@@ -11,6 +11,7 @@ function Fullposts() {
     const [notification, setNotification] = useState('');
     const [likedPosts, setLikedPosts] = useState(new Set());
 
+
     useEffect(() => {
         const jwtToken = localStorage.getItem('jwtToken');
             // currentUserを復元するための処理を追加
@@ -29,7 +30,7 @@ function Fullposts() {
             }
 
     if (currentUser && currentUser.jwtToken) {
-        fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/microposts`, {
+        fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -56,6 +57,12 @@ function Fullposts() {
 
       }
     }, [currentUser, navigate, setCurrentUser]);
+    useEffect(() => {
+        const storedFollowedUserIds = localStorage.getItem('followedUserIds');
+        if (storedFollowedUserIds) {
+            setFollowedUserIds(new Set(JSON.parse(storedFollowedUserIds)));
+        }
+    }, []);
 
     useEffect(() => {
         const storedLikedPosts = localStorage.getItem('likedPosts');
@@ -179,13 +186,12 @@ function Fullposts() {
     //};
 
     // Event handler for unliking a post
- 
    // Change `currentUser.id, post.id` to separate variables `userId` and `postId`
    const handleLike = (postId) => {
     console.log('Attempting to like post with ID:', postId); // Check if postId is correct
     console.log('Current User:', currentUser);
     // Call your API endpoint to like a post
-    fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts/${postId}/likes`, {
+    fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts/${postId}/like`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -219,7 +225,6 @@ const handleUnlike = (postId) => {
         }, 3000);
         return;
       }
-  
     console.log('Attempting to unlike post with ID:', postId);
 
     // Update the API endpoint to the correct unliking endpoint
@@ -273,26 +278,31 @@ const handleToggleLike = (postId) => {
                 {microposts.length > 0 ? (
                     <div className="posts-grid-body">
                         {microposts.map((post) => {
+                            const postId = post.id.toString();
                             const authorId = post.user_id.toString();
                             const isAuthorCurrentUser = currentUser && String(currentUser.id) === authorId;
                             return (
                                 <div className="post-list-item" key={post.id.toString()}>
-                                    <p className='author-and-follow_name'>投稿者: {post.user.name}</p>
-                                    {!isAuthorCurrentUser && (
-                                        <button className="follow_btn" onClick={() => handleToggleFollow(authorId)}>
-                                            {followedUserIds.has(authorId) ? 'Followed' : 'Follow'}
-                                        </button>
-                                    )}
+                                    <div className='name_box'>
+                                        <p className='author-and-follow_name'>投稿者: {post.user.name}</p>
+                                        {!isAuthorCurrentUser && (
+                                            <button className="follow_btn" onClick={() => handleToggleFollow(authorId)}>
+                                                {followedUserIds.has(authorId) ? 'Followed' : 'Follow'}
+                                            </button>
+                                        )}
+                                    </div>
                                     <p className="post_top">タイトル: {post.title}</p>
                                     {post.body.length <= 100 && (
-                                        <p className="fullpost_box_p">{post.body}</p>
+                                        <p className="post-body">{post.body}</p>
                                     )}
                                     <div>
+                                    <div className='like'> 
                                     {!isAuthorCurrentUser && (
                                     <button className = "like_btn" onClick={() => handleToggleLike(post.id)}>
                                         {likedPosts.has(post.id) ? 'Liked!' : 'Like!'}
                                     </button>
                                     )}
+                                    </div>
                                     </div>
                                     <div className="fullposts_detail_button">
                                         <Link to={`/microposts/${post.id}`} className='fullposts_detail_link'>
