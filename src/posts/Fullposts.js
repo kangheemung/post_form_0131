@@ -7,7 +7,7 @@ function Fullposts() {
     const navigate = useNavigate();
     const [followedUserIds, setFollowedUserIds] = useState(new Set());
     const [microposts, setMicroposts] = useState([]);
-    const {currentUser ,setCurrentUser} = useAuth();
+    const { currentUser, setCurrentUser } = useAuth();
     const [notification, setNotification] = useState('');
     const [likedPosts, setLikedPosts] = useState(new Set());
 
@@ -170,15 +170,16 @@ function Fullposts() {
             }
         });
     };
-    const handleToggleFollow = (userId) => {
-        if (!userId) {
-            console.error('User ID is missing');
+    const handleToggleFollow = (authorId) => {
+        if (!authorId) {
+            console.error('Author ID is missing');
             return;
         }
-        if (followedUserIds.has(userId)) {
-            handleUnfollow(userId);
+
+        if (followedUserIds.has(authorId)) {
+            handleUnfollow(authorId);
         } else {
-            handleFollow(userId);
+            handleFollow(authorId);
         }
     };
     //const handleHome = () => {
@@ -190,13 +191,22 @@ function Fullposts() {
    const handleLike = (postId) => {
     console.log('Attempting to like post with ID:', postId); // Check if postId is correct
     console.log('Current User:', currentUser);
+    // Create like object with user_id and micropost_id
+    const likeData = {
+        like: {
+           like_id: currentUser.id 
+
+        }
+    };
+
     // Call your API endpoint to like a post
     fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts/${postId}/like`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${currentUser.jwtToken}`
-        }
+        },
+        body: JSON.stringify(likeData) // Send like object in the request body
     })
     .then(response => {
         if (!response.ok) {
@@ -206,7 +216,9 @@ function Fullposts() {
     })
     .then(data => {
         console.log('Liked successfully:', data);
-        setLikedPosts(prevLikedPosts => new Set([...prevLikedPosts, postId])); // Update likedPosts state upon successful like
+        localStorage.setItem('likedPosts', JSON.stringify([...likedPosts, postId]));
+        setLikedPosts(new Set([...likedPosts, postId]));
+        setNotification('Liked successfully');
     })
     .catch(error => {
         console.error('Error liking post:', error);
@@ -284,7 +296,7 @@ const handleToggleLike = (postId) => {
                             return (
                                 <div className="post-list-item" key={post.id.toString()}>
                                     <div className='name_box'>
-                                        <p className='author-and-follow_name'>投稿者: {post.user.name}</p>
+                                        <p className='author-and-follow_name'>投稿者: {post.user ? post.user.name : 'Unknown User'}</p>
                                         {!isAuthorCurrentUser && (
                                             <button className="follow_btn" onClick={() => handleToggleFollow(authorId)}>
                                                 {followedUserIds.has(authorId) ? 'Followed' : 'Follow'}
@@ -296,7 +308,7 @@ const handleToggleLike = (postId) => {
                                         <p className="post-body">{post.body}</p>
                                     )}
                                     <div>
-                                    <div className='like'> 
+                                    <div className='like'>
                                     {!isAuthorCurrentUser && (
                                     <button className = "like_btn" onClick={() => handleToggleLike(post.id)}>
                                         {likedPosts.has(post.id) ? 'Liked!' : 'Like!'}
