@@ -10,6 +10,7 @@ function Fullposts() {
     const { currentUser ,setCurrentUser} = useAuth();
     const [notification, setNotification] = useState('');
     const [likedPosts, setLikedPosts] = useState(new Set());
+  
 //ロジック
     useEffect(() => {
         const jwtToken = localStorage.getItem('jwtToken');
@@ -155,7 +156,7 @@ function Fullposts() {
         }
 
         const relationshipData = {
-                relationship: {  followed_id: currentUser.id, follower_id: userIdToFollow }
+                relationship: {  followed_id: userIdToFollow , follower_id:  currentUser.id}
         }
         fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/follow`, {
             method: 'POST',
@@ -183,8 +184,7 @@ function Fullposts() {
             updatedFollowedUserIds.add(userIdToFollow);
             localStorage.setItem('followedUserIds', JSON.stringify(Array.from(updatedFollowedUserIds)));
             setFollowedUserIds(updatedFollowedUserIds);
-            setNotification('Followed successfully')
-                // Update button text after successful follow
+            setNotification('Followed successfully');
         })
         .catch(error => {
             console.error('Error liking/unliking post:', error);
@@ -206,19 +206,20 @@ function Fullposts() {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${currentUser.jwtToken}`
-            }
+            },
+            body: JSON.stringify({
+                followed_id: userIdToUnfollow
+            })
         })
         .then(response => {
             if (response.status === 204 || response.ok) {
                 console.log('Unfollowed successfully');
-                setFollowedUserIds(prevFollowedUserIds => {
-                    const updatedFollowedUserIds = new Set(prevFollowedUserIds);
-                    updatedFollowedUserIds.delete(userIdToUnfollow);
-                    localStorage.setItem('followedUserIds', JSON.stringify([...updatedFollowedUserIds]));
-                    return updatedFollowedUserIds;
-                });
+                // Update followedUserIds state and local storage
+                const updatedFollowedUserIds = new Set([...followedUserIds]);
+                updatedFollowedUserIds.delete(userIdToUnfollow);
+                localStorage.setItem('followedUserIds', JSON.stringify(Array.from(updatedFollowedUserIds)));
+                setFollowedUserIds(updatedFollowedUserIds);
                 setNotification('Unfollowed successfully');
-                    // Update button text after successful unfollow
             } else {
                 return response.json().then(data => {
                     let errorMessage = data.message || 'Failed to unfollow user.';
@@ -238,12 +239,31 @@ function Fullposts() {
         });
     };
 
-    const handleToggleFollow = (userIdToUnfollow) => {
-      
+    const handleToggleFollow = (userIdToFollow) => {
+        const postToToggle = microposts.find(post => post.user_id === userIdToFollow);
+
+        if (postToToggle) {
+            if (postToToggle.followed_by_current_user) {
+                // User is already followed, so unfollow
+                handleUnfollow(userIdToFollow);
+            } else {
+                // User is not followed, so follow
+                handleFollow(userIdToFollow);
+            }
+            // Update the followed status in local state to reflect the change
+            setMicroposts(prevMicroposts => prevMicroposts.map(post => {
+                if (post.user_id === userIdToFollow) {
+                    return { ...post, followed_by_current_user: !post.followed_by_current_user };
+                }
+                return post;
+            }));
+        } else {
+            console.error('Post not found to toggle follow.');
+        }
     };
+
     const handleToggleLike = (postId) => {
         const postToToggle = microposts.find(post => post.id === postId);
-    
         if (postToToggle) {
             if (postToToggle.liked_by_current_user) {
                 // Post is already liked, so unlike it
@@ -252,7 +272,7 @@ function Fullposts() {
                 // Post is not liked, so like it
                 handleLike(postId);
             }
-            
+
             // Update the liked status in local state to reflect the change
             setMicroposts(prevMicroposts => prevMicroposts.map(post => {
                 if (post.id === postId) {
