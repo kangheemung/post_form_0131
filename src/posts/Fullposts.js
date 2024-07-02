@@ -10,7 +10,7 @@ function Fullposts() {
     const { currentUser ,setCurrentUser} = useAuth();
     const [notification, setNotification] = useState('');
     const [likedPosts, setLikedPosts] = useState(new Set());
-    let userIdToFollow;
+//ロジック
     useEffect(() => {
         const jwtToken = localStorage.getItem('jwtToken');
         // currentUserを復元するための処理を追加
@@ -45,14 +45,16 @@ function Fullposts() {
             }
         })
         .then(data => {
-            setMicroposts(data.data || []);
-            const updatedFollowedUserIds = new Set(data.data.filter(post => post.followed_by_current_user).map(post => post.user_id.toString()));
+            const updatedMicroposts = data.data || [];
+            setMicroposts(updatedMicroposts);
+            const updatedFollowedUserIds = new Set(updatedMicroposts
+                .filter(post => post.followed_by_current_user)
+                .map(post => post.user_id.toString())
+            );
             setFollowedUserIds(updatedFollowedUserIds);
             localStorage.setItem('followedUserIds', JSON.stringify(Array.from(updatedFollowedUserIds)));
-            const updatedLikedPosts = new Set(data.data.filter(post => post.liked_by_current_user).map(post => post.id.toString()));
-            setLikedPosts(updatedLikedPosts);
-            localStorage.setItem('likedPosts', JSON.stringify(Array.from(updatedLikedPosts)));
-            })
+
+        })
         .catch(error => {
             console.error('Error fetching microposts:', error);
             navigate('/');
@@ -63,20 +65,16 @@ function Fullposts() {
 
 
 
-    const handleLike = async (postId) => {
-        console.log('Attempting to like post with ID:', postId);
+    const handleLike = (postId) => {;
+        //console.log('Attempting to like post with ID:', postId); // Check if postId is correct
+        //console.log('Current User:', currentUser);
+        // Call your API endpoint to like a post
         fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts/${postId}/like`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${currentUser.jwtToken}`
-            },
-            body: JSON.stringify({
-                like: {
-                    user_id: currentUser.id,
-                    micropost_id: postId
-                }
-            })
+            }
         })
         .then(response => {
             if (!response.ok) {
@@ -86,13 +84,15 @@ function Fullposts() {
             }
             return response.json();
         })
-        .then(data => {
-            console.log('Liked successfully:', data);
-            const updatedLikedPosts = new Set([...likedPosts]); // Assuming likedPosts is the current state
-            updatedLikedPosts.add(postId);
-            localStorage.setItem('likedPosts', JSON.stringify([...updatedLikedPosts]));
-            setLikedPosts(updatedLikedPosts);
-            })
+        .then(() => {
+            //console.log('Unliked successfully');
+            setLikedPosts((prevLikedPosts) => {
+              const updatedLikedPosts = new Set(prevLikedPosts);
+              updatedLikedPosts.delete(postId);
+              localStorage.setItem('likedPosts', JSON.stringify([...updatedLikedPosts]));
+              return updatedLikedPosts;
+            });
+          })
         .catch(error => {
             console.error('Error liking post:', error);
             setNotification(error.message || 'Failed to like post.');
@@ -105,6 +105,11 @@ function Fullposts() {
 
 
     const handleUnlike = async (postId) => {
+        if (typeof postId === 'undefined') {
+            console.error('Post ID is undefined');
+            setNotification('Post ID is undefined.');
+            return;
+          }
         console.log('Attempting to unlike post with ID:', postId);
         // Update the API endpoint to the correct unliking endpoint
         fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/microposts/${postId}/unlike`, {
@@ -122,18 +127,14 @@ function Fullposts() {
             }
             return response.text();
           })
-          .then(data => {
-            localStorage.setItem('likedPosts', JSON.stringify([...likedPosts, postId]));
-            console.log('Followed successfully:', data);
-            setLikedPosts(new Set([...likedPosts].filter(id => id !== postId)));
-
-            // Optionally, set a notification message for the user interface
-            setNotification('Followed successfully');
-
-            // Trigger any necessary re-render or state updates to reflect the change
-            setTimeout(() => {
-                setNotification('');
-            }, 3000); // Clear notification after 3 seconds
+          .then(() => {
+            //console.log('Unliked successfully');
+            setLikedPosts((prevLikedPosts) => {
+              const updatedLikedPosts = new Set(prevLikedPosts);
+              updatedLikedPosts.delete(postId);
+              localStorage.setItem('likedPosts', JSON.stringify([...updatedLikedPosts]));
+              return updatedLikedPosts;
+            });
         })
         .catch(error => {
             console.error('Error unliking post:', error);
@@ -145,32 +146,14 @@ function Fullposts() {
         console.log('Attempting to unlike post with ID:', postId);
     };
 
-    const handleToggleFollow = (userIdToFollow) => {
-        if (!userIdToFollow) {
-            console.error('User ID to follow is undefined or invalid');
-            return;
-        }
-        const followedByCurrentUser = followedUserIds.has(userIdToFollow);
-        const buttonText = followedByCurrentUser ? 'followed' : 'follow!';
-        if (followedByCurrentUser) {
-            handleUnfollow(userIdToFollow);
-        } else {
-            handleFollow(userIdToFollow);
-        }
-    };
-    const handleToggleLike = (postId) => {
-        if (likedPosts.has(postId)) {
-          handleUnlike(postId);
-        } else {
-          handleLike(postId);
-        }
-      };
+
 
     const handleFollow = (userIdToFollow) => {
         if (!currentUser) {
             console.error('User ID to follow is undefined or invalid');
             return;
         }
+
         const relationshipData = {
                 relationship: {  followed_id: currentUser.id, follower_id: userIdToFollow }
         }
@@ -185,9 +168,13 @@ function Fullposts() {
         })
         .then(response => {
             if (!response.ok) {
-                return response.json().then(data => {
-                    throw new Error(data.message || 'Failed to follow user.');
-                });
+                if (response.status === 500 && response.statusText === "Internal Server Error") {
+                    throw new Error('Relationship already exists. User may have been already followed.');
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.message || 'Failed to follow user.');
+                    });
+                }
             }
             return response.json();
         })
@@ -198,11 +185,6 @@ function Fullposts() {
             setFollowedUserIds(updatedFollowedUserIds);
             setNotification('Followed successfully')
                 // Update button text after successful follow
-            const updatedButton = document.querySelector('.follow_btn');
-            if (updatedButton) {
-                updatedButton.textContent = 'followed';
-            }
-
         })
         .catch(error => {
             console.error('Error liking/unliking post:', error);
@@ -235,11 +217,8 @@ function Fullposts() {
                     localStorage.setItem('followedUserIds', JSON.stringify([...updatedFollowedUserIds]));
                     return updatedFollowedUserIds;
                 });
+                setNotification('Unfollowed successfully');
                     // Update button text after successful unfollow
-                const updatedButton = document.querySelector('.follow_btn');
-                if (updatedButton) {
-                    updatedButton.textContent = 'follower!';
-                }
             } else {
                 return response.json().then(data => {
                     let errorMessage = data.message || 'Failed to unfollow user.';
@@ -258,6 +237,32 @@ function Fullposts() {
             }, 3000); // Clear notification after 3 seconds
         });
     };
+
+    const handleToggleFollow = (userIdToUnfollow) => {
+      
+    };
+    const handleToggleLike = (postId) => {
+        const postToToggle = microposts.find(post => post.id === postId);
+    
+        if (postToToggle) {
+            if (postToToggle.liked_by_current_user) {
+                // Post is already liked, so unlike it
+                handleUnlike(postId);
+            } else {
+                // Post is not liked, so like it
+                handleLike(postId);
+            }
+            
+            // Update the liked status in local state to reflect the change
+            setMicroposts(prevMicroposts => prevMicroposts.map(post => {
+                if (post.id === postId) {
+                    return { ...post, liked_by_current_user: !post.liked_by_current_user };
+                }
+                return post;
+            }));
+        }
+    };
+    
 
 
 
