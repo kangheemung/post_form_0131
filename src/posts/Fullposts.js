@@ -45,30 +45,21 @@ function Fullposts() {
             }
         })
         .then(data => {
-            // Handle the received microposts data here
-            if (data.data) {
-                setMicroposts(data.data || []);
-
-          if (data.likedPosts) {
-            const updatedLikedPosts = new Set(data.likedPosts.map(post => post.id.toString()));
-            setLikedPosts(updatedLikedPosts);
-        }
-        if (data.followedUserIds) {
-            const updatedFollowedUserIds = new Set(data.followedUserIds.map(user => user.id.toString()));
+            setMicroposts(data.data || []);
+            const updatedFollowedUserIds = new Set(data.data.filter(post => post.followed_by_current_user).map(post => post.user_id.toString()));
             setFollowedUserIds(updatedFollowedUserIds);
-        }
-        }else {
-            console.error('Error: Data format incorrect');
-        }
-    })
+            localStorage.setItem('followedUserIds', JSON.stringify(Array.from(updatedFollowedUserIds)));
+            const updatedLikedPosts = new Set(data.data.filter(post => post.liked_by_current_user).map(post => post.id.toString()));
+            setLikedPosts(updatedLikedPosts);
+            localStorage.setItem('likedPosts', JSON.stringify(Array.from(updatedLikedPosts)));
+            })
         .catch(error => {
             console.error('Error fetching microposts:', error);
             navigate('/');
         });
- 
      };
 
-    }, [currentUser, navigate,setCurrentUser,setLikedPosts, setFollowedUserIds]);
+    }, [currentUser]);
 
 
 
@@ -97,12 +88,10 @@ function Fullposts() {
         })
         .then(data => {
             console.log('Liked successfully:', data);
-            setLikedPosts((prevLikedPosts) => {
-                const updatedLikedPosts = new Set(prevLikedPosts);
-                updatedLikedPosts.add(postId);
-                localStorage.setItem('likedPosts', JSON.stringify([...updatedLikedPosts]));
-                return updatedLikedPosts;
-              });
+            const updatedLikedPosts = new Set([...likedPosts]); // Assuming likedPosts is the current state
+            updatedLikedPosts.add(postId);
+            localStorage.setItem('likedPosts', JSON.stringify([...updatedLikedPosts]));
+            setLikedPosts(updatedLikedPosts);
             })
         .catch(error => {
             console.error('Error liking post:', error);
@@ -157,7 +146,13 @@ function Fullposts() {
     };
 
     const handleToggleFollow = (userIdToFollow) => {
-        if (followedUserIds.has(userIdToFollow)) {
+        if (!userIdToFollow) {
+            console.error('User ID to follow is undefined or invalid');
+            return;
+        }
+        const followedByCurrentUser = followedUserIds.has(userIdToFollow);
+        const buttonText = followedByCurrentUser ? 'followed' : 'follow!';
+        if (followedByCurrentUser) {
             handleUnfollow(userIdToFollow);
         } else {
             handleFollow(userIdToFollow);
@@ -170,16 +165,14 @@ function Fullposts() {
           handleLike(postId);
         }
       };
-  
-  
-    //cons
+
     const handleFollow = (userIdToFollow) => {
-        if (!userIdToFollow) {
+        if (!currentUser) {
             console.error('User ID to follow is undefined or invalid');
             return;
         }
         const relationshipData = {
-                relationship: { followed_id: userIdToFollow }
+                relationship: {  followed_id: currentUser.id, follower_id: userIdToFollow }
         }
         fetch(`http://${process.env.REACT_APP_API_URL}:3000/api/v1/users/${currentUser.id}/follow`, {
             method: 'POST',
@@ -201,9 +194,14 @@ function Fullposts() {
         .then(data => {
             const updatedFollowedUserIds = new Set([...followedUserIds]);
             updatedFollowedUserIds.add(userIdToFollow);
-            localStorage.setItem('followedUserIds', JSON.stringify([...updatedFollowedUserIds]));
+            localStorage.setItem('followedUserIds', JSON.stringify(Array.from(updatedFollowedUserIds)));
             setFollowedUserIds(updatedFollowedUserIds);
             setNotification('Followed successfully')
+                // Update button text after successful follow
+            const updatedButton = document.querySelector('.follow_btn');
+            if (updatedButton) {
+                updatedButton.textContent = 'followed';
+            }
 
         })
         .catch(error => {
@@ -237,10 +235,11 @@ function Fullposts() {
                     localStorage.setItem('followedUserIds', JSON.stringify([...updatedFollowedUserIds]));
                     return updatedFollowedUserIds;
                 });
-                setNotification('Unfollowed successfully');
-                setTimeout(() => {
-                    setNotification('');
-                }, 3000);
+                    // Update button text after successful unfollow
+                const updatedButton = document.querySelector('.follow_btn');
+                if (updatedButton) {
+                    updatedButton.textContent = 'follower!';
+                }
             } else {
                 return response.json().then(data => {
                     let errorMessage = data.message || 'Failed to unfollow user.';
@@ -269,19 +268,19 @@ function Fullposts() {
                 <div className="post-container_t">
                     <h1>投稿された記録</h1>
                 </div>
-                {microposts.length > 0 ? (
-                    <div className="posts-grid-body">
-                        {microposts.map((post) => {
+                {microposts && microposts.length > 0 ? (
+                <div className="posts-grid-body">
+                    {microposts.map((post) => {
                                     const isAuthorCurrentUser = currentUser && currentUser.id === post.user_id;
                                     return (
                                 <div className="post-list-item" key={post.id}>
                                     <div className='name_box'>
                                     <p className='author-and-follow_name'>投稿者: {post.name ? post.name : 'Unknown User'}</p>
-                                        {/*{!isAuthorCurrentUser && (
-                                            <button className = "follow_btn" onClick={() => handleToggleFollow(userIdToFollow)}>
-                                            {followedUserIds.has(userIdToFollow) ? 'followed' : 'follow!'}
+                                        {!isAuthorCurrentUser && (
+                                          <button className="follow_btn" onClick={() => handleToggleFollow(post.user_id)}>
+                                              {post.followed_by_current_user ? 'followed' : 'follow!'} 
                                           </button>
-                                        )}*/}
+                                        )}
                                     </div>
                                     <p className="post_top">タイトル: {post.title}</p>
                                     {post.body.length <= 100 && (
@@ -289,10 +288,10 @@ function Fullposts() {
                                     )}
                                     <div>
                                     <div className='like'>
-                                      {/*{!isAuthorCurrentUser && (
+                                      {!isAuthorCurrentUser && (
                                      <button className = "like_btn" onClick={() => handleToggleLike(post.id)}>
-                                     {likedPosts.has(post.id) ? 'Likeしました' : 'Like!'}
-                                   </button>*/}
+                                     {post.liked_by_current_user ? 'Liked' : 'Like!'}
+                                   </button>
                                     )}
                                     </div>
                                     </div>

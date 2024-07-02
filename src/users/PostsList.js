@@ -48,7 +48,7 @@ function PostsList() {
         const result = await response.json();
         setMicroposts(result.data);
         setUsername(result.user ? result.user.name : '');
-        setEmail(result.user.email);
+        setEmail(result.user ? result.user.email : '');
       } catch (error) {
         console.error("Fetching microposts error:", error);
         setError('Failed to load microposts. Please check your connection and try again.');
