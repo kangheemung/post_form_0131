@@ -70,15 +70,17 @@
   color: #004A54;
   cursor: pointer;
 }
-#light.post-container_t {
+#light .post-container_t {
   margin-top: 5%;
   color: #004A54;
   text-align: center;
+  margin-bottom: 5em;
 }
-#dark.post-container_t {
+#dark .post-container_t {
   margin-top: 5%;
   color: #F0F3F3;
   text-align: center;
+  margin-bottom: 5em;
 }
 .post_top {
   font-weight: bold;
