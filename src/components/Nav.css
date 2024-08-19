@@ -50,15 +50,15 @@ header:hover{
 }
 #light .opnen_img{
   width: 50px;
-  margin-right: 20px;
-  margin-top: -10px;
+
+
   background-color: #004A54;
   color: #DBE5E6;
 }
 #dark .opnen_img{
   width: 50px;
-  margin-right: 20px;
-  margin-top: -10px;
+
+
   background-color: #DBE5E6;
   color: #DBE5E6;
 }
@@ -222,7 +222,7 @@ h2{
 .opnen_img {
   cursor: pointer;
   width: 50px;
-  margin-right: 20px;
+
   margin-top: -10px;
   background-color: #004A54;
   color: #DBE5E6;
@@ -245,7 +245,7 @@ h2{
     }
   .opnen_img{
     float: right;
-    margin-right: 20px; /* Adjust the margin as needed */
+    margin-right: 10px; /* Adjust the margin as needed */
   }
 
 }

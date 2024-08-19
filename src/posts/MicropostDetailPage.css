@@ -1,25 +1,37 @@
 #light .collapsible-content,
 #light .Microposts_Deatail_title,
-#light .Microposts_Deatail_body ,
+
 #light .Microposts_Deatail_box_button,
 #light .Microposts_Deatail_box_b_t_n {
+    color:#004A54;
+
+
+}
+#light .Microposts_Deatail_box{
+
+border: rgba(253, 253, 253, 0.5) 3px solid;
+background-color: rgba(253, 253, 253, 0.5);
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);}
+
+
+
+#dark .Microposts_Deatail_box,
+#dark .Microposts_Deatail_box_b_t_n{
     color: #004A54;
-    background-color: #DBE5E6;
+    border: #DBE5E6 2px solid;
+    border-radius: 15%;
+    background-color:#DBE5E6;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-#dark .collapsible-content,
-#dark .Microposts_Deatail_title,
-#dark .Microposts_Deatail_body,
-#dark .Microposts_Deatail_box_button,
-#dark .Microposts_Deatail_box_b_t_n {
-
-    color:#DBE5E6;
-    background-color: #004A54;
-}
  .Microposts_Deatail_body{
      margin-top: 50px;
  }
 .Microposts_Deatail_box {
+    padding: 3em;
+    border-radius: 15%;
+    min-width: 250px;
+    min-height: 300px;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -34,7 +46,8 @@
     text-align: center;
 }
 .Microposts_Deatail_box_b_t_n{
-    cursor: pointer;}
+    cursor: pointer;
+}
 .Microposts_Deatail {
     text-align: center;
 }
@@ -64,7 +77,6 @@ cursor: pointer;
 
     .Microposts_Deatail_box{
         text-align: center;
-        color: #004A54;
     }
     .collapsible-content {
         max-width: 200px;
